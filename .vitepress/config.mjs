@@ -11,7 +11,7 @@ export default defineConfig({
   lang: 'ca',
   base,
   cleanUrls: false,
-  srcExclude: ['DOCUMENTACIO_PROJECTE.md', 'Bucle Gauntlet.md'],
+  srcExclude: ['README.md', 'DOCUMENTACIO_PROJECTE.md', 'Bucle Gauntlet.md'],
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="%231e3a8a"/><circle cx="50" cy="50" r="32" fill="%23d97706"/><circle cx="50" cy="50" r="16" fill="%23ffffff"/></svg>' }],
     ['meta', { name: 'theme-color', content: '#1e3a8a' }],

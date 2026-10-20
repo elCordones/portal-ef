@@ -64,35 +64,29 @@ Portal EF/
 
 ---
 
-## 3. Guia Pas a Pas per Publicar a GitHub Pages
+## 3. Estat i Flux de Publicació a GitHub Pages
 
-El projecte ja té el repositori Git local inicialitzat a la branca `main`, amb tots els fitxers comitejats i el workflow `.github/workflows/deploy.yml` configurat. Per publicar-lo a internet gratuïtament segueix aquests **3 passos**:
+El projecte ja està vinculat al repositori oficial **[github.com/elCordones/portal-ef](https://github.com/elCordones/portal-ef)** (branca `main`) i publicat en producció a **[https://elcordones.github.io/portal-ef/](https://elcordones.github.io/portal-ef/)** mitjançant el workflow `.github/workflows/deploy.yml`.
 
-### Pas 1: Crear el repositori buit a GitHub
-1. Entra al teu compte de [GitHub](https://github.com/new).
-2. Crea un repositori nou anomenat, per exemple, **`portal-ef`** (Públic, **sense** marcar *Add a README file* ni *.gitignore*, ja que el projecte ja els té).
-
-### Pas 2: Executar l'script de desplegament (o les 2 comandes Git)
+### Com publicar noves actualitzacions (1 sol pas)
 Obre una terminal PowerShell a la carpeta `C:\Users\dcordone\Desktop\AGY\Portal EF` i executa l'script inclòs:
 
 ```powershell
-.\desplegar-github.ps1 -RepoUrl "https://github.com/EL_TEU_USUARI/portal-ef.git"
+.\desplegar-github.ps1 -MissatgeCommit "Descripció dels canvis"
 ```
 
-*(O bé executa directament les dues comandes estàndard de Git)*:
+*(O bé executa directament les comandes estàndard de Git)*:
 ```powershell
-git remote add origin https://github.com/EL_TEU_USUARI/portal-ef.git
-git push -u origin main
+git add -A
+git commit -m "Descripció dels canvis"
+git push origin main
 ```
 
-### Pas 3: Activar GitHub Actions a la pestanya Pages (només el primer cop)
-1. Al teu repositori de GitHub, vés a **Settings** ➔ **Pages** (al menú lateral esquerre).
-2. A l'apartat **Build and deployment > Source**, desplega el selector i tria **GitHub Actions**.
-3. En menys de 45 segons, l'acció **Desplegar Portal EF a GitHub Pages** compilarà el portal i el publicarà a:
-   `https://EL_TEU_USUARI.github.io/portal-ef/`
+En menys de 45 segons, l'acció **Desplegar Portal EF a GitHub Pages** compilarà el portal i actualitzarà automàticament:
+👉 `https://elcordones.github.io/portal-ef/`
 
 ::: tip Actualitzacions futures automàtiques
-Un cop activat, cada vegada que afegeixis una nova SdA o modifiquis una sessió i executis `.\desplegar-github.ps1`, la web pública s'actualitzarà automàticament sense fer cap altre pas manual.
+Cada vegada que afegeixis una nova SdA o modifiquis una sessió i executis `.\desplegar-github.ps1`, la web pública s'actualitzarà automàticament sense fer cap altre pas manual.
 :::
 
 ---
