@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Targetes de Rol de Korfbal - Alumnat</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 15px;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+    }
+    .page-header {
+      text-align: center;
+      border-bottom: 2px solid #cbd5e1;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .page-header h1 {
+      margin: 0;
+      color: #1e3a8a;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+    }
+    .page-header p {
+      margin: 4px 0 0;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    .role-card {
+      border: 2px dashed #3b82f6;
+      border-radius: 10px;
+      padding: 14px;
+      background: #f8fafc;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .role-card.full-width {
+      grid-column: span 2;
+    }
+    .cut-line {
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      font-size: 0.8rem;
+      background: white;
+      padding: 0 4px;
+      color: #94a3b8;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+    .card-icon {
+      font-size: 1.8rem;
+    }
+    .card-title {
+      font-weight: bold;
+      font-size: 1rem;
+      color: #1e3a8a;
+      line-height: 1.2;
+    }
+    .card-role-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 2px;
+    }
+    .tag-blue { background: #dbeafe; color: #1e40af; }
+    .tag-green { background: #dcfce7; color: #15803d; }
+    .tag-amber { background: #fef3c7; color: #b45309; }
+    .tag-purple { background: #f3e8ff; color: #6b21a8; }
+    .tag-red { background: #fee2e2; color: #b91c1c; }
+
+    .card-body {
+      font-size: 0.80rem;
+      line-height: 1.35;
+      color: #334155;
+    }
+    .card-body ul {
+      margin: 4px 0;
+      padding-left: 18px;
+    }
+    .card-body li {
+      margin-bottom: 3px;
+    }
+    .phrase-box {
+      background: #eff6ff;
+      border-left: 3px solid #3b82f6;
+      padding: 4px 8px;
+      margin-top: 6px;
+      font-style: italic;
+      font-size: 0.76rem;
+      color: #1e40af;
+    }
+    .btn-print {
+      display: block;
+      margin: 20px auto 0;
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .page-container { box-shadow: none; max-width: 100%; padding: 0; }
+      .btn-print { display: none; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='32' fill='%23d97706'/><circle cx='50' cy='50' r='16' fill='%23ffffff'/></svg>">
+</head>
+<body>
+
+<div class="page-container">
+  <div class="page-header">
+    <h1>Targetes de Rol de Korfbal per a l'Alumnat</h1>
+    <p>Materials retallables i plastificables &mdash; Cicle Superior (Primària)</p>
+  </div>
+
+  <div class="cards-grid">
+    <!-- Targeta 1 -->
+    <div class="role-card" style="border-color: #2563eb;">
+      <span class="cut-line">✂️ Retallar</span>
+      <div>
+        <div class="card-header">
+          <div class="card-icon">👑</div>
+          <div>
+            <div class="card-title">Capità/na Tutor/a (6è)</div>
+            <span class="card-role-tag tag-blue">Lideratge i Coeducació</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>La teva missió a pista:</strong>
+          <ul>
+            <li>Explicar amb calma les activitats als companys de 5è.</li>
+            <li>Assegurar que la pilota roti entre <strong>nois i noies</strong> abans de tirar.</li>
+            <li>Animar sempre l'equip i mantenir l'alegria i l'esforç col·lectiu.</li>
+          </ul>
+          <div class="phrase-box">"Molt bona passada! Continuem així, equip!"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Targeta 2 -->
+    <div class="role-card" style="border-color: #16a34a;">
+      <span class="cut-line">✂️ Retallar</span>
+      <div>
+        <div class="card-header">
+          <div class="card-icon">🏁</div>
+          <div>
+            <div class="card-title">Àrbitre/a de Pista</div>
+            <span class="card-role-tag tag-green">Joc Net i Regles</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>La teva missió a pista:</strong>
+          <ul>
+            <li>Senyalar la falta de <strong>"PASSES"</strong> si algú bota o camina amb la pilota.</li>
+            <li>Senyalar la falta de <strong>"CONTACTE"</strong> si hi ha empenta o manotada.</li>
+            <li>Donar la pilota a l'altre equip amb educació i claredat.</li>
+          </ul>
+          <div class="phrase-box">"Falta de passos: no es pot botar. Pilota per l'equip blau!"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Targeta 3 -->
+    <div class="role-card" style="border-color: #dc2626;">
+      <span class="cut-line">✂️ Retallar</span>
+      <div>
+        <div class="card-header">
+          <div class="card-icon">🛡️</div>
+          <div>
+            <div class="card-title">Jutge de Defensat (*Verdedigd*)</div>
+            <span class="card-role-tag tag-red">Tècnica i Tàctica</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>La teva missió a pista:</strong>
+          <ul>
+            <li>Observar si el defensor té el <strong>braç alçat</strong> a menys d'un braç de distància.</li>
+            <li>Comprovar que el defensor miri de cara l'atacant i sigui del <strong>mateix gènere</strong>.</li>
+            <li>Cridar fort <strong>"DEFENSAT!"</strong> si l'atacant no pot tirar.</li>
+          </ul>
+          <div class="phrase-box">"Defensat! No pots llançar, has de passar!"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Targeta 4 -->
+    <div class="role-card" style="border-color: #d97706;">
+      <span class="cut-line">✂️ Retallar</span>
+      <div>
+        <div class="card-header">
+          <div class="card-icon">🃏</div>
+          <div>
+            <div class="card-title">Anotador/a i Custodi de l'Àlbum</div>
+            <span class="card-role-tag tag-amber">Ordre i Progrés</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>La teva missió a pista:</strong>
+          <ul>
+            <li>Custodiar l'<em>Àlbum de Cartes Tàctiques</em> de l'equip.</li>
+            <li>Comprovar els criteris d'èxit per desbloquejar la carta de la sessió.</li>
+            <li>Demanar la nova Carta Tàctica al docent i aferrar-la a l'Àlbum.</li>
+          </ul>
+          <div class="phrase-box">"Repte superat! Hem desbloquejat una nova Carta Tàctica!"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Targeta 5 -->
+    <div class="role-card full-width" style="border-color: #9333ea;">
+      <span class="cut-line">✂️ Retallar</span>
+      <div>
+        <div class="card-header">
+          <div class="card-icon">⏱️</div>
+          <div>
+            <div class="card-title">Cronometrador/a i Encarregat/da de Material</div>
+            <span class="card-role-tag tag-purple">Gestió del Temps i Espai</span>
+          </div>
+        </div>
+        <div class="card-body" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <strong>Gestió del Temps:</strong>
+            <ul>
+              <li>Controlar els minuts de partit (5' o 7') amb el cronòmetre de pista.</li>
+              <li>Avisar quan quedi 1 minut: <em>"Últim minut de partit!"</em>.</li>
+              <li>Fer sonar el senyal final de canvi de zones o final de partit.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Gestió del Material:</strong>
+            <ul>
+              <li>Comprovar que cada mig camp té 2 pilotes i els cons col·locats.</li>
+              <li>Vetllar perquè cap pilota surti rodolant a l'exterior de la pista.</li>
+              <li>Ajudar a recollir ordenadament tot el material a la calma.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimir Targetes de Rol (DIN-A4)</button>
+</div>
+
+<style>
+  .app-footer { margin-top: 1.5rem; padding: 0.6rem 1rem; background-color: #f8f9fa; border-top: 1px solid #e9ecef; text-align: center; font-family: system-ui, -apple-system, sans-serif; font-size: 0.78rem; color: #6c757d; }
+  .app-footer .footer-content { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; }
+  .app-footer .cc-badge { height: 22px; width: auto; display: block; }
+  .app-footer .footer-legal { line-height: 1.4; }
+  .app-footer a { color: #495057; text-decoration: none; font-weight: 500; }
+  .app-footer a:hover { text-decoration: underline; color: #0d6efd; }
+  @media print { .app-footer { display: none !important; } }
+</style>
+<footer class="app-footer">
+  <div class="footer-content">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" class="cc-badge" width="70" height="24" />
+    </a>
+    <span class="footer-legal">
+      © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
+

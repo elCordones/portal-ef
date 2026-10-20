@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia d'Avaluació Docent - SdA Atletisme</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-light: #ccfbf1;
+      --secondary: #1e3a8a;
+      --accent: #b45309;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --bg: #f8fafc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      padding: 35px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.06);
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      padding: 12px 18px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .top-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 8px;
+    }
+    h2 {
+      color: var(--secondary);
+      font-size: 1.4rem;
+      margin-top: 30px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+    }
+    h3 {
+      color: var(--primary);
+      font-size: 1.15rem;
+      margin-top: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.88rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 9px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+    }
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+    .card-session-eval {
+      border-left: 4px solid var(--primary);
+      background: #f0fdfa;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+    }
+    .card-session-eval h4 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      color: #0f766e;
+      display: flex;
+      justify-content: space-between;
+    }
+    .eval-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    .badge-docent { background: #fee2e2; color: #991b1b; }
+    .badge-parelles { background: #e0e7ff; color: #3730a3; }
+    .badge-auto { background: #fef3c7; color: #92400e; }
+    .bullet-point {
+      margin: 4px 0;
+      font-size: 0.9rem;
+    }
+    .bullet-point strong {
+      color: #0f766e;
+    }
+    .box-quote {
+      background: #fdfefe;
+      border: 1px dashed #0d9488;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-style: italic;
+      font-size: 0.85rem;
+      margin-top: 6px;
+      color: #044e46;
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .top-bar { display: none; }
+      .card-session-eval { page-break-inside: avoid; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='32' fill='%23d97706'/><circle cx='50' cy='50' r='16' fill='%23ffffff'/></svg>">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="top-bar">
+    <div>
+      <strong>Guia d'Avaluació per al Docent &bull; SdA Atletisme Cicle Superior</strong>
+      <div style="font-size: 0.82rem; color: #475569;">Orientacions operatives, indicadors sessió a sessió i graelles de registre (Decret 175/2022)</div>
+    </div>
+    <button onclick="window.print()">🖨️ Imprimir / Desar en PDF</button>
+  </div>
+
+  <h1>Guia Operativa d'Avaluació per al Docent</h1>
+
+  <p>Aquesta guia acompanya el mestre/a d'Educació Física responent de forma precisa a les dues preguntes essencials a peu de pista: <strong>Què he d'observar exactament en cada moment?</strong> i <strong>Com ho he de registrar sense frenar la dinàmica de la classe?</strong></p>
+
+  <h2>1. MAPA D'AVALUACIÓ DE LES 10 SESSIONS</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 12%;">Sessió</th>
+        <th style="width: 15%;">Tipus</th>
+        <th style="width: 18%;">Competència / Criteri</th>
+        <th>Què s'avalua exactament?</th>
+        <th style="width: 18%;">Instrument</th>
+        <th style="width: 12%;">Agent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>S1 (60')</strong></td>
+        <td>Diagnòstica</td>
+        <td><strong>CE2</strong> (Crit. 2.1)<br><strong>CE3</strong> (Crit. 3.1)</td>
+        <td>Sortides explosives (inclinació i empenta) i acollida als equips mixtos 5è-6è.</td>
+        <td>Registre de casos extrems</td>
+        <td><span class="eval-badge badge-docent">Docent</span></td>
+      </tr>
+      <tr>
+        <td><strong>S2 (45')</strong></td>
+        <td>Formativa</td>
+        <td><strong>CE2</strong> (Crit. 2.1)</td>
+        <td>Franqueig rasant cap endavant (no salt vertical) i ritme de 3 passes.</td>
+        <td>Feedback verbal immediat</td>
+        <td><span class="eval-badge badge-docent">Docent</span></td>
+      </tr>
+      <tr>
+        <td><strong>S3 (60')</strong></td>
+        <td>Coavaluació</td>
+        <td><strong>CE2</strong> (Crit. 2.1)<br><strong>CE3</strong> (Crit. 3.1)</td>
+        <td>Crit "HOP!", receptor en cursa, mà en "V" i pas net del testimoni.</td>
+        <td><em>Fitxa Coavaluació Relleus</em></td>
+        <td><span class="eval-badge badge-parelles">Parelles</span></td>
+      </tr>
+      <tr>
+        <td><strong>S4 (45')</strong></td>
+        <td>Autoregulació</td>
+        <td><strong>CE1</strong> (Crit. 1.2)</td>
+        <td>Manteniment de ritme constant (zona Borg 5-6) parlant amb el company.</td>
+        <td>Targetes de fita i Passaport</td>
+        <td><span class="eval-badge badge-docent">Docent/Alumne</span></td>
+      </tr>
+      <tr>
+        <td><strong>S5 (60')</strong></td>
+        <td>Formativa</td>
+        <td><strong>CE2</strong> (Crit. 2.1)</td>
+        <td>Batuda a 1 peu a la línia i recepció flexionada a 2 peus al matalàs.</td>
+        <td>Rúbrica (Equips 1 i 2)</td>
+        <td><span class="eval-badge badge-docent">Docent</span></td>
+      </tr>
+      <tr>
+        <td><strong>S6 (45')</strong></td>
+        <td>Regulació Emocional</td>
+        <td><strong>CE3</strong> (Crit. 3.2)<br><strong>CE2</strong> (Crit. 2.1)</td>
+        <td>Superació de la por al llevapors; tolerància a l'error si es toca la goma.</td>
+        <td>Observació del clima</td>
+        <td><span class="eval-badge badge-docent">Docent/Alumne</span></td>
+      </tr>
+      <tr>
+        <td><strong>S7 (60')</strong></td>
+        <td>Formativa</td>
+        <td><strong>CE2</strong> (Crit. 2.2)</td>
+        <td>Posició de perfil, paràbola a 45°, xiulet del vòrtex i seguretat.</td>
+        <td>Rúbrica (Equips 3, 4 i 5)</td>
+        <td><span class="eval-badge badge-docent">Docent</span></td>
+      </tr>
+      <tr>
+        <td><strong>S8 (45')</strong></td>
+        <td>Sensibilització</td>
+        <td><strong>CE4</strong> (Crit. 4.1)</td>
+        <td>Empenta de pes i comprensió del llançament adaptat asseguts en cadira.</td>
+        <td>Assemblea i Passaport</td>
+        <td><span class="eval-badge badge-docent">Docent</span></td>
+      </tr>
+      <tr>
+        <td><strong>S9 (60')</strong></td>
+        <td>Sumativa</td>
+        <td><strong>Totes les CE</strong></td>
+        <td>Autonomia a l'escalfament, resolució a les 4 estacions i cooperació.</td>
+        <td>Rúbrica Competencial Final</td>
+        <td><span class="eval-badge badge-docent">Docent</span></td>
+      </tr>
+      <tr>
+        <td><strong>S10 (45')</strong></td>
+        <td>Autoavaluació</td>
+        <td><strong>CE1, CE2, CE3, CE4</strong></td>
+        <td>Metacognició del progrés individual i de l'ajuda mútua entre 5è i 6è.</td>
+        <td>Chromebooks / Diana paper</td>
+        <td><span class="eval-badge badge-auto">Alumnat</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. PROTOCOL DETALLAT SESSIÓ A SESSIÓ (GUIA DE CAMP)</h2>
+
+  <!-- S1 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 1: Sortides i Diagnosi Inicial <span class="eval-badge badge-docent">Docent</span></h4>
+    <div class="bullet-point"><strong>Què observar:</strong> L'angle de sortida (cos inclinat endavant amb empenta de la cama davantera, sense aixecar el cap de cop) i la capacitat d'escoltar i acollir els companys de l'altre curs.</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Anota a la graella d'aula únicament els alumnes que mostrin conductes extremes (molta dificultat coordinativa o lideratge integrador destacat).</div>
+    <div class="box-quote">Consigna docent de retorn: "Fixa't com empeny la teva cama de davant. Si surts massa dret com un pal, l'aire et frena!"</div>
+  </div>
+
+  <!-- S2 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 2: Franqueig Rítmic d'Obstacles <span class="eval-badge badge-docent">Docent</span></h4>
+    <div class="bullet-point"><strong>Què observar:</strong> Que l'obstacle no es salti cap amunt parant la carrera. La cama d'atac s'eleva flexionada i passa arran de la goma mantenint la velocitat. Manteniment de les 3 passes rítmiques.</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Avaluació formativa en calent sense papers: retroacció verbal directa a cada carrer.</div>
+    <div class="box-quote">Consigna docent de retorn: "La goma no és una tanca de fusta, no et farà cap mal! No saltis cap amunt, passa cap endavant!"</div>
+  </div>
+
+  <!-- S3 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 3: La Coavaluació de Relleus <span class="eval-badge badge-parelles">Alumnat (Parelles)</span></h4>
+    <div class="bullet-point"><strong>Què observar el docent:</strong> Com utilitzen la <em>Fitxa de Coavaluació</em> els alumnes observadors. Assegura't que els alumnes francòfons estan amb el seu <em>buddy</em> i comprenen les icones.</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Recull les fitxes en acabar la sessió per verificar si els alumnes saben donar un feedback constructiu i respectuós.</div>
+    <div class="box-quote">Intervenció del docent: "Recordeu: avaluar un company no és dir si corre ràpid o lent, sinó ajudar-lo a saber si ha començat a córrer a temps!"</div>
+  </div>
+
+  <!-- S4 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 4: Dosificació i Autoregulació (Borg) <span class="eval-badge badge-docent">Docent i Alumne</span></h4>
+    <div class="bullet-point"><strong>Què observar:</strong> Parelles que surten massa ràpid i s'ofeguen als 2 minuts. Han de córrer en zona aeròbica (Borg 5-6) podent mantenir una conversa fluida.</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Recompte de targetes de fita d'equip i anotació d'un positiu al Criteri 1.2 per a qui demostri regular el ritme de forma autònoma.</div>
+    <div class="box-quote">Consigna docent de retorn: "Pots explicar-li al company què vas sopar ahir sense aturar-te a agafar aire? Si pots, el teu ritme és perfecte!"</div>
+  </div>
+
+  <!-- S5 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 5: Avaluació Focalitzada de Salts (Equips 1 i 2) <span class="eval-badge badge-docent">Docent</span></h4>
+    <div class="bullet-point"><strong>Què observar a l'estació:</strong> 1) Batuda enèrgica a 1 peu sense trepitjar la línia; 2) Fase de vol elevant genolls; 3) Caiguda flexionada sobre el matalàs a 2 peus alhora (seguretat articular).</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Puntuació directa de l'1 al 4 a la rúbrica del docent per als 10 alumnes dels Equips 1 i 2.</div>
+    <div class="box-quote">Consigna de seguretat: "Molt bé la batuda! Però recorda: mai aterris amb les cames completament rectes; fes una molla amb els teus genolls!"</div>
+  </div>
+
+  <!-- S6 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 6: Salt d'Alçada amb Tisora i Gestió de la Por <span class="eval-badge badge-docent">Docent i Alumne</span></h4>
+    <div class="bullet-point"><strong>Què observar:</strong> L'actitud davant del llevapors. Identificar qui té por i valorar la decisió d'afrontar el salt a l'alçada que cadascú triï lliurement (DUA).</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Anota al Criteri 3.2 els alumnes que superen el bloqueig o animen positivament els companys insegurs.</div>
+    <div class="box-quote">Consigna docent: "El llevapors és un núvol gegant. Si toques la goma, ella caurà amb tu i no passarà res. Som-hi!"</div>
+  </div>
+
+  <!-- S7 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 7: Avaluació Focalitzada de Llançaments (Equips 3, 4 i 5) <span class="eval-badge badge-docent">Docent</span></h4>
+    <div class="bullet-point"><strong>Què observar amb el Vòrtex:</strong> Posició de perfil, braç estirat enrere, paràbola a 45° i xiulet sonor del mòbil en vol. Respecte estricte de la línia de seguretat.</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Puntuació de l'1 al 4 a la rúbrica per als 15 alumnes dels Equips 3, 4 i 5 (Criteri 2.2).</div>
+    <div class="box-quote">Consigna docent: "No tiris la pilota cap al terra com si fos un bot! Llança-la cap al cel, cap a un núvol alt!"</div>
+  </div>
+
+  <!-- S8 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 8: Sensibilització i Para-Atletisme <span class="eval-badge badge-docent">Docent</span></h4>
+    <div class="bullet-point"><strong>Què observar a l'assemblea:</strong> Capacitat de reflexió sobre la força de tronc necessària quan s'anul·la l'empenta de les cames (asseguts en cadira). Respecte cap a l'esport adaptat (CE4).</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Casella del Passaport marcada i registre qualitatiu de l'empatia demostrada.</div>
+  </div>
+
+  <!-- S9 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 9: El Míting Atlètic (Avaluació Sumativa Global) <span class="eval-badge badge-docent">Docent</span></h4>
+    <div class="bullet-point"><strong>Què observar:</strong> Autonomia de cada equip en escalfar (CE1), resolució eficaç a les 4 estacions (CE2), joc net i resolució pacífica de situacions (CE3).</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Revisió final de la graella de seguiment amb totes les evidències creuades.</div>
+  </div>
+
+  <!-- S10 -->
+  <div class="card-session-eval">
+    <h4>SESSIÓ 10: Autoavaluació i Metacognició <span class="eval-badge badge-auto">Alumnat</span></h4>
+    <div class="bullet-point"><strong>Què observar:</strong> Que responguin amb sinceritat al formulari de Google Forms o la diana en paper. Comentar en veu alta els aprenentatges col·lectius.</div>
+    <div class="bullet-point"><strong>Com registrar-ho:</strong> Arxiu de les respostes dels Chromebooks i recollida del Passaport d'Equip per arxivar com a evidència d'aprenentatge.</div>
+  </div>
+
+  <h2>3. PONDERACIÓ DE LES EVIDÈNCIES PER A LA QUALIFICACIÓ OFICIAL</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Font d'Evidència</th>
+        <th>Pes</th>
+        <th>Competències vinculades</th>
+        <th>Instrument de recollida</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Observació sistemàtica del docent</strong></td>
+        <td><strong>60%</strong></td>
+        <td>CE1 (15%), CE2 (30%), CE3 (15%)</td>
+        <td>Graella d'aula i Rúbrica competencial de 4 nivells.</td>
+      </tr>
+      <tr>
+        <td><strong>Passaport Atlètic d'Equip</strong></td>
+        <td><strong>20%</strong></td>
+        <td>CE2, CE3, CE4</td>
+        <td>Díptic en paper amb reptes assolits i reflexió interedats.</td>
+      </tr>
+      <tr>
+        <td><strong>Coavaluació de relleus entre iguals</strong></td>
+        <td><strong>10%</strong></td>
+        <td>CE2 (Relleus) i CE3 (Feedback constructiu)</td>
+        <td>Fitxa d'observació bilingüe (Sessió 3).</td>
+      </tr>
+      <tr>
+        <td><strong>Autoavaluació individual</strong></td>
+        <td><strong>10%</strong></td>
+        <td>CE1, CE2, CE3, CE4 (Autonomia i reflexió)</td>
+        <td>Formulari de Google Forms als Chromebooks / Diana (Sessió 10).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. RÚBRICA D'AVALUACIÓ I INTEGRACIÓ AMB IDOCEO</h2>
+  <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2rem;">
+    <h3 style="color: #166534; font-size: 1.15rem; margin-bottom: 0.6rem;">📱 Eines d'Avaluació Digitals Llestes per a l'Ús</h3>
+    <ul style="padding-left: 1.2rem; color: #14532d; font-size: 0.95rem; line-height: 1.7;">
+      <li><strong>Rúbrica Interactiva i Imprimible (HTML):</strong> <a href="Rubrica_Avaluacio_SdA_Atletisme.html" style="color: #0284c7; font-weight: 600; text-decoration: underline;">Obrir Rúbrica Competencial Interactiva</a> (amb simulador de càlcul automàtic i botó per imprimir/PDF).</li>
+      <li><strong>Full de Càlcul per a iDoceo (XLSX):</strong> <a href="iDoceo/Avaluacio_iDoceo_SdA_Atletisme.xlsx" download style="color: #0284c7; font-weight: 600; text-decoration: underline;">Descarregar Avaluacio_iDoceo_SdA_Atletisme.xlsx</a> (pestanyes de Criteris, Rúbrica i Graella d'aula amb fórmules per a 25 alumnes).</li>
+      <li><strong>Fitxer Columnes de Criteris (CSV):</strong> <a href="iDoceo/Columnes_Criteris_iDoceo.csv" download style="color: #0284c7; font-weight: 600; text-decoration: underline;">Descarregar Columnes_Criteris_iDoceo.csv</a> (importació directa de columnes al quadern).</li>
+      <li><strong>Fitxer Rúbrica Global (CSV):</strong> <a href="iDoceo/Rubrica_Global_iDoceo.csv" download style="color: #0284c7; font-weight: 600; text-decoration: underline;">Descarregar Rubrica_Global_iDoceo.csv</a> (importació directa a <em>Tipus de nota i Rúbriques</em>).</li>
+      <li><strong>Carpeta Mini-Rúbriques Individuals:</strong> <code>iDoceo/Rubriques_Individuals/</code> (per avaluar criteri a criteri amb desplegable independent).</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- PEU DE PÀGINA REGULAT (apps-escolars) -->
+<footer style="margin-top: auto; padding: 0.85rem 1rem; background-color: #f8f9fa; border-top: 1px solid #e9ecef; text-align: center; font-family: system-ui, -apple-system, sans-serif; font-size: 0.78rem; color: #6c757d;">
+  <div style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem;">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" style="height: 22px; width: auto; display: block;" width="70" height="24" />
+    </a>
+    <span style="line-height: 1.4;">
+      © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer" style="color: #495057; text-decoration: none; font-weight: 500;">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" style="color: #495057; text-decoration: none; font-weight: 500;">CC BY-SA 4.0</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
+

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartes Tàctiques de Korfbal - Retallables</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 6mm;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 10px;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    .page-a4 {
+      max-width: 820px;
+      margin: 0 auto;
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .sheet-title {
+      text-align: center;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px dashed #94a3b8;
+    }
+    .sheet-title h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #1e3a8a;
+      text-transform: uppercase;
+    }
+    .sheet-title p {
+      margin: 2px 0 0;
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+
+    /* 4 columns x 2 rows grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .tcg-card {
+      border: 2.5px solid #1e3a8a;
+      border-radius: 10px;
+      padding: 8px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 255px;
+      position: relative;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+    .tcg-card.card-blue { border-color: #2563eb; background: linear-gradient(180deg, #eff6ff 0%, #ffffff 40%); }
+    .tcg-card.card-amber { border-color: #d97706; background: linear-gradient(180deg, #fffbeb 0%, #ffffff 40%); }
+    .tcg-card.card-green { border-color: #16a34a; background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 40%); }
+    .tcg-card.card-purple { border-color: #9333ea; background: linear-gradient(180deg, #faf5ff 0%, #ffffff 40%); }
+    .tcg-card.card-red { border-color: #dc2626; background: linear-gradient(180deg, #fef2f2 0%, #ffffff 40%); }
+    .tcg-card.card-gold { border-color: #ca8a04; background: linear-gradient(180deg, #fefce8 0%, #ffffff 40%); }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .card-id {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #64748b;
+    }
+    .card-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 10px;
+      text-transform: uppercase;
+    }
+    .tag-blue { background: #dbeafe; color: #1e40af; }
+    .tag-amber { background: #fef3c7; color: #b45309; }
+    .tag-green { background: #dcfce7; color: #15803d; }
+    .tag-purple { background: #f3e8ff; color: #6b21a8; }
+    .tag-red { background: #fee2e2; color: #b91c1c; }
+    .tag-gold { background: #fef08a; color: #854d0e; }
+
+    .card-art {
+      text-align: center;
+      font-size: 2rem;
+      margin: 4px 0;
+      line-height: 1;
+    }
+    .card-name {
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-align: center;
+      color: #0f172a;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .card-req {
+      font-size: 0.65rem;
+      color: #334155;
+      background: #f1f5f9;
+      padding: 4px 6px;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      line-height: 1.25;
+    }
+    .card-req strong {
+      color: #1e3a8a;
+      display: block;
+      font-size: 0.63rem;
+      text-transform: uppercase;
+    }
+
+    .card-power {
+      font-size: 0.65rem;
+      color: #831843;
+      background: #fdf2f8;
+      border-left: 2px solid #db2777;
+      padding: 4px 6px;
+      border-radius: 2px;
+      line-height: 1.25;
+      flex-grow: 1;
+    }
+    .card-power strong {
+      color: #9d174d;
+      display: block;
+      font-size: 0.63rem;
+      text-transform: uppercase;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+      border-top: 1px dotted #cbd5e1;
+      padding-top: 3px;
+      font-size: 0.62rem;
+      font-weight: bold;
+      color: #64748b;
+    }
+    .stars {
+      color: #eab308;
+      letter-spacing: 1px;
+    }
+
+    .btn-print {
+      display: block;
+      margin: 15px auto 0;
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .page-a4 { box-shadow: none; padding: 0; max-width: 100%; }
+      .btn-print { display: none; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='32' fill='%23d97706'/><circle cx='50' cy='50' r='16' fill='%23ffffff'/></svg>">
+</head>
+<body>
+
+<div class="page-a4">
+  <div class="sheet-title">
+    <h2>Cartes Tàctiques de Korfbal (TCG) &mdash; Baralla Oficial</h2>
+    <p>Retallar per les vores (`✂️`) i lliurar una carta a cada equip en superar el repte de la sessió</p>
+  </div>
+
+  <div class="cards-grid">
+    <!-- CARTA 1 -->
+    <div class="tcg-card card-blue">
+      <div class="card-top">
+        <span class="card-id">#01 S1</span>
+        <span class="card-tag tag-blue">Cooperació</span>
+      </div>
+      <div class="card-art">🗼</div>
+      <div class="card-name">La Torre Imparable</div>
+      <div class="card-req">
+        <strong>🔓 Desbloqueig (S1):</strong>
+        4 passades mixtes i assistència a la torre clavant el peu de pivot (sense botar).
+      </div>
+      <div class="card-power">
+        <strong>⚡ Poder al Torneig:</strong>
+        Si la primera cistella del partit es fa sense que ningú boti la pilota, val +2 punts!
+      </div>
+      <div class="card-footer">
+        <span>Korfbal CS</span>
+        <span class="stars">⭐⭐⭐</span>
+      </div>
+    </div>
+
+    <!-- CARTA 2 -->
+    <div class="tcg-card card-amber">
+      <div class="card-top">
+        <span class="card-id">#02 S2</span>
+        <span class="card-tag tag-amber">Atac</span>
+      </div>
+      <div class="card-art">⚡</div>
+      <div class="card-name">El Tall Llampec</div>
+      <div class="card-req">
+        <strong>🔓 Desbloqueig (S2):</strong>
+        Desmarcatge en canvi de ritme cap a l'espai buit i passada en cursa a Borg 5-6.
+      </div>
+      <div class="card-power">
+        <strong>⚡ Poder al Torneig:</strong>
+        Activa una jugada ràpida on el teu equip té 1 passi extra per trobar el tall lliure.
+      </div>
+      <div class="card-footer">
+        <span>Korfbal CS</span>
+        <span class="stars">⭐⭐⭐</span>
+      </div>
+    </div>
+
+    <!-- CARTA 3 -->
+    <div class="tcg-card card-green">
+      <div class="card-top">
+        <span class="card-id">#03 S3</span>
+        <span class="card-tag tag-green">Tir 360°</span>
+      </div>
+      <div class="card-art">🎯</div>
+      <div class="card-name">El Korf 360°</div>
+      <div class="card-req">
+        <strong>🔓 Desbloqueig (S3):</strong>
+        Aconseguir 5 cistelles col·lectives amb paràbola alta des dels 4 quadrants.
+      </div>
+      <div class="card-power">
+        <strong>⚡ Poder al Torneig:</strong>
+        Qualsevol cistella anotada des de darrere del pal (quadrant sud) suma +2 punts extra!
+      </div>
+      <div class="card-footer">
+        <span>Korfbal CS</span>
+        <span class="stars">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+
+    <!-- CARTA 4 -->
+    <div class="tcg-card card-red">
+      <div class="card-top">
+        <span class="card-id">#04 S4</span>
+        <span class="card-tag tag-red">Defensa</span>
+      </div>
+      <div class="card-art">🛡️</div>
+      <div class="card-name">La Muralla Legal</div>
+      <div class="card-req">
+        <strong>🔓 Desbloqueig (S4):</strong>
+        Defensa legal 1x1 al mateix gènere amb braç alçat sense cap contacte físic.
+      </div>
+      <div class="card-power">
+        <strong>⚡ Poder al Torneig:</strong>
+        Cada cop que provoquis un "Defensat" legal sense tocar el rival, el teu equip suma +1 de Joc Net.
+      </div>
+      <div class="card-footer">
+        <span>Korfbal CS</span>
+        <span class="stars">⭐⭐⭐</span>
+      </div>
+    </div>
+
+    <!-- CARTA 5 -->
+    <div class="tcg-card card-purple">
+      <div class="card-top">
+        <span class="card-id">#05 S5</span>
+        <span class="card-tag tag-purple">Combinació</span>
+      </div>
+      <div class="card-art">🔺</div>
+      <div class="card-name">L'Assistència del Poste</div>
+      <div class="card-req">
+        <strong>🔓 Desbloqueig (S5):</strong>
+        Sincronització de passada al poste sota cistella i finalització en entrada a 2 temps.
+      </div>
+      <div class="card-power">
+        <strong>⚡ Poder al Torneig:</strong>
+        Si la cistella neix d'una assistència del poste, el teu equip guanya 1 tir lliure de bonus.
+      </div>
+      <div class="card-footer">
+        <span>Korfbal CS</span>
+        <span class="stars">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+
+    <!-- CARTA 6 -->
+    <div class="tcg-card card-blue">
+      <div class="card-top">
+        <span class="card-id">#06 S6</span>
+        <span class="card-tag tag-blue">Tàctica</span>
+      </div>
+      <div class="card-art">🔄</div>
+      <div class="card-name">El Camaleó de Pista</div>
+      <div class="card-req">
+        <strong>🔓 Desbloqueig (S6):</strong>
+        Rotació de zones atac/defensa després de 2 cistelles i arbitratge compartit just.
+      </div>
+      <div class="card-power">
+        <strong>⚡ Poder al Torneig:</strong>
+        Permet canviar els rols atac/defensa de manera instantània quan el teu equip ho demani.
+      </div>
+      <div class="card-footer">
+        <span>Korfbal CS</span>
+        <span class="stars">⭐⭐⭐</span>
+      </div>
+    </div>
+
+    <!-- CARTA 7 -->
+    <div class="tcg-card card-green">
+      <div class="card-top">
+        <span class="card-id">#07 S7</span>
+        <span class="card-tag tag-green">Fair-Play</span>
+      </div>
+      <div class="card-art">🤝</div>
+      <div class="card-name">Joc Net Total</div>
+      <div class="card-req">
+        <strong>🔓 Desbloqueig (S7):</strong>
+        Partit 4x4 completat amb paritat de gènere, zero empentes i respecte a l'àrbitre.
+      </div>
+      <div class="card-power">
+        <strong>⚡ Poder al Torneig:</strong>
+        Si el teu equip acaba el partit sense cap falta personal, rep automàticament +3 punts de bonus!
+      </div>
+      <div class="card-footer">
+        <span>Korfbal CS</span>
+        <span class="stars">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+
+    <!-- CARTA 8 -->
+    <div class="tcg-card card-gold">
+      <div class="card-top">
+        <span class="card-id">#08 S8</span>
+        <span class="card-tag tag-gold">Llegendària</span>
+      </div>
+      <div class="card-art">🥇</div>
+      <div class="card-name">Catalunya al Món</div>
+      <div class="card-req">
+        <strong>🔓 Desbloqueig (S8):</strong>
+        Participar al Gran Torneig "Tothom Suma!", celebrar la Selecció Catalana i omplir la Diana.
+      </div>
+      <div class="card-power">
+        <strong>⚡ Poder al Torneig:</strong>
+        Carta Mestra de Cloenda: Atorga el títol oficial de "Club Coeducatiu de Korfbal 2026"!
+      </div>
+      <div class="card-footer">
+        <span>Selecció Catalana</span>
+        <span class="stars">⭐⭐⭐⭐⭐</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimir 8 Cartes Tàctiques (DIN-A4)</button>
+</div>
+
+<style>
+  .app-footer { margin-top: 1.5rem; padding: 0.6rem 1rem; background-color: #f8f9fa; border-top: 1px solid #e9ecef; text-align: center; font-family: system-ui, -apple-system, sans-serif; font-size: 0.78rem; color: #6c757d; }
+  .app-footer .footer-content { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; }
+  .app-footer .cc-badge { height: 22px; width: auto; display: block; }
+  .app-footer .footer-legal { line-height: 1.4; }
+  .app-footer a { color: #495057; text-decoration: none; font-weight: 500; }
+  .app-footer a:hover { text-decoration: underline; color: #0d6efd; }
+  @media print { .app-footer { display: none !important; } }
+</style>
+<footer class="app-footer">
+  <div class="footer-content">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" class="cc-badge" width="70" height="24" />
+    </a>
+    <span class="footer-legal">
+      © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
+

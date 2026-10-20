@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia Docent SdA Atletisme - Cicle Superior</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #dbeafe;
+      --secondary: #0d9488;
+      --secondary-light: #ccfbf1;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --part-ini: #e0f2fe;
+      --part-pri: #dcfce7;
+      --part-fin: #fef9c3;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Action bar */
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .action-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-bar button:hover {
+      background: #1d4ed8;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.1rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-top: 35px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: var(--secondary);
+      font-size: 1.25rem;
+      margin-top: 25px;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .badge-time-60 { background: #dbeafe; color: #1e40af; }
+    .badge-time-45 { background: #fef3c7; color: #92400e; }
+    .badge-dua { background: #f3e8ff; color: #6b21a8; }
+    .badge-eval { background: #fee2e2; color: #991b1b; }
+
+    /* Cards */
+    .session-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .session-header {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .session-header h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .session-body {
+      padding: 20px;
+    }
+
+    .part-box {
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .part-box.inicial {
+      background-color: #f0f9ff;
+      border-left: 4px solid #0284c7;
+    }
+    .part-box.principal {
+      background-color: #f0fdf4;
+      border-left: 4px solid #16a34a;
+    }
+    .part-box.final {
+      background-color: #fffbeb;
+      border-left: 4px solid #d97706;
+    }
+    .part-box.avaluacio {
+      background-color: #fdf2f8;
+      border-left: 4px solid #db2777;
+    }
+    .part-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .part-box.inicial .part-title { color: #0369a1; }
+    .part-box.principal .part-title { color: #15803d; }
+    .part-box.final .part-title { color: #b45309; }
+    .part-box.avaluacio .part-title { color: #be185d; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #334155;
+      font-weight: 600;
+    }
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    /* DUA Alerts */
+    .alert-dua {
+      background-color: #faf5ff;
+      border-left: 4px solid #9333ea;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+    .alert-dua strong {
+      color: #6b21a8;
+    }
+
+    .ascii-diagram {
+      background-color: #0f172a;
+      color: #38bdf8;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.80rem;
+      line-height: 1.35;
+      padding: 12px 14px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 12px 0;
+      white-space: pre;
+      border: 1px solid #1e293b;
+    }
+    .tech-keys {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #3b82f6;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+    }
+    .teacher-cue {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-left: 4px solid #eab308;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .print-box {
+      background: #fdfefe;
+      border: 2px dashed #94a3b8;
+      border-radius: 8px;
+      padding: 18px;
+      margin: 20px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .action-bar { display: none; }
+      .session-card { page-break-inside: avoid; }
+      .ascii-diagram { background: #f8fafc; color: #0f172a; border: 1px solid #94a3b8; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='32' fill='%23d97706'/><circle cx='50' cy='50' r='16' fill='%23ffffff'/></svg>">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="action-bar">
+    <div>
+      <strong>Guia Docent Visual d'Educació Física (SdA Atletisme)</strong>
+      <div style="font-size: 0.85rem; color: #475569;">Optimitzada per a pantalla, impressió a PDF i importació a Google Docs</div>
+    </div>
+    <button onclick="window.print()">
+      🖨️ Imprimir / Desar en PDF
+    </button>
+  </div>
+
+  <h1>Míting d'Atletisme Cooperatiu: Superem els Reptes en Equip!</h1>
+
+  <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px;">
+    <span class="badge badge-time-60">10 Sessions (5 setmanes)</span>
+    <span class="badge badge-time-45">Cicle Superior (5è i 6è barrejats)</span>
+    <span class="badge badge-dua">Mesures DUA (TEA, TDAH, Francòfons)</span>
+    <span class="badge badge-eval">Decret 175/2022 (Catalunya)</span>
+  </div>
+
+  <h2>1. FITXA TÈCNICA I CONTEXT</h2>
+  <table>
+    <tr>
+      <th style="width: 25%;">Etapa i Nivell</th>
+      <td>Educació Primària &mdash; Cicle Superior (25 alumnes: 1/2 grup de 5è i 1/2 de 6è).</td>
+    </tr>
+    <tr>
+      <th>Horari Setmanal</th>
+      <td>2 sessions setmanals: <strong>Sessió A de 60 minuts</strong> i <strong>Sessió B de 45 minuts</strong> (Total: 10 sessions).</td>
+    </tr>
+    <tr>
+      <th>Espais</th>
+      <td>2 pistes exteriors de 20x20 m i 1 gimnàs cobert de 20x20 m.</td>
+    </tr>
+    <tr>
+      <th>Material Clau</th>
+      <td>Matalàs llevapors, matalassos ordinaris, cons alts, piques, gomes elàstiques, testimonis, vòrtexs, pilotes medicinals (1 kg) i Chromebooks.</td>
+    </tr>
+    <tr>
+      <th>Atenció a la Diversitat</th>
+      <td>1 alumne TEA, 1 alumne TDAH, 2 alumnes nouvinguts francòfons. 5 equips cooperatius estables mixtos (5è-6è).</td>
+    </tr>
+  </table>
+
+  <h2>2. CONCRECIÓ CURRICULAR (DECRET 175/2022)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Competència Específica</th>
+        <th>Criteris d'Avaluació Clau</th>
+        <th>Sabers Bàsics</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CE1. Estil de vida actiu i saludable</strong></td>
+        <td><strong>1.1.</strong> Escalfament autònom i higiene.<br><strong>1.2.</strong> Autoregulació del ritme aeròbic (Escala de Borg i pols).</td>
+        <td>Vida activa i saludable: dosificació de l'esforç, escalfament dinàmic, hàbits higiènics.</td>
+      </tr>
+      <tr>
+        <td><strong>CE2. Resolució de situacions motrius</strong></td>
+        <td><strong>2.1.</strong> Habilitats atlètiques de cursa, relleus i salts.<br><strong>2.2.</strong> Tècnica eficient de llançament (vòrtex i pes).</td>
+        <td>Habilitats motrius bàsiques i específiques: batuda, recepció, coordinació braç-cama, paràbola.</td>
+      </tr>
+      <tr>
+        <td><strong>CE3. Autoregulació i cooperació</strong></td>
+        <td><strong>3.1.</strong> Treball en equip, respecte i empatia.<br><strong>3.2.</strong> Gestió de la por al salt i suport mutu.</td>
+        <td>Interacció social: joc net, cooperació interedats (5è-6è), superació de pors.</td>
+      </tr>
+      <tr>
+        <td><strong>CE4. Cultura motriu i inclusió</strong></td>
+        <td><strong>4.1.</strong> Experimentació del para-atletisme i valoració de l'esport adaptat.</td>
+        <td>Cultura motriu: disciplines atlètiques, Jocs Paralímpics i inclusió.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. ADAPTACIONS DUA PER AL TEU GRUP</h2>
+  <div class="alert-dua">
+    <p><strong>Alumne amb TEA:</strong> Anticipació visual a peu de pista (Escalfament &rarr; Repte 1 &rarr; Repte 2 &rarr; Calma). Senyal sonor suau (sense xiulet agut). Racó de seguretat sensorial disponible.</p>
+    <p><strong>Alumne amb TDAH:</strong> Zero temps morts ni cues passives. Quan no corre/llança, té un rol motriu actiu (jutge, cronometrador, col·locador de cons). Consignes de màxim 45 segons.</p>
+    <p><strong>Alumnes Nouvinguts Francòfons:</strong> Aparellament fix amb un <em>buddy</em> de 6è. Fitxes visuals bilingües català-francès (<em>Cursa/Course, Salt/Saut, Llançament/Lancer, Testimoni/Témoin</em>).</p>
+    <p><strong>Mentoria 5è-6è:</strong> 5 equips estables de 5 alumnes (2-3 de 5è i 2-3 de 6è). Els de 6è custodien el Passaport Atlètic i donen modelatge positiu.</p>
+  </div>
+
+    <h2>4. PROGRAMACIÓ DETALLADA DE LES 10 SESSIONS (GUIA DE CAMP DOCENT)</h2>
+
+  <div class="tabs-nav" style="display: flex; gap: 6px; flex-wrap: wrap; margin: 15px 0 25px 0; background: #eff6ff; padding: 12px 16px; border-radius: 8px; border: 1px solid #bfdbfe; align-items: center;">
+    <span style="font-weight: 700; font-size: 0.9rem; color: #1e3a8a; margin-right: 8px;">📂 Navegador per a Google Drive:</span>
+    <button class="tab-btn active" onclick="filterSession('all', this)" style="background: #1e3a8a; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">Totes (10)</button>
+    <button class="tab-btn" onclick="filterSession('1', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S1</button>
+    <button class="tab-btn" onclick="filterSession('2', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S2</button>
+    <button class="tab-btn" onclick="filterSession('3', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S3</button>
+    <button class="tab-btn" onclick="filterSession('4', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S4</button>
+    <button class="tab-btn" onclick="filterSession('5', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S5</button>
+    <button class="tab-btn" onclick="filterSession('6', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S6</button>
+    <button class="tab-btn" onclick="filterSession('7', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S7</button>
+    <button class="tab-btn" onclick="filterSession('8', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S8</button>
+    <button class="tab-btn" onclick="filterSession('9', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S9</button>
+    <button class="tab-btn" onclick="filterSession('10', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S10</button>
+  </div>
+
+  <!-- SESSIÓ 1 -->
+  <div class="session-card" id="session-card-1">
+    <div class="session-header">
+      <h4>SESSIÓ 1: Presentació del Repte, Equips Cooperatius i Velocitat de Reacció</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Avaluació Inicial (CE2 - Crit 2.1 / CE3 - Crit 3.1)</span>
+        <span>Pista Exterior 1</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-1', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 20%; font-size: 0.85rem;">📐 Carrer / Equip</th>
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%; font-size: 0.85rem;">🟢 0 m — Línia de Sortida</th>
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 26%; font-size: 0.85rem;">🟡 15 m — Fita d'Arribada</th>
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 26%; font-size: 0.85rem;">🔴 15–20 m — Fre Segur</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f8fafc;">
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #c2410c;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#ea580c; margin-right:6px;"></span>Carrer 1 (Equip Taronja)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Línia de guix. Sortida baixa o alta</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">▲ Con Groc 1 (crono d'equip)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; color: #475569;">5 m de desacceleració suau</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #15803d;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#16a34a; margin-right:6px;"></span>Carrer 2 (Equip Verd)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Línia de guix. Sortida baixa o alta</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">▲ Con Groc 2 (crono d'equip)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; color: #475569;">5 m de desacceleració suau</td>
+    </tr>
+    <tr style="background-color: #f8fafc;">
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #1d4ed8;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#2563eb; margin-right:6px;"></span>Carrer 3 (Equip Blau)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Línia de guix. Sortida baixa o alta</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">▲ Con Groc 3 (crono d'equip)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; color: #475569;">5 m de desacceleració suau</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #b45309;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#d97706; margin-right:6px;"></span>Carrer 4 (Equip Groc)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Línia de guix. Sortida baixa o alta</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">▲ Con Groc 4 (crono d'equip)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; color: #475569;">5 m de desacceleració suau</td>
+    </tr>
+    <tr style="background-color: #f8fafc;">
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #b91c1c;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background-color:#dc2626; margin-right:6px;"></span>Carrer 5 (Equip Vermell)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Línia de guix. Sortida baixa o alta</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">▲ Con Groc 5 (crono d'equip)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; color: #475569;">5 m de desacceleració suau</td>
+    </tr>
+    <tr style="background-color: #eff6ff;">
+      <td colspan="4" style="padding: 9px 12px; border: 1px solid #cbd5e1; font-size: 0.82rem; color: #1e3a8a;">
+        <strong>⚠️ Protocol de seguretat docent:</strong> La tanca exterior queda a 5 m de la meta. Cap corredor s'atura en sec a la línia dels 15 m; cal mantenir la inèrcia de cursa en desacceleració progressiva per evitar frenades brusques o col·lisions.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts)</div>
+        <p><strong>Activitat 1.1 &mdash; Assemblea Inaugural i Baptisme dels Equips (5'):</strong> Presentació del repte del Míting Cooperatiu. Conformació dels 5 equips heterogenis (5è-6è) i lliurament del <em>Passaport Atlètic</em> a cada grup.</p>
+        <p><strong>Activitat 1.2 &mdash; Escalfament Dinàmic "Els 4 Cantons de l'Atletisme" (10'):</strong> Circuit pel perímetre de la pista seguint consignes d'activació: trote suau, skipping alt, talons al cul, passos de gegant i cursa lateral <em>carioca</em>. Mobilitat articular de turmells, malucs i braços.</p>
+        <div class="teacher-cue">Consigna mestre: "Els nois i noies de 6è sou els capitans tutors: la vostra missió és que els companys de 5è i nouvinguts aprenguin i gaudeixin al màxim!"</div>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts)</div>
+        <p><strong>Activitat 2.1 &mdash; El Semàfor dels Estímuls de Reacció (15'):</strong> Parelles de treball (Buddy 6è + 5è/nouvingut) a la línia de sortida. Sortides explosives de 15 metres davant diferents estímuls en 4 rondes:</p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th colspan="4" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; font-size: 0.88rem;">
+        🏃 Biomecànica de la Sortida d'Acceleració (4 Claus Tècniques)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">📐 1. Inclinació del Tronc</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Tronc inclinat a <strong>~45° cap endavant</strong>. Imatge motriu: <em>"Com un avió que s'enlaira"</em>. Evitar aixecar el cos de cop al primer pas.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">👀 2. Fixació Visual</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          <strong>Mirada clavada a terra</strong> durant els primers 5 metres. Evita la hiperextensió cervical i impedeix redreçar el tronc abans d'hora.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">🦵 3. Cama Davant (Càrrega)</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Genoll flexionat sostenint el <strong>70% del pes corporal</strong>. El centre de gravetat avança per davant de la base de sustentació.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">⚡ 4. Cama Darrere (Impuls)</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Cama estirada en tensió. <strong>Impuls explosiu des del metatars</strong> (puntera). En el primer pas, el genoll es projecta enèrgic cap al pit.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <ul>
+          <li><em>Ronda 1 (Auditiu):</em> Sortida dempeus davant la veu de "JA!".</li>
+          <li><em>Ronda 2 (Visual - DUA TEA):</em> D'esquena a la pista; gir ràpid en veure alçar la paleta verda.</li>
+          <li><em>Ronda 3 (Baixa):</em> Asseguts a terra amb cames creuades; impuls ràpid amb mans a terra.</li>
+          <li><em>Ronda 4 (Bocaterrosa):</em> Estirats panxa avall; flexió explosiva i cursa.</li>
+        </ul>
+        <div class="tech-keys"><strong>Claus tècniques:</strong> 1) Mirada al terra primers 5 m; 2) Impuls potent amb la cama davantera; 3) Braços a 90° bracejant amb força.</div>
+        <div class="teacher-cue">Consigna mestre: "No us aixequeu com un pal! Sou un avió que s'enlaira: sortiu inclinats i aneu pujant a poc a poc mentre guanyeu velocitat!"</div>
+
+        <p style="margin-top: 15px;"><strong>Activitat 2.2 &mdash; La Llançadora de Velocitat Cooperativa (20'):</strong> 5 carrers de 20 m. Dins de cada equip: 2 alumnes a la Capçalera A i 3 a la Capçalera B.</p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 24%; font-size: 0.85rem;">🔵 Capçalera A (0 m)</th>
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%; font-size: 0.85rem;">⚡ Passadís Central (15 m)</th>
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 24%; font-size: 0.85rem;">🟢 Capçalera B (15 m)</th>
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 24%; font-size: 0.85rem;">🛑 Zona de Seguretat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+        <strong>2 alumnes (A1, A2)</strong><br>
+        A1 surt en esprint màxim cap a B.<br>
+        A2 espera el relleu a la cua.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <strong>Cursa en línia recta</strong><br>
+        15 m a màxima velocitat en passadís lliure d'obstacles.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f0fdf4;">
+        <strong>3 alumnes (B1, B2, B3)</strong><br>
+        Braç dret estirat preparat.<br>
+        B1 surt immediatament en rebre el xoc de mans.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Fre de 2,5 m</strong><br>
+        El corredor frena suau darrere la capçalera i se situa al final de la fila.
+      </td>
+    </tr>
+    <tr style="background-color: #f1f5f9;">
+      <td colspan="4" style="padding: 8px 12px; border: 1px solid #cbd5e1; font-size: 0.82rem; color: #334155;">
+        🤝 <strong>Acció clau de relleu:</strong> Xoc de mans ferm palma contra palma a l'alçada del pit acompanyat del crit d'ànim: <em>"Vinga!"</em>.
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Al senyal, A1 esprinta, xoca la mà de B1 a la zona segura i aquest surt cap a A. Repte: fer 10 relleus nets en equip. L'alumne amb TDAH gestiona el comptador manual de relleus.</p>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Caminar respirant lentament. Bateig d'equip al Passaport (nom i logotip consensuats). Rentat higiènic de mans i cara.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Diagnòstica - CE2 Crit. 2.1 i CE3 Crit. 3.1)</div>
+        <p><strong>Què observar:</strong> Inclinació de tronc endavant a la sortida i acollida positiva de 6è cap a 5è/nouvinguts.</p>
+        <p><strong>Com registrar-ho:</strong> Anotació anecdòtica a la llibreta dels casos extrems de suport o lideratge.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 2 -->
+  <div class="session-card" id="session-card-2">
+    <div class="session-header">
+      <h4>SESSIÓ 2: Franqueig Rítmic d'Obstacles amb Gomes Elàstiques</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-dua">Gomes multinivell</span>
+        <span>Gimnàs / Pista</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-2', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left; width: 18%;">Carrer / Nivell</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left; width: 14%;">🏁 Sortida</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left; width: 18%;">🚧 Obstacle 1 (Goma)</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left; width: 16%;">📏 Distància</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left; width: 20%;">🚧 Obstacles 2 i 3</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left; width: 14%;">🏁 Arribada</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f8fafc;">
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #1e40af;">
+        <span style="display:inline-block; padding: 2px 6px; background-color: #dbeafe; border-radius: 4px;">C1: Nivell 1 (5è)</span>
+      </td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Línia 0 m</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Goma a <strong>30 cm</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;"><strong>3,5 m</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">2 gomes a 30 cm (3,5 m)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold;">Meta 20 m</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #166534;">
+        <span style="display:inline-block; padding: 2px 6px; background-color: #dcfce7; border-radius: 4px;">C2: Nivell 2 (6è)</span>
+      </td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Línia 0 m</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Goma a <strong>35 cm</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;"><strong>4,5 m</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">2 gomes a 35 cm (4,5 m)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold;">Meta 20 m</td>
+    </tr>
+    <tr style="background-color: #f8fafc;">
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #92400e;">
+        <span style="display:inline-block; padding: 2px 6px; background-color: #fef3c7; border-radius: 4px;">C3: Nivell DUA</span>
+      </td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Línia 0 m</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Con tou a <strong>20 cm</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;"><strong>3,0 m</strong></td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">2 cons tous a 20 cm (3,0 m)</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold;">Meta 20 m</td>
+    </tr>
+    <tr style="background-color: #eff6ff;">
+      <td colspan="6" style="padding: 8px 12px; border: 1px solid #cbd5e1; font-size: 0.82rem; color: #1e3a8a;">
+        💡 <strong>Mesura DUA de seguretat:</strong> No s'utilitzen tanques rígides. L'ús de gomes elàstiques toves entre cons elimina completament la por a l'ensopegada i possibilita que cada alumne triï el seu carrer de repte.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts)</div>
+        <p>Joc d'activació "El bosc encantat" (reaccions motrius a "arbre baix", "arbre alt", "branques"). Mobilitat articular de malucs (obertures dinàmiques) i quàdriceps.</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts)</div>
+        <p><strong>Activitat 2.1 &mdash; El Franqueig Ras: "No Salto com un Conill, Passo com una Fletxa" (10'):</strong></p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th colspan="4" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; font-size: 0.88rem;">
+        🏃 Biomecànica del Franqueig Ras d'Obstacle (Cama d'Atac vs Cama de Remolc)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">1. Fase d'Aproximació</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Tronc lleugerament inclinat endavant. Mirada clavada a la part superior de la goma, sense mirar el terra ni dubtar el ritme de passes.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">2. Cama d'Atac (Davant)</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Genoll flexionat que puja enèrgicament al pit i <strong>llança el peu endavant rasant la goma</strong>. No és un salt vertical; és una passa de cursa allargada.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">3. Cama de Remolc (Darrere)</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          S'obre lateralment flexionada a <strong>90° ("posició d'ala o L")</strong> superant la goma de costat per no tocar-la i buscant immediatament el terra.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="width: 100%; font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">4. Contacte i Continuïtat</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          El peu d'atac toca terra amb el <strong>metatars</strong> (puntera) i manté la inèrcia de cursa sense frenar cap al següent obstacle.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>L'alumne passa la goma aixecant el genoll d'atac al pit i obrint la cama de remolc pel costat sense saltar cap amunt. Ús de gomes elàstiques per erradicar la por al dolor.</p>
+        <div class="teacher-cue">Consigna mestre: "La goma no és una paret; és un obstacle que heu de tallar rasant cap endavant com una fletxa!"</div>
+
+        <p style="margin-top: 15px;"><strong>Activitat 2.2 &mdash; La Cadència de les 3 Passes (15'):</strong></p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th colspan="5" style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left; font-size: 0.85rem;">
+        👟 Seqüència Motriu del Ritme de 3 Passes entre Obstacles
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;">
+      <td style="width: 20%; padding: 10px 8px; border: 1px solid #cbd5e1; background-color: #f1f5f9;">
+        <div style="font-weight: bold; color: #1e3a8a;">🚧 Obstacle 1</div>
+        <div style="font-size: 0.78rem; color: #475569; margin-top: 3px;">Franqueig Cama Dreta</div>
+      </td>
+      <td style="width: 20%; padding: 10px 8px; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #0284c7;">➡️ Pas 1</div>
+        <div style="font-size: 0.78rem; color: #334155; margin-top: 3px;">Peu Esquerre (Amortiment)</div>
+      </td>
+      <td style="width: 20%; padding: 10px 8px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #0284c7;">➡️ Pas 2</div>
+        <div style="font-size: 0.78rem; color: #334155; margin-top: 3px;">Peu Dret (Transició ràpida)</div>
+      </td>
+      <td style="width: 20%; padding: 10px 8px; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #0284c7;">➡️ Pas 3</div>
+        <div style="font-size: 0.78rem; color: #334155; margin-top: 3px;">Peu Esquerre (Batuda)</div>
+      </td>
+      <td style="width: 20%; padding: 10px 8px; border: 1px solid #cbd5e1; background-color: #dbeafe;">
+        <div style="font-weight: bold; color: #1e3a8a;">🚧 Obstacle 2</div>
+        <div style="font-size: 0.78rem; color: #1e40af; margin-top: 3px;"><strong>Nou atac Cama Dreta!</strong></div>
+      </td>
+    </tr>
+    <tr style="background-color: #eff6ff;">
+      <td colspan="5" style="padding: 8px 12px; border: 1px solid #cbd5e1; font-size: 0.82rem; color: #1e3a8a;">
+        🎶 <strong>Cadència sonora:</strong> Interioritzar el ritme auditiu: <em>"Ta-ta-ta-HOP! Ta-ta-ta-HOP!"</em> per mantenir sempre la mateixa cama d'atac.
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Ajustar la gambada per fer exactament 3 passes entre obstacles. Carrils amb distàncies adaptades (3,5 m per a 5è i 4,5 m per a 6è). Els companys actuen com a jutges de cadència picant de mans.</p>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Estiraments suaus d'isquiotibials i bessons. Debat de síntesi: per què passar rasant és més ràpid que saltar amunt? Higiene.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Formativa - CE2 Crit. 2.1)</div>
+        <p><strong>Què observar:</strong> Franqueig cap endavant (no salt vertical) i ritme constant de 3 passes sense aturades.</p>
+        <p><strong>Com registrar-ho:</strong> Feedback verbal individual en directe.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 3 -->
+  <div class="session-card" id="session-card-3">
+    <div class="session-header">
+      <h4>SESSIÓ 3: La Cursa de Relleus i Coavaluació entre Iguals</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Coavaluació de Relleus (CE2 Crit. 2.1 / CE3 Crit. 3.1)</span>
+        <span>2 Pistes Exteriors</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-3', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; text-align: left; width: 16%;">🏁 0 m (Sortida)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; text-align: left; width: 17%;">🟡 15 m (Pre-avís)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; text-align: left; width: 17%;">🟠 20 m (Inici Zona)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; text-align: left; width: 17%;">⭐ 25 m (Punt Òptim)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; text-align: left; width: 17%;">🔵 30 m (Fi Zona)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; text-align: left; width: 16%;">🏁 45 m (Meta)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>R1: Llançador</strong><br>
+        Testimoni a la mà dreta. Cursa en acceleració.
+      </td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #fef9c3;">
+        <strong>Fita Groga</strong><br>
+        Quan R1 trepitja aquí, <strong>R2 comença a córrer!</strong>
+      </td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffedd5;">
+        <strong>Con Taronja</strong><br>
+        Inici oficial de la zona legal d'entrega.
+      </td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #dbeafe;">
+        <strong>★ TRASPÀS</strong><br>
+        Crit <strong>"HOP!"</strong> i entrega a la mà en V a màxima velocitat.
+      </td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #e0e7ff;">
+        <strong>Con Blau</strong><br>
+        Límit de la zona. Entrega posterior = nula.
+      </td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f1f5f9;">
+        <strong>R2 a Meta</strong><br>
+        Fre progressiu en passadís lliure.
+      </td>
+    </tr>
+    <tr style="background-color: #eff6ff;">
+      <td colspan="6" style="padding: 9px 12px; border: 1px solid #cbd5e1; font-size: 0.82rem; color: #1e3a8a;">
+        👀 <strong>Rols dels 4 alumnes jutges d'equip (amb carpetes a peu de carrer):</strong><br>
+        • <strong>Jutge 1 (Pre-avís):</strong> Comprova que R2 comença a córrer en el moment exacte que R1 trepitja la fita dels 15 m.<br>
+        • <strong>Jutge 2 (So "HOP!"):</strong> Verifica que el crit es faci a 1 m de distància de forma contundent.<br>
+        • <strong>Jutge 3 (Mà en V):</strong> Observa que el receptor mantingui la mirada 100% endavant sense girar el coll.<br>
+        • <strong>Secretari de Temps:</strong> Pren el cronòmetre de la sèrie i anota l'èxit a la fitxa de coavaluació.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts)</div>
+        <p>Escalfament dinàmic autònom dirigit pels nois i noies de 6è en cada equip. Joc "El Testimoni Calent" en rotllana a trote suau passant el testimoni sense que toqui a terra.</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts)</div>
+        <p><strong>Activitat 2.1 &mdash; Tècnica de Lliurament en Parelles "La Mà Cega" (10'):</strong></p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; width: 50%; font-size: 0.86rem;">
+        🏃 CORREDOR DARRERE (Lliurador)
+      </th>
+      <th style="padding: 10px 12px; border: 1px solid #cbd5e1; width: 50%; font-size: 0.86rem;">
+        🏃 CORREDOR DAVANT (Receptor)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 12px 14px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 6px;">Porta el testimoni a la MÀ DRETA</div>
+        <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 0.82rem; line-height: 1.5;">
+          <li>Agafa el testimoni fermament per la base inferior.</li>
+          <li>Arriba en esprint a màxima velocitat.</li>
+          <li>A 1 metre de distància emet el crit acústic: <strong>"HOP!"</strong>.</li>
+          <li>Introdueix el testimoni amb moviment descendent ferm a la mà del receptor.</li>
+          <li>Després de lliurar, es manté al seu carrer fins a frenar suaument.</li>
+        </ul>
+      </td>
+      <td style="padding: 12px 14px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #166534; margin-bottom: 6px;">Rep el testimoni a la MÀ ESQUERRA</div>
+        <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 0.82rem; line-height: 1.5;">
+          <li>Inicia l'acceleració quan el company trepitja el con de pre-avís.</li>
+          <li><strong>Cap i mirada 100% cap endavant</strong> (mai gira el coll a mirar enrere).</li>
+          <li>En sentir el "HOP!", estira el braç esquerre enrere a l'alçada del maluc.</li>
+          <li><strong>Mà en "V" ben oberta:</strong> palmell mirant enrere i polze separat.</li>
+          <li>Tanca la mà amb força en notar el contacte i accelera a meta.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <div class="tech-keys"><strong>3 Claus Innegociables:</strong> 1) Crit sonor "HOP!" a 1,5 m de distància; 2) Mà en "V" invertida oberta enrere sense girar el coll; 3) Lliurament ascendent ferm de baix a dalt.</div>
+        <div class="teacher-cue">Consigna mestre: "El que rep no mira enrere: confia en la veu del company! Quan sents 'HOP!', braç enrere i mà ben oberta!"</div>
+
+        <p style="margin-top: 15px;"><strong>Activitat 2.2 &mdash; La Gran Llançadora amb Zona d'Entrega i Jutges Actius (25'):</strong></p>
+        <p>Dos carrers simultanis de 45 m. El receptor arrenca a màxima velocitat quan el company trepitja el con groc (15 m). 3 equips corren i 2 equips actuen com a jutges a peu de pista amb la fitxa bilingüe.</p>
+        <table style="font-size: 0.85rem; margin: 8px 0;">
+          <tr><th>Ronda</th><th>Carrer 1</th><th>Carrer 2</th><th>Jutges C1</th><th>Jutges C2</th><th>Crono</th></tr>
+          <tr><td>T1</td><td>Equip 1</td><td>Equip 2</td><td>Equip 3</td><td>Equip 4</td><td>Equip 5</td></tr>
+          <tr><td>T2</td><td>Equip 3</td><td>Equip 4</td><td>Equip 5</td><td>Equip 1</td><td>Equip 2</td></tr>
+          <tr><td>T3</td><td>Equip 5</td><td>Equip 1</td><td>Equip 2</td><td>Equip 3</td><td>Equip 4</td></tr>
+          <tr><td>T4</td><td>Equip 2</td><td>Equip 3</td><td>Equip 4</td><td>Equip 5</td><td>Equip 1</td></tr>
+          <tr><td>T5</td><td>Equip 4</td><td>Equip 5</td><td>Equip 1</td><td>Equip 2</td><td>Equip 3</td></tr>
+        </table>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Assemblea de retorn formatiu amb la <strong>Tècnica del Sandvitx Positiu</strong> (elogi sinceric + consell de millora + ànims). Registre al Passaport.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Coavaluació entre iguals)</div>
+        <p><strong>Què observar:</strong> Rigor i respecte dels equips jutges; integració dels alumnes francòfons amb el suport de la fitxa bilingüe.</p>
+        <p><strong>Com registrar-ho:</strong> Recollida de les fitxes de coavaluació en acabar la sessió.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 4 -->
+  <div class="session-card" id="session-card-4">
+    <div class="session-header">
+      <h4>SESSIÓ 4: Dosificació de l'Esforç: Cursa Aeròbica i Escala de Borg</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Autoregulació (CE1 - Crit. 1.2)</span>
+        <span>Pistes Exteriors</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-4', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 25%;">🧭 Tram Nord (25 m)</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 25%;">📦 Punt Oest (Caixa d'Equip)</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 25%;">🎯 Tram Sud (Tauler Borg)</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 25%;">🔄 Tram Est (25 m)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Recta d'inici en parelles</strong><br>
+        Parelles heterogènies 5è-6è. Cursa contínua parlant sense ofegar-se.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+        <strong>Control de voltes</strong><br>
+        A cada volta de 100 m completada junts, dipositen <strong>1 targeta d'equip</strong> a la caixa.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f0fdf4;">
+        <strong>Comprovació d'esforç</strong><br>
+        Tauler visual Borg per verificar que es mantenen a la <strong>Zona Verda (Nivell 5-6)</strong>.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <strong>Retorn i autoregulació</strong><br>
+        Connexió fluida cap al tram Nord, ajustant el ritme si cal per no deixar ningú enrere.
+      </td>
+    </tr>
+    <tr style="background-color: #f1f5f9;">
+      <td colspan="4" style="padding: 8px 12px; border: 1px solid #cbd5e1; font-size: 0.82rem; color: #334155;">
+        🤝 <strong>Objectiu cooperatiu:</strong> Aconseguir el màxim de targetes sumades per equip mantenint una cursa constant de 10-12 minuts sense pauses d'esgotament.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts)</div>
+        <p><strong>Activitat 1.1 &mdash; Pols Basal i Escala de Borg (7'):</strong> Presa de pols carotidi o radial en repòs en silenci absolut (comptar 15 segons x 4 = ppm). Explicació del cartell de Borg infantil:</p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 18%;">Zona / Nivell</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 22%;">Intensitat Percubuda</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 40%;">Indicadors Fisiològics i "Test de la Parla"</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 20%;">Pulsacions aprox.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #ecfdf5;">
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #047857;">Nivell 1 - 3</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold;">MOLT SUAU</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Passeig o trot molt lleuger. Puc cantar i mantenir una conversa llarga sense cap esforç respiratori.</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">&lt; 120 bpm</td>
+    </tr>
+    <tr style="background-color: #d1fae5; border: 2px solid #059669;">
+      <td style="padding: 8px 12px; border: 1px solid #059669; font-weight: bold; color: #065f46;">
+        🎯 Nivell 4 - 6
+      </td>
+      <td style="padding: 8px 12px; border: 1px solid #059669; font-weight: bold; color: #065f46;">
+        AERÒBIC ÒPTIM<br><span style="font-size:0.75rem; font-weight:normal;">(Zona Diana Cooperativa)</span>
+      </td>
+      <td style="padding: 8px 12px; border: 1px solid #059669; color: #065f46;">
+        <strong>Ritme constant i sostenible durant 12 minuts.</strong> Test de la parla positiu: puc dir frases completes sense entretallar-me. Suor moderada.
+      </td>
+      <td style="padding: 8px 12px; border: 1px solid #059669; font-weight: bold; color: #065f46;">130 – 160 bpm</td>
+    </tr>
+    <tr style="background-color: #fef3c7;">
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #b45309;">Nivell 7 - 8</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold;">INTENS</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Respiració accelerada i costosa. Només puc dir paraules soltes. Convé reduir una mica el pas.</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">165 – 180 bpm</td>
+    </tr>
+    <tr style="background-color: #fee2e2;">
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #b91c1c;">Nivell 9 - 10</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold;">MÀXIM / ESGOTAT</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">No puc parlar ni respirar còmodament. Risc de mareig o bloqueig muscular. Aturada immediata i recuperació caminant.</td>
+      <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">&gt; 180 bpm</td>
+    </tr>
+  </tbody>
+</table>
+        <p><strong>Activació (3'):</strong> Trot suau de 2 voltes per activar el sistema aeròbic.</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts)</div>
+        <p><strong>Activitat 2.1 &mdash; El Rellotge de Ritme en Parelles: "El Test de la Conversa" (20'):</strong> Cursa contínua de 7 minuts en parelles estables (5è + 6è). Han de córrer junts mantenint un diàleg fluid sobre un tema proposat pel mestre. Si algú s'ofega, han de reduir el ritme de seguida. Cada volta completada junts recull una targeta de fita d'equip.</p>
+        <div class="teacher-cue">Consigna mestre: "Si no podeu explicar què vau sopar ahir sense que us falti l'aire, aneu massa ràpid! L'atleta madur sap mantenir la velocitat constant!"</div>
+        <p><strong>Activitat 2.2 &mdash; Presa Immediata del Pols en Esforç (5'):</strong> Al crit de "STOP I POLS!", tothom compta els seus batecs durant 15 segons i comprova l'increment fins a les 130-150 ppm de salut.</p>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Caminar molt lent. Hidratació conscient a petits glops. Recompte de targetes d'equip i anotació al Passaport. Higiene.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Autoregulació - CE1 Crit. 1.2)</div>
+        <p><strong>Què observar:</strong> Parelles que dosifiquen el ritme conversant sense ofec i autonomia en la presa de pulsacions.</p>
+        <p><strong>Com registrar-ho:</strong> Seleccionar a iDoceo el nivell assolit en el Criteri 1.2 segons les targetes d'equip i la regularitat motriu.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 5 -->
+  <div class="session-card" id="session-card-5">
+    <div class="session-header">
+      <h4>SESSIÓ 5: Salts I &mdash; Salt de Llargada, Batuda i Multisalts Coordinatius</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Avaluació Docent Focalitzada (CE2 - Crit. 2.1)</span>
+        <span>Pista Exterior + Gimnàs</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-5', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 34%;">🟢 Estació 1: Salt de Llargada amb Vol</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 33%;">🟡 Estació 2: Multisalt i Triple Salt</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 33%;">🔵 Estació 3: Potència des de Parat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Ubicació: Pista Exterior 1</strong><br>
+        Passadís de 10 m de cursa ràpida ➔ Batuda amb <strong>1 sol peu</strong> sobre la línia de guix ➔ Fase de vol agrupant genolls ➔ Caiguda amortida amb <strong>2 peus alhora</strong> al matalàs doble.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <strong>Ubicació: Pista Exterior 2</strong><br>
+        Cadència d'aros plans: Batuda peu dominant (Pata coixa) ➔ Pas gegant en l'aire amb l'altre peu ➔ Recepció final equilibrada a peus junts sobre matalàs escolar.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Ubicació: Gimnàs Cobert</strong><br>
+        Línies de cinta adhesiva a terra: <strong>1,00 m | 1,20 m | 1,40 m | 1,60 m</strong>. Balanç doble de braços, flexió de genolls i salt explosiu horitzontal des de parat.
+      </td>
+    </tr>
+    <tr style="background-color: #eff6ff;">
+      <td colspan="3" style="padding: 8px 12px; border: 1px solid #cbd5e1; font-size: 0.82rem; color: #1e3a8a;">
+        🔄 <strong>Rotació d'equips:</strong> 8 minuts per estació amb canvi al so del xiulet docent, assegurant que tothom experimenti les 3 modalitats de salt.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts)</div>
+        <p>Joc "El riu de pedres" saltant de cèrcol en cèrcol (pota coixa dreta, esquerra i caiguda a peus junts). Mobilitat articular de turmells, genolls i planxa de core (15'').</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts)</div>
+        <p><strong>Treball simultani en 3 estacions rotatives (11 minuts per estació):</strong></p>
+        <p><strong>Estació 1 &mdash; Salt de Llargada: Batuda a 1 peu i Vol (Pista exterior):</strong></p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th colspan="4" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; font-size: 0.88rem;">
+        🦘 Biomecànica del Salt de Llargada (4 Fases Tècniques)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">1. Cursa Progressiva</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          4 a 6 passes rítmiques. Acceleració fluida sense talonar ni alentir el ritme al final per no perdre velocitat abans de batre.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">2. Batuda Enèrgica</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          <strong>1 sol peu a la taula/línia</strong>. Bloqueig ferm contra el terra i elevació explosiva del genoll contrari amunt i endavant.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">3. Fase de Vol</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Trajectòria parabòlica. Tronc estirat i posterior agrupament (genolls al pit) amb braços projectats endavant per guanyar inèrcia.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">4. Recepció Amortida</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          <strong>Contacte simultani amb els 2 peus</strong> sobre els talons al matalàs. Flexió de genolls a 90° i tronc endavant per no caure d'esquena.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <div class="tech-keys"><strong>Claus tècniques:</strong> 1) Batuda enèrgica a 1 peu a la línia; 2) Elevar genolls cap al pit durant el vol; 3) Aterrar obligatòriament a 2 peus alhora flexionant els genolls com una molla.</div>
+        <div class="teacher-cue">Consigna mestre: "Mai caigueu amb les cames rectes! Flexioneu els genolls com una molla o un ninja que aterra en silenci!"</div>
+
+        <p style="margin-top: 10px;"><strong>Estació 2 &mdash; Triple Salt Rítmic (Hop-Step-Jump):</strong> Batuda amb cama dominant &rarr; caure al cèrcol 1 amb la mateixa cama &rarr; pas llarg al cèrcol 2 amb l'altra cama &rarr; salt al matalàs a 2 peus junts.</p>
+        <p style="margin-top: 10px;"><strong>Estació 3 &mdash; Línies de Superació des de Parat (Gimnàs):</strong> Triar repte personal (1 m, 1,20 m, 1,40 m o 1,60 m) i intentar superar la pròpia marca en 3 intents amb impuls de braços.</p>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Trasllat cooperatiu i ergonòmic dels matalassos entre 4 alumnes. Estiraments de quàdriceps i bessons. Reflexió sobre la protecció articular. Higiene.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Formativa Focalitzada - CE2 Crit. 2.1)</div>
+        <p><strong>Què observar a l'Estació 1:</strong> Batuda a 1 peu, vol agrupat i recepció amortida a 2 peus alhora.</p>
+        <p><strong>Com registrar-ho:</strong> Avaluar exclusivament els 10 alumnes dels Equips 1 i 2 a la mini-rúbrica del Criteri 2.1 a iDoceo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 6 -->
+  <div class="session-card" id="session-card-6">
+    <div class="session-header">
+      <h4>SESSIÓ 6: Salts II &mdash; Salt d'Alçada amb Tisora i Matalàs Llevapors</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Gestió de la Por (CE3 Crit. 3.2 / CE2 Crit. 2.1)</span>
+        <span>Gimnàs Interior Cobert</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-6', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 25%;">⬅️ Aproximació Corba Esquerra</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 26%;">🚧 Goma Inclinada (DUA)</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 25%;">➡️ Aproximació Corba Dreta</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 24%;">🛏️ Recepció Segura</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Batuda Cama Dreta</strong><br>
+        (Cama de fora). Cursa diagonal de 3-4 passes arribant a uns 30° d'angle respecte a la goma.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f0fdf4;">
+        <strong>Alçades multinivell:</strong><br>
+        • Con 1: <strong>50 cm</strong> (iniciació)<br>
+        • Mig: <strong>65 cm</strong> (mitjana)<br>
+        • Con 2: <strong>80 cm</strong> (repte alt)<br>
+        <em>Cada alumne tria el punt de salt!</em>
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Batuda Cama Esquerra</strong><br>
+        (Cama de fora). Cursa simètrica en corba per a atletes que baten amb l'altre peu.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+        <strong>Matalàs Llevapors</strong><br>
+        Recepció dempeus sobre la cama d'atac i flexió d'amortiment amb genolls tous.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts)</div>
+        <p>Normes d'or de seguretat del matalàs llevapors: 1) Només salta un alumne a la vegada; 2) Desallotjament immediat pels laterals; 3) La goma cedeix sense cap dolor. Mobilitat de malucs amb balancí de cames a la paret.</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts)</div>
+        <p><strong>Activitat 2.1 &mdash; Descobriment de la Tisora a Terra (8'):</strong></p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th colspan="4" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; font-size: 0.88rem;">
+        ✂️ Biomecànica del Salt d'Alçada en Tisora (4 Fases)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">1. Carrera en Corba</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          3-4 passes d'aproximació diagonal en corba suau (angle de 30-40°). Tronc dret mantenint la velocitat.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">2. Batuda Exterior</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Batuda amb la <strong>cama exterior</strong> (la més allunyada de la goma). Impuls ràpid convertint la cursa en alçada.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">3. Cama d'Atac</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          La <strong>cama interior</strong> puja estirada amunt per sobre de la goma, acompanyada d'una flexió de tronc endavant.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">4. Cama de Remolc</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          La cama de batuda puja immediatament darrere en moviment de "tisora". Aterratge dempeus amortint primer amb la cama d'atac.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Pràctica del gest sobre línies pintades al terra del gimnàs per interioritzar la seqüència de cames sense alçada.</p>
+
+        <p style="margin-top: 15px;"><strong>Activitat 2.2 &mdash; El Gran Salt sobre la Goma Inclinada (17'):</strong> Cursa diagonal de 4 passes i franqueig en tisora sobre el llevapors. Tria autònoma de l'alçada DUA: 50 cm (iniciar confiança), 65 cm (estàndard) o 80 cm (repte). Zero eliminacions: si es toca la goma, es repensa el punt de batuda i es repeteix.</p>
+        <div class="teacher-cue">Consigna mestre: "El llevapors és un núvol gegant de seguretat! Si toqueu la goma caurà amb vosaltres i no us farà res: confieu en el vostre cos!"</div>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Relaxació guiada estirats al voltant i sobre el llevapors amb música suau. Posada en comú: <em>Com hem superat la por inicial?</em> Registre al Passaport.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Gestió Emocional - CE3 Crit. 3.2)</div>
+        <p><strong>Què observar:</strong> Valentia per afrontar el salt, superació de bloquejos i tècnica bàsica de tisora.</p>
+        <p><strong>Com registrar-ho:</strong> Anotar a la columna del Criteri 3.2 a iDoceo el grau de gestió emocional assolit.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 7 -->
+  <div class="session-card" id="session-card-7">
+    <div class="session-header">
+      <h4>SESSIÓ 7: Llançaments I &mdash; Llançament de Vòrtex i Trajectòria Parabòlica</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Avaluació Docent Focalitzada (CE2 - Crit. 2.2)</span>
+        <span>2 Pistes Exteriors</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-7', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 17%;">Llançador / Equip</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 17%;">🛡️ Zona Seguretat (0 m)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 16%;">🎯 Línia Llançament (3 m)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 16%;">🟡 Franja Groga (0–8 m)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 17%;">🔵 Franja Blava (8–14 m)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 17%;">🟢 Franja Verda (&gt;14 m)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f8fafc;">
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: bold; color: #c2410c;">Equip 1 (Taronja)</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Alumnes a 3 m darrere</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Llançador 1 preparat</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">1 Punt</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1d4ed8;">2 Punts</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">3 a 4 Punts</td>
+    </tr>
+    <tr>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: bold; color: #15803d;">Equip 2 (Verd)</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Alumnes a 3 m darrere</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Llançador 2 preparat</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">1 Punt</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1d4ed8;">2 Punts</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">3 a 4 Punts</td>
+    </tr>
+    <tr style="background-color: #f8fafc;">
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: bold; color: #1d4ed8;">Equip 3 (Blau)</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Alumnes a 3 m darrere</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Llançador 3 preparat</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">1 Punt</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1d4ed8;">2 Punts</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">3 a 4 Punts</td>
+    </tr>
+    <tr>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: bold; color: #b45309;">Equip 4 (Groc)</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Alumnes a 3 m darrere</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Llançador 4 preparat</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">1 Punt</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1d4ed8;">2 Punts</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">3 a 4 Punts</td>
+    </tr>
+    <tr style="background-color: #f8fafc;">
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: bold; color: #b91c1c;">Equip 5 (Vermell)</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Alumnes a 3 m darrere</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Llançador 5 preparat</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">1 Punt</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1d4ed8;">2 Punts</td>
+      <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">3 a 4 Punts</td>
+    </tr>
+    <tr style="background-color: #fef2f2;">
+      <td colspan="6" style="padding: 8px 12px; border: 1px solid #cbd5e1; font-size: 0.82rem; color: #991b1b;">
+        ⚠️ <strong>Norma d'Or de Seguretat Absoluta:</strong> Llançament estrictament unidireccional. Cap alumne pot travessar la línia de llançament fins al xiulet docent i el crit de: <em>"CAMP LLIURE, RECOLLIDA GENERAL!"</em>.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts)</div>
+        <p>Passades per parelles amb pilotes de foam a distàncies creixents (4 m, 6 m, 8 m). Mobilitat de cintura escapular, colzes, canells i torsions de tronc.</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts)</div>
+        <p><strong>Activitat 2.1 &mdash; Fem Xiular el Vòrtex! &mdash; La Paràbola de 45° (15'):</strong></p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th colspan="5" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; font-size: 0.88rem;">
+        🚀 Cadena Cinètica del Llançament de Vòrtex (5 Fases Biomecàniques)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 20%; padding: 10px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">1. Posició de Perfil</div>
+        <div style="font-size: 0.79rem; color: #334155; line-height: 1.4;">
+          Cos col·locat de perfil a la diana. Cama contrària al braç llançador avançada.
+        </div>
+      </td>
+      <td style="width: 20%; padding: 10px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">2. Armat del Braç</div>
+        <div style="font-size: 0.79rem; color: #334155; line-height: 1.4;">
+          Braç llançador estirat completament enrere. Vòrtex agafat per les ranures a l'alçada del cap.
+        </div>
+      </td>
+      <td style="width: 20%; padding: 10px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">3. Torsió de Tronc</div>
+        <div style="font-size: 0.79rem; color: #334155; line-height: 1.4;">
+          La cama darrere empeny el terra i la pelvis gira cap endavant, transferint tota l'energia del tren inferior.
+        </div>
+      </td>
+      <td style="width: 20%; padding: 10px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">4. Fuetada Alta</div>
+        <div style="font-size: 0.79rem; color: #334155; line-height: 1.4;">
+          El colze passa per sobre de l'espatlla (acció alta, mai lateral). Fuetada ràpida del canell.
+        </div>
+      </td>
+      <td style="width: 20%; padding: 10px 10px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">5. Paràbola 45° 🎶</div>
+        <div style="font-size: 0.79rem; color: #1e40af; line-height: 1.4;">
+          Alliberament en angle de 45°. El vòrtex s'estabilitza en vol parabòlic i activa el so del xiulet.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <div class="tech-keys"><strong>4 Claus Innegociables:</strong> 1) Posició de perfil; 2) Braç estirat enrere; 3) Cadena cinètica (cames &rarr; tronc &rarr; braç); 4) Paràbola a 45° que activa el xiulet del vòrtex.</div>
+        <div class="teacher-cue">Consigna mestre: "No tireu contra el terra! Busqueu el cel a 45°: quan el vòrtex agafi aire, començarà a xiular fort!"</div>
+
+        <p style="margin-top: 15px;"><strong>Activitat 2.2 &mdash; El Repte de les Zones de Puntuació Cooperativa (20'):</strong> 3 llançaments per alumne. Els 5 integrants sumen els punts aconseguits segons la zona de caiguda (1, 2, 3 o 4 punts) en una taula comuna al Passaport. Recollida unificada sota el crit de "CAMP LLIURE".</p>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Recollida cooperativa de material. Estiraments de deltoides, tríceps i pectoral. Suma de punts totals al Passaport. Higiene.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Formativa Focalitzada - CE2 Crit. 2.2)</div>
+        <p><strong>Què observar:</strong> Posició de perfil, colze alt per sobre de l'espatlla, trajectòria parabòlica i respecte estricte de la seguretat.</p>
+        <p><strong>Com registrar-ho:</strong> Avaluar els 15 alumnes dels Equips 3, 4 i 5 a la mini-rúbrica del Criteri 2.2 a iDoceo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 8 -->
+  <div class="session-card" id="session-card-8">
+    <div class="session-header">
+      <h4>SESSIÓ 8: Llançaments II &mdash; Empenta de Pilota Medicinal i Para-Atletisme</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-dua">Sensibilització Para-Olímpica (CE4 Crit. 4.1)</span>
+        <span>Pista Exterior 2</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-8', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 22%;">Modalitat de Llançament</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 24%;">Posició i Material</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 28%;">Biomecànica i Cadena de Força</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 26%;">Vivència Pedagògica DUA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc; font-weight: bold; color: #1e3a8a;">
+        Carrer A: Clàssic Dempeus
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top;">
+        Dempeus darrere la línia. Pilota medicinal d'1 kg a dues mans des del pit.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top;">
+        Cadena cinètica completa: flexió de cames + empenta de maluc + extensió de braços cap a 45°.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; color: #475569;">
+        Permet comprovar com les cames aporten més del 50% de la potència total del llançament.
+      </td>
+    </tr>
+    <tr style="background-color: #f0fdf4;">
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; font-weight: bold; color: #166534;">
+        Carrer B: Para-Atlètic Assegut
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top;">
+        Assegut en cadira estable. <strong>Peus a l'aire sense tocar a terra!</strong>
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top;">
+        Aïllament muscular: empenta pura de musculatura de tronc, pectoral i braços, sense impuls plantar.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; color: #166534;">
+        Vivència empàtica del para-atletisme: valoració de la tècnica del tren superior i esforç adaptat.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts)</div>
+        <p>Assemblea de sensibilització: Com llencen els atletes paralímpics en cadira de rodes? Mobilitat de tronc i cintura escapular dempeus i asseguts.</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts)</div>
+        <p><strong>Activitat 2.1 &mdash; L'Empenta de Pilota Medicinal Clàssica (12'):</strong></p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th colspan="4" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; font-size: 0.88rem;">
+        🏐 Biomecànica del Llançament de Pilota Medicinal Dempeus (4 Fases)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">1. Posició Inicial</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Peus paral·lels a l'amplada de les espatlles. Pilota subjectada a dues mans sota la barbeta. Colzes separats.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">2. Flexió de Cames</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Semiflexió de genolls (esquat curt). Càrrega d'energia elàstica mantenint l'esquena recta i ferma.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">3. Extensió Explosiva</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Triple extensió coordinada de turmells, genolls i malucs projectant el cos cap amunt i endavant.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">4. Empenta de Braços</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Empenta explosiva de les dues mans alhora cap a un angle de sortida de 40-45° acompanyant amb els dits.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <div class="tech-keys"><strong>Norma d'or:</strong> Empenta explosiva des del pit amb dues mans coordinant l'extensió de cames. Prohibit terminantment llançar a una mà com una pedra.</div>
+
+        <p style="margin-top: 15px;"><strong>Activitat 2.2 &mdash; Repte Para-Atlètic: Llançament en Posició Asseguda (13'):</strong></p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th colspan="4" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; font-size: 0.88rem;">
+        ♿ Biomecànica del Llançament Para-Atlètic Assegut (Aïllament del Tren Superior)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #166534; margin-bottom: 4px;">1. Estabilització Pèlvica</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Glutis ben recolzats a la cadira. Cames creuades o peus suspesos sense contacte amb el terra.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #166534; margin-bottom: 4px;">2. Presa Pectoral</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Pilota enganxada a l'estèrnum. Colzes oberts en fletxa per reclutar deltoides anteriors i pectorals.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #166534; margin-bottom: 4px;">3. Bloqueig del Core</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Contracció voluntària de la musculatura abdominal i lumbar per fixar l'eix de torsió sense perdre estabilitat.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #166534; margin-bottom: 4px;">4. Empenta de Braços</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Extensió explosiva pura dels braços endavant i amunt, llançant la pilota a 45° només amb la força del tren superior.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Llançar la pilota medicinal d'1 kg completament asseguts a la cadira sense recolzar els peus a terra ni alçar el cul. Descobrir l'enorme força de tronc i braços necessària.</p>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Assemblea d'empatia: <em>Quina diferència heu sentit sense poder empènyer amb les cames? Què passaria sense instal·lacions adaptades?</em> Segell del repte al Passaport. Higiene.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Sensibilització - CE4 Crit. 4.1)</div>
+        <p><strong>Què observar:</strong> Empenta segura de pilota medicinal i actitud de respecte i reflexió madura vers l'esport adaptat.</p>
+        <p><strong>Com registrar-ho:</strong> Anotació del grau d'empatia a la columna del Criteri 4.1 a iDoceo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 9 -->
+  <div class="session-card" id="session-card-9">
+    <div class="session-header">
+      <h4>SESSIÓ 9: Tasca Autèntica &mdash; El Gran Míting Atlètic Cooperatiu</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Heteroavaluació Sumativa Global (Totes les CE)</span>
+        <span>Tots els Espais</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-9', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th colspan="2" style="padding: 10px 12px; border: 1px solid #cbd5e1; width: 50%; font-size: 0.86rem;">
+        📍 PISTA EXTERIOR 1
+      </th>
+      <th colspan="2" style="padding: 10px 12px; border: 1px solid #cbd5e1; width: 50%; font-size: 0.86rem;">
+        📍 GIMNÀS COBERT
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2" style="padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+        <div style="font-weight: bold; color: #1e40af; margin-bottom: 4px;">🏃 ESTACIÓ A: Llançadora de Relleus (4 x 20 m)</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Zona de traspàs de testimoni amb crit <strong>"HOP!"</strong> i mà en V. Mesura de precisió temporal i coavaluació per parelles de jutges.
+        </div>
+      </td>
+      <td colspan="2" style="padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #fdf2f8;">
+        <div style="font-weight: bold; color: #9d174d; margin-bottom: 4px;">✂️ ESTACIÓ B: Salt d'Alçada en Tisora</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Matalàs llevapors amb goma elàstica inclinada multinivell (50 a 80 cm). Doble aproximació corba i registre de superació personal.
+        </div>
+      </td>
+    </tr>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th colspan="2" style="padding: 10px 12px; border: 1px solid #cbd5e1; font-size: 0.86rem;">
+        📍 PISTA EXTERIOR 2
+      </th>
+      <th colspan="2" style="padding: 10px 12px; border: 1px solid #cbd5e1; font-size: 0.86rem;">
+        📍 PISTA EXTERIOR 1 (LATERAL)
+      </th>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f0fdf4;">
+        <div style="font-weight: bold; color: #166534; margin-bottom: 4px;">🚀 ESTACIÓ C: Llançament de Vòrtex Cooperatiu</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Camp zonificat per colors (1 a 4 punts). Llançaments unidireccionals segurs amb suma acumulada de punts a la caixa d'equip.
+        </div>
+      </td>
+      <td colspan="2" style="padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #fefce8;">
+        <div style="font-weight: bold; color: #854d0e; margin-bottom: 4px;">⏱️ ESTACIÓ D: Franqueig Rítmic i Ritme Borg</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Circuit de 3 gomes a ritme constant de 3 passes, mantenint la freqüència cardíaca en zona aeròbica de seguretat (Borg 5-6).
+        </div>
+      </td>
+    </tr>
+    <tr style="background-color: #f8fafc;">
+      <td colspan="4" style="padding: 9px 12px; border: 1px solid #cbd5e1; font-size: 0.82rem; color: #1e3a8a;">
+        🔄 <strong>Matriu de Rotació (10 minuts per torn):</strong><br>
+        • <strong>Torn 1:</strong> Equip 1 ➔ Estació A | Equip 2 ➔ Estació B | Equip 3 ➔ Estació C | Equip 4 ➔ Estació D | Equip 5 ➔ Jutges/Comissió<br>
+        • <strong>Torns 2 a 5:</strong> Rotació correlativa horària per assegurar que tots els equips participen com a atletes i jutges.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts)</div>
+        <p>Desfilada inaugural dels 5 equips mixtos amb el seu nom i lema. Escalfament dinàmic autònom dissenyat i liderat pels propis equips durant 7 minuts (avaluació de la CE1 - Criteri 1.1).</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (40 minuts)</div>
+        <p><strong>Desenvolupament en 4 estacions rotatives (9 minuts per estació + 1 de transició):</strong></p>
+        <table style="font-size: 0.85rem; margin: 8px 0;">
+          <tr><th>Ronda</th><th>Estació A (Relleus)</th><th>Estació B (Salts)</th><th>Estació C (Vòrtex)</th><th>Estació D (Franqueig)</th><th>Comitè Tècnic Organització</th></tr>
+          <tr><td>T1</td><td>Equip 1</td><td>Equip 2</td><td>Equip 3</td><td>Equip 4</td><td>Equip 5</td></tr>
+          <tr><td>T2</td><td>Equip 5</td><td>Equip 1</td><td>Equip 2</td><td>Equip 3</td><td>Equip 4</td></tr>
+          <tr><td>T3</td><td>Equip 4</td><td>Equip 5</td><td>Equip 1</td><td>Equip 2</td><td>Equip 3</td></tr>
+          <tr><td>T4</td><td>Equip 3</td><td>Equip 4</td><td>Equip 5</td><td>Equip 1</td><td>Equip 2</td></tr>
+          <tr><td>T5</td><td>Equip 2</td><td>Equip 3</td><td>Equip 4</td><td>Equip 5</td><td>Equip 1</td></tr>
+        </table>
+        <p>L'equip que descansa assumeix el rol de <strong>Comitè Tècnic d'Organització</strong> (avisa dels temps amb la campana, col·loca materials caiguts i anima els companys).</p>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Recollida cooperativa exprés de tots els espais en temps rècord de 4 minuts. Crits d'equip i celebració col·lectiva. Higiene.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Heteroavaluació Sumativa)</div>
+        <p><strong>Què observar:</strong> Resolució autònoma a les 4 proves, lideratge inclusiu de 6è i suport als companys amb dificultats.</p>
+        <p><strong>Com registrar-ho:</strong> Completar la Rúbrica Competencial Oficial a iDoceo per calcular la qualificació final de la SdA.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 10 -->
+  <div class="session-card" id="session-card-10">
+    <div class="session-header">
+      <h4>SESSIÓ 10: Diana d'Autoavaluació, Chromebooks i Cloenda</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Autoavaluació i Metacognició Final</span>
+        <span>Gimnàs / Aula</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-10', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 33%;">📽️ Zona Frontal (Projecció)</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 34%;">⭕ Zona Central (Assemblea)</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 33%;">💻 Zona Perimetral (Chromebooks)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Pantalla Digital / Projector</strong><br>
+        Projecció del fotoreportatge de la SdA: fotografies i vídeos tècnics de les sessions 1 a 9 per visualitzar el progrés col·lectiu.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+        <strong>Rotllana Gran de Classe</strong><br>
+        Assemblea en estores: cercle de diàleg, reflexió sobre el valor de la cooperació per sobre del temps i reconeixement mutu d'actituds.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Taules Cooperatives d'Equip</strong><br>
+        Disposició per equips amb 1 dispositiu per parella per completar el Passaport Digital, omplir la diana i formalitzar el tancament.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts)</div>
+        <p>Exercicis de respiració conscient en rotllana (4'). Projecció del fotoreportatge de 15 imatges d'acció de la SdA destacant l'esforç i les cares d'alegria de tothom (6').</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts)</div>
+        
+        <div style="background: #ffffff; border: 1.5px solid #93c5fd; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+          <strong style="color: #1e3a8a; display: block; margin-bottom: 6px; font-size: 0.90rem;">📂 Materials Imprimibles i Digitals llestos per a la Sessió 10:</strong>
+          <ul style="margin: 0; padding-left: 20px; font-size: 0.84rem; line-height: 1.55; color: #334155;">
+            <li><a href="Tancament_Passaport_Sessio_10.html" target="_blank" style="color: #0284c7; font-weight: 700; text-decoration: underline;">🏁 Document de Tancament del Passaport d'Equip (1 full A4 imprimible)</a>: preguntes de síntesi sobre el suport entre 5è i 6è i signatures solemnes de la contraportada.</li>
+            <li><a href="Diana_Autoavaluacio_Chromebooks.html" target="_blank" style="color: #0284c7; font-weight: 700; text-decoration: underline;">💻 Diana d'Autoavaluació per a Chromebooks (Aplicació Web Interactiva)</a>: resposta individual amb gràfic radar/diana SVG dinàmic en temps real i desat en PDF.</li>
+            <li><a href="Diana_Autoavaluacio_Paper.html" target="_blank" style="color: #0284c7; font-weight: 700; text-decoration: underline;">🎯 Diana d'Autoavaluació Imprimible en Paper (Pla B Analògic A4)</a>: format per pintar la diana concèntrica a mà amb colors/retoladors.</li>
+            <li><a href="Google_Forms_Diana_Script.js" target="_blank" style="color: #0284c7; font-weight: 700; text-decoration: underline;">⚡ Script per autogenerar el formulari Google Forms</a>: per crear en 1 clic el formulari a Google Drive per importar a Google Classroom.</li>
+          </ul>
+        </div>
+
+        <p><strong>Pas 1 &mdash; Tancament del Passaport Atlètic d'Equip (10'):</strong> Els 5 equips responen les preguntes de síntesi sobre el suport entre 5è i 6è i signen la contraportada mitjançant el document <a href="Tancament_Passaport_Sessio_10.html" target="_blank" style="color: #0284c7; font-weight: bold;">Tancament_Passaport_Sessio_10.html</a>.</p>
+        <p><strong>Pas 2 &mdash; Diana d'Autoavaluació als Chromebooks (15'):</strong> Resposta individual al formulari amb escala de l'1 al 4 (utilitzant l'aplicació web <a href="Diana_Autoavaluacio_Chromebooks.html" target="_blank" style="color: #0284c7; font-weight: bold;">Diana_Autoavaluacio_Chromebooks.html</a> o el formulari de Classroom):</p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 22%;">Eix Competencial</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 19%;">Nivell 1 (Inicial)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 19%;">Nivell 2 (Bàsic)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 20%;">Nivell 3 (Notable)</th>
+      <th style="padding: 9px 10px; border: 1px solid #cbd5e1; width: 20%;">Nivell 4 (Excel·lent)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; color: #047857; background-color: #ecfdf5;">
+        🟢 CE1: Salut i Esforç (Borg)
+      </td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">S'esgota de seguida o camina; no sap identificar el seu estat de fatiga.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Manté la cursa a batzegades; reconeix quan està cansat però li costa regular.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Dosifica el ritme en zona Borg 5-6 durant quasi tota la cursa contínua.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Regula perfectament l'esforç, coneix els seus llindars i ajuda la parella a dosificar.</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; color: #1d4ed8; background-color: #eff6ff;">
+        🔵 CE2: Tècnica i Habilitats
+      </td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Desajust tècnic acusat (mira enrere en relleus, batudes planes, llançament baix).</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Aplica els fonaments amb dubtes o vacil·lacions entre fases motores.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Executa amb bona fluïdesa els relleus ("HOP!"), salts i llançament amb fuetada.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Excel·lència biomecànica: gest fluid, segur i precís en totes les disciplines.</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; color: #b45309; background-color: #fffbeb;">
+        🟡 CE3: Treball en Equip
+      </td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Passivitat, desinterès o conflictes; només prioritza el rendiment propi.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Participa i fa de jutge només si el docent o el capità li recorden.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Treballa coordinadament en equip i exerceix el rol d'observador amb rigor.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Lideratge positiu: anima tothom, jutge exemplar i mediador proactiu de conflictes.</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; color: #7e22ce; background-color: #faf5ff;">
+        🟣 CE4: Inclusió i Empatia
+      </td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Frustració amb errors propis o de companys; rebutja les adaptacions.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Accepta les normes i companys diversos però sense implicar-s'hi activament.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Anima i valora sincerament els companys amb adaptacions o reptes específics.</td>
+      <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Promou activament que tothom triomfi, adapta el seu ritme i celebra l'èxit compartit.</td>
+    </tr>
+  </tbody>
+</table>
+        <ul>
+          <li><strong>CE1:</strong> Dosificació del ritme aeròbic (Borg 4-6) i escalfament autònom.</li>
+          <li><strong>CE2:</strong> Millora en el testimoni, pas d'obstacles, salts i llançament de vòrtex.</li>
+          <li><strong>CE3:</strong> Col·laboració a l'equip mixt 5è-6è i superació de les pors.</li>
+          <li><strong>CE4:</strong> Comprensió de l'atletisme adaptat com un dret per a tothom.</li>
+        </ul>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Cerimònia de lliurament dels Diplomes oficials de "Mestres de l'Atletisme Cooperatiu" a cada equip. Gran aplaudiment i cloenda festiva de la SdA.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Autoavaluació)</div>
+        <p><strong>Què observar:</strong> Sinceritat, consciència del propi progrés i valoració de la tutoria entre 5è i 6è.</p>
+        <p><strong>Com registrar-ho:</strong> Recollida del formulari de Google i arxiu del Passaport com a evidència d'aprenentatge.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>5. RÚBRICA D'AVALUACIÓ DOCENT (DECRET 175/2022)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Criteri</th>
+        <th>Nivell 1 (Inicial)</th>
+        <th>Nivell 2 (Mitjà)</th>
+        <th>Nivell 3 (Avançat)</th>
+        <th>Nivell 4 (Excel·lent)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1.1. Hàbits i Escalfament</strong></td>
+        <td>No escalfa o es distreu contínuament; oblida la higiene.</td>
+        <td>Participa imitant els companys, però sense iniciativa pròpia.</td>
+        <td>Executa l'escalfament dinàmic de manera autònoma i correcta.</td>
+        <td>Proposa i lidera exercicis explicant la prevenció de lesions.</td>
+      </tr>
+      <tr>
+        <td><strong>1.2. Autoregulació de l'Esforç</strong></td>
+        <td>Surt al màxim i s'atura per fatiga; no coneix el seu esforç.</td>
+        <td>Reconeix quan està molt cansat, però li costa mantenir un ritme constant.</td>
+        <td>Regula el ritme constantment (zona Borg 5-6) respirant bé.</td>
+        <td>Dosifica el ritme en qualsevol distància i assessora companys.</td>
+      </tr>
+      <tr>
+        <td><strong>2.1. Cursa i Salts</strong></td>
+        <td>S'atura per rebre el testimoni; cau rígid en el salt.</td>
+        <td>Entrega amb dubtes; salta sobre la goma amb recepció poc fluida.</td>
+        <td>Rep el testimoni en moviment; salta en tisora caient segur.</td>
+        <td>Mecànica impecable a alta velocitat; domina el franqueig i el salt.</td>
+      </tr>
+      <tr>
+        <td><strong>2.2. Llançaments</strong></td>
+        <td>Llança només de braç sense control ni seguretat.</td>
+        <td>Aprofita part de l'impuls però perd la paràbola òptima.</td>
+        <td>Aplica cadena cinètica aconseguint bona paràbola amb vòrtex.</td>
+        <td>Coordina cames, tronc i braç; domina el llançament assegut.</td>
+      </tr>
+      <tr>
+        <td><strong>3.1. Cooperació i Joc Net (15%)</strong></td>
+        <td>Actitud individualista; no accepta companys de l'altre curs o no respecta torns.</td>
+        <td>Treballa en equip però només amb amics propers; coavaluació superficial.</td>
+        <td>Participa a l'equip mixt 5è-6è animant i respectant tothom; coavaluació rigorosa.</td>
+        <td>Lideratge positiu; integra alumnes NESE/nouvinguts amb empatia i diàleg assertiu.</td>
+      </tr>
+      <tr>
+        <td><strong>3.2. Gestió de la Por i Emocions (10%)</strong></td>
+        <td>Es bloqueja davant d'obstacles o alçades; reacciona amb frustració o abandó davant l'error.</td>
+        <td>Mostra dubtes i inseguretat davant del llevapors; requereix acompanyament constant.</td>
+        <td>Reconeix i supera les pors davant del salt o obstacles; accepta l'error com a aprenentatge.</td>
+        <td>Gran resiliència i maduresa motriu; transforma la por en superació i ajuda companys bloquejats.</td>
+      </tr>
+      <tr>
+        <td><strong>4.1. Para-Atletisme i Inclusió (15%)</strong></td>
+        <td>Desinterès o comentaris poc reflexius vers les adaptacions; no percep el valor de la inclusió.</td>
+        <td>Participa en el llançament en cadira com un joc més, sense reflexionar sobre la mobilitat reduïda.</td>
+        <td>Experimenta el para-atletisme amb respecte, valorant l'esport adaptat com un dret fonamental.</td>
+        <td>Reflexiona sobre l'accessibilitat; proposa adaptacions i mostra empatia i sensibilitat exemplar.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="background: #e0f2fe; border: 1px solid #7dd3fc; border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1.5rem; margin-bottom: 2rem;">
+    <p style="margin: 0; color: #0369a1; font-size: 0.95rem;">
+      🔍 <strong>Rúbrica completa monogràfica i eines digitals:</strong> Consulta la <a href="Rubrica_Avaluacio_SdA_Atletisme.html" style="font-weight: 600; text-decoration: underline; color: #0284c7;">Rúbrica Interactiva i Imprimible (HTML)</a> amb simulador de notes, el document <a href="Rubrica_Avaluacio_SdA_Atletisme.md" style="font-weight: 600; text-decoration: underline; color: #0284c7;">Rubrica_Avaluacio_SdA_Atletisme.md</a>, i el full de càlcul per a iDoceo <a href="iDoceo/Avaluacio_iDoceo_SdA_Atletisme.xlsx" download style="font-weight: 600; text-decoration: underline; color: #0284c7;">iDoceo/Avaluacio_iDoceo_SdA_Atletisme.xlsx</a>.
+    </p>
+  </div>
+
+  <h2>6. INSTRUMENTS IMPRIMIBLES LLOPATS PER COPIAR</h2>
+
+  <h3>A. Model del Passaport Atlètic (Format Carpetó per Imprimir)</h3>
+  <div class="print-box">=======================================================================
+                    PASSAPORT ATLÈTIC COOPERATIU
+  Equip: _____________________________________   Classe: 5è i 6è
+  Components:
+  1. ___________________ (6è)       4. ___________________ (5è)
+  2. ___________________ (6è)       5. ___________________ (5è)
+  3. ___________________ (5è)
+=======================================================================
+[ ] REPTE 1: Hem fet 5 sortides ràpides i superat les gomes sense tocar-les.
+    Consell del nostre equip: _________________________________________
+
+[ ] REPTE 2: Hem passat el testimoni cridant "HOP!" amb el receptor corrent.
+    Signatura de l'equip avaluador: ___________________________________
+
+[ ] REPTE 3: Tots hem superat el salt d'alçada caient al matalàs llevapors.
+    Com hem animat els qui tenien por?: _______________________________
+
+[ ] REPTE 4: Hem fet xiular el vòrtex i sumat punts cooperatius.
+    Punts totals de l'equip: _______ punts.
+
+VALORACIÓ FINAL: Com ens hem ajudat entre 5è i 6è?:
+_______________________________________________________________________
+=======================================================================</div>
+
+  <h3>B. Fitxa de Coavaluació de Relleus (Sessió 3 - Bilingüe Català/Francès)</h3>
+  <div class="print-box">EQUIP OBSERVADOR: _________________    EQUIP CORREDOR: _________________
+
+1. CRIT D'AVÍS / SIGNAL SONORE:
+   El portador crida "HOP!" abans d'entregar?         [  ] SÍ   [  ] EN PROCÉS
+
+2. SORTIDA EN MOVIMENT / DÉPART:
+   El receptor comença a córrer abans de rebre?       [  ] SÍ   [  ] EN PROCÉS
+
+3. MÀ EN V / MAIN OUVERTE:
+   El receptor posa la mà enrere ben oberta?          [  ] SÍ   [  ] EN PROCÉS
+
+4. TESTIMONI SEGUR / TÉMOIN:
+   El testimoni passa sense caure a terra?             [  ] SÍ   [  ] EN PROCÉS
+
+Missatge positiu per a l'equip:
+"Us felicitem perquè __________________________________________________"</div>
+
+</div>
+
+
+<script>
+function filterSession(sessionNum, btn) {
+  const cards = document.querySelectorAll('.session-card');
+  const buttons = document.querySelectorAll('.tab-btn');
+  buttons.forEach(b => {
+    b.style.background = 'white';
+    b.style.color = '#1e3a8a';
+  });
+  btn.style.background = '#1e3a8a';
+  btn.style.color = 'white';
+
+  cards.forEach(card => {
+    if (sessionNum === 'all') {
+      card.style.display = 'block';
+    } else {
+      if (card.id === 'session-card-' + sessionNum) {
+        card.style.display = 'block';
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        card.style.display = 'none';
+      }
+    }
+  });
+}
+
+async function copySessionToClipboard(cardId, btn) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  
+  const clone = card.cloneNode(true);
+  const copyBtn = clone.querySelector('.copy-btn');
+  if (copyBtn) copyBtn.remove();
+  
+  const htmlBlob = new Blob([clone.outerHTML], { type: 'text/html' });
+  const textBlob = new Blob([clone.innerText], { type: 'text/plain' });
+  
+  try {
+    const item = new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob });
+    await navigator.clipboard.write([item]);
+    const oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Copiat per a Drive!';
+    btn.style.background = '#15803d';
+    setTimeout(() => {
+      btn.innerHTML = oldText;
+      btn.style.background = '#0284c7';
+    }, 2500);
+  } catch (err) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = clone.outerHTML;
+    tempDiv.style.position = 'fixed';
+    tempDiv.style.left = '-9999px';
+    document.body.appendChild(tempDiv);
+    const range = document.createRange();
+    range.selectNodeContents(tempDiv);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    document.body.removeChild(tempDiv);
+    btn.innerHTML = '✅ Copiat!';
+    setTimeout(() => { btn.innerHTML = '📋 Copiar per a Google Docs'; }, 2000);
+  }
+}
+</script>
+<style>
+  .app-footer { margin-top: 1.5rem; padding: 0.6rem 1rem; background-color: #f8f9fa; border-top: 1px solid #e9ecef; text-align: center; font-family: system-ui, -apple-system, sans-serif; font-size: 0.78rem; color: #6c757d; }
+  .app-footer .footer-content { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; }
+  .app-footer .cc-badge { height: 22px; width: auto; display: block; }
+  .app-footer .footer-legal { line-height: 1.4; }
+  .app-footer a { color: #495057; text-decoration: none; font-weight: 500; }
+  .app-footer a:hover { text-decoration: underline; color: #0d6efd; }
+  @media print { .app-footer { display: none !important; } }
+</style>
+<footer class="app-footer">
+  <div class="footer-content">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" class="cc-badge" width="70" height="24" />
+    </a>
+    <span class="footer-legal">
+      © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
+

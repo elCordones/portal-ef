@@ -1,0 +1,18 @@
+{
+  "name": "portal-ef",
+  "version": "1.0.0",
+  "description": "Portal web de Situacions d'Aprenentatge d'Educació Física",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

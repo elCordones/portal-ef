@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia Detallada - Sessió 3: Curses de Relleus (CS)</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-light: #ccfbf1;
+      --primary-dark: #115e59;
+      --secondary: #1e3a8a;
+      --accent: #d97706;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --blue-bg: #eff6ff;
+      --blue-border: #93c5fd;
+      --green-bg: #f0fdf4;
+      --green-border: #86efac;
+      --amber-bg: #fffbeb;
+      --amber-border: #fde68a;
+      --purple-bg: #faf5ff;
+      --purple-border: #d8b4fe;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: white;
+      padding: 35px 45px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    /* Print & Action Bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f0fdfa;
+      border: 1.5px solid #99f6e4;
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+    .top-bar .title-tag {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .print-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 7px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .print-btn:hover { background: var(--primary-dark); }
+
+    /* Header */
+    .header-box {
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 18px;
+      margin-bottom: 25px;
+    }
+    h1 {
+      color: var(--primary);
+      margin: 0 0 8px 0;
+      font-size: 2.1rem;
+      font-weight: 800;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin: 0 0 12px 0;
+    }
+    .meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .badge-teal { background: #ccfbf1; color: #0f766e; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-amber { background: #fef3c7; color: #b45309; }
+    .badge-purple { background: #f3e8ff; color: #7e22ce; }
+
+    /* Sections */
+    h2 {
+      color: var(--secondary);
+      font-size: 1.35rem;
+      border-left: 5px solid var(--primary);
+      padding-left: 12px;
+      margin-top: 35px;
+      margin-bottom: 15px;
+    }
+    h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin: 20px 0 10px 0;
+    }
+
+    /* Cards */
+    .phase-card {
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 20px;
+      border: 1.5px solid transparent;
+    }
+    .card-initial {
+      background: var(--blue-bg);
+      border-color: var(--blue-border);
+    }
+    .card-main {
+      background: var(--green-bg);
+      border-color: var(--green-border);
+    }
+    .card-final {
+      background: var(--amber-bg);
+      border-color: var(--amber-border);
+    }
+    .card-dua {
+      background: var(--purple-bg);
+      border-color: var(--purple-border);
+    }
+
+    /* Track Schemas */
+    .track-schema-container {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+      overflow-x: auto;
+    }
+    .track-schema-title {
+      color: #38bdf8;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .track-visual {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      white-space: pre;
+    }
+
+    /* Interactive diagram style */
+    .track-lane {
+      position: relative;
+      background: #0f172a;
+      border: 1.5px dashed #475569;
+      border-radius: 8px;
+      padding: 18px 15px;
+      margin-bottom: 15px;
+    }
+    .track-markers {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1fr 1fr 1.5fr;
+      text-align: center;
+      gap: 10px;
+    }
+    .marker-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 8px;
+    }
+    .marker-distance {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: bold;
+    }
+    .marker-cone {
+      font-size: 1.3rem;
+      margin: 4px 0;
+    }
+    .marker-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+    .marker-action {
+      font-size: 0.72rem;
+      color: #cbd5e1;
+      margin-top: 3px;
+    }
+    .cone-yellow { color: #facc15; }
+    .cone-orange { color: #fb923c; }
+    .cone-blue { color: #38bdf8; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.88rem;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 9px 12px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+    }
+    tr:nth-child(even) td { background: #fcfdfe; }
+
+    /* Key Callout */
+    .callout {
+      border-left: 4px solid var(--primary);
+      background: #f0fdfa;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-size: 0.92rem;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    /* Print Styles */
+    @media print {
+      body { background: white; padding: 0; font-size: 11pt; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .top-bar { display: none; }
+      .track-schema-container { background: #f8fafc; color: #000; border: 1px solid #ccc; }
+      .track-schema-title { color: #0f766e; }
+      .phase-card { break-inside: avoid; border: 1px solid #ccc; }
+      table { break-inside: avoid; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='32' fill='%23d97706'/><circle cx='50' cy='50' r='16' fill='%23ffffff'/></svg>">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Action Bar -->
+    <div class="top-bar">
+      <div class="title-tag">
+        <span>🏃 SdA Atletisme Cooperatiu</span> &bull; 
+        <span>Sessió 3: Curses de Relleus</span>
+      </div>
+      <button class="print-btn" onclick="window.print()">
+        🖨️ Imprimir / Desar en PDF
+      </button>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header-box">
+      <h1>GUIA DIDÀCTICA DETALLADA — SESSIÓ 3</h1>
+      <div class="subtitle">La Màgia dels Relleus: Zona de Transferència, Sincronització i Coavaluació entre Iguals</div>
+      <div class="meta-badges">
+        <span class="badge badge-teal">⏱️ 60 minuts</span>
+        <span class="badge badge-blue">📍 2 Pistes Exteriors (o Pati 20x40 m)</span>
+        <span class="badge badge-amber">👥 25 alumnes (5 equips de 5è-6è)</span>
+        <span class="badge badge-purple">🎯 CE2 (Crit. 2.1) + CE3 (Crit. 3.1)</span>
+      </div>
+    </div>
+
+    <!-- Curricular Link -->
+    <h2>1. Objectius d'Aprenentatge i Vinculació Curricular (Decret 175/2022)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Competència Específica</th>
+          <th style="width: 25%;">Criteri d'Avaluació</th>
+          <th style="width: 50%;">Indicador Observable a la Sessió</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CE2. Situacions motrius</strong></td>
+          <td><strong>2.1.</strong> Executar habilitats atlètiques de cursa i relleus amb eficàcia i coordinació.</td>
+          <td>
+            &bull; El portador emet el crit sonor d'avís <strong>"HOP!"</strong> abans de lliurar.<br>
+            &bull; El receptor <strong>comença a córrer en acceleració</strong> abans de rebre el testimoni.<br>
+            &bull; Braç enrere amb mà en <strong>"V" ben oberta</strong> sense girar el cap cap enrere.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>CE3. Autoregulació i cooperació</strong></td>
+          <td><strong>3.1.</strong> Col·laborar activament en equips mixtos, respectant les normes i la diversitat.</td>
+          <td>
+            &bull; Observació rigorosa i respectuosa de l'equip company des de la zona de jutges.<br>
+            &bull; Retorn formatiu basat en el <strong>"Sandwich Positiu"</strong> (elogi + millora + ànims).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Material -->
+    <div class="callout">
+      <div class="callout-title">📦 Material Necessari a Pista:</div>
+      5 testimonis oficials de relleus de diferents colors &bull; 30 cons xinesos (10 grocs, 10 taronges, 10 blaus) &bull; 5 carpetes amb pinça i 15 llapis &bull; 15 fitxes de coavaluació impreses &bull; Passaports atlètics.
+    </div>
+
+    <!-- Pista Schema -->
+    <h2>2. Esquema Espacial de la Pista i Disposició dels 5 Equips</h2>
+    <p>Organitzem la pista per aconseguir un <strong>Compromís Motor (TCM) > 60%</strong>. Mentre 2 equips corren en paral·lel, els altres 3 equips tenen rols actius de jutges a peu de carrer:</p>
+
+    <!-- Visual Interactive Lane Scheme -->
+    <div class="track-lane">
+      <div class="track-schema-title">⚡ Plànol de la Recta de Cursa de Relleus (45 metres)</div>
+      <div class="track-markers">
+        <div class="marker-box">
+          <div class="marker-distance">0 metres</div>
+          <div class="marker-cone">🟢</div>
+          <div class="marker-label">Sortida</div>
+          <div class="marker-action">Corredor 1 (Lliurador)</div>
+        </div>
+        <div class="marker-box" style="border-color: #facc15;">
+          <div class="marker-distance">15 metres</div>
+          <div class="marker-cone cone-yellow">▲</div>
+          <div class="marker-label" style="color: #facc15;">Con Groc</div>
+          <div class="marker-action"><strong>Marca de Pre-avís!</strong><br>Quan R1 arriba aquí, R2 arrenca!</div>
+        </div>
+        <div class="marker-box" style="border-color: #fb923c;">
+          <div class="marker-distance">20 metres</div>
+          <div class="marker-cone cone-orange">▲</div>
+          <div class="marker-label" style="color: #fb923c;">Con Taronja</div>
+          <div class="marker-action">Inici Zona Transferència<br>(Receptor posicionat)</div>
+        </div>
+        <div class="marker-box" style="border-color: #38bdf8;">
+          <div class="marker-distance">30 metres</div>
+          <div class="marker-cone cone-blue">▲</div>
+          <div class="marker-label" style="color: #38bdf8;">Con Blau</div>
+          <div class="marker-action">Fi Zona Transferència<br>(El testimoni ja ha d'estar passat)</div>
+        </div>
+        <div class="marker-box">
+          <div class="marker-distance">45 metres</div>
+          <div class="marker-cone">🏁</div>
+          <div class="marker-label">Arribada / Meta</div>
+          <div class="marker-action">Cursa a màxima velocitat</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASCII schema for detail -->
+    <div class="track-schema-container">
+      <div class="track-schema-title">👀 Disposició dels 5 Equips a Pista (2 corren + 3 avaluen)</div>
+      <div class="track-visual">
+========================================================================================================
+CARRIL A:  [Equip 1] ------> [▲ Con Groc] =====> [▲ Con Taronja] --> [★ LLIURAMENT] --> [▲ Con Blau] =====> [META]
+CARRIL B:  [Equip 2] ------> [▲ Con Groc] =====> [▲ Con Taronja] --> [★ LLIURAMENT] --> [▲ Con Blau] =====> [META]
+--------------------------------------------------------------------------------------------------------
+👀 ZONA DE JUTGES OBSERVADORS (A peu de carrer amb fitxa d'observació bilingüe):
+[Jutge d'Arrencada]          [Jutge de So]            [Jutge Mà en V]         [Jutge de Zona]      [Cronòmetre]
+(Equip 3: Mira con groc)   (Equip 4: Escolta "HOP!") (Equip 4: No girar cap) (Equip 5: cons 20-30m)(Equip 5: Anota)
+========================================================================================================</div>
+    </div>
+
+    <!-- Phase 1 -->
+    <h2>3. Desenvolupament Pas a Pas de la Sessió</h2>
+
+    <div class="phase-card card-initial">
+      <h3 style="margin-top:0; color:#1e40af;">🔵 FASE 1: PART INICIAL (15 MINUTS)</h3>
+      
+      <h4>1.1. Escalfament Dinàmic Autònom per Equips (10 minuts)</h4>
+      <ul>
+        <li><strong>Disposició:</strong> Els 5 equips cooperatius ocupen cadascun un quadrant de la pista exterior.</li>
+        <li><strong>Tutoria entre iguals:</strong> Els alumnes de 6è lideren el seu equip fent 2 voltes al perímetre a ritme de trote suau conversacional i dirigint 5 exercicis de mobilitat articular (espatlles, turmells, malucs i canells).</li>
+        <li><strong>Consigna clau:</strong> <em>"Hem de poder parlar amb el company mentre trotem sense ofegar-nos!"</em></li>
+      </ul>
+
+      <h4>1.2. Joc de Dinamització: "El Testimoni Calent" (5 minuts)</h4>
+      <ul>
+        <li><strong>Disposició:</strong> Cada equip forma una rotllana de 5 persones separades entre si per 2 metres.</li>
+        <li><strong>Desenvolupament:</strong> Tots troten en cercle en la mateixa direcció. El testimoni comença a la mà d'un corredor i s'ha de passar ràpidament al company del davant de baix a dalt.</li>
+        <li><strong>Repte cooperatiu:</strong> Completar 3 voltes del testimoni a l'equip sense que caigui a terra i sense aturar el trote.</li>
+      </ul>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-card card-main">
+      <h3 style="margin-top:0; color:#166534;">🟢 FASE 2: PART PRINCIPAL (35 MINUTS)</h3>
+
+      <h4>2.1. Càpsula Tècnica: La Mecànica del Lliurament en Parelles (10 minuts)</h4>
+      <p>Treball en parelles estables (cotutor de 6è + company de 5è o nouvingut) col·locades en fila a 1,5 metres de distància.</p>
+
+      <div style="background: white; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin: 10px 0;">
+        <div style="font-weight: 700; color: #15803d; margin-bottom: 6px;">🎯 Les 3 Claus Tècniques Innegociables:</div>
+        <ol style="margin: 0; padding-left: 20px;">
+          <li><strong>El Crit d'Avís (🗣️ "HOP!"):</strong> El lliurador crida fort quan arriba a un braç de distància. No s'entrega mai el testimoni en silenci!</li>
+          <li><strong>La Mà en "V" Invertida (✋):</strong> El receptor, <em>sense girar el coll enrere</em>, estira el braç contrari cap enrere a l'alçada del maluc amb la palma mirant enrere i el polze obert.</li>
+          <li><strong>Lliurament Ascendent:</strong> El portador diposita el testimoni fermament de baix a dalt a la mà oberta.</li>
+        </ol>
+      </div>
+
+      <p><strong>Progressió en 3 etapes:</strong></p>
+      <ul>
+        <li><em>Etapa A - Estàtic (3'):</em> Aturats. Practicar l'extensió del braç cega en sentir el "HOP!". 5 vegades cadascú.</li>
+        <li><em>Etapa B - Caminant (3'):</em> Caminant al pas sincronitzant el moment del crit.</li>
+        <li><em>Etapa C - Trote lleuger (4'):</em> Trotant en línia recta sense perdre la distància de seguretat.</li>
+      </ul>
+
+      <hr style="border: 0; border-top: 1px dashed #86efac; margin: 18px 0;">
+
+      <h4>2.2. La Gran Llançadora amb Zona d'Entrega i Coavaluació Activa (25 minuts)</h4>
+      <p>Es munten 2 carrils de 45 metres. El receptor se situa dret a la línia dels 20 m (con taronja) mirant cap a la meta.</p>
+      
+      <div class="callout" style="border-left-color: #16a34a; background: #f0fdf4;">
+        <div class="callout-title" style="color: #15803d;">🚨 La Regla d'Or de l'Acceleració:</div>
+        Quan el corredor que ve de la sortida trepitja la marca del <strong>con groc (15 m)</strong>, el receptor <strong>comença a córrer a màxima velocitat</strong> cap endavant! El traspàs es produeix entre els 20 m i els 30 m a màxima velocitat de tots dos.
+      </div>
+
+      <h4 style="margin-top: 15px;">Matriu de Rotacions per Equips (Tandes de 4-5 minuts):</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Ronda</th>
+            <th>Carril 1 (Cursa)</th>
+            <th>Carril 2 (Cursa)</th>
+            <th>Equips Jutges Observadors</th>
+            <th>Focus d'Observació</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ronda 1</strong></td>
+            <td><strong style="color:#0f766e;">Equip 1</strong></td>
+            <td><strong style="color:#0f766e;">Equip 2</strong></td>
+            <td>Equips 3, 4 i 5</td>
+            <td>Sortida en cursa quan toca el con groc</td>
+          </tr>
+          <tr>
+            <td><strong>Ronda 2</strong></td>
+            <td><strong style="color:#0f766e;">Equip 3</strong></td>
+            <td><strong style="color:#0f766e;">Equip 4</strong></td>
+            <td>Equips 5, 1 i 2</td>
+            <td>Crit "HOP!" ben fort abans del traspàs</td>
+          </tr>
+          <tr>
+            <td><strong>Ronda 3</strong></td>
+            <td><strong style="color:#0f766e;">Equip 5</strong></td>
+            <td><strong style="color:#0f766e;">Equip 1</strong></td>
+            <td>Equips 2, 3 i 4</td>
+            <td>Mà en "V" enrere sense girar el cap</td>
+          </tr>
+          <tr>
+            <td><strong>Ronda 4</strong></td>
+            <td><strong style="color:#0f766e;">Equip 2</strong></td>
+            <td><strong style="color:#0f766e;">Equip 3</strong></td>
+            <td>Equips 4, 5 i 1</td>
+            <td>Traspàs net dins la zona taronja-blau</td>
+          </tr>
+          <tr>
+            <td><strong>Ronda 5</strong></td>
+            <td><strong style="color:#0f766e;">Equip 4</strong></td>
+            <td><strong style="color:#0f766e;">Equip 5</strong></td>
+            <td>Equips 1, 2 i 3</td>
+            <td>Ànims i joc net de tot l'equip</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-card card-final">
+      <h3 style="margin-top:0; color:#92400e;">🟠 FASE 3: PART FINAL I TANCAMENT (10 MINUTS)</h3>
+
+      <h4>3.1. Assemblea de Retorn Constructiu (5 minuts)</h4>
+      <ul>
+        <li>Els equips jutges entreguen la <em>Fitxa de Coavaluació</em> al seu equip observat.</li>
+        <li>Aplicació de la regla del <strong>"Sandwich Positiu"</strong>: 1 elogi del que s'ha fet molt bé + 1 proposta de millora tècnica + 1 frase d'ànim.</li>
+      </ul>
+
+      <h4>3.2. Segellat del Passaport Atlètic i Higiene (5 minuts)</h4>
+      <ul>
+        <li>Cada alumne marca la casella del <strong>Repte 2: La Màgia dels Relleus</strong> al seu passaport.</li>
+        <li>Recollida ordenada del material i rentat de mans obligatori.</li>
+      </ul>
+    </div>
+
+    <!-- DUA Measures -->
+    <div class="phase-card card-dua">
+      <h3 style="margin-top:0; color:#6b21a8;">🟣 MESURES DUA I ATENCIÓ A LA DIVERSITAT</h3>
+      <ul style="margin-bottom: 0;">
+        <li><strong>Alumne amb TEA:</strong> Disposa del panell visual a peu de pista amb les 4 fases. Té cons d'un color molt cridaner per delimitar la seva zona i assumeix el rol estructurat de <em>Jutge de Zona</em>.</li>
+        <li><strong>Alumne amb TDAH:</strong> Zero temps morts. Durant les pauses de cursa té la responsabilitat d'actuar com a <em>Jutge de Sortida</em> o portar el cronòmetre oficial.</li>
+        <li><strong>Alumnat Nouvingut Francòfon:</strong> Acompanyat pel seu <em>buddy</em> de 6è en tot moment. Utilitza la fitxa bilingüe amb pictogrames explicatius.</li>
+      </ul>
+    </div>
+
+    <!-- Plan B -->
+    <h2>4. Pla B d'Intempèrie (Pluja o Vent Fort: Gimnàs 20 x 20 m)</h2>
+    <p>En cas de mal temps, es trasllada la sessió a l'interior muntant un <strong>Circuit Perimetral de 4 Cantonades</strong>:</p>
+    <ul>
+      <li>Es delimita un perímetre de 16x16 metres amb 4 cons alts protectors per evitar impactes contra les parets.</li>
+      <li>Les dues rectes llargues actuen com a <strong>zones de transferència de 8 metres</strong>.</li>
+      <li>Les tandes es fan de 2 equips amb sortides esglaonades amb 10 segons de diferència per garantir màxima seguretat motriu.</li>
+    </ul>
+
+  </div>
+
+<style>
+  .app-footer { margin-top: 1.5rem; padding: 0.6rem 1rem; background-color: #f8f9fa; border-top: 1px solid #e9ecef; text-align: center; font-family: system-ui, -apple-system, sans-serif; font-size: 0.78rem; color: #6c757d; }
+  .app-footer .footer-content { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; }
+  .app-footer .cc-badge { height: 22px; width: auto; display: block; }
+  .app-footer .footer-legal { line-height: 1.4; }
+  .app-footer a { color: #495057; text-decoration: none; font-weight: 500; }
+  .app-footer a:hover { text-decoration: underline; color: #0d6efd; }
+  @media print { .app-footer { display: none !important; } }
+</style>
+<footer class="app-footer">
+  <div class="footer-content">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" class="cc-badge" width="70" height="24" />
+    </a>
+    <span class="footer-legal">
+      © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
+

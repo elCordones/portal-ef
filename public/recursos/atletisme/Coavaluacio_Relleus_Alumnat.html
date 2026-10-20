@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coavaluació de Relleus - Alumnat</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 8mm;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 10px;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    .print-bar {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .print-btn {
+      background: #0d9488;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .ticket {
+      border: 2px solid #0d9488;
+      border-radius: 10px;
+      padding: 12px 16px;
+      background: #f0fdfa;
+    }
+    .ticket-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #5eead4;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+    .ticket-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0f766e;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ticket-subtitle {
+      font-size: 0.75rem;
+      color: #115e59;
+      font-weight: 600;
+    }
+    .teams-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .team-badge {
+      background: white;
+      border: 1.5px solid #99f6e4;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #ccfbf1;
+    }
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    th {
+      background: #ccfbf1;
+      color: #0f766e;
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+    .icon-col {
+      width: 36px;
+      text-align: center;
+      font-size: 1.2rem;
+      background: #f8fafc;
+    }
+    .check-col {
+      width: 95px;
+      text-align: center;
+    }
+    .check-box-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #64748b;
+      border-radius: 4px;
+      margin: 0 auto;
+      background: white;
+    }
+    .french-text {
+      color: #64748b;
+      font-style: italic;
+      font-size: 0.74rem;
+      display: block;
+    }
+
+    /* Message box */
+    .message-box {
+      background: white;
+      border: 1.5px dashed #14b8a6;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+    }
+    .message-title {
+      font-weight: bold;
+      color: #0f766e;
+      margin-bottom: 3px;
+    }
+    .dot-line {
+      border-bottom: 1px dotted #99f6e4;
+      height: 14px;
+    }
+
+    /* Cut separator */
+    .cut-line {
+      border-top: 2px dashed #94a3b8;
+      text-align: center;
+      margin: 14px 0;
+      position: relative;
+    }
+    .cut-line span {
+      background: white;
+      color: #64748b;
+      font-size: 0.72rem;
+      font-weight: bold;
+      padding: 0 10px;
+      position: relative;
+      top: -9px;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page-container { box-shadow: none; padding: 0; max-width: 100%; }
+      .print-bar { display: none; }
+      .cut-line span { background: white; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='32' fill='%23d97706'/><circle cx='50' cy='50' r='16' fill='%23ffffff'/></svg>">
+</head>
+<body>
+
+  <div class="print-bar">
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Fitxa de Coavaluació (2 còpies per full A4)</button>
+  </div>
+
+  <div class="page-container">
+
+    <!-- CÒPIA 1 -->
+    <div class="ticket">
+      <div class="ticket-header">
+        <div>
+          <div class="ticket-title">🤝 FITXA D'OBSERVACIÓ DE RELLEUS</div>
+          <div class="ticket-subtitle">FICHE D'OBSERVATION DE RELAIS &bull; Sessió 3 d'Educació Física</div>
+        </div>
+        <div style="font-size: 0.75rem; background: #ccfbf1; padding: 3px 8px; border-radius: 12px; font-weight: bold; color: #0f766e;">
+          Cicle Superior (5è-6è)
+        </div>
+      </div>
+
+      <div class="teams-row">
+        <div class="team-badge">👀 Equip Observador: ______________________</div>
+        <div class="team-badge">🏃 Equip que Corre: ______________________</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th class="icon-col">Gest</th>
+            <th>Criteri d'Observació / <em>Critère d'observation</em></th>
+            <th class="check-col">⭐ ASSOLIT<br><span style="font-size: 0.65rem; font-weight: normal;">RÉUSSI</span></th>
+            <th class="check-col">🔄 EN PROCÉS<br><span style="font-size: 0.65rem; font-weight: normal;">EN COURS</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="icon-col">🗣️</td>
+            <td>
+              <strong>1. CRIT D'AVÍS:</strong> El corredor crida ben fort <strong>"HOP!"</strong> abans d'arribar?
+              <span class="french-text">Le coureur crie fort "HOP !" avant d'arriver ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+          <tr>
+            <td class="icon-col">🏃‍♂️</td>
+            <td>
+              <strong>2. SORTIDA EN CURSA:</strong> El receptor comença a córrer cap endavant abans de rebre el testimoni?
+              <span class="french-text">Le receveur commence à courir avant d'attraper le témoin ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+          <tr>
+            <td class="icon-col">✋</td>
+            <td>
+              <strong>3. MÀ ENRERE EN "V":</strong> Posa el braç enrere amb la mà ben oberta sense girar el cap?
+              <span class="french-text">Le bras est tendu en arrière avec la main ouverte sans tourner la tête ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+          <tr>
+            <td class="icon-col">🎽</td>
+            <td>
+              <strong>4. PAS NET:</strong> El testimoni passa ràpid d'una mà a l'altra sense caure a terra?
+              <span class="french-text">Le témoin passe facilement d'une main à l'autre sans tomber ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+          <tr>
+            <td class="icon-col">👏</td>
+            <td>
+              <strong>5. ÀNIMS I JOC NET:</strong> Els membres de l'equip s'animen amb respecte i alegria?
+              <span class="french-text">L'équipe s'encourage avec respect et positivité ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="message-box">
+        <div class="message-title">💬 Missatge positiu per a l'equip / <em>Mot d'encouragement</em>:</div>
+        <div class="dot-line">"Us felicitem especialment perquè ____________________________________________________________________"</div>
+      </div>
+    </div>
+
+    <!-- LÍNIA DE TALL -->
+    <div class="cut-line">
+      <span>✂️ TALLAR PER AQUÍ / COUPER ICI (2 FITXES PER FULL A4) ✂️</span>
+    </div>
+
+    <!-- CÒPIA 2 -->
+    <div class="ticket">
+      <div class="ticket-header">
+        <div>
+          <div class="ticket-title">🤝 FITXA D'OBSERVACIÓ DE RELLEUS</div>
+          <div class="ticket-subtitle">FICHE D'OBSERVATION DE RELAIS &bull; Sessió 3 d'Educació Física</div>
+        </div>
+        <div style="font-size: 0.75rem; background: #ccfbf1; padding: 3px 8px; border-radius: 12px; font-weight: bold; color: #0f766e;">
+          Cicle Superior (5è-6è)
+        </div>
+      </div>
+
+      <div class="teams-row">
+        <div class="team-badge">👀 Equip Observador: ______________________</div>
+        <div class="team-badge">🏃 Equip que Corre: ______________________</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th class="icon-col">Gest</th>
+            <th>Criteri d'Observació / <em>Critère d'observation</em></th>
+            <th class="check-col">⭐ ASSOLIT<br><span style="font-size: 0.65rem; font-weight: normal;">RÉUSSI</span></th>
+            <th class="check-col">🔄 EN PROCÉS<br><span style="font-size: 0.65rem; font-weight: normal;">EN COURS</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="icon-col">🗣️</td>
+            <td>
+              <strong>1. CRIT D'AVÍS:</strong> El corredor crida ben fort <strong>"HOP!"</strong> abans d'arribar?
+              <span class="french-text">Le coureur crie fort "HOP !" avant d'arriver ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+          <tr>
+            <td class="icon-col">🏃‍♂️</td>
+            <td>
+              <strong>2. SORTIDA EN CURSA:</strong> El receptor comença a córrer cap endavant abans de rebre el testimoni?
+              <span class="french-text">Le receveur commence à courir avant d'attraper le témoin ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+          <tr>
+            <td class="icon-col">✋</td>
+            <td>
+              <strong>3. MÀ ENRERE EN "V":</strong> Posa el braç enrere amb la mà ben oberta sense girar el cap?
+              <span class="french-text">Le bras est tendu en arrière avec la main ouverte sans tourner la tête ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+          <tr>
+            <td class="icon-col">🎽</td>
+            <td>
+              <strong>4. PAS NET:</strong> El testimoni passa ràpid d'una mà a l'altra sense caure a terra?
+              <span class="french-text">Le témoin passe facilement d'une main à l'autre sans tomber ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+          <tr>
+            <td class="icon-col">👏</td>
+            <td>
+              <strong>5. ÀNIMS I JOC NET:</strong> Els membres de l'equip s'animen amb respecte i alegria?
+              <span class="french-text">L'équipe s'encourage avec respect et positivité ?</span>
+            </td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+            <td class="check-col"><div class="check-box-inner"></div></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="message-box">
+        <div class="message-title">💬 Missatge positiu per a l'equip / <em>Mot d'encouragement</em>:</div>
+        <div class="dot-line">"Us felicitem especialment perquè ____________________________________________________________________"</div>
+      </div>
+    </div>
+
+  </div>
+
+<style>
+  .app-footer { margin-top: 1.5rem; padding: 0.6rem 1rem; background-color: #f8f9fa; border-top: 1px solid #e9ecef; text-align: center; font-family: system-ui, -apple-system, sans-serif; font-size: 0.78rem; color: #6c757d; }
+  .app-footer .footer-content { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; }
+  .app-footer .cc-badge { height: 22px; width: auto; display: block; }
+  .app-footer .footer-legal { line-height: 1.4; }
+  .app-footer a { color: #495057; text-decoration: none; font-weight: 500; }
+  .app-footer a:hover { text-decoration: underline; color: #0d6efd; }
+  @media print { .app-footer { display: none !important; } }
+</style>
+<footer class="app-footer">
+  <div class="footer-content">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" class="cc-badge" width="70" height="24" />
+    </a>
+    <span class="footer-legal">
+      © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
+

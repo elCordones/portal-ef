@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infografia: Descobreix el Korfbal — Esport Coeducatiu 360°</title>
+  <!-- Favicon minimalista SVG: Cistella de Korfbal (Korf) i pilota -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Cline x1='32' y1='26' x2='32' y2='58' stroke='%2394a3b8' stroke-width='5' stroke-linecap='round'/%3E%3Crect x='14' y='18' width='36' height='12' rx='5' fill='%23f59e0b' stroke='%23fef3c7' stroke-width='2'/%3E%3Cpath d='M18 24 H46 M22 18 V30 M32 18 V30 M42 18 V30' stroke='%23b45309' stroke-width='1.5'/%3E%3Ccircle cx='46' cy='11' r='7' fill='%2338bdf8' stroke='%23ffffff' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #f1f5f9;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f8fafc;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --brand-navy: #0f172a;
+      --brand-blue: #0284c7;
+      --brand-blue-light: #e0f2fe;
+      --brand-amber: #d97706;
+      --brand-amber-light: #fef3c7;
+      --brand-green: #15803d;
+      --brand-green-light: #dcfce7;
+      --brand-red: #b91c1c;
+      --brand-red-light: #fee2e2;
+      --brand-teal: #0f766e;
+      --brand-teal-light: #ccfbf1;
+      --border-strong: #cbd5e1;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 6mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 12px 12px 0;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    /* Barra d'eines superior (no s'imprimeix) */
+    .toolbar {
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand-navy);
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+    }
+
+    .toolbar-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .toolbar-badge {
+      background: #f59e0b;
+      color: #0f172a;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-tool {
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+
+    .btn-tool:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-tool:focus-visible {
+      outline: 3px solid #38bdf8;
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+    }
+
+    .btn-primary:hover {
+      background: #0369a1;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Contenidor del Pòster Infogràfic */
+    .poster {
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto 16px;
+      background: var(--bg-surface);
+      border: 3px solid var(--brand-navy);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Mode Pissarra Digital (PDI) */
+    body.pdi-mode .poster {
+      max-width: 1240px;
+    }
+
+    /* 1. CAPÇALERA HERO */
+    .hero {
+      background: var(--brand-navy);
+      color: #ffffff;
+      padding: 16px 22px;
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+      border-bottom: 4px solid #f59e0b;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-self: flex-start;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid #38bdf8;
+      color: #7dd3fc;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 2.05rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: #ffffff;
+    }
+
+    .hero h1 span {
+      color: #f59e0b;
+    }
+
+    .hero-sub {
+      margin: 6px 0 0;
+      font-size: 0.86rem;
+      color: #e2e8f0;
+      line-height: 1.4;
+      font-weight: 500;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .hero-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .fact-pill {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .fact-pill-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #fbbf24;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .fact-pill-text {
+      font-size: 0.75rem;
+      color: #f8fafc;
+      line-height: 1.35;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    /* Cos de la infografia */
+    .poster-body {
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.2;
+    }
+
+    .section-num {
+      background: var(--brand-navy);
+      color: #f59e0b;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .section-subtitle {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      background: var(--brand-blue-light);
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* 2. SECCIÓ PISTA I EQUIPS (DIAGRAMA SVG + CLAUS ESPACIALS) */
+    .court-container {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 12px;
+      background: var(--bg-subtle);
+      border: 2px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      align-items: stretch;
+    }
+
+    .court-svg-wrap {
+      background: #ffffff;
+      border: 1.5px solid #94a3b8;
+      border-radius: 8px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .court-svg-wrap svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .court-legend-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .court-key-item {
+      flex: 1;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-left: 4px solid var(--brand-blue);
+      border-radius: 6px;
+      padding: 8px 11px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .court-key-item.amber {
+      border-left-color: #f59e0b;
+    }
+
+    .court-key-item.teal {
+      border-left-color: #0d9488;
+    }
+
+    .court-key-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .court-key-desc {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      line-height: 1.36;
+      margin: 0;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    /* 3. LES 6 NORMES D'OR (GRAELLA 3x2) */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .rule-card {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+
+    .rule-card.rule-stop {
+      border-top: 5px solid #dc2626;
+      background: #fffafa;
+    }
+
+    .rule-card.rule-mix {
+      border-top: 5px solid #0284c7;
+      background: #f8fdff;
+    }
+
+    .rule-card.rule-360 {
+      border-top: 5px solid #d97706;
+      background: #fffdf7;
+    }
+
+    .rule-card.rule-def {
+      border-top: 5px solid #7c3aed;
+      background: #fcfaff;
+    }
+
+    .rule-card.rule-clean {
+      border-top: 5px solid #16a34a;
+      background: #f7fef9;
+    }
+
+    .rule-card.rule-zones {
+      border-top: 5px solid #0f766e;
+      background: #f5fdfa;
+    }
+
+    .rule-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .rule-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-red { background: #fee2e2; color: #991b1b; }
+    .badge-blue { background: #e0f2fe; color: #075985; }
+    .badge-amber { background: #fef3c7; color: #92400e; }
+    .badge-purple { background: #ede9fe; color: #5b21b6; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-teal { background: #ccfbf1; color: #115e59; }
+
+    .rule-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .rule-title {
+      margin: 0;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      line-height: 1.22;
+    }
+
+    .rule-desc {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.38;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .rule-tip {
+      margin-top: auto;
+      padding-top: 6px;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 0.71rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* 4. BLOC INFERIOR: ZOOM REGLA DEL DEFENSAT (3) + TÀCTICA D'EQUIP (4) */
+    .bottom-split {
+      display: grid;
+      grid-template-columns: 1.08fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .defended-box {
+      background: #f8fafc;
+      border: 2px solid #94a3b8;
+      border-radius: var(--radius-md);
+      padding: 11px 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .defended-intro {
+      margin: 0 0 6px;
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    .defended-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .compare-card {
+      border-radius: 8px;
+      padding: 8px 9px;
+      border: 2px solid;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .compare-card.legal {
+      background: #f0fdf4;
+      border-color: #22c55e;
+    }
+
+    .compare-card.illegal {
+      background: #fef2f2;
+      border-color: #ef4444;
+    }
+
+    .compare-header {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1.15;
+    }
+
+    .compare-card.legal .compare-header { color: #15803d; }
+    .compare-card.illegal .compare-header { color: #b91c1c; }
+
+    .compare-list {
+      margin: 6px 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .compare-list li {
+      position: relative;
+      padding-left: 12px;
+      text-align: left;
+    }
+
+    .compare-card.legal .compare-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #16a34a;
+      font-weight: 900;
+    }
+
+    .compare-card.illegal .compare-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #dc2626;
+      font-weight: 900;
+    }
+
+    /* Secció 4: Bloc Tàctic i Repte SdA */
+    .tactics-box {
+      background: #eff6ff;
+      border: 2px solid #60a5fa;
+      border-radius: var(--radius-md);
+      padding: 11px 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .tactic-steps {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 7px;
+      flex: 1;
+    }
+
+    .tactic-row {
+      background: #ffffff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: 7px;
+      padding: 7px 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      flex: 1;
+    }
+
+    .tactic-icon {
+      font-size: 1.1rem;
+      background: #dbeafe;
+      border: 1px solid #93c5fd;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .tactic-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tactic-title {
+      color: #1e3a8a;
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 2px;
+    }
+
+    .tactic-desc {
+      margin: 0;
+      font-size: 0.73rem;
+      line-height: 1.34;
+      color: var(--text-secondary);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .sda-banner {
+      background: #fef3c7;
+      border: 1.5px solid #f59e0b;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.72rem;
+      color: #78350f;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* Peu de pàgina de llicenciament resumit i contingut (apps-escolars) */
+    .app-footer {
+      margin-top: auto;
+      padding: 0.6rem 1rem;
+      background-color: #f8f9fa;
+      border-top: 1px solid #e9ecef;
+      text-align: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.78rem;
+      color: #6c757d;
+    }
+
+    .app-footer .footer-content {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .app-footer .cc-badge {
+      height: 22px;
+      width: auto;
+      display: block;
+    }
+
+    .app-footer .footer-legal {
+      line-height: 1.4;
+    }
+
+    .app-footer a {
+      color: #495057;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .app-footer a:hover {
+      text-decoration: underline;
+      color: #0d6efd;
+    }
+
+    /* Adaptació mòbil / tauletes */
+    @media (max-width: 780px) {
+      .hero, .court-container, .bottom-split {
+        grid-template-columns: 1fr;
+      }
+      .rules-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .section-subtitle {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .rules-grid, .hero-facts, .defended-compare {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Optimització per a Impressió en 1 sol full A4 / A3 */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .toolbar {
+        display: none !important;
+      }
+      .poster {
+        max-width: 100%;
+        margin: 0;
+        border-width: 2px;
+        box-shadow: none;
+      }
+      .hero {
+        padding: 10px 16px;
+      }
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+      .poster-body {
+        padding: 10px 14px;
+        gap: 10px;
+      }
+      .rule-card {
+        padding: 7px 9px;
+      }
+      .app-footer {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.68rem;
+        background: transparent;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra d'accions per al docent i alumnat -->
+  <header class="toolbar" role="region" aria-label="Opcions de visualització i impressió">
+    <div class="toolbar-info">
+      <span class="toolbar-badge">SdA Educació Física · Cicle Superior</span>
+      <span>Infografia Oficial per a l'Alumnat: <strong>Descobreix el Korfbal</strong></span>
+    </div>
+    <div class="toolbar-actions">
+      <button type="button" class="btn-tool btn-secondary" id="btnPdi" onclick="togglePdiMode()">
+        🖥️ Mode Pissarra Digital (PDI)
+      </button>
+      <button type="button" class="btn-tool btn-primary" onclick="window.print()">
+        🖨️ Imprimir Infografia / Pòster (A4 / A3)
+      </button>
+    </div>
+  </header>
+
+  <!-- PÒSTER INFOGRÀFIC PRINCIPAL -->
+  <main class="poster">
+    <!-- 1. HERO: QUÈ ÉS EL KORFBAL? -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-main">
+        <div class="hero-tag">🏀 Esport Coeducatiu de Cooperació i Oposició</div>
+        <h1 id="hero-title">EL <span>KORFBAL</span>: TOTHOM SUMA!</h1>
+        <p class="hero-sub">
+          L'únic esport d'equip <strong>100% mixt per reglament del món</strong>. Aquí ningú pot avançar botant la pilota tot sol: per progressar i encistellar, nois i noies hem de passar, desmarcar-nos i col·laborar en equip!
+        </p>
+      </div>
+      <div class="hero-facts">
+        <div class="fact-pill">
+          <div class="fact-pill-title">🇳🇱 Origen Històric (1902)</div>
+          <div class="fact-pill-text">Creat a Amsterdam pel mestre <strong>Nico Broekhuysen</strong>. La paraula <em>"Korf"</em> significa cistella en neerlandès!</div>
+        </div>
+        <div class="fact-pill">
+          <div class="fact-pill-title">🏆 Catalunya al Top Mundial</div>
+          <div class="fact-pill-text">La <strong>Selecció Catalana</strong> hi competeix oficialment i és una de les grans potències d'Europa i del món!</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="poster-body">
+
+      <!-- SECCIÓ 1: LA PISTA, LES 2 ZONES I ELS EQUIPS PARITARIS -->
+      <section aria-labelledby="sec-court">
+        <div class="section-header">
+          <h2 class="section-title" id="sec-court">
+            <span class="section-num">1</span> Com és la pista i com ens col·loquem?
+          </h2>
+          <span class="section-subtitle">Pista dividida en 2 Zones · Cistella a 360° sense tauler</span>
+        </div>
+
+        <div class="court-container">
+          <!-- Diagrama vectorial SVG de la pista de Korfbal -->
+          <div class="court-svg-wrap">
+            <svg viewBox="0 0 540 236" role="img" aria-label="Esquema d'una pista de Korfbal dividida en Zona 1 i Zona 2 amb cistelles a 360 graus i equips mixtos de 2 noies i 2 nois per zona">
+              <!-- Fons de pista -->
+              <rect x="10" y="10" width="520" height="216" rx="8" fill="#f8fafc" stroke="#0f172a" stroke-width="3"/>
+              <!-- Zona Esquerra (Zona 1) -->
+              <rect x="12" y="12" width="258" height="212" fill="#e0f2fe" opacity="0.55"/>
+              <!-- Zona Dreta (Zona 2) -->
+              <rect x="270" y="12" width="258" height="212" fill="#fef3c7" opacity="0.55"/>
+              <!-- Línia central divisòria de zones -->
+              <line x1="270" y1="10" x2="270" y2="226" stroke="#0f172a" stroke-width="3" stroke-dasharray="7,5"/>
+
+              <!-- Etiquetes de Zona -->
+              <rect x="75" y="16" width="130" height="20" rx="4" fill="#0284c7"/>
+              <text x="140" y="30" text-anchor="middle" fill="#ffffff" font-family="Outfit, sans-serif" font-size="11" font-weight="800">ZONA 1 (4 vs 4 MIXT)</text>
+
+              <rect x="335" y="16" width="130" height="20" rx="4" fill="#d97706"/>
+              <text x="400" y="30" text-anchor="middle" fill="#ffffff" font-family="Outfit, sans-serif" font-size="11" font-weight="800">ZONA 2 (4 vs 4 MIXT)</text>
+
+              <!-- Àrea 360° i Korf Esquerre (situat a 1/6 de la línia de fons = x:96) -->
+              <circle cx="96" cy="116" r="38" fill="#fde68a" fill-opacity="0.45" stroke="#d97706" stroke-width="1.8" stroke-dasharray="4,3"/>
+              <text x="96" y="72" text-anchor="middle" fill="#92400e" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="800">TIR 360°</text>
+              <circle cx="96" cy="116" r="10" fill="#f59e0b" stroke="#0f172a" stroke-width="2.5"/>
+              <circle cx="96" cy="116" r="3.5" fill="#0f172a"/>
+              <text x="96" y="138" text-anchor="middle" fill="#0f172a" font-family="Outfit, sans-serif" font-size="9" font-weight="800">KORF (3m)</text>
+
+              <!-- Àrea 360° i Korf Dret (situat a 1/6 del fons dret = x:444) -->
+              <circle cx="444" cy="116" r="38" fill="#bae6fd" fill-opacity="0.55" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4,3"/>
+              <text x="444" y="72" text-anchor="middle" fill="#075985" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="800">TIR 360°</text>
+              <circle cx="444" cy="116" r="10" fill="#f59e0b" stroke="#0f172a" stroke-width="2.5"/>
+              <circle cx="444" cy="116" r="3.5" fill="#0f172a"/>
+              <text x="444" y="138" text-anchor="middle" fill="#0f172a" font-family="Outfit, sans-serif" font-size="9" font-weight="800">KORF (3m)</text>
+
+              <!-- Jugadors Zona 1 (2 Noies + 2 Nois Equip Taronja vs Equip Blau) -->
+              <circle cx="38" cy="88" r="9" fill="#ea580c" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="38" y="91.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♀</text>
+              <circle cx="172" cy="70" r="9" fill="#ea580c" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="172" y="73.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♂</text>
+              <circle cx="195" cy="148" r="9" fill="#ea580c" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="195" y="151.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♀</text>
+              <circle cx="112" cy="178" r="9" fill="#ea580c" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="112" y="181.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♂</text>
+
+              <!-- Defensors Blaus a Zona 1 -->
+              <circle cx="54" cy="98" r="9" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="54" y="101.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♀</text>
+              <circle cx="152" cy="80" r="9" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="152" y="83.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♂</text>
+              <circle cx="174" cy="140" r="9" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="174" y="143.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♀</text>
+              <circle cx="132" cy="166" r="9" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="132" y="169.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♂</text>
+
+              <!-- Jugadors Zona 2 (Atacants Blaus vs Defensors Taronges) -->
+              <circle cx="502" cy="88" r="9" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="502" y="91.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♂</text>
+              <circle cx="368" cy="70" r="9" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="368" y="73.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♀</text>
+              <circle cx="345" cy="148" r="9" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="345" y="151.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♂</text>
+              <circle cx="428" cy="178" r="9" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="428" y="181.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♀</text>
+
+              <circle cx="486" cy="98" r="9" fill="#ea580c" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="486" y="101.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♂</text>
+              <circle cx="388" cy="80" r="9" fill="#ea580c" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="388" y="83.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♀</text>
+              <circle cx="366" cy="140" r="9" fill="#ea580c" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="366" y="143.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♂</text>
+              <circle cx="408" cy="166" r="9" fill="#ea580c" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="408" y="169.5" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800">♀</text>
+
+              <!-- Banderola central de canvi cada 2 cistelles -->
+              <rect x="188" y="198" width="164" height="22" rx="11" fill="#0f172a"/>
+              <text x="270" y="212.5" text-anchor="middle" fill="#fbbf24" font-family="Outfit, sans-serif" font-size="10" font-weight="800">🔄 CANVI DE ZONA CADA 2 PUNTS</text>
+            </svg>
+          </div>
+
+          <!-- Llegenda explicativa de la pista -->
+          <div class="court-legend-list">
+            <div class="court-key-item">
+              <div class="court-key-title">👫 Paritat Real a cada Quadre (2♀ + 2♂)</div>
+              <p class="court-key-desc">En cada meitat del camp hi juguen <strong>2 noies i 2 nois</strong> de cada equip (4 contra 4). A l'escola formem equips cooperatius de 5 amb rotació activa!</p>
+            </div>
+            <div class="court-key-item amber">
+              <div class="court-key-title">🎯 El Korf (Cistella a 3,0 m sense tauler)</div>
+              <p class="court-key-desc">La cistella se situa dins del camp (no a la línia de fons). Això permet passar, assistir i tirar des de <strong>davant, els costats i darrere del pal (360°)</strong>.</p>
+            </div>
+            <div class="court-key-item teal">
+              <div class="court-key-title">🔄 Canvi de Rol cada 2 Cistelles</div>
+              <p class="court-key-desc">Cada vegada que el marcador suma <strong>2 punts</strong> (ex: 1-1 o 2-0), els jugadors d'atac i de defensa <strong>intercanvien de zona i de funció</strong>!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓ 2: LES 6 NORMES BÀSIQUES PER JUGAR-HI -->
+      <section aria-labelledby="sec-rules">
+        <div class="section-header">
+          <h2 class="section-title" id="sec-rules">
+            <span class="section-num">2</span> Les 6 Normes d'Or per Jugar al Korfbal
+          </h2>
+          <span class="section-subtitle">Fàcils d'entendre · Pensades per cooperar</span>
+        </div>
+
+        <div class="rules-grid">
+          <!-- Norma 1 -->
+          <article class="rule-card rule-stop">
+            <div class="rule-top">
+              <span class="rule-badge badge-red">Norma #1 · Mobilitat</span>
+              <span class="rule-icon" aria-hidden="true">🚫🏃</span>
+            </div>
+            <h3 class="rule-title">Prohibit Botar i Córrer amb Pilota</h3>
+            <p class="rule-desc">
+              Quan tens la pilota a les mans <strong>no pots caminar, ni córrer, ni botar-la</strong>. Només pots girar sobre un peu (pivotar) per buscar una línia de passada.
+            </p>
+            <div class="rule-tip">💡 Clau: Passa la pilota i corre a l'espai lliure!</div>
+          </article>
+
+          <!-- Norma 2 -->
+          <article class="rule-card rule-mix">
+            <div class="rule-top">
+              <span class="rule-badge badge-blue">Norma #2 · Coeducació</span>
+              <span class="rule-icon" aria-hidden="true">👫⚖️</span>
+            </div>
+            <h3 class="rule-title">Defensa del Mateix Gènere (1x1)</h3>
+            <p class="rule-desc">
+              Tots juguem junts i ens passem la pilota entre tots, però a l'hora de defensar sempre es fa en igualtat: <strong>noi defensa a noi</strong> i <strong>noia defensa a noia</strong>.
+            </p>
+            <div class="rule-tip">💡 Clau: Igualtat total d'oportunitats per tirar!</div>
+          </article>
+
+          <!-- Norma 3 -->
+          <article class="rule-card rule-def">
+            <div class="rule-top">
+              <span class="rule-badge badge-purple">Norma #3 · Tàctica</span>
+              <span class="rule-icon" aria-hidden="true">✋🛡️</span>
+            </div>
+            <h3 class="rule-title">La Regla del "Defensat"</h3>
+            <p class="rule-desc">
+              <strong>Està prohibit tirar a cistella</strong> si el teu defensor o defensora està a menys d'un braç, amb el braç amunt i entre tu i el pal. Si tires, és falta d'atac!
+            </p>
+            <div class="rule-tip">💡 Clau: Si estàs defensat/da, pensa i passa!</div>
+          </article>
+
+          <!-- Norma 4 -->
+          <article class="rule-card rule-360">
+            <div class="rule-top">
+              <span class="rule-badge badge-amber">Norma #4 · Punteria</span>
+              <span class="rule-icon" aria-hidden="true">🎯🔄</span>
+            </div>
+            <h3 class="rule-title">Tir en 360° i Arc Parabòlic</h3>
+            <p class="rule-desc">
+              Com que la cistella no té tauler, el llançament ha de descriure un <strong>arc alt i suau</strong>. Cada cistella val <strong>1 punt</strong> des de qualsevol angle al voltant del pal.
+            </p>
+            <div class="rule-tip">💡 Clau: Flexiona cames i estén els braços amunt!</div>
+          </article>
+
+          <!-- Norma 5 -->
+          <article class="rule-card rule-clean">
+            <div class="rule-top">
+              <span class="rule-badge badge-green">Norma #5 · Joc Net</span>
+              <span class="rule-icon" aria-hidden="true">🤝✨</span>
+            </div>
+            <h3 class="rule-title">Zero Contacte i Prohibit Robar</h3>
+            <p class="rule-desc">
+              No es pot empènyer, bloquejar el pas ni <strong>arrencar o colpejar la pilota de les mans</strong> d'un rival. Només es pot interceptar quan la pilota va per l'aire!
+            </p>
+            <div class="rule-tip">💡 Clau: Esport d'agilitat i enginy, no de força!</div>
+          </article>
+
+          <!-- Norma 6 -->
+          <article class="rule-card rule-zones">
+            <div class="rule-top">
+              <span class="rule-badge badge-teal">Norma #6 · Espai</span>
+              <span class="rule-icon" aria-hidden="true">🗺️2️⃣</span>
+            </div>
+            <h3 class="rule-title">Respecta la teva Zona de Joc</h3>
+            <p class="rule-desc">
+              Cada jugador actua dins de la seva meitat de pista (Atac o Defensa) sense creuar la línia central fins que toca el <strong>canvi de zona cada 2 cistelles</strong>.
+            </p>
+            <div class="rule-tip">💡 Clau: Tothom aprèn a atacar i a defensar!</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- BLOC INFERIOR: SECCIÓ 3 (DEFENSAT vs TIR LEGAL) + SECCIÓ 4 (ELS 3 SECRETS TÀCTICS) -->
+      <div class="bottom-split">
+        <!-- Secció 3: Zoom visual de la Regla del Defensat -->
+        <section class="defended-box" aria-labelledby="sec-defended">
+          <div>
+            <div class="section-header" style="margin-bottom:4px;">
+              <h2 class="section-title" id="sec-defended" style="font-size:0.94rem;">
+                <span class="section-num">3</span> Puc tirar o estic "Defensat/da"?
+              </h2>
+            </div>
+            <p class="defended-intro">
+              Perquè l'àrbitre/a xiuli <strong>"DEFENSAT"</strong>, el defensor ha de complir aquestes <strong>3 condicions alhora</strong>:
+            </p>
+          </div>
+
+          <div class="defended-compare">
+            <!-- TIR LEGAL -->
+            <div class="compare-card legal">
+              <div>
+                <div class="compare-header">🟢 TIR LEGAL (Pots llançar!)</div>
+                <svg viewBox="0 0 210 68" style="width:100%; height:auto; background:#ffffff; border-radius:6px; border:1px solid #bbf7d0;" role="img" aria-label="Tir legal amb defensor lluny">
+                  <!-- Korf -->
+                  <line x1="185" y1="15" x2="185" y2="62" stroke="#475569" stroke-width="3"/>
+                  <rect x="172" y="18" width="16" height="9" rx="3" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
+                  <!-- Atacant amb pilota -->
+                  <circle cx="42" cy="40" r="10" fill="#ea580c"/>
+                  <text x="42" y="43" text-anchor="middle" fill="#fff" font-size="8" font-weight="800">AT</text>
+                  <circle cx="54" cy="28" r="5" fill="#38bdf8" stroke="#0f172a" stroke-width="1.2"/>
+                  <!-- Trajectòria de tir -->
+                  <path d="M 58 24 Q 118 -4 176 18" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="4,3"/>
+                  <!-- Defensor lluny (> 1 braç) -->
+                  <circle cx="115" cy="46" r="10" fill="#0284c7"/>
+                  <text x="115" y="49" text-anchor="middle" fill="#fff" font-size="8" font-weight="800">DF</text>
+                  <text x="80" y="61" text-anchor="middle" fill="#15803d" font-size="8.5" font-weight="800">← Més d'1 braç →</text>
+                </svg>
+              </div>
+              <ul class="compare-list">
+                <li>Defensor a <strong>més d'1 braç</strong> de distància.</li>
+                <li>O amb els braços abaixats / darrere teu.</li>
+                <li><strong>Acció:</strong> Apunta al <em>korf</em> i llança!</li>
+              </ul>
+            </div>
+
+            <!-- DEFENSAT -->
+            <div class="compare-card illegal">
+              <div>
+                <div class="compare-header">🔴 DEFENSAT (Prohibit tirar!)</div>
+                <svg viewBox="0 0 210 68" style="width:100%; height:auto; background:#ffffff; border-radius:6px; border:1px solid #fecaca;" role="img" aria-label="Atacant defensat de prop amb braç amunt">
+                  <!-- Korf -->
+                  <line x1="185" y1="15" x2="185" y2="62" stroke="#475569" stroke-width="3"/>
+                  <rect x="172" y="18" width="16" height="9" rx="3" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
+                  <!-- Atacant amb pilota -->
+                  <circle cx="52" cy="42" r="10" fill="#ea580c"/>
+                  <text x="52" y="45" text-anchor="middle" fill="#fff" font-size="8" font-weight="800">AT</text>
+                  <circle cx="63" cy="32" r="5" fill="#38bdf8" stroke="#0f172a" stroke-width="1.2"/>
+                  <!-- Defensor enganxat (< 1 braç) amb braç amunt -->
+                  <circle cx="82" cy="40" r="10" fill="#0284c7"/>
+                  <text x="82" y="43" text-anchor="middle" fill="#fff" font-size="8" font-weight="800">DF</text>
+                  <!-- Braç amunt del defensor -->
+                  <line x1="76" y1="32" x2="70" y2="14" stroke="#0284c7" stroke-width="3.5" stroke-linecap="round"/>
+                  <!-- Creu vermella de bloqueig -->
+                  <text x="128" y="36" text-anchor="middle" fill="#dc2626" font-size="10.5" font-weight="900">✖ NO TIRAR</text>
+                  <text x="72" y="62" text-anchor="middle" fill="#b91c1c" font-size="8.5" font-weight="800">≤ 1 braç + mà amunt</text>
+                </svg>
+              </div>
+              <ul class="compare-list">
+                <li>A <strong>menys d'1 braç</strong> de distància.</li>
+                <li>Cara a cara i amb el <strong>braç aixecat</strong>.</li>
+                <li>Entre tu i el pal &rarr; <strong>Passa a un company!</strong></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Secció 4: Els 3 Secrets Tàctics i l'Àlbum de Cartes -->
+        <section class="tactics-box" aria-labelledby="sec-tactics">
+          <div class="section-header" style="margin-bottom:0;">
+            <h2 class="section-title" id="sec-tactics" style="font-size:0.94rem;">
+              <span class="section-num">4</span> Com es guanya? Els 3 Secrets Tàctics
+            </h2>
+          </div>
+
+          <div class="tactic-steps">
+            <div class="tactic-row">
+              <div class="tactic-icon" aria-hidden="true">⚡</div>
+              <div class="tactic-content">
+                <strong class="tactic-title">1. Passa i Talla a l'Espai ("Give &amp; Go")</strong>
+                <p class="tactic-desc">
+                  Tot just passar la pilota a un company o companya, arrenca a córrer cap a un espai lliure mostrant les mans per rebre sol i sense marcatge.
+                </p>
+              </div>
+            </div>
+
+            <div class="tactic-row">
+              <div class="tactic-icon" aria-hidden="true">🗼</div>
+              <div class="tactic-content">
+                <strong class="tactic-title">2. El Rol del "Poste" (Pivot sota el Korf)</strong>
+                <p class="tactic-desc">
+                  Un jugador o jugadora es col·loca prop del pal per oferir línies de passada, capturar rebots i assistir als companys que entren en carrera.
+                </p>
+              </div>
+            </div>
+
+            <div class="tactic-row">
+              <div class="tactic-icon" aria-hidden="true">🃏</div>
+              <div class="tactic-content">
+                <strong class="tactic-title">3. Rols Actius i Àlbum de Cartes Tàctiques</strong>
+                <p class="tactic-desc">
+                  Tothom exerceix rols d'equip (Capità/na, Àrbitre/a de Joc Net i Custodi de l'Àlbum) per desbloquejar les <strong>8 Cartes Tàctiques</strong> del Torneig Final!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sda-banner">
+            🌟 <strong>Lema de Pista (5è i 6è):</strong> "Passa a tothom, desmarca't sense parar i respecta l'àrbitre/a!"
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Peu de pàgina obligatori resumit i contingut (apps-escolars) -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" class="cc-badge" width="70" height="24" />
+      </a>
+      <span class="footer-legal">
+        © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    function togglePdiMode() {
+      const isPdi = document.body.classList.toggle('pdi-mode');
+      const btn = document.getElementById('btnPdi');
+      if (isPdi) {
+        btn.textContent = '📄 Vista Pòster Estàndard (A4)';
+        if (document.documentElement.requestFullscreen && !document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        }
+      } else {
+        btn.textContent = '🖥️ Mode Pissarra Digital (PDI)';
+        if (document.fullscreenElement && document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+    }
+  </script>
+</body>
+</html>

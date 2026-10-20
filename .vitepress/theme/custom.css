@@ -1,0 +1,238 @@
+:root {
+  --vp-c-brand-1: #1e3a8a;
+  --vp-c-brand-2: #2563eb;
+  --vp-c-brand-3: #3b82f6;
+  --vp-c-brand-soft: #eff6ff;
+}
+
+.dark {
+  --vp-c-brand-1: #60a5fa;
+  --vp-c-brand-2: #3b82f6;
+  --vp-c-brand-3: #2563eb;
+  --vp-c-brand-soft: rgba(59, 130, 246, 0.16);
+}
+
+/* Responsive Tactical Court Diagram for Mobile & Desktop */
+.court-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  background: #f8fafc;
+  border: 2px dashed #16a34a;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin: 1rem 0;
+}
+
+.dark .court-grid {
+  background: #1e293b;
+  border-color: #22c55e;
+}
+
+.court-zone {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 5.5rem;
+  color: #0f172a;
+}
+
+.dark .court-zone {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.court-zone strong {
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.court-zone small {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: #475569;
+}
+
+.dark .court-zone small {
+  color: #cbd5e1;
+}
+
+.court-zone.ball {
+  background: #eff6ff;
+  border-color: #3b82f6;
+}
+
+.dark .court-zone.ball {
+  background: rgba(37, 99, 235, 0.18);
+  border-color: #60a5fa;
+}
+
+.court-zone.free {
+  background: #f0fdf4;
+  border-color: #22c55e;
+}
+
+.dark .court-zone.free {
+  background: rgba(22, 163, 74, 0.18);
+  border-color: #4ade80;
+}
+
+.court-zone.defense {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+.dark .court-zone.defense {
+  background: rgba(220, 38, 38, 0.18);
+  border-color: #f87171;
+}
+
+/* Badges for PE Sessions */
+.pe-badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-right: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.pe-badge-time { background: #dbeafe; color: #1e40af; }
+.pe-badge-dua { background: #f3e8ff; color: #6b21a8; }
+.pe-badge-curric { background: #fee2e2; color: #991b1b; }
+.pe-badge-team { background: #dcfce7; color: #166534; }
+
+.dark .pe-badge-time { background: rgba(59, 130, 246, 0.25); color: #93c5fd; }
+.dark .pe-badge-dua { background: rgba(168, 85, 247, 0.25); color: #d8b4fe; }
+.dark .pe-badge-curric { background: rgba(239, 68, 68, 0.25); color: #fca5a5; }
+.dark .pe-badge-team { background: rgba(34, 197, 94, 0.25); color: #86efac; }
+
+/* Resource Cards Grid for Printables, Web Apps & iDoceo */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.resource-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0.5rem;
+  text-decoration: none !important;
+  color: var(--vp-c-text-1) !important;
+  transition: border-color 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
+}
+
+.resource-card:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  transform: translateY(-2px);
+}
+
+.resource-icon {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.resource-card strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--vp-c-brand-1);
+  margin-bottom: 0.15rem;
+}
+
+.resource-card small {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--vp-c-text-2);
+}
+
+/* Responsive tables with touch scroll */
+.vp-doc table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Teacher Cue Container */
+.docent-cue {
+  background-color: #fefce8;
+  border-left: 4px solid #eab308;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  margin: 0.85rem 0;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* Mandatory Compact Licensing Footer (apps-escolars & tecnopedagog skills) */
+.app-footer {
+  margin-top: auto;
+  padding: 0.6rem 1rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.78rem;
+  color: #6c757d;
+  position: relative;
+  z-index: 10;
+}
+
+.dark .app-footer {
+  background-color: #161618;
+  border-top-color: #2e2e32;
+  color: #9ca3af;
+}
+
+.app-footer .footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.app-footer .cc-badge {
+  height: 22px;
+  width: auto;
+  display: block;
+}
+
+.app-footer .footer-legal {
+  line-height: 1.4;
+}
+
+.app-footer a {
+  color: #495057;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dark .app-footer a {
+  color: #d1d5db;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+  color: #0d6efd;
+}

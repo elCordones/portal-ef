@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia Docent SdA Korfbal Coeducatiu - Cicle Superior</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #dbeafe;
+      --secondary: #0d9488;
+      --secondary-light: #ccfbf1;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --part-ini: #e0f2fe;
+      --part-pri: #dcfce7;
+      --part-fin: #fef9c3;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Action bar */
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .action-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-bar button:hover {
+      background: #1d4ed8;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.1rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-top: 35px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: var(--secondary);
+      font-size: 1.25rem;
+      margin-top: 25px;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .badge-time-60 { background: #dbeafe; color: #1e40af; }
+    .badge-time-45 { background: #fef3c7; color: #92400e; }
+    .badge-dua { background: #f3e8ff; color: #6b21a8; }
+    .badge-eval { background: #fee2e2; color: #991b1b; }
+
+    /* Cards */
+    .session-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .session-header {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .session-header h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .session-body {
+      padding: 20px;
+    }
+
+    .part-box {
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .part-box.inicial {
+      background-color: #f0f9ff;
+      border-left: 4px solid #0284c7;
+    }
+    .part-box.principal {
+      background-color: #f0fdf4;
+      border-left: 4px solid #16a34a;
+    }
+    .part-box.final {
+      background-color: #fffbeb;
+      border-left: 4px solid #d97706;
+    }
+    .part-box.avaluacio {
+      background-color: #fdf2f8;
+      border-left: 4px solid #db2777;
+    }
+    .part-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .part-box.inicial .part-title { color: #0369a1; }
+    .part-box.principal .part-title { color: #15803d; }
+    .part-box.final .part-title { color: #b45309; }
+    .part-box.avaluacio .part-title { color: #be185d; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #334155;
+      font-weight: 600;
+    }
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    /* DUA Alerts */
+    .alert-dua {
+      background-color: #faf5ff;
+      border-left: 4px solid #9333ea;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+    .alert-dua strong {
+      color: #6b21a8;
+    }
+
+    .tech-keys {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #3b82f6;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+    }
+    .teacher-cue {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-left: 4px solid #eab308;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .action-bar { display: none; }
+      .session-card { page-break-inside: avoid; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='32' fill='%23d97706'/><circle cx='50' cy='50' r='16' fill='%23ffffff'/></svg>">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="action-bar">
+    <div>
+      <strong>Guia Docent Visual d'Educació Física (SdA Korfbal Coeducatiu)</strong>
+      <div style="font-size: 0.85rem; color: #475569;">Optimitzada per a pantalla, impressió a PDF i importació a Google Docs</div>
+    </div>
+    <button onclick="window.print()">
+      🖨️ Imprimir / Desar en PDF
+    </button>
+  </div>
+
+  <h1>Korfbal Coeducatiu: Tothom Suma!</h1>
+
+  <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px;">
+    <span class="badge badge-time-60">8 Sessions (4 setmanes)</span>
+    <span class="badge badge-time-45">Cicle Superior (5è i 6è barrejats)</span>
+    <span class="badge badge-dua">Mesures DUA (TEA, TDAH, 5è-6è)</span>
+    <span class="badge badge-eval">Decret 175/2022 (Catalunya)</span>
+  </div>
+
+  <div class="tabs-nav" style="display: flex; gap: 6px; flex-wrap: wrap; margin: 15px 0 25px 0; background: #eff6ff; padding: 12px 16px; border-radius: 8px; border: 1px solid #bfdbfe; align-items: center;">
+    <span style="font-weight: 700; font-size: 0.9rem; color: #1e3a8a; margin-right: 8px;">📂 Navegador per a Google Docs:</span>
+    <button class="tab-btn active" onclick="filterSession('all', this)" style="background: #1e3a8a; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">Totes (8 + Info)</button>
+    <button class="tab-btn" onclick="filterSession('info', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">ℹ️ Info General</button>
+    <button class="tab-btn" onclick="filterSession('1', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S1</button>
+    <button class="tab-btn" onclick="filterSession('2', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S2</button>
+    <button class="tab-btn" onclick="filterSession('3', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S3</button>
+    <button class="tab-btn" onclick="filterSession('4', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S4</button>
+    <button class="tab-btn" onclick="filterSession('5', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S5</button>
+    <button class="tab-btn" onclick="filterSession('6', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S6</button>
+    <button class="tab-btn" onclick="filterSession('7', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S7</button>
+    <button class="tab-btn" onclick="filterSession('8', this)" style="background: white; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">S8</button>
+  </div>
+
+  <!-- INFORMACIÓ GENERAL -->
+  <div class="session-card" id="session-card-info">
+    <div class="session-header">
+      <h4>INFORMACIÓ GENERAL I PROGRAMACIÓ DE LA SdA: Korfbal Coeducatiu</h4>
+      <div>
+        <span class="badge badge-time-60">8 Sessions (4 setmanes)</span>
+        <span class="badge badge-time-45">Cicle Superior (5è i 6è)</span>
+        <span class="badge badge-dua">Mesures DUA</span>
+        <span class="badge badge-eval">Decret 175/2022</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-info', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar Informació General per a Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+
+      <h3 style="color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-top: 5px;">1. Fitxa Tècnica i Context</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.85rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <tbody>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; width: 25%; text-align: left;">Títol de la SdA</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #0f172a;">Korfbal Coeducatiu: Tothom Suma!</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Etapa i Curs</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">Educació Primària &mdash; Cicle Superior (25 alumnes: paritat nois/noies i grups combinats de 5è i 6è).</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Temporalització</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">8 sessions (4 setmanes): 2 sessions per setmana (Sessió A de <strong>60 minuts</strong> i Sessió B de <strong>45 minuts</strong>).</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Espais i Zones</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">Pista poliesportiva exterior dividida en 2 mitjos camps de Korfbal (o gimnàs cobert de 20x20 m).</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Material Clau</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">2 cistelles oficials de Korfbal (pal 3,0 m sense tauler a 360°), 10 pilotes de Korfbal núm. 4 / voleibol suau, 30 cons xinesos, petos diferencials (nois/noies i equips), ringos, cèrcols i carpetes per a l'Àlbum de Cartes.</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Repte Final / Tasca Autèntica</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1; font-weight: 600; color: #15803d;">"El Gran Torneig Coeducatiu de Korfbal: Tothom Suma!" amb arbitratge compartit, activació de cartes tàctiques i acta de Joc Net.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-top: 20px;">2. Concreció Curricular i Ponderació Oficial d'Avaluació (Decret 175/2022)</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 12%;">Criteri</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 8%;">CE</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 48%;">Descripció Curricular de l'Estàndard</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 22%;">Sabers Bàsics Associats</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 10%;">Pes %</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 1.1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #0369a1;">CE1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Hàbits saludables, escalfament dinàmic autònom i higiene post-pràctica.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Vida activa: prevenció i hàbits.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1e3a8a; background-color: #f0f9ff;">10%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 1.2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #0369a1;">CE1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Autoregulació de l'esforç, dosificació aeròbica i Escala de Borg infantil (1-10).</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Autonomia i esforç aeròbic.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1e3a8a; background-color: #f0f9ff;">15%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 2.1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #15803d;">CE2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Desmarcatge dinàmic, passades precises en moviment i ocupació espacial sense botar.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Jocs d'invasió: peu de pivot i espais.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d; background-color: #f0fdf4;">20%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 2.2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #15803d;">CE2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Eficàcia en el tir a cistella 360° i respecte rigorós a la regla del "defensat".</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Tir en paràbola i defensa 1x1 legal.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d; background-color: #f0fdf4;">15%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 3.1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #b45309;">CE3</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Coeducació activa, equitat de gènere i col·laboració equitativa en equips mixtos.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Interacció: paritat i cooperació.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fffbeb;">15%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 3.2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #b45309;">CE3</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Joc net, acceptació de la norma i arbitratge compartit entre iguals.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Resolució pacífica i respecte arbitral.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fffbeb;">10%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 4.1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #6b21a8;">CE4</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Cultura motriu: història del Korfbal i reconeixement de la Selecció Catalana.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Manifestacions: esport català oficial.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #6b21a8; background-color: #faf5ff;">15%</td>
+          </tr>
+          <tr style="background-color: #f1f5f9; font-weight: bold;">
+            <td colspan="4" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: right;">TOTAL QUALIFICACIÓ OFICIAL (AE &ge; 3.5 | AN &ge; 2.8 | AS &ge; 2.0 | NA &lt; 2.0):</td>
+            <td style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.95rem; color: #1e3a8a;">100%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-top: 20px;">3. Mesures d'Atenció a la Diversitat (DUA)</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <tbody>
+          <tr style="background-color: #faf5ff;">
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; color: #6b21a8; width: 25%; text-align: left;">Alumne amb TEA</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">
+              <strong>Anticipació visual i predictibilitat:</strong> Pissarra de sessió estructurada a peu de pista (<em>Assemblea &rarr; Escalfament &rarr; Repte 1 &rarr; Repte 2 &rarr; Calma</em>). Senyals visuals no agressius (paleta de colors en lloc de xiulet fort). Rol clar i estructurat com a Custodi de l'Àlbum de Cartes d'Equip. Racó de calma sensorial habilitat al gimnàs.
+            </td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; color: #15803d; text-align: left;">Alumne amb TDAH</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">
+              <strong>Zero temps morts (TCM &gt; 60%):</strong> Erradicació de files i explicacions llargues. Consignes quirúrgiques de menys de 45 segons amb modelatge d'un company. Rols actius continus mitjançant targetes plastificades (àrbitre auxiliar, cronometrador de possessió, encarregat de material).
+            </td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; color: #0369a1; text-align: left;">Mentoria 5è - 6è</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">
+              <strong>Equips cooperatius estables:</strong> 5 equips de 5 alumnes (2-3 de 5è i 2-3 de 6è paritaris nois/noies). L'alumnat de 6è assumeix rols de dinamització positiva i suport tècnic cap als companys de 5è, promovent l'empatia i l'ajuda mútua.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-top: 20px;">4. Calendari i Seqüenciació de les 8 Sessions</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.83rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #334155; color: #ffffff;">
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; width: 10%;">Sessió</th>
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; width: 10%;">Durada</th>
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: left; width: 42%;">Contingut i Repte Clau</th>
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: left; width: 23%;">Carta Tàctica Desbloquejada</th>
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">Focus Avaluació</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S1</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">60 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Descobriment del Korfbal, equips coeducatius i pilota torre.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 1: Torre Coeducativa</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Inicial (2.1 / 3.1)</td>
+          </tr>
+          <tr style="background-color: #f8fafc;">
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S2</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">45 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Tècnica de passada ràpida, peu de pivot i talls a l'espai buit.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 2: Estrella Dinàmica</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.1)</td>
+          </tr>
+          <tr>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S3</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">60 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">El tir a cistella 360° sense tauler des dels 4 quadrants.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 3: Paràbola d'Or 360°</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.2)</td>
+          </tr>
+          <tr style="background-color: #f8fafc;">
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S4</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">45 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">La regla d'or del "Defensat" i duel legal 1x1 del mateix gènere.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 4: Escut Legal 1x1</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.2 / 3.2)</td>
+          </tr>
+          <tr>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S5</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">60 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Entrades a cistella en carrera, rol tàctic del poste i rebot.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 5: El Poste Mestre</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.1 / 1.2)</td>
+          </tr>
+          <tr style="background-color: #f8fafc;">
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S6</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">45 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Joc preesportiu: Ringo Korfbal i ocupació de 2 zones.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 6: Ringo Volador</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 3.1 / 3.2)</td>
+          </tr>
+          <tr>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S7</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">60 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Partits de Korfbal 4x4 coeducatiu amb canvi de zona i rol.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 7: Rellotge de Zones</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.1 / 2.2)</td>
+          </tr>
+          <tr style="background-color: #f8fafc;">
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S8</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">45 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">El Gran Torneig Coeducatiu Final "Tothom Suma!" i Diana de Cloenda.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 8: Tothom Suma! (Llegendària)</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Sumativa Global (Tots)</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <!-- SESSIÓ 1 -->
+  <div class="session-card" id="session-card-1">
+    <div class="session-header">
+      <h4>SESSIÓ 1: Descobriment del Korfbal, Equips Coeducatius i Pilota Torre</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Avaluació Inicial (CE2 - Crit 2.1 / CE3 - Crit 3.1)</span>
+        <span>Pista Poliesportiva</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-1', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (60 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 05' (5')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea Inaugural</strong><br><span style="font-size: 0.78rem; color: #475569;">Bateig d'equips i lliurament d'àlbums</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Grup classe en semicercle davant la pissarra de pista. 5 equips de 5 membres (mixtes 5è/6è).</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pissarra de pista, 5 Àlbums de Cartes i targetes de rol.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">05' &ndash; 15' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: La Teranyina Coeducativa</strong><br><span style="font-size: 0.78rem; color: #475569;">Escalfament dinàmic de passada i pivot</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Tots 25 en dispersió activa a la pista. 4 pilotes simultànies. Passada obligatòria a l'altre gènere.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pista poliesportiva completa (28x15 m), 4 pilotes.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">15' &ndash; 30' (15')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.1: El Desmarcatge dels 4 Quadrants</strong><br><span style="font-size: 0.78rem; color: #475569;">Tcm > 85% &mdash; 5 estacions simultànies</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>5 estacions autònomes (3x2):</strong> 1 estació per a cada equip de 5 alumnes (3 atacants perifèrics + 2 defensors al mig). Rotació cada 60''.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">20 cons xinesos (4 per estació), 5 pilotes (1 per equip).</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">30' &ndash; 50' (20')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.2: Pilota Torre Cooperativa</strong><br><span style="font-size: 0.78rem; color: #475569;">5 torns de 4 minuts &mdash; 2 camps + Zona Tècnica</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Camp 1 (4x4) + Camp 2 (4x4) + Zona Tècnica (Equip de suport actiu: àrbitres, anotadors i àlbum).</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">4 cèrcols grans (zones torre), 2 pilotes, petos i taula tècnica.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">50' &ndash; 60' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #01</strong><br><span style="font-size: 0.78rem; color: #475569;">Estiraments, reflexió i higiene</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Equips en rotllana. Desbloqueig col·lectiu de la Carta #01 "La Torre Imparable" i enganxat a l'àlbum.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cartes imprimibles #01, adhesius/cola, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts) &mdash; Motivació, Cohesió i Activació Fisiològica</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea Inaugural: "Què fa únic el Korfbal al món?" (5 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Alumnat segut en semicercle al voltant de la pissarra mòbil a peu de pista.</li>
+          <li><strong>Desenvolupament:</strong> El docent presenta la història del mestre holandès Nico Broekhuysen (1902), qui va inventar el Korfbal amb una premissa revolucionària: un esport on nois i noies juguen exactament en les mateixes condicions i on és impossible triomfar de manera individual perquè <em>està prohibit botar la pilota</em>.</li>
+          <li><strong>Formació dels 5 Equips Estables (5 alumnes per equip):</strong> Cada equip compta amb 2-3 nois i 2-3 noies, equilibrant alumnat de 5è i 6è (parelles de cotutoria). Es lliura la carpeta amb l'<em>Àlbum de Cartes Tàctiques</em> i el lot de <em>Targetes de Rol</em>.</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament Dinàmic: "La Teranyina Coeducativa" (10 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Ocupació de tota la pista poliesportiva (28x15 m). 4 pilotes de Korfbal circulant alhora.</li>
+          <li><strong>Desenvolupament:</strong>
+            <ol style="margin: 4px 0 0 18px; padding: 0;">
+              <li>Carrera aeròbica suau i canvis de direcció (escala de Borg 3-4).</li>
+              <li>Quan un alumne rep la pilota, ha de <strong>clavar immediatament els peus</strong> (norma Korfbal: tolerat només el peu de pivot) i cridar amb veu clara el nom d'un company/a de l'altre gènere abans de passar-li la pilota amb passada de pit a dues mans.</li>
+              <li>Mobilitat articular activa integrada: rotacions de braços, desplaçaments laterals i flexió de genolls en cada recepció.</li>
+            </ol>
+          </li>
+        </ul>
+        <div class="teacher-cue">📢 <strong>Consigna literal del docent:</strong> "Al Korfbal la pilota vola més ràpid que les cames! En rebre: peus clavats a terra com si tinguessis velcro, contacte visual, crides el nom i passada precisa al pit!"</div>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts) &mdash; Construcció Tàctica del Desmarcatge i la Cooperació</div>
+
+        <!-- ACTIVITAT 2.1 -->
+        <div style="background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <h5 style="margin: 0 0 8px 0; color: #15803d; font-size: 1.05rem;">Activitat 2.1 &mdash; El Desmarcatge dels 4 Quadrants (15 minuts) &mdash; 5 Estacions Simultànies (TCM &gt; 85%)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu tàctic:</strong> Interioritzar la regla de no desplaçar-se amb pilota i aprendre el principi de <em>passar i tallar ràpidament a l'espai buit</em>.</p>
+          <p style="margin: 0 0 10px 0;"><strong>Disposició espacial:</strong> La pista es divideix en <strong>5 quadrats independents de 8x8 metres</strong> delimitats per cons xinesos (1 per a cada equip de 5 alumnes). Cada quadrat està dividit internament en 4 quadrants (4x4 m cadascun). <strong>Tots els 25 alumnes estan en acció simultània sense cap fila ni aturada.</strong></p>
+
+          <!-- GRÀFIC DE L'ESTACIÓ DELS 4 QUADRANTS -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px dashed #16a34a; background-color: #f7fee7;">
+            <thead>
+              <tr style="background-color: #15803d; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="3" style="padding: 8px 12px; text-align: left;">📐 ESQUEMA GRÀFIC D'1 ESTACIÓ: ELS 4 QUADRANTS (5 Estacions Idèntiques a Pista)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 39%; padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+                  <div style="text-align: center; font-weight: bold; color: #1e3a8a; margin-bottom: 6px;">[ QUADRANT 1 ]</div>
+                  <div style="text-align: center; padding: 10px; background: #dbeafe; border-radius: 6px; border: 1px solid #93c5fd;">
+                    👤 <strong>Jugador/a A</strong><br><span style="color: #dc2626; font-weight: bold;">(Té la pilota 🏐)</span><br>
+                    <span style="font-size: 0.75rem; color: #1e40af;">Fixa peu de pivot</span>
+                  </div>
+                  <div style="text-align: center; margin-top: 8px; font-size: 0.75rem; color: #059669;">
+                    ⬇️ <em>En passar, corre ràpidament cap al Q4 lliure</em>
+                  </div>
+                </td>
+                <td style="width: 22%; padding: 6px; border: 1px solid #cbd5e1; text-align: center; vertical-align: middle; background-color: #f8fafc;">
+                  <div style="font-size: 0.74rem; color: #64748b; margin-bottom: 4px; font-weight: bold;">ZONA CENTRAL (2 DEFENSORS)</div>
+                  <div style="display: flex; flex-direction: column; gap: 4px; align-items: center;">
+                    <div style="padding: 4px 6px; background: #fee2e2; border-radius: 6px; border: 1.5px solid #ef4444; font-size: 0.72rem; width: 92%;">
+                      🛡️ <strong>Defensor/a 1 (D1)</strong><br><span style="font-size: 0.67rem; color: #991b1b;">Pressiona la pilota a 1 m</span>
+                    </div>
+                    <div style="padding: 4px 6px; background: #fee2e2; border-radius: 6px; border: 1.5px solid #ef4444; font-size: 0.72rem; width: 92%;">
+                      🛡️ <strong>Defensor/a 2 (D2)</strong><br><span style="font-size: 0.67rem; color: #991b1b;">Tapa línia al quadrant buit</span>
+                    </div>
+                  </div>
+                  <div style="font-size: 0.68rem; color: #991b1b; margin-top: 4px;">Parella mixta &mdash; Oposició legal (sense contacte físic)</div>
+                </td>
+                <td style="width: 39%; padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+                  <div style="text-align: center; font-weight: bold; color: #1e3a8a; margin-bottom: 6px;">[ QUADRANT 2 ]</div>
+                  <div style="text-align: center; padding: 10px; background: #f1f5f9; border-radius: 6px; border: 1px solid #cbd5e1;">
+                    👤 <strong>Jugador/a B</strong><br><span style="color: #15803d; font-weight: bold;">(Desmarcat/da)</span><br>
+                    <span style="font-size: 0.75rem; color: #475569;">Demana pilota amb les mans</span>
+                  </div>
+                  <div style="text-align: center; margin-top: 8px; font-size: 0.75rem; color: #0284c7;">
+                    ⬅️ <em>Rep la passada de pit de A</em>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f0fdf4;">
+                  <div style="text-align: center; font-weight: bold; color: #15803d; margin-bottom: 6px;">[ QUADRANT 4 (BUIT) ]</div>
+                  <div style="text-align: center; padding: 12px; border: 2px dashed #22c55e; border-radius: 6px; background: #ffffff;">
+                    🟢 <strong>ESPAI LLIURE</strong><br>
+                    <span style="font-size: 0.75rem; color: #15803d; font-weight: 600;">Destí immediat de la cursa del Jugador/a A</span>
+                  </div>
+                </td>
+                <td style="padding: 6px; border: 1px solid #cbd5e1; text-align: center; vertical-align: middle; background-color: #f8fafc; font-size: 0.74rem; color: #64748b;">
+                  ↔️ Distància de seguretat 1 m (sense contacte)
+                </td>
+                <td style="padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+                  <div style="text-align: center; font-weight: bold; color: #1e3a8a; margin-bottom: 6px;">[ QUADRANT 3 ]</div>
+                  <div style="text-align: center; padding: 10px; background: #f1f5f9; border-radius: 6px; border: 1px solid #cbd5e1;">
+                    👤 <strong>Jugador/a C</strong><br><span style="color: #15803d; font-weight: bold;">(Segon suport)</span><br>
+                    <span style="font-size: 0.75rem; color: #475569;">Preparat per rebre de B</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Desenvolupament pas a pas (5 alumnes per equip en situació 3x2):</strong></p>
+          <ol style="margin: 4px 0 10px 18px; padding: 0;">
+            <li><strong>3 atacants perifèrics (Jugadors/es A, B i C):</strong> Ocupen 3 dels 4 quadrants (1 quadrant queda lliure expressament per permetre la mobilitat i el tall a l'espai buit).</li>
+            <li><strong>2 defensors a la zona central (Defensors/es D1 i D2 &mdash; parella mixta):</strong> Treballen en equip sense contacte físic: D1 s'encara a qui té la pilota amb braços alçats (a 1 m de distància legal), mentre D2 cobreix la línia de passada cap al quadrant buit o cap al segon suport.</li>
+            <li><strong>Norma clau del Korfbal:</strong> MAI hi pot haver dues persones en el mateix quadrant (prohibit el bot; només es permet pivotar sobre un peu).</li>
+            <li><strong>Passar i córrer a l'espai buit:</strong> En el moment exacte en què un jugador/a passa la pilota, ha d'iniciar immediatament un esprint cap al quadrant que ha quedat buit per tornar a oferir línia de passada neta.</li>
+            <li><strong>Rotació dinàmica cada 60 segons:</strong> Al senyal acústic del mestre, 2 atacants entren al mig com a nous defensors i els defensors passen a atacar. En 5 minuts (1 cicle complet de 5 rotacions), tots 5 alumnes han experimentat tots els rols sota pressió.</li>
+            <li><strong>Adaptació DUA (Opcional):</strong> Si un grup necessita menor oposició defensiva inicial, el 5è alumne pot assumir el rol d'<strong>Àrbitre/a de Pista</strong> amb la Targeta de Rol, supervisant amb xiulet que es clavi el peu de pivot i comptant 5 passades consecutives per assolir el repte de la sessió.</li>
+          </ol>
+        </div>
+
+        <!-- TAULA DE CLAUS TÈCNIQUES -->
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+          <thead>
+            <tr style="background-color: #0f172a; color: #ffffff;">
+              <th colspan="3" style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left;">🏉 3 Claus Tècniques de la Passada i Recepció al Korfbal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 33%; padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #1e3a8a;">1. Passada de Pit a 2 Mans:</strong><br>La pilota surt des de l'esternum, empenta amb extensió total de colzes i cop sec de canells cap a fora amb pas d'impuls endavant.
+              </td>
+              <td style="width: 33%; padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #ffffff;">
+                <strong style="color: #15803d;">2. Peu de Pivot Clavat:</strong><br>El primer peu que contacta el terra no es pot moure ni arrossegar. L'altre peu pot girar lliurement en 360° per orientar el cos i protegir la pilota.
+              </td>
+              <td style="width: 33%; padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #c2410c;">3. Connexió Visual i Nom:</strong><br>Contacte visual obligatori abans de llançar. Les mans de qui rep formen un "embut" a l'alçada del pit per assegurar la pilota sense rebot.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ACTIVITAT 2.2 -->
+        <div style="background-color: #ffffff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px;">
+          <h5 style="margin: 0 0 8px 0; color: #1e3a8a; font-size: 1.05rem;">Activitat 2.2 &mdash; Pilota Torre Cooperativa per Zones (20 minuts) &mdash; Partits 4x4 Simultanis + Taula Tècnica</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu tàctic:</strong> Aplicar el desmarcatge i la cooperació sense bot en situació real de joc d'invasió reduït amb una meta accessible (jugador/a Torre dins un cèrcol).</p>
+          <p style="margin: 0 0 10px 0;"><strong>Disposició de pista completa:</strong> La pista es divideix transversalment en <strong>Camp 1</strong> i <strong>Camp 2</strong>, més una <strong>Zona Tècnica Lateral</strong> on s'ubica l'equip que fa rotació activa.</p>
+
+          <!-- PLÀNOL DE PISTA PILOTA TORRE -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px solid #1e3a8a; background-color: #f8fafc;">
+            <thead>
+              <tr style="background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="2" style="padding: 8px 12px; text-align: left;">🏟️ DISTRIBUCIÓ DE LA PISTA POLIESPORTIVA (28 x 15 metres) &mdash; PILOTA TORRE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f0fdf4;">
+                  <div style="text-align: center; font-weight: bold; color: #15803d; margin-bottom: 6px;">🟢 CAMP 1 (14 x 15 m) &mdash; Partit 4x4</div>
+                  <div style="border: 1px solid #86efac; background: #ffffff; padding: 8px; border-radius: 6px; text-align: center; font-size: 0.78rem;">
+                    [Cèrcol Fons A: ⭕ <strong>TORRE EQUIP B</strong>] &larr; (A 2 m del fons)<br>
+                    <div style="margin: 8px 0; font-weight: 600; color: #1e3a8a;">Zona de Joc: 4 Jugadors/es Equip A vs 4 Equip B</div>
+                    [Cèrcol Fons B: ⭕ <strong>TORRE EQUIP A</strong>] &larr; (A 2 m del fons)
+                  </div>
+                  <div style="font-size: 0.75rem; color: #166534; margin-top: 6px;">
+                    🎯 <strong>Condició de gol:</strong> 4 passades mixtes prèvies + passada aèria atrapada per la Torre dins el cèrcol.
+                  </div>
+                </td>
+                <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+                  <div style="text-align: center; font-weight: bold; color: #1d4ed8; margin-bottom: 6px;">🔵 CAMP 2 (14 x 15 m) &mdash; Partit 4x4</div>
+                  <div style="border: 1px solid #93c5fd; background: #ffffff; padding: 8px; border-radius: 6px; text-align: center; font-size: 0.78rem;">
+                    [Cèrcol Fons C: ⭕ <strong>TORRE EQUIP D</strong>] &larr; (A 2 m del fons)<br>
+                    <div style="margin: 8px 0; font-weight: 600; color: #1e3a8a;">Zona de Joc: 4 Jugadors/es Equip C vs 4 Equip D</div>
+                    [Cèrcol Fons D: ⭕ <strong>TORRE EQUIP C</strong>] &larr; (A 2 m del fons)
+                  </div>
+                  <div style="font-size: 0.75rem; color: #1e40af; margin-top: 6px;">
+                    🎯 <strong>Condició de gol:</strong> 4 passades mixtes prèvies + passada aèria atrapada per la Torre dins el cèrcol.
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="padding: 10px 14px; border: 1px solid #cbd5e1; background-color: #fffbeb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                  <strong style="color: #b45309;">📋 ZONA TÈCNICA LATERAL (Equip en rotació activa &mdash; Ex: Equip 5):</strong>
+                  <div style="display: flex; gap: 15px; margin-top: 4px; font-size: 0.80rem; color: #78350f; flex-wrap: wrap;">
+                    <span>⏱️ <strong>Cronometrador/a:</strong> Control de torns de 4 minuts i possessió &lt; 5 segons.</span>
+                    <span>⚖️ <strong>Àrbitres auxiliars de Joc Net:</strong> Control de no-bot i distància de seguretat.</span>
+                    <span>📁 <strong>Custodis de l'Àlbum:</strong> Verificació del repte de passades consecutives.</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Desenvolupament i Regles de la Pilota Torre:</strong></p>
+          <ol style="margin: 4px 0 10px 18px; padding: 0;">
+            <li><strong>Equips de 5 membres:</strong> 4 jugadors/es de camp (2 nois i 2 noies) + 1 jugador/a que fa de "Torre" col·locat dins el cèrcol situat a l'extrem contrari de camp.</li>
+            <li><strong>Zero bots:</strong> La pilota només avança mitjançant passades precises i talls a l'espai buit.</li>
+            <li><strong>Requisit obligatori per puntuar:</strong> Abans de poder assistir a la Torre, l'equip ha de connectar com a mínim <strong>4 passades consecutives</strong> en les quals hagin intervingut obligatòriament nois i noies (connexió coeducativa).</li>
+            <li><strong>Punt vàlid:</strong> La pilota ha de ser atrapada en l'aire per la Torre sense sortir del cèrcol.</li>
+            <li><strong>Rotació interna immediata:</strong> La persona que fa la passada d'assistència passa immediatament a ocupar el lloc de Torre dins el cèrcol, i qui era Torre entra al camp com a jugador/a actiu. Així tothom passa per la posició de finalització!</li>
+          </ol>
+
+          <!-- MATRIU DE ROTACIÓ DELS 5 EQUIPS -->
+          <h6 style="margin: 12px 0 6px 0; color: #1e3a8a; font-size: 0.90rem;">🔄 Matriu de Rotació Olímpica dels 5 Equips (5 torns de 4 minuts = 20 minuts totals)</h6>
+          <table style="width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.82rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+            <thead>
+              <tr style="background-color: #334155; color: #ffffff;">
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 14%;">Torn (Temps)</th>
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #15803d;">Camp 1 (4x4)</th>
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #1d4ed8;">Camp 2 (4x4)</th>
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 30%; background-color: #b45309;">Zona Tècnica (Rols DUA Actius)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 1 (0' &ndash; 4')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 2</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 3 vs Equip 4</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 5 (Cronòmetre, Àlbum i Joc Net)</td>
+              </tr>
+              <tr style="background-color: #f8fafc;">
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 2 (4' &ndash; 8')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 1</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 3</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 4 (Cronòmetre, Àlbum i Joc Net)</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 3 (8' &ndash; 12')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 4 vs Equip 5</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 3</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 2 (Cronòmetre, Àlbum i Joc Net)</td>
+              </tr>
+              <tr style="background-color: #f8fafc;">
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 4 (12' &ndash; 16')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 4</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 3</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 1 (Cronòmetre, Àlbum i Joc Net)</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 5 (16' &ndash; 20')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 4</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 5</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 3 (Cronòmetre, Àlbum i Joc Net)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size: 0.80rem; color: #475569; margin: 4px 0 0 0;"><em>Resultat del sistema de rotació: Cada equip juga exactament 16 minuts a pista i gaudeix de 4 minuts de zona tècnica amb rols organitzatius. Temps de compromís motor mitjà de la sessió &gt; 75%.</em></p>
+        </div>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Tornada a la Calma, Gamificació i Hàbits Salutògens</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Tornada a la calma (4'):</strong> Cada equip es reuneix en rotllana al voltant de la seva carpeta. Estiraments guiats de bessons, quàdriceps i espatlles mentre es realitza una breu reflexió: <em>"Què ha passat quan algú ha intentat botar? Per què ha estat imprescindible mirar i confiar en el company/a?"</em>.</li>
+          <li><strong>Desbloqueig de la Carta #01: "La Torre Imparable" (3'):</strong> Tots els equips que hagin assolit el repte de connectar les 4 passades mixtes i la recepció a la torre desbloquegen oficialment la seva primera carta col·leccionable. S'enganxa al marc #1 de l'<em>Àlbum de Cartes Tàctiques</em>. (Poder de Torneig de la Carta 1: +2 punts al torneig final si la 1a cistella arriba sense cap bot).</li>
+          <li><strong>Higiene i recollida ordenada (3'):</strong> Recollida cooperativa de cons, cèrcols i pilotes; rentat de mans i cara abans de retornar a l'aula ordinària.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent a Peu de Pista (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Metodologia de mirada focalitzada:</strong> El docent NO intenta avaluar els 25 alumnes alhora. A la Sessió 1, l'atenció avaluadora se centra exclusivament en els membres de l'<strong>Equip 1</strong> i l'<strong>Equip 2</strong> (10 alumnes en total) durant els seus enfrontaments a la Pilota Torre:</p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Criteri 2.1 (Pes 20%):</strong> Respecte ferm al peu de pivot (no fa passes ni bota en rebre) i orientació ràpida del cos cap a l'espai lliure.</li>
+          <li><strong>Criteri 3.1 (Pes 15%):</strong> Interacció coeducativa equilibrada (passa indistintament a nois i noies, no monopolitza la possessió).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 2 -->
+  <div class="session-card" id="session-card-2">
+    <div class="session-header">
+      <h4>SESSIÓ 2: La Xarxa de Passades Dinàmiques i Desmarcatge en Tall (Sense Botar)</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Avaluació Formativa (CE1 - Crit 1.2 / CE2 - Crit 2.1)</span>
+        <span>Pista Poliesportiva</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-2', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (45 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 03' (3')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea de Reactivació</strong><br><span style="font-size: 0.78rem; color: #475569;">El secret del tall a l'espai buit</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Grup classe en rotllana. Breu connexió amb la Carta #01 i presentació del repte del dia.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pissarra de pista, Àlbums d'Equip.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">03' &ndash; 10' (7')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: Cua de Drac Coeducativa</strong><br><span style="font-size: 0.78rem; color: #475569;">Escalfament lúdic i coordinació motriu</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">5 cadenes humanes de 5 alumnes (1 drac per equip). El cap protegeix la cua de pilotes rodolants.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pista completa, 6 pilotes toves rodolant.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">10' &ndash; 23' (13')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.1: L'Estrella Dinàmica</strong><br><span style="font-size: 0.78rem; color: #475569;">Passar i tallar en circuit &mdash; TCM > 85%</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>5 estacions d'estrella simultànies</strong> (1 per equip). Pilotada, tall a l'espai i rotació de con.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">25 cons de 4 colors (5 per estrella), 5 pilotes.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">23' &ndash; 37' (14')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.2: Rondo 4x1 amb Suport Espacial</strong><br><span style="font-size: 0.78rem; color: #475569;">Línies de passada obertes i Borg 5-6</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>5 rondos simultanis de 8x8 m</strong> (1 per equip). 4 atacants a la perifèria + 1 defensor al mig (rotació cada 60'').</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">20 cons delimitadors, 5 pilotes, escala Borg.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">37' &ndash; 45' (8')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #02</strong><br><span style="font-size: 0.78rem; color: #475569;">Respiració, autoregulació i higiene</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Equips en rotllana. Autoavaluació de l'esforç (Borg). Desbloqueig de la Carta #02 "El Tall Llampec".</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cartes #02, cola/adhesiu, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts) &mdash; Activació Motriu i Cohesió Grupal</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea de Reactivació: "El Tall a l'Espai Buit" (3 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Alumnat en semicercle davant la pissarra de pista.</li>
+          <li><strong>Desenvolupament:</strong> Recordatori de la consigna clau de la Sessió 1: <em>"A qui hem de passar la pilota? A qui està parat i marcat o a qui corre cap a un espai buit?"</em>. S'explica el concepte de <strong>tall ofensiu</strong>: canvi de ritme sobtat per allunyar-se del defensor i oferir una línia de passada neta.</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament Dinàmic: "Cua de Drac Coeducativa" (7 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Pista poliesportiva completa. 5 equips formant cadascun una cadena humana agafats per les espatlles o la cintura.</li>
+          <li><strong>Desenvolupament:</strong> El primer de la fila és el "cap del drac" i l'últim és la "cua". 3 alumnes neutrals o el docent fan rodolar pilotes toves per terra intentant tocar la cua del drac. El cap i el cos han de moure's coordinadament per protegir la seva cua mitjançant desplaçaments laterals i canvis de direcció ràpids. Rotació del cap i la cua cada 90 segons.</li>
+        </ul>
+        <div class="teacher-cue">📢 <strong>Consigna literal del docent:</strong> "Comuniquem-nos amb el cos! La pilota mai ha d'anar al peu de qui està aturat, sinó dos metres per davant d'on està corrent!"</div>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts) &mdash; Dinàmica de Passada, Mobilitat i Autoregulació</div>
+
+        <!-- ACTIVITAT 2.1 -->
+        <div style="background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <h5 style="margin: 0 0 8px 0; color: #15803d; font-size: 1.05rem;">Activitat 2.1 &mdash; L'Estrella Dinàmica Coeducativa (13 minuts) &mdash; 5 Estacions Simultànies (TCM &gt; 85%)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu motriu:</strong> Automatitzar la seqüència recepció &rarr; peu de pivot &rarr; passada precisa &rarr; cursa immediata de relleu sense pauses.</p>
+          <p style="margin: 0 0 10px 0;"><strong>Disposició espacial:</strong> La pista es divideix en <strong>5 estacions idèntiques d'Estrella</strong> (1 per a cadascun dels 5 equips). Cada estrella consta d'1 con central (Pivot) i 4 cons exteriors situats a 5-6 metres en forma de creu.</p>
+
+          <!-- GRÀFIC DE L'ESTACIÓ DE L'ESTRELLA -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px dashed #16a34a; background-color: #f7fee7;">
+            <thead>
+              <tr style="background-color: #15803d; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="3" style="padding: 8px 12px; text-align: left;">📐 ESQUEMA GRÀFIC D'1 ESTACIÓ: L'ESTRELLA DINÀMICA (5 Estacions a Pista)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 30%;"></td>
+                <td style="width: 40%; text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ CON EXTERIOR 1 (NORD) ]</div>
+                  <div style="padding: 6px; background: #dbeafe; border-radius: 6px; margin-top: 4px;">👤 <strong>Receptor/a 1</strong></div>
+                  <div style="font-size: 0.72rem; color: #059669; margin-top: 2px;">Finta cap a fora i tall cap al con</div>
+                </td>
+                <td style="width: 30%;"></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ CON EXT. 4 (OEST) ]</div>
+                  <div style="padding: 6px; background: #f1f5f9; border-radius: 6px; margin-top: 4px;">👤 <strong>Receptor/a 4</strong></div>
+                </td>
+                <td style="text-align: center; padding: 14px; border: 2px solid #16a34a; background: #dcfce7;">
+                  <div style="font-weight: bold; color: #166534; font-size: 0.90rem;">⭐ CON CENTRAL (PIVOT)</div>
+                  <div style="padding: 6px; background: #ffffff; border-radius: 6px; border: 1px solid #86efac; margin-top: 4px;">
+                    👤 <strong>Pivot amb Pilota 🏐</strong><br>
+                    <span style="font-size: 0.72rem; color: #15803d;">Peu clavat &bull; Gira 90° &bull; Passa</span>
+                  </div>
+                  <div style="font-size: 0.72rem; color: #166534; margin-top: 4px;"><em>En passar &rarr; Corre a substituir el con receptor</em></div>
+                </td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ CON EXT. 2 (EST) ]</div>
+                  <div style="padding: 6px; background: #f1f5f9; border-radius: 6px; margin-top: 4px;">👤 <strong>Receptor/a 2</strong></div>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 30%;"></td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ CON EXTERIOR 3 (SUD) ]</div>
+                  <div style="padding: 6px; background: #f1f5f9; border-radius: 6px; margin-top: 4px;">👤 <strong>Receptor/a 3</strong></div>
+                </td>
+                <td style="width: 30%;"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Desenvolupament i Variació de Passades:</strong></p>
+          <ol style="margin: 4px 0 10px 18px; padding: 0;">
+            <li>El jugador del centre rep la pilota, pivota sobre un peu i passa a un dels cons exteriors.</li>
+            <li><strong>Principi de relleu actiu:</strong> Just després de passar la pilota, el passador esprinta per ocupar el con cap on ha passat la pilota; qui ha rebut passa a ocupar el centre (pivot).</li>
+            <li><strong>Progressió tècnica cada 3-4 minuts:</strong>
+              <ul style="margin: 2px 0 0 15px;">
+                <li><em>Minut 10-14:</em> <strong>Passada de pit a dues mans</strong> (tensa, al pit).</li>
+                <li><em>Minut 14-18:</em> <strong>Passada picada a terra</strong> (el bot colpeja el terra a 2/3 de distància per superar braços defensius).</li>
+                <li><em>Minut 18-23:</em> <strong>Passada per sobre del cap a 2 mans</strong> (ideal per a passades llargues i parabòliques).</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+
+        <!-- ACTIVITAT 2.2 -->
+        <div style="background-color: #ffffff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px;">
+          <h5 style="margin: 0 0 8px 0; color: #1e3a8a; font-size: 1.05rem;">Activitat 2.2 &mdash; Rondo Cooperatiu 4x1 amb Suport Espacial (14 minuts) &mdash; 5 Rondos Simultanis</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu tàctic:</strong> Conservar la possessió sense botar davant oposició activa, ajustant la posició als costats del quadrat per obrir angles de passada clars.</p>
+          <p style="margin: 0 0 10px 0;"><strong>Disposició:</strong> 5 quadrats de 8 x 8 metres (1 per equip). 4 atacants repartits pels 4 costats del quadrat + 1 defensor/a actiu al mig.</p>
+
+          <!-- GRÀFIC RONDO 4x1 -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px solid #2563eb; background-color: #eff6ff;">
+            <thead>
+              <tr style="background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="3" style="padding: 8px 12px; text-align: left;">🛡️ ESQUEMA DEL RONDO COEDUCATIU 4x1 AMB SUPORT LATERAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 25%;"></td>
+                <td style="width: 50%; text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  👤 <strong>Atacant Nord</strong> &mdash; <em>Es mou lateralment per la línia</em>
+                </td>
+                <td style="width: 25%;"></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  👤 <strong>Atacant Oest</strong><br>(amb pilota 🏐)<br>
+                  <span style="font-size: 0.72rem; color: #15803d;">Té dues línies de passada</span>
+                </td>
+                <td style="text-align: center; padding: 15px; border: 2px solid #ef4444; background: #fee2e2;">
+                  🛡️ <strong>DEFENSOR/A ACTIU/VA</strong><br>
+                  <span style="font-size: 0.74rem; color: #991b1b;">Intenta tallar sense contacte personal</span>
+                </td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  👤 <strong>Atacant Est</strong><br>
+                  <span style="font-size: 0.72rem; color: #0284c7;">Desplaçament de suport</span>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 25%;"></td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  👤 <strong>Atacant Sud</strong> &mdash; <em>Opció de passada llarga o recolzament</em>
+                </td>
+                <td style="width: 25%;"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Desenvolupament i Autoregulació Borg:</strong></p>
+          <ol style="margin: 4px 0 10px 18px; padding: 0;">
+            <li>L'objectiu dels 4 atacants és connectar <strong>10 passades consecutives</strong> sense que el defensor toqui la pilota.</li>
+            <li>Els atacants adjacents han de moure's pels costats del quadrat per oferir sempre <strong>dues línies de passada obertes</strong> (suport en triangle).</li>
+            <li><strong>Rotació del defensor:</strong> Cada 60 segons o quan el defensor intercepta 2 pilotes netes.</li>
+            <li><strong>Control d'esforç aeròbic (Escala Borg 1-10):</strong> A la meitat de l'exercici, el docent demana l'índex Borg dels alumnes. L'objectiu fisiològic és situar-se a la zona de treball aeròbic sostenible (<strong>Borg 5-6: "Puc parlar amb frases curtes però noto el cor actiu"</strong>).</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Tornada a la Calma i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Respiració i tornada a la calma (4'):</strong> Asseguts en rotllanes d'equip. Exercicis de respiració diafragmàtica 4-4-4 (inspiració 4s, retenció 4s, expiració lenta 4s) per reduir la freqüència cardíaca (tornada a Borg 2-3).</li>
+          <li><strong>Desbloqueig de la Carta #02: "El Tall Llampec" (3'):</strong> Entrega i adhesió de la Carta #02 a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: Finestra de 3 segons de passada protegida sense pressió rival en el torneig final).</li>
+          <li><strong>Higiene i recollida (3'):</strong> Neteja de mans i cara; recollida ordenada dels cons i pilotes per equips.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent a Peu de Pista (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Mirada focalitzada sobre l'Equip 3 i l'Equip 4:</strong></p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Criteri 1.2 (Pes 15%):</strong> Autoregulació de l'esforç físic segons l'Escala de Borg (manté una intensitat sostinguda sense aturar-se d'esgotament).</li>
+          <li><strong>Criteri 2.1 (Pes 20%):</strong> Precisió en lliurar la pilota a la trajectòria de la carrera del company/a i no al lloc on estava aturat.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 3 -->
+  <div class="session-card" id="session-card-3">
+    <div class="session-header">
+      <h4>SESSIÓ 3: El Tir a Cistella 360° i Ringo-Korfbal Tàctic</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Avaluació Formativa (CE2 - Crit 2.2 / CE3 - Crit 3.1)</span>
+        <span>2 Mitjos Camps</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-3', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (60 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 05' (5')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea d'Obertura</strong><br><span style="font-size: 0.78rem; color: #475569;">El tir 360° sense tauler: paràbola pura</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Alumnat assegut al voltant del pal de Korfbal. Demostració docent de l'arc de paràbola.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pal de Korfbal (3 m) separat 3 m de la paret.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">05' &ndash; 15' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: Llançament de Coets</strong><br><span style="font-size: 0.78rem; color: #475569;">Escalfament de suspensió i impuls</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Parelles amb 1 pilota tova. Llançament vertical simètric a dues mans amb recepció aèria en salt.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pista completa, 12 pilotes toves o de voleibol.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">15' &ndash; 30' (15')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.1: Circuit dels 4 Quadrants 360°</strong><br><span style="font-size: 0.78rem; color: #475569;">Tir des dels 4 angles del cistell</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>4 estacions de tir simultànies:</strong> 2 cistelles oficials + 2 dianes/cèrcols a piques. Parelles de tirador i rebotejador.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">2 pals Korfbal, 2 piques amb cèrcol, 8 pilotes.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">30' &ndash; 50' (20')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.2: Ringo-Korfbal Tàctic 360°</strong><br><span style="font-size: 0.78rem; color: #475569;">Partits 4x4 amb àrea protegida</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Camp 1 (Equips 1 vs 2) + Camp 2 (Equips 3 vs 4) + Zona Tècnica (Equip 5). 5 torns de 4 minuts.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">2 pals de Korfbal amb cercle de 2 m de radi prohibit.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">50' &ndash; 60' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #03</strong><br><span style="font-size: 0.78rem; color: #475569;">Desbloqueig i estiraments de braços</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Rotllanes d'equip. Desbloqueig de la Carta #03 "La Paràbola d'Or 360°". Recollida i higiene.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cartes #03, cola/adhesiu, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts) &mdash; Principi Biomecànic del Tir 360°</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea: "Per què la cistella de Korfbal no té tauler?" (5 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Alumnat davant el pal oficial de Korfbal (3,0 m d'alçada), situat reglamentàriament a 3-4 m de la línia de fons.</li>
+          <li><strong>Reflexió motriu:</strong> Al bàsquet sovint s'utilitza el rebot al tauler; al Korfbal, no hi ha tauler ni xarxa. La pilota només entra si arriba des d'una <strong>paràbola molt alta (angle d'entrada > 55°)</strong>. A més, es pot encistellar des dels 360° (davant, costats i per darrere del pal!).</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament Dinàmic: "Llançament de Coets" (10 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Parelles distribuïdes per la pista amb 1 pilota tova cada parella.</li>
+          <li><strong>Desenvolupament:</strong> Carrera suau. Al senyal sonor, qui té pilota s'atura, flexiona genolls a 90°, col·loca la pilota davant el front i s'impulsa verticalment llançant la pilota el més amunt possible en línia recta. El company/a corre a atrapar la pilota en el punt més alt del salt abans que toqui el terra. Rotació contínua de rols.</li>
+        </ul>
+        <div class="teacher-cue">📢 <strong>Consigna literal del docent:</strong> "No empenyis la pilota cap endavant com a futbol sala! Al Korfbal la força surt de les cames cap amunt com un coet, i les mans acaben saludant el terra (*snap*)!"</div>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts) &mdash; Tir en els 4 Quadrants i Joc Reduït 360°</div>
+
+        <!-- ACTIVITAT 2.1 -->
+        <div style="background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <h5 style="margin: 0 0 8px 0; color: #15803d; font-size: 1.05rem;">Activitat 2.1 &mdash; Circuit dels 4 Quadrants al voltant del Pal (15 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu biomecànic:</strong> Dominar el llançament a dues mans amb paràbola neta des de 4 angles diferents respecte al pal a una distància fixa de 3 metres.</p>
+
+          <!-- GRÀFIC DELS 4 QUADRANTS -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px dashed #16a34a; background-color: #f7fee7;">
+            <thead>
+              <tr style="background-color: #15803d; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="3" style="padding: 8px 12px; text-align: left;">📐 ESQUEMA DELS 4 QUADRANTS DE TIR 360° AL VOLTANT DEL PAL (Distància 3 m)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 28%;"></td>
+                <td style="width: 44%; text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ QUADRANT NORD &mdash; 0° FRONTAL ]</div>
+                  <div style="font-size: 0.74rem; color: #15803d;">Tir clàssic davant el pal &bull; Paràbola directa</div>
+                </td>
+                <td style="width: 28%;"></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #b91c1c;">[ QUADRANT OEST &mdash; 270° ]</div>
+                  <div style="font-size: 0.74rem; color: #991b1b;">Lateral esquerre &bull; Canell esquerre ferm</div>
+                </td>
+                <td style="text-align: center; padding: 16px; border: 2px solid #ca8a04; background: #fef08a;">
+                  <div style="font-size: 1.2rem;">🧺 <strong>PAL DE KORFBALL</strong></div>
+                  <div style="font-weight: bold; color: #854d0e; font-size: 0.78rem;">Alçada 3,0 m &bull; Cistella sense tauler</div>
+                  <div style="font-size: 0.70rem; color: #a16207;">Àrea lliure 360° sense paret</div>
+                </td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #15803d;">[ QUADRANT EST &mdash; 90° ]</div>
+                  <div style="font-size: 0.74rem; color: #15803d;">Lateral dret &bull; Extensió equilibrada</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 28%;"></td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #b45309;">[ QUADRANT SUD &mdash; 180° POSTERIOR ]</div>
+                  <div style="font-size: 0.74rem; color: #b45309;">⭐ <strong>PER DARRERE DEL PAL</strong> &bull; Tir lliure de referència</div>
+                </td>
+                <td style="width: 28%;"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Desenvolupament per estacions:</strong></p>
+          <ol style="margin: 4px 0 10px 18px; padding: 0;">
+            <li>S'habiliten 4 estacions de llançament a la pista (2 pals oficials als mitjos camps + 2 piques amb cèrcol a les bandes).</li>
+            <li>En cada estació, els alumnes treballen per parelles (1 tirador/a i 1 rebotejador/a).</li>
+            <li><strong>Repte col·lectiu:</strong> Cada parella ha d'aconseguir 3 cistelles des de cadascun dels 4 quadrants (12 cistelles totals) abans de rotar d'estació.</li>
+          </ol>
+        </div>
+
+        <!-- TAULA BIOMECÀNICA -->
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+          <thead>
+            <tr style="background-color: #0f172a; color: #ffffff;">
+              <th colspan="3" style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left;">🎯 3 Claus Biomecàniques del Tir a Cistella de Korfbal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 33%; padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #1e3a8a;">1. Presa Simètrica a 2 Mans:</strong><br>Polzes formant una "T" o "W" darrere la pilota. La pilota surt de davant el front amb la mirada fixa a l'anella groga.
+              </td>
+              <td style="width: 33%; padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #ffffff;">
+                <strong style="color: #15803d;">2. Triple Extensió:</strong><br>Extensió coordinada de turmells, genolls i colzes en un sol moviment fluid ascendent sense pauses mecàniques.
+              </td>
+              <td style="width: 33%; padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #c2410c;">3. Cop de Canells (*Snap*):</strong><br>En deixar anar la pilota en el punt més alt, els canells fan una flexió seca cap avall donant un efecte de retrocés (*backspin*) suau.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ACTIVITAT 2.2 -->
+        <div style="background-color: #ffffff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px;">
+          <h5 style="margin: 0 0 8px 0; color: #1e3a8a; font-size: 1.05rem;">Activitat 2.2 &mdash; Ringo-Korfbal Tàctic 360° amb Àrea Circular Prohibida (20 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu tàctic:</strong> Aplicar el tir 360° en una situació de joc 4x4 davant oposició legal, respectant la zona de protecció del pal.</p>
+          <p style="margin: 0 0 10px 0;"><strong>Disposició de pista:</strong> 2 mitjos camps simultanis (Camp 1 i Camp 2). Al voltant de cada pal es dibuixa un <strong>cercle prohibit de 2 metres de radi</strong> (marcat amb guix o cons plans).</p>
+
+          <!-- PLÀNOL DE JOC 360° -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px solid #1e3a8a; background-color: #f8fafc;">
+            <thead>
+              <tr style="background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="2" style="padding: 8px 12px; text-align: left;">🏟️ DISPOSICIÓ DE MITJOS CAMPS &mdash; RINGO-KORFBALL 360°</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f0fdf4;">
+                  <div style="text-align: center; font-weight: bold; color: #15803d; margin-bottom: 6px;">🟢 MITJÀ CAMP 1 &mdash; Partit 4x4 (Equip 1 vs Equip 2)</div>
+                  <div style="border: 2px dashed #16a34a; background: #ffffff; padding: 10px; border-radius: 6px; text-align: center;">
+                    ⭕ <strong>ÀREA PROHIBIDA (Radi 2 m):</strong><br>
+                    🧺 [ PAL DE KORFBALL AL CENTRE ]<br>
+                    <span style="font-size: 0.72rem; color: #dc2626; font-weight: bold;">PROHIBIT ENTRAR-HI (Atacants i Defensors)</span>
+                  </div>
+                  <div style="font-size: 0.75rem; color: #166534; margin-top: 6px;">
+                    🔄 Els atacants circulen lliurement per l'exterior del cercle a 360°.
+                  </div>
+                </td>
+                <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+                  <div style="text-align: center; font-weight: bold; color: #1d4ed8; margin-bottom: 6px;">🔵 MITJÀ CAMP 2 &mdash; Partit 4x4 (Equip 3 vs Equip 4)</div>
+                  <div style="border: 2px dashed #2563eb; background: #ffffff; padding: 10px; border-radius: 6px; text-align: center;">
+                    ⭕ <strong>ÀREA PROHIBIDA (Radi 2 m):</strong><br>
+                    🧺 [ PAL DE KORFBALL AL CENTRE ]<br>
+                    <span style="font-size: 0.72rem; color: #dc2626; font-weight: bold;">PROHIBIT ENTRAR-HI (Atacants i Defensors)</span>
+                  </div>
+                  <div style="font-size: 0.75rem; color: #1e40af; margin-top: 6px;">
+                    🔄 Els atacants circulen lliurement per l'exterior del cercle a 360°.
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="padding: 10px 14px; border: 1px solid #cbd5e1; background-color: #fffbeb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                  <strong style="color: #b45309;">📋 ZONA TÈCNICA (Equip en rotació &mdash; Ex: Equip 5):</strong>
+                  <div style="font-size: 0.80rem; color: #78350f; margin-top: 3px;">
+                    Control d'arbitratge de no-invasió de l'àrea prohibida, anotació de tirs aconseguits i cronometratge dels torns de 4 minuts.
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- MATRIU DE ROTACIÓ SESSIÓ 3 -->
+          <h6 style="margin: 12px 0 6px 0; color: #1e3a8a; font-size: 0.90rem;">🔄 Matriu de Rotació Olímpica dels 5 Equips (5 torns de 4 minuts = 20 minuts totals)</h6>
+          <table style="width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.82rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+            <thead>
+              <tr style="background-color: #334155; color: #ffffff;">
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 14%;">Torn (Temps)</th>
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #15803d;">Camp 1 (4x4)</th>
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #1d4ed8;">Camp 2 (4x4)</th>
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 30%; background-color: #b45309;">Zona Tècnica (Rols Actius)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 1 (0' &ndash; 4')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 2</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 3 vs Equip 4</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 5 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+              <tr style="background-color: #f8fafc;">
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 2 (4' &ndash; 8')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 1</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 3</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 4 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 3 (8' &ndash; 12')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 4 vs Equip 5</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 3</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 2 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+              <tr style="background-color: #f8fafc;">
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 4 (12' &ndash; 16')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 4</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 3</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 1 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 5 (16' &ndash; 20')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 4</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 5</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 3 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Tornada a la Calma i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Estiraments guiats (4'):</strong> Asseguts en rotllana. Estiraments d'espatlles, tríceps i quàdriceps. Reflexió sobre la diferència de llançar des de davant o des de darrere del cistell.</li>
+          <li><strong>Desbloqueig de la Carta #03: "La Paràbola d'Or 360°" (3'):</strong> Lliurament i adhesió a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: +2 punts al torneig final si s'anota una cistella des del quadrant posterior del pal).</li>
+          <li><strong>Recollida i higiene (3'):</strong> Neteja personal i desmuntatge ordenat de cons i cèrcols.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent a Peu de Pista (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Mirada focalitzada sobre l'Equip 5 i l'Equip 1:</strong></p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Criteri 2.2 (Pes 15%):</strong> Execució tècnica del tir (agafada simètrica, paràbola neta per sobre del cistell i flexió final de canells).</li>
+          <li><strong>Criteri 3.1 (Pes 15%):</strong> Equitat en la finalització (repartiment equitatiu d'oportunitats de tir entre nois i noies de l'equip).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 4 -->
+  <div class="session-card" id="session-card-4">
+    <div class="session-header">
+      <h4>SESSIÓ 4: La Regla del "Defensat" (*Verdedigd*) i Oposició Legal 1x1</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Avaluació Formativa (CE2 - Crit 2.2 / CE3 - Crit 3.2)</span>
+        <span>2 Mitjos Camps</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-4', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (45 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 03' (3')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea Tècnica</strong><br><span style="font-size: 0.78rem; color: #475569;">Les 4 regles d'or del "Defensat"</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Alumnat en semicercle. Demostració docent amb parella model del mateix gènere.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pissarra de pista, 1 pal de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">03' &ndash; 10' (7')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: L'Ombra Coeducativa</strong><br><span style="font-size: 0.78rem; color: #475569;">Duel motriu lateral sense contacte</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Parelles del mateix gènere (noi-noi / noia-noia). Desplaçaments defensius en mirall mantenint 1 m.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pista completa delimitada amb cons.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">10' &ndash; 22' (12')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.1: Trios de Decisió 1x1</strong><br><span style="font-size: 0.78rem; color: #475569;">"Puc Tirar o He de Passar?"</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>8 trios simultanis:</strong> 1 atacant, 1 defensor legal i 1 àrbitre auxiliar. Rotació cada 45''.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cons de posició, 8 pilotes de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">22' &ndash; 37' (15')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.2: Joc Reduït 2x2 Coeducatiu</strong><br><span style="font-size: 0.78rem; color: #475569;">Defensa estricta noi-noi i noia-noia</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>4 camps reduïts de 2x2:</strong> 1 noi i 1 noia en atac vs 1 noi i 1 noia en defensa + 1 alumne/a àrbitre de suport.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">2 pals oficials + 2 cèrcols auxiliars, petos.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">37' &ndash; 45' (8')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #04</strong><br><span style="font-size: 0.78rem; color: #475569;">Joc net, carta tàctica i higiene</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Equips en rotllana. Desbloqueig de la Carta #04 "L'Escut Legal 1x1". Recollida i rentat de mans.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cartes #04, cola/adhesiu, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts) &mdash; La Filosofia del "Defensat" (*Verdedigd*)</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea: Les 4 Condicions Simultànies del Defensat (3 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Principi fonamental:</strong> Al Korfbal està prohibit llançar a cistella si un rival et defensa legalment. La intenció d'aquesta norma és premiar el desmarcatge i la passada, i evitar que una persona més alta o forta pugui tirar per sobre dels altres.</li>
+          <li><strong>Defensa per gènere:</strong> Un noi només pot defensar un noi; una noia només pot defensar una noia (garantia d'equitat coeducativa absoluta).</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament: "L'Ombra Coeducativa" (7 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Parelles del mateix gènere repartides per la pista separades per una línia.</li>
+          <li><strong>Desenvolupament:</strong> Un alumne/a fa de "guia" fent fintes i canvis de direcció ràpids; l'altre fa d'"ombra" mantenint la posició defensiva (genolls flexionats, centre de gravetat baix, braços oberts, distància de seguretat de ~1 m sense contacte corporal). Canvi de rols cada 60 segons.</li>
+        </ul>
+        <div class="teacher-cue">📢 <strong>Consigna literal del docent:</strong> "Si el defensor està més a prop del cistell que tu, cara a cara, a distància de braç i amb la mà amunt... ESTÀS DEFENSAT! No pots tirar! Has de passar!"</div>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts) &mdash; Presa de Decisió Tàctica i 2x2 Coeducatiu</div>
+
+        <!-- ESQUEMA DEL DEFENSAT -->
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.84rem; border: 2px solid #1e3a8a; background-color: #ffffff;">
+          <thead>
+            <tr style="background-color: #1e3a8a; color: #ffffff;">
+              <th colspan="3" style="padding: 10px 12px; text-align: left;">🛡️ LES 4 CONDICIONS SIMULTÀNIES PERQUÈ UN TIR SIGUI IL·LEGAL ("DEFENSAT")</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 33%; padding: 10px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #1e3a8a;">1. En línia a Cistella:</strong><br>El defensor/a està situat <strong>més a prop del pal</strong> que l'atacant (interposat entre cistella i pilota).
+              </td>
+              <td style="width: 33%; padding: 10px; border: 1px solid #cbd5e1; background-color: #ffffff;">
+                <strong style="color: #15803d;">2. Cara a Cara:</strong><br>El defensor mira directament als ulls de l'atacant (no d'esquena ni corrent de costat).
+              </td>
+              <td style="width: 33%; padding: 10px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #c2410c;">3. Distància de Braç:</strong><br>A menys de la llargada d'un braç estès de l'atacant (~70-90 cm, sense tocar-lo!).
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="padding: 10px; border: 1px solid #cbd5e1; background-color: #fee2e2; color: #991b1b; font-weight: bold; text-align: center;">
+                ✋ 4. Braç Estès cap a la Pilota: El defensor té el braç aixecat intentant bloquejar la trajectòria.<br>
+                <span style="font-size: 0.78rem; font-weight: normal; color: #7f1d1d;">&rarr; Si es donen les 4 condicions simultànies: <strong>TIR TOTALMENT IL·LEGAL</strong> (si l'atacant llença, és falta i possessió rival).</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ACTIVITAT 4.1 -->
+        <div style="background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <h5 style="margin: 0 0 8px 0; color: #15803d; font-size: 1.05rem;">Activitat 4.1 &mdash; Trios de Decisió: "Puc Llançar o He de Passar?" (12 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Organització:</strong> 8 trios simultanis a la pista (24 alumnes + 1 tutor/a de suport): 1 passador/atacant, 1 defensor legal (mateix gènere) i 1 àrbitre auxiliar.</p>
+          <p style="margin: 0 0 8px 0;"><strong>Desenvolupament:</strong> L'atacant rep una passada a 4 metres de cistella. El defensor surt a marcar-lo des de 2 metres:</p>
+          <ul style="margin: 0 0 0 20px; font-size: 0.84rem;">
+            <li>Si el defensor <strong>arriba a temps</strong> i col·loca el braç &rarr; L'àrbitre crida <em>"DEFENSAT!"</em>. L'atacant té 2 segons per pivotar i passar.</li>
+            <li>Si el defensor <strong>arriba tard o desplaçat</strong> &rarr; L'àrbitre crida <em>"LLIURE!"</em>. L'atacant fa tir parabòlic immediat.</li>
+          </ul>
+        </div>
+
+        <!-- ACTIVITAT 4.2 -->
+        <div style="background-color: #ffffff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px;">
+          <h5 style="margin: 0 0 8px 0; color: #1e3a8a; font-size: 1.05rem;">Activitat 4.2 &mdash; Joc Reduït 2x2 Coeducatiu amb Marcatge Estricte (13 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Disposició:</strong> 4 mitjos camps reduïts. Cada partit enfronta 1 parella mixta atacant (1 noi + 1 noia) contra 1 parella mixta defensora (1 noi + 1 noia).</p>
+          <p style="margin: 0 0 8px 0;"><strong>Regla crucial de gènere:</strong> El noi només pot defensar el noi rival; la noia només pot defensar la noia rival. Està expressament prohibit fer ajudes defensives creuades contra el gènere contrari.</p>
+          <p style="margin: 0 0 0 0; font-size: 0.82rem; color: #1e40af;"><strong>Objectiu tàctic:</strong> Utilitzar el <em>passa i talla</em> per allunyar-se de la marca defensiva i poder fer tirs nets en posició "LLIURE".</p>
+        </div>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Tornada a la Calma i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Reflexió en rotllana (4'):</strong> <em>"Com ens sentim quan sabem que ningú pot tirar per sobre nostre pel sol fet de ser més alt/a? Per què el Korfbal és just per a tothom?"</em>.</li>
+          <li><strong>Desbloqueig de la Carta #04: "L'Escut Legal 1x1" (3'):</strong> S'enganxa la quarta carta a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: +1 punt extra de Fair Play en forçar legalment la situació de defensat al torneig).</li>
+          <li><strong>Higiene i recollida (3'):</strong> Rentat de mans i cara abans de sortir de la pista.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent a Peu de Pista (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Mirada focalitzada sobre l'Equip 2 i l'Equip 3:</strong></p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Criteri 2.2 (Pes 15%):</strong> Presa de decisió ràpida (passar quan s'està defensat en lloc de forçar un llançament il·legal).</li>
+          <li><strong>Criteri 3.2 (Pes 10%):</strong> Acceptació de la veu de l'àrbitre (*"Defensat"*), absència de contacte corporal i marcatge estricte a companys del mateix gènere.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 5 -->
+  <div class="session-card" id="session-card-5">
+    <div class="session-header">
+      <h4>SESSIÓ 5: Entrades a Cistella (Tir en Cursa) i el Rol del "Poste" (Assistència)</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Coavaluació entre Iguals (CE2 - Crit 2.1 / CE3 - Crit 3.1)</span>
+        <span>2 Mitjos Camps</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-5', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (60 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 05' (5')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea Tàctica</strong><br><span style="font-size: 0.78rem; color: #475569;">El rol del Poste i l'entrada en cursa</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Alumnat davant el pal. Presentació del <em>Doorloopbal</em> (tir en cursa) i de la figura del Poste.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pissarra de pista, 1 pal oficial de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">05' &ndash; 15' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: Passades Creuades en Cursa</strong><br><span style="font-size: 0.78rem; color: #475569;">Sincronització de carrera i passada</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Parelles longitudinals avançant en paral·lel per la pista a 4 m de distància sense botar.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pista completa, 12 pilotes de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">15' &ndash; 30' (15')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.1: Entrada en 2 Temps (*Doorloopbal*)</strong><br><span style="font-size: 0.78rem; color: #475569;">Petjades visuals i salt vertical</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>4 estacions de tir:</strong> 2 pals oficials + 2 cèrcols auxiliars. Fils de 3 alumnes amb petjades de colors a terra.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Petjades de goma numerades (1 i 2), 8 pilotes.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">30' &ndash; 50' (20')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.2: Triangles Tàctics amb Poste Fix</strong><br><span style="font-size: 0.78rem; color: #475569;">Passa al poste, talla i rep per anotar</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>5 grups de 5 alumnes</strong> (1 per equip): 1 Poste sota cistella, 2 atacants exteriors, 1 defensor i 1 rebotejador/observador.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pals de Korfbal, petos diferencials, fitxes de coavaluació.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">50' &ndash; 60' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Coavaluació i Carta #05</strong><br><span style="font-size: 0.78rem; color: #475569;">Retorn entre iguals i adhesió de carta</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Parelles d'equip completen el registre de coavaluació. Desbloqueig de la Carta #05 "El Poste Mestre".</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Fulls de coavaluació, Cartes #05, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts) &mdash; La Mecànica del Tir en Cursa</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea: "Què és un Doorloopbal i per què el Poste és el cor de l'equip?" (5 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li>L'entrada a cistella en Korfbal s'anomena <strong>Doorloopbal</strong>. A diferència del bàsquet, no es fa botant prèviament: s'inicia rebent una passada en carrera precisa procedent del company/a que està situat sota el cistell (el <strong>Poste</strong>).</li>
+          <li>El Poste té la funció més altruista: atreure la defensa, rebre d'esquena al cistell, protegir la pilota i lliurar-la suau a les mans del company que arriba tallant en velocitat.</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament Dinàmic: "Passades Creuades en Carrera" (10 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li>Parelles avançant d'un extrem a l'altre de la pista corrent a ritme mitjà. Es passen la pilota de pit a 2 mans sense aturar la carrera ni fer passos il·legals (la pilota s'ha de deixar anar abans del tercer suport).</li>
+        </ul>
+        <div class="teacher-cue">📢 <strong>Consigna literal del docent:</strong> "El Poste és com un semàfor intel·ligent: rep, protegeix i ofereix una safata d'or al company que entra com una fletxa!"</div>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts) &mdash; Entrada en 2 Temps i Triangles Tàctics</div>
+
+        <!-- ESQUEMA DEL DOORLOOPBAL -->
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.84rem; border: 2px dashed #16a34a; background-color: #f7fee7;">
+          <thead>
+            <tr style="background-color: #15803d; color: #ffffff;">
+              <th colspan="3" style="padding: 9px 12px; text-align: left;">📐 SEQÜÈNCIA MOTRIU DE L'ENTRADA EN 2 TEMPS (*DOORLOOPBAL*)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 33%; padding: 10px; border: 1px solid #cbd5e1; background-color: #ffffff;">
+                <strong style="color: #1e3a8a;">1. Cursa i Recepció Aèria:</strong><br>L'atacant inicia cursa a 6 m del pal. Rep la passada del poste just en l'aire abans de contactar el peu 1 (suport d'amortiment).
+              </td>
+              <td style="width: 33%; padding: 10px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #15803d;">2. Pas 2 d'Impuls Vertical:</strong><br>El segon peu es clava fort a terra sota el cistell per transformar la velocitat horitzontal en elevació vertical neta.
+              </td>
+              <td style="width: 33%; padding: 10px; border: 1px solid #cbd5e1; background-color: #ffffff;">
+                <strong style="color: #c2410c;">3. Deixar Caure a 2 Mans:</strong><br>En el punt àlgid del salt, s'eleven els dos braços per sobre de l'anella i es deixa caure la pilota suaument sense copejar.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ACTIVITAT 5.1 -->
+        <div style="background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <h5 style="margin: 0 0 8px 0; color: #15803d; font-size: 1.05rem;">Activitat 5.1 &mdash; Circuit d'Entrada en 2 Temps amb Petjades Visuals (15 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Organització:</strong> 4 estacions de llançament amb petjades de goma de colors enganxades a terra (Petjada 1 verda a 2,5 m del pal, Petjada 2 groga a 1,2 m del pal). Filera de 3 alumnes amb rotació contínua: Tirador &rarr; Rebotejador &rarr; Passador &rarr; Fila.</p>
+          <p style="margin: 0 0 0 0; font-size: 0.82rem; color: #166534;">Permet a l'alumnat amb dificultats de coordinació motriu (i alumnat TEA) anticipar visualment el patró rítmic de passes sense cometre falta de peus.</p>
+        </div>
+
+        <!-- ACTIVITAT 5.2 -->
+        <div style="background-color: #ffffff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px;">
+          <h5 style="margin: 0 0 8px 0; color: #1e3a8a; font-size: 1.05rem;">Activitat 5.2 &mdash; Triangles Tàctics amb Poste Fix i Rebot Actiu (20 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Estructura per equip (5 alumnes):</strong> 1 Poste fix (a 1,5 m sota el cistell), 1 Atacant exterior amb pilota, 1 Defensor del mateix gènere, 1 Jugador/a de suport perimetral i 1 Observador/a de coavaluació.</p>
+
+          <!-- GRÀFIC DEL TRIANGLE AMB POSTE -->
+          <table style="width: 100%; border-collapse: collapse; margin: 10px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px solid #2563eb; background-color: #eff6ff;">
+            <tbody>
+              <tr>
+                <td style="text-align: center; padding: 10px; background: #ffffff; border: 1px solid #cbd5e1; width: 35%;">
+                  👤 <strong>Atacant Exterior</strong><br>
+                  <span style="font-size: 0.72rem; color: #15803d;">Passa al Poste &rarr; Talla ràpid</span>
+                </td>
+                <td style="text-align: center; padding: 6px; font-size: 0.85rem; color: #2563eb;">
+                  &xrarr; Passa &xrarr;<br>
+                  &xlarr; Retorn en cursa &xlarr;
+                </td>
+                <td style="text-align: center; padding: 10px; background: #dbeafe; border: 2px solid #1d4ed8; width: 45%;">
+                  ⭐ <strong>ROL DEL POSTE</strong> (Sota cistella)<br>
+                  <span style="font-size: 0.72rem; color: #1e40af;">Rep &bull; Protegeix &bull; Assisteix en safata &bull; Captura rebot</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Desenvolupament:</strong> L'atacant passa la pilota al Poste, realitza una finta i talla a màxima velocitat pel costat contrari del defensor. El Poste li retorna la pilota en safata a l'alçada del pit per executar el <em>doorloopbal</em>. Rotació completa cada 5 intents perquè tots els membres passin pel rol de Poste.</p>
+        </div>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Coavaluació i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Coavaluació entre iguals (4'):</strong> Per parelles, utilitzen la fitxa de coavaluació amb pictogrames per valorar l'execució de l'entrada en 2 temps del company/a (1. Frenada de passes, 2. Impuls vertical, 3. Llançament a dues mans).</li>
+          <li><strong>Desbloqueig de la Carta #05: "El Poste Mestre" (3'):</strong> S'enganxa la cinquena carta a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: +1 tir lliure de bonificació si prové d'una assistència directa del poste).</li>
+          <li><strong>Higiene i recollida (3'):</strong> Rentat de mans i cara abans de sortir.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent i Coavaluació (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Evidències recollides a peu de pista:</strong></p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Criteri 2.1 (Pes 20%):</strong> Fluïdesa de la coordinació entre passada del poste, carrera de tall i recepció sense cometre passes il·legals.</li>
+          <li><strong>Coavaluació de pista:</strong> Registre de les fitxes d'observació d'iguals per alimentar l'autoestima motriu i el feedback positiu entre nois i noies.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 6 -->
+  <div class="session-card" id="session-card-6">
+    <div class="session-header">
+      <h4>SESSIÓ 6: Ocupació d'Espais, Transició de Zones i Arbitratge Compartit</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Avaluació Formativa (CE3 - Crit 3.1 i 3.2 / CE4 - Crit 4.1)</span>
+        <span>2 Mitjos Camps</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-6', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (45 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 03' (3')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea Tàctica</strong><br><span style="font-size: 0.78rem; color: #475569;">La regla de les 2 zones i la polivalència</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Alumnat assegut a la línia central. Explicació de la transició atac-defensa i rotació cada 2 cistelles.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Pissarra de pista, 2 pals de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">03' &ndash; 10' (7')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: Canvi de Carril i Transició</strong><br><span style="font-size: 0.78rem; color: #475569;">Orientació espacial i reacció</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Carrera per la pista. Al crit de <em>"ZONA ATAC!"</em> o <em>"ZONA DEFENSA!"</em> tothom esprinta a ocupar la seva meitat de pista.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pista dividida per la línia de mig camp.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">10' &ndash; 22' (12')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.1: Connexió per Sobre la Línia</strong><br><span style="font-size: 0.78rem; color: #475569;">Passada llarga protegida entre zones</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">2 meitats de camp comunicades. 2 defensors recuperen i han de connectar amb els 2 atacants de l'altra zona.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">4 pilotes de Korfbal, petos diferencials.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">22' &ndash; 37' (15')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.2: Partits 4x4 amb Arbitratge</strong><br><span style="font-size: 0.78rem; color: #475569;">Rotació de zones cada 2 gols + equip jutge</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Camp 1 (Equips 1 vs 2) + Camp 2 (Equips 3 vs 4) + Zona Tècnica (Equip 5 com a Cos Arbitral). 5 torns.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pals de Korfbal, targetes d'arbitratge, xiulets visuals.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">37' &ndash; 45' (8')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #06</strong><br><span style="font-size: 0.78rem; color: #475569;">Cultura del Korfbal català i higiene</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Assemblea de Joc Net. Desbloqueig de la Carta #06 "El Camaleó de Pista". Recollida i rentat de mans.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cartes #06, cola/adhesiu, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts) &mdash; Estructura Espacial del Korfbal</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea: "Per què ningú pot jugar sol ni quedar-se a la mateixa zona?" (3 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li>A la majoria d'esports hi ha "defenses purs" o "davanters estrella". Al Korfbal, la pista està dividida en dues meitats estrictes per la línia de mig camp: <strong>Zona d'Atac</strong> i <strong>Zona de Defensa</strong>.</li>
+          <li>Cada equip té 2 jugadors/es (1 noi + 1 noia) a cada zona. <strong>Està prohibit trepitjar o creuar la línia central</strong>. Cada 2 cistelles totals del partit, els atacants passen a defensar i els defensors passen a atacar. Tothom ha de saber fer de tot!</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament: "Canvi de Carril i Transició" (7 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li>Carrera aeròbica combinant canvis de direcció. Al senyal del mestre (paleta de color), tothom ha d'esprintar cap a la zona indicada sense xocar amb ningú, mantenint l'ocupació equilibrada de la pista.</li>
+        </ul>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts) &mdash; Transició de Zones i Arbitratge d'Iguals</div>
+
+        <!-- ESQUEMA DE LES 2 ZONES -->
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px solid #1e3a8a; background-color: #f8fafc;">
+          <thead>
+            <tr style="background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+              <th colspan="3" style="padding: 9px 12px; text-align: left;">🏟️ ESTRUCTURA OFICIAL D'UN CAMP DE KORFBALL DIVIDIT EN 2 ZONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 48%; padding: 12px; border: 1px solid #cbd5e1; background-color: #f0fdf4; vertical-align: top;">
+                <div style="font-weight: bold; color: #15803d; text-align: center; margin-bottom: 6px;">🟢 ZONA A (ATAC EQUIP 1 / DEFENSA EQUIP 2)</div>
+                <div style="text-align: center; padding: 6px; background: #ffffff; border-radius: 4px; border: 1px solid #86efac;">
+                  🧺 [ PAL DE KORFBALL A ] (a 3,5 m del fons)<br>
+                  👤 <strong>Equip 1 (Atac):</strong> 1 noi + 1 noia<br>
+                  🛡️ <strong>Equip 2 (Defensa):</strong> 1 noi + 1 noia (marcatge al mateix gènere)
+                </div>
+              </td>
+              <td style="width: 4%; padding: 4px; border: 2px dashed #dc2626; text-align: center; background-color: #fee2e2; vertical-align: middle;">
+                <div style="writing-mode: vertical-rl; transform: rotate(180deg); font-weight: bold; color: #991b1b; font-size: 0.75rem; letter-spacing: 2px;">
+                  ⛔ LÍNIA CENTRAL &bull; PROHIBIT CREUAR ⛔
+                </div>
+              </td>
+              <td style="width: 48%; padding: 12px; border: 1px solid #cbd5e1; background-color: #eff6ff; vertical-align: top;">
+                <div style="font-weight: bold; color: #1d4ed8; text-align: center; margin-bottom: 6px;">🔵 ZONA B (DEFENSA EQUIP 1 / ATAC EQUIP 2)</div>
+                <div style="text-align: center; padding: 6px; background: #ffffff; border-radius: 4px; border: 1px solid #93c5fd;">
+                  🧺 [ PAL DE KORFBALL B ] (a 3,5 m del fons)<br>
+                  🛡️ <strong>Equip 1 (Defensa):</strong> 1 noi + 1 noia<br>
+                  👤 <strong>Equip 2 (Atac):</strong> 1 noi + 1 noia (marcatge al mateix gènere)
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #fefce8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.78rem; color: #854d0e;">
+                🔄 <strong>Norma de canvi de zones:</strong> Cada cop que es marquen <strong>2 cistelles en el partit</strong> (sigui de qui sigui), tots els jugadors/es intercanvien la seva zona: els atacants van a defensar i els defensors van a atacar.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ACTIVITAT 6.2 -->
+        <div style="background-color: #ffffff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px;">
+          <h5 style="margin: 0 0 8px 0; color: #1e3a8a; font-size: 1.05rem;">Activitat 6.2 &mdash; Partits Reals 4x4 amb Cos Arbitral d'Alumnat (15 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Rols actius de l'Equip a la Zona Tècnica (Equip 5):</strong></p>
+          <ul style="margin: 0 0 10px 20px; font-size: 0.82rem;">
+            <li><strong>2 Àrbitres Principals (1 per camp):</strong> Senyalitzen faltes de bot, contacte físic o trepitjada de línia central amb xiulet greu o paleta.</li>
+            <li><strong>2 Jutges de Defensat:</strong> Validen si els tirs eren lliures o estaven en posició de <em>"defensat"</em>.</li>
+            <li><strong>1 Cronometrador/a i Responsable d'Acta de Joc Net:</strong> Controla el temps de 3-4 minuts per torn i registra les conductes coeducatives destacables.</li>
+          </ul>
+
+          <!-- MATRIU DE ROTACIÓ SESSIÓ 6 -->
+          <h6 style="margin: 10px 0 6px 0; color: #1e3a8a; font-size: 0.88rem;">🔄 Matriu de Rotació Olímpica (5 torns de 3-4 minuts)</h6>
+          <table style="width: 100%; border-collapse: collapse; margin: 4px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.80rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+            <thead>
+              <tr style="background-color: #334155; color: #ffffff;">
+                <th style="padding: 6px; text-align: center;">Torn</th>
+                <th style="padding: 6px; text-align: center; background-color: #15803d;">Camp 1 (4x4)</th>
+                <th style="padding: 6px; text-align: center; background-color: #1d4ed8;">Camp 2 (4x4)</th>
+                <th style="padding: 6px; text-align: center; background-color: #b45309;">Cos Arbitral Actiu (Zona Tècnica)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding: 5px; text-align: center; font-weight: bold;">T1 (0-3')</td><td style="padding: 5px; text-align: center;">Equip 1 vs Equip 2</td><td style="padding: 5px; text-align: center;">Equip 3 vs Equip 4</td><td style="padding: 5px; text-align: center; background: #fefce8; font-weight: bold; color: #b45309;">Equip 5</td></tr>
+              <tr style="background-color: #f8fafc;"><td style="padding: 5px; text-align: center; font-weight: bold;">T2 (3-6')</td><td style="padding: 5px; text-align: center;">Equip 5 vs Equip 1</td><td style="padding: 5px; text-align: center;">Equip 2 vs Equip 3</td><td style="padding: 5px; text-align: center; background: #fefce8; font-weight: bold; color: #b45309;">Equip 4</td></tr>
+              <tr><td style="padding: 5px; text-align: center; font-weight: bold;">T3 (6-9')</td><td style="padding: 5px; text-align: center;">Equip 4 vs Equip 5</td><td style="padding: 5px; text-align: center;">Equip 1 vs Equip 3</td><td style="padding: 5px; text-align: center; background: #fefce8; font-weight: bold; color: #b45309;">Equip 2</td></tr>
+              <tr style="background-color: #f8fafc;"><td style="padding: 5px; text-align: center; font-weight: bold;">T4 (9-12')</td><td style="padding: 5px; text-align: center;">Equip 2 vs Equip 4</td><td style="padding: 5px; text-align: center;">Equip 5 vs Equip 3</td><td style="padding: 5px; text-align: center; background: #fefce8; font-weight: bold; color: #b45309;">Equip 1</td></tr>
+              <tr><td style="padding: 5px; text-align: center; font-weight: bold;">T5 (12-15')</td><td style="padding: 5px; text-align: center;">Equip 1 vs Equip 4</td><td style="padding: 5px; text-align: center;">Equip 2 vs Equip 5</td><td style="padding: 5px; text-align: center; background: #fefce8; font-weight: bold; color: #b45309;">Equip 3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Cultura del Korfbal i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Cultura motriu i reflexió (4'):</strong> El Korfbal és un dels pocs esports on la <strong>Selecció Catalana</strong> competeix oficialment a nivell mundial reconeguda per la Federació Internacional (IKF), havent assolit podis europeus i mundials.</li>
+          <li><strong>Desbloqueig de la Carta #06: "El Camaleó de Pista" (3'):</strong> S'enganxa la sisena carta a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: Permet fer una rotació anticipada de zones si l'equip necessita oxigenar l'atac).</li>
+          <li><strong>Higiene i recollida (3'):</strong> Rentat de mans i cara abans de tornar a classe.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Mirada focalitzada sobre l'Equip 4 i l'Equip 5:</strong></p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Criteri 3.2 (Pes 10%):</strong> Assumpció responsable del rol d'àrbitre auxiliar i respecte escrupolós a les decisions dels companys sense protestes.</li>
+          <li><strong>Criteri 4.1 (Pes 15%):</strong> Comprensió de la singularitat cultural del Korfbal (esport coeducatiu, reconeixement de la Selecció Catalana).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 7 -->
+  <div class="session-card" id="session-card-7">
+    <div class="session-header">
+      <h4>SESSIÓ 7: Partits Reals Reduïts 4x4 Coeducatius i Avaluació Focalitzada</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Avaluació Sumativa Docent (CE2, CE3, CE4)</span>
+        <span>2 Mitjos Camps</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-7', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (60 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 05' (5')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea Tàctica</strong><br><span style="font-size: 0.78rem; color: #475569;">Bateig de la lliga de pista i regles oficials</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Alumnat en rotllana d'equips. Recordatori de les 6 normes d'or del Korfbal i del canvi de zones.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Pissarra de pista, Àlbums d'Equip.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">05' &ndash; 15' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: Escalfament Autònom d'Equip</strong><br><span style="font-size: 0.78rem; color: #475569;">Cotutoria 6è-5è i tirs de calibració</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Cada equip disposa d'un espai delimitat. Carrera, mobilitat articular i 5 tirs per membre als pals.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Pista completa, 5 pilotes de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">15' &ndash; 50' (35')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Principal: Lliga de Partits 4x4</strong><br><span style="font-size: 0.78rem; color: #475569;">5 torns de 6-7' &mdash; Avaluació focalitzada</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Camp 1 (4x4) + Camp 2 (4x4) + Taula Tècnica Central (Equip de Suport).</strong> Rotació olímpica rigorosa.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">2 pistes transversals completes, petos, iDoceo.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">50' &ndash; 60' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #07</strong><br><span style="font-size: 0.78rem; color: #475569;">Autoavaluació del joc net i higiene</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Equips en rotllana. Desbloqueig de la Carta #07 "El Rellotge de Zones". Recollida cooperativa i rentat.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Cartes #07, cola/adhesiu, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts) &mdash; Autonomia i Activació d'Equip</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea Tàctica (5 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li>Revisió de la dinàmica de competició: els partits es juguen amb reglament oficial adaptat (4x4 mixt paritari: 2 nois i 2 noies per zona, rotació de cistella cada 2 gols, defensa exclusiva al mateix gènere i zero contacte físic).</li>
+          <li>S'assigna a cada equip la seva tasca per a la fase d'escalfament liderada pels capitans/es de 6è en cotutoria amb l'alumnat de 5è.</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament Autònom per Equips (10 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li>Cada equip disposa d'un espai de pista assignat: realitzen 3 minuts de carrera contínua amb canvis de direcció, 3 minuts de mobilitat articular activa (turmells, malucs, espatlles) i 4 minuts de sèries de tir a cistella en parelles (tir lliure i entrada <em>doorloopbal</em>).</li>
+        </ul>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts) &mdash; Lliga de Partits 4x4 i Avaluació Focalitzada (iDoceo)</div>
+
+        <!-- PLÀNOL DE JOC SESSIÓ 7 -->
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px solid #1e3a8a; background-color: #f8fafc;">
+          <thead>
+            <tr style="background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+              <th colspan="2" style="padding: 9px 12px; text-align: left;">🏟️ DISPOSICIÓ DE LA PISTA POLIESPORTIVA &mdash; PARTITS 4x4 SIMULTANIS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; background-color: #f0fdf4; vertical-align: top;">
+                <div style="font-weight: bold; color: #15803d; text-align: center; margin-bottom: 6px;">🟢 CAMP 1 (14 x 15 m) &mdash; Partit 4x4</div>
+                <div style="text-align: center; padding: 8px; background: #ffffff; border-radius: 4px; border: 1px solid #86efac;">
+                  🧺 [ PAL 1 ] (Zona Atac 1 / Defensa 2)<br>
+                  <div style="font-size: 0.74rem; color: #166534; margin: 4px 0;">-- Línia divisòria de 2 zones (sense creuar) --</div>
+                  🧺 [ PAL 2 ] (Zona Defensa 1 / Atac 2)
+                </div>
+              </td>
+              <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; background-color: #eff6ff; vertical-align: top;">
+                <div style="font-weight: bold; color: #1d4ed8; text-align: center; margin-bottom: 6px;">🔵 CAMP 2 (14 x 15 m) &mdash; Partit 4x4</div>
+                <div style="text-align: center; padding: 8px; background: #ffffff; border-radius: 4px; border: 1px solid #93c5fd;">
+                  🧺 [ PAL 3 ] (Zona Atac 3 / Defensa 4)<br>
+                  <div style="font-size: 0.74rem; color: #1e40af; margin: 4px 0;">-- Línia divisòria de 2 zones (sense creuar) --</div>
+                  🧺 [ PAL 4 ] (Zona Defensa 3 / Atac 4)
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="padding: 10px 14px; border: 1px solid #cbd5e1; background-color: #fffbeb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.80rem;">
+                <strong style="color: #b45309;">📋 TAULA TÈCNICA CENTRAL (Equip en rotació &mdash; Ex: Equip 5):</strong>
+                <div style="margin-top: 4px; color: #78350f;">
+                  Assumeix el control complet de la competició: 1 Àrbitre de Camp 1, 1 Àrbitre de Camp 2, 2 Jutges de Defensat a peu de cistella i 1 Anotador/a d'Acta de Joc Net.
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- MATRIU DE COMPETICIÓ SESSIÓ 7 -->
+        <h6 style="margin: 12px 0 6px 0; color: #1e3a8a; font-size: 0.90rem;">🔄 Matriu de Rotació de la Lliga (5 torns de 6-7 minuts = 35 minuts totals)</h6>
+        <table style="width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.82rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+          <thead>
+            <tr style="background-color: #334155; color: #ffffff;">
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 14%;">Torn (Temps)</th>
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #15803d;">Camp 1 (4x4)</th>
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #1d4ed8;">Camp 2 (4x4)</th>
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 30%; background-color: #b45309;">Taula Tècnica i Arbitratge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 1 (0' &ndash; 7')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 2</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 3 vs Equip 4</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 5 (Arbitratge)</td>
+            </tr>
+            <tr style="background-color: #f8fafc;">
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 2 (7' &ndash; 14')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 1</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 3</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 4 (Arbitratge)</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 3 (14' &ndash; 21')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 4 vs Equip 5</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 3</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 2 (Arbitratge)</td>
+            </tr>
+            <tr style="background-color: #f8fafc;">
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 4 (21' &ndash; 28')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 4</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 3</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 1 (Arbitratge)</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 5 (28' &ndash; 35')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 4</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 5</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 3 (Arbitratge)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Tornada a la Calma i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Estiraments i reflexió guiada (4'):</strong> Asseguts per equips, es valora l'eficàcia del canvi de zones i l'arbitratge dels companys.</li>
+          <li><strong>Desbloqueig de la Carta #07: "El Rellotge de Zones" (3'):</strong> S'enganxa la penúltima carta a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: +3 punts de bonificació si l'equip finalitza el partit sense cap falta per botar).</li>
+          <li><strong>Higiene i recollida (3'):</strong> Rentat de mans i cara abans de la tornada a l'aula.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent Focalitzada (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Avaluació sumativa docent amb rúbrica oficial (Decret 175/2022):</strong> El docent aprofita els 35 minuts de partits continus per observar amb el quadern d'avaluació iDoceo els indicadors clau:</p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Crit. 2.1 (Pes 20%):</strong> Desmarcatges dinàmics, passades precises i respecte al peu de pivot.</li>
+          <li><strong>Crit. 2.2 (Pes 15%):</strong> Eficàcia de tir i respecte a la regla del "defensat".</li>
+          <li><strong>Crit. 3.1 (Pes 15%):</strong> Distribució paritària de passades i protagonisme mixt nois/noies.</li>
+          <li><strong>Crit. 3.2 (Pes 10%):</strong> Acceptació de les decisions arbitrals dels companys i respecte al rival.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SESSIÓ 8 -->
+  <div class="session-card" id="session-card-8">
+    <div class="session-header">
+      <h4>SESSIÓ 8: Tasca Autèntica Final: "El Gran Torneig Coeducatiu: Tothom Suma!", Activació de Cartes i Diana</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Autoavaluació Final i Triangulació (Tots els Criteris)</span>
+        <span>Gimnàs / Pista</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-8', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (45 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 05' (5')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea Inaugural del Torneig</strong><br><span style="font-size: 0.78rem; color: #475569;">Regles del torneig "Tothom Suma"</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Alumnat assegut en rotllana al voltant de la Gran Pissarra de Marcador. Presentació de l'activació de cartes.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Gran marcador de Joc Net, Àlbums d'Equip.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">05' &ndash; 12' (7')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: Escalfament Musical Festiu</strong><br><span style="font-size: 0.78rem; color: #475569;">Activació aeròbica i tirs lliures</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Carrera al ritme de música motivadora. Els equips s'activen per parelles i calibren el tir 360°.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Altaveu bluetooth, 5 pilotes de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">12' &ndash; 35' (23')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Principal: El Gran Torneig Final</strong><br><span style="font-size: 0.78rem; color: #475569;">5 partits de 4-5' amb activació de cartes</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Camp 1 (4x4) + Camp 2 (4x4) + Taula Tècnica Central (Equip Jutge).</strong> Activació oficial d'1 carta per partit.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Pals de Korfbal, petos de 5 colors, àlbums.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">35' &ndash; 45' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Diana de Cloenda i Carta #08</strong><br><span style="font-size: 0.78rem; color: #475569;">Autoavaluació diana i Carta Llegendària</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Cada alumne completa la seva diana d'autoavaluació individual. Lliurament de la Carta #08 "Tothom Suma!".</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Dianes individuals en paper, Cartes #08 or.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- SISTEMA DE PUNTUACIÓ -->
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 30%;">Concepte de Puntuació al Gran Torneig</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 18%;">Punts de Torneig</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 52%;">Justificació Pedagògica i Valor Afegit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #15803d;">Cistella Coeducativa Mixta</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d; font-size: 0.95rem;">+2 punts</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Cistella aconseguida després d'una cadena de passades on han intervingut tant nois com noies.</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #1e3a8a;">Cistella Individual Ordinària</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1e3a8a;">+1 punt</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Cistella neta des de qualsevol quadrant 360° en posició de tir legal no defensat.</td>
+          </tr>
+          <tr style="background-color: #fefce8;">
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #b45309;">Acció de Joc Net Exemplar (*Fair Play*)</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; font-size: 0.95rem;">+3 punts</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Reconèixer una infracció pròpia (bot involuntari), felicitar el rival o ajudar un company/a.</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #7c3aed;">Arbitratge Imparcial i Responsable</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #7c3aed;">+2 punts</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">Exercici del rol arbitral amb serenitat, veu clara i respecte a les normes oficials.</td>
+          </tr>
+          <tr style="background-color: #eff6ff;">
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #0284c7;">Activació Estratègica de Carta Tàctica</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0284c7;">Poder Especial</td>
+            <td style="padding: 8px 12px; border: 1px solid #cbd5e1;">L'equip lliura a la taula 1 de les seves cartes desbloquejades a l'inici del partit per activar el seu efecte.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts) &mdash; Ambient Festiu i Escalfament Musical</div>
+        <p><strong>Activitat 1.1 &mdash; Assemblea: "Avui tothom suma!" (4 minuts):</strong> Explicació de la gran novetat: en aquest torneig, els punts per joc net i cooperació valen més que les cistelles ordinàries! Cada equip escull quines cartes tàctiques de les desbloquejades a les sessions 1 a 7 activarà en cadascun dels seus enfrontaments.</p>
+        <p><strong>Activitat 1.2 &mdash; Escalfament Musical Dinàmic (6 minuts):</strong> Activació amb música energètica. Carrera, mobilitat articular i 3 rondes de tirs lliures des de qualsevol quadrant del pal.</p>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts) &mdash; Desenvolupament del Gran Torneig Coeducatiu</div>
+
+        <!-- MATRIU DEL GRAN TORNEIG -->
+        <h6 style="margin: 0 0 6px 0; color: #1e3a8a; font-size: 0.90rem;">🏆 Matriu de Partits del Torneig Final (5 torns de 4-5 minuts)</h6>
+        <table style="width: 100%; border-collapse: collapse; margin: 6px 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.82rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+          <thead>
+            <tr style="background-color: #334155; color: #ffffff;">
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 14%;">Torn (Temps)</th>
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #15803d;">Camp 1 (4x4)</th>
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #1d4ed8;">Camp 2 (4x4)</th>
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 30%; background-color: #b45309;">Cos Arbitral i Taula de Puntuació</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 1 (0' &ndash; 4')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 2</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 3 vs Equip 4</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 5 (Arbitratge + Taula)</td>
+            </tr>
+            <tr style="background-color: #f8fafc;">
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 2 (4' &ndash; 8')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 1</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 3</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 4 (Arbitratge + Taula)</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 3 (8' &ndash; 12')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 4 vs Equip 5</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 3</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 2 (Arbitratge + Taula)</td>
+            </tr>
+            <tr style="background-color: #f8fafc;">
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 4 (12' &ndash; 16')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 4</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 3</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 1 (Arbitratge + Taula)</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 5 (16' &ndash; 20')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 4</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 5</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 3 (Arbitratge + Taula)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Diana d'Autoavaluació, Carta Llegendària i Cloenda</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Diana d'Autoavaluació Final (5'):</strong> Cada alumne/a emplena individualment la seva diana d'avaluació en 4 radis (de l'1 al 4):
+            <ol style="margin: 2px 0 0 15px;">
+              <li><em>Hàbits i escalfament autònom (Crit 1.1 / 1.2)</em></li>
+              <li><em>Desmarcatge, peu de pivot i tir legal 360° (Crit 2.1 / 2.2)</em></li>
+              <li><em>Coeducació, empatia i col·laboració mixta (Crit 3.1)</em></li>
+              <li><em>Joc net, arbitratge i cultura del Korfbal (Crit 3.2 / 4.1)</em></li>
+            </ol>
+          </li>
+          <li><strong>Desbloqueig de la Carta #08: "Tothom Suma!" (3'):</strong> Lliurament de la carta daurada col·leccionable final amb el segell de campió/na coeducatiu. Cada equip completa el seu <em>Àlbum de Cartes Tàctiques</em> al 100%.</li>
+          <li><strong>Podi cooperatiu i comiat (2'):</strong> Reconeixement a tots els equips. Rentat de mans i retorn feliç a l'aula ordinària.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Triangulació Avaluativa Final (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Triangulació d'evidències oficial (Decret 175/2022):</strong> La qualificació final de la Situació d'Aprenentatge es calcula mitjançant la combinació de 3 mirades:</p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>60% Heteroavaluació Docent:</strong> Registre continu d'observació a les sessions 1 a 7 a les columnes d'iDoceo.</li>
+          <li><strong>20% Coavaluació entre Iguals:</strong> Mitjana de les fitxes de coavaluació entre parelles de la Sessió 5 i de la taula arbitral de la Sessió 6.</li>
+          <li><strong>20% Autoavaluació de l'Alumnat:</strong> Puntuació de la Diana d'Autoavaluació de la Sessió 8.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function filterSession(sessionNum, btn) {
+  const buttons = document.querySelectorAll('.tab-btn');
+  buttons.forEach(b => {
+    b.style.background = 'white';
+    b.style.color = '#1e3a8a';
+  });
+  btn.style.background = '#1e3a8a';
+  btn.style.color = 'white';
+
+  const cards = document.querySelectorAll('.session-card');
+  cards.forEach(card => {
+    if (sessionNum === 'all') {
+      card.style.display = 'block';
+    } else {
+      if (card.id === 'session-card-' + sessionNum) {
+        card.style.display = 'block';
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        card.style.display = 'none';
+      }
+    }
+  });
+}
+
+async function copySessionToClipboard(cardId, btn) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  
+  const clone = card.cloneNode(true);
+  const copyBtn = clone.querySelector('.copy-btn');
+  if (copyBtn) copyBtn.remove();
+  
+  const htmlBlob = new Blob([clone.outerHTML], { type: 'text/html' });
+  const textBlob = new Blob([clone.innerText], { type: 'text/plain' });
+  
+  try {
+    const item = new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob });
+    await navigator.clipboard.write([item]);
+    const oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Copiat per a Drive!';
+    btn.style.background = '#15803d';
+    setTimeout(() => {
+      btn.innerHTML = oldText;
+      btn.style.background = '#0284c7';
+    }, 2500);
+  } catch (err) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = clone.outerHTML;
+    tempDiv.style.position = 'fixed';
+    tempDiv.style.left = '-9999px';
+    document.body.appendChild(tempDiv);
+    const range = document.createRange();
+    range.selectNodeContents(tempDiv);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    document.body.removeChild(tempDiv);
+    btn.innerHTML = '✅ Copiat!';
+    setTimeout(() => { btn.innerHTML = '📋 Copiar per a Google Docs'; }, 2000);
+  }
+}
+</script>
+<style>
+  .app-footer { margin-top: 1.5rem; padding: 0.6rem 1rem; background-color: #f8f9fa; border-top: 1px solid #e9ecef; text-align: center; font-family: system-ui, -apple-system, sans-serif; font-size: 0.78rem; color: #6c757d; }
+  .app-footer .footer-content { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; }
+  .app-footer .cc-badge { height: 22px; width: auto; display: block; }
+  .app-footer .footer-legal { line-height: 1.4; }
+  .app-footer a { color: #495057; text-decoration: none; font-weight: 500; }
+  .app-footer a:hover { text-decoration: underline; color: #0d6efd; }
+  @media print { .app-footer { display: none !important; } }
+</style>
+<footer class="app-footer">
+  <div class="footer-content">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" class="cc-badge" width="70" height="24" />
+    </a>
+    <span class="footer-legal">
+      © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
+

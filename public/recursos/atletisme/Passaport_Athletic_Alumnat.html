@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passaport Atlètic Cooperatiu - Alumnat</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 8mm;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      font-family: 'Segoe UI', 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+      margin: 0;
+      padding: 10px;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    .page {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border: 4px solid #1e3a8a;
+      border-radius: 16px;
+      padding: 16px 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px dashed #1e3a8a;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .header-title {
+      text-align: left;
+    }
+    .header-title h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #1e3a8a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header-title p {
+      margin: 3px 0 0;
+      font-size: 0.85rem;
+      color: #0284c7;
+      font-weight: bold;
+    }
+    .badge-olympic {
+      background: #fef08a;
+      border: 2px solid #ca8a04;
+      color: #854d0e;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Team block */
+    .team-box {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+      background: #eff6ff;
+      border: 2px solid #93c5fd;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+    }
+    .team-name-row {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #1e40af;
+      margin-bottom: 6px;
+    }
+    .team-members-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 10px;
+      font-size: 0.82rem;
+    }
+    .member-item {
+      background: white;
+      border: 1px solid #bfdbfe;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .logo-box {
+      border: 2px dashed #93c5fd;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: center;
+      padding: 4px;
+    }
+
+    /* Challenges grid */
+    .challenges-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .challenge-card {
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 9px 12px;
+      background: #ffffff;
+      position: relative;
+    }
+    .card-c1 { border-color: #38bdf8; background: #f0f9ff; }
+    .card-c2 { border-color: #4ade80; background: #f0fdf4; }
+    .card-c3 { border-color: #fb923c; background: #fff7ed; }
+    .card-c4 { border-color: #c084fc; background: #faf5ff; }
+    .card-c5 { border-color: #f43f5e; background: #fff1f2; grid-column: span 2; }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .card-title {
+      font-size: 0.92rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-c1 .card-title { color: #0284c7; }
+    .card-c2 .card-title { color: #15803d; }
+    .card-c3 .card-title { color: #c2410c; }
+    .card-c4 .card-title { color: #7e22ce; }
+    .card-c5 .card-title { color: #be123c; }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .square-box {
+      width: 15px;
+      height: 15px;
+      border: 2px solid #475569;
+      border-radius: 4px;
+      background: white;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .stamp-box {
+      width: 44px;
+      height: 44px;
+      border: 2px dashed #94a3b8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: #94a3b8;
+      text-align: center;
+      line-height: 1;
+      float: right;
+    }
+
+    /* Bottom reflection */
+    .reflection-box {
+      background: #fefce8;
+      border: 2px solid #fde047;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+    }
+    .reflection-title {
+      font-weight: bold;
+      color: #854d0e;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .line-dots {
+      border-bottom: 1.5px dotted #ca8a04;
+      height: 18px;
+      margin-bottom: 4px;
+    }
+
+    .print-btn-bar {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .print-btn {
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; border-color: #1e3a8a; }
+      .print-btn-bar { display: none; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='32' fill='%23d97706'/><circle cx='50' cy='50' r='16' fill='%23ffffff'/></svg>">
+</head>
+<body>
+
+  <div class="print-btn-bar" style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Passaport d'Equip (1 Full A4)</button>
+    <a href="Tancament_Passaport_Sessio_10.html" class="print-btn" style="text-decoration: none; background: #0284c7; display: inline-flex; align-items: center; gap: 6px;" target="_blank">🏁 Full de Tancament i Síntesi 5è-6è (Sessió 10) ➡️</a>
+  </div>
+
+  <div class="page">
+    
+    <div class="header">
+      <div class="header-title">
+        <h1>🏅 PASSAPORT ATLÈTIC D'EQUIP</h1>
+        <p>Cicle Superior &bull; Educació Física &bull; Repte Olímpic Cooperatiu</p>
+      </div>
+      <div class="badge-olympic">
+        🤝 Citius &bull; Altius &bull; Fortius<br><strong>COMMUNITER (Junts!)</strong>
+      </div>
+    </div>
+
+    <!-- DADES DE L'EQUIP -->
+    <div class="team-box">
+      <div>
+        <div class="team-name-row">
+          ⚡ Nom de l'Equip: _____________________________________________
+        </div>
+        <div class="team-members-list">
+          <div class="member-item">1. __________________ [6è]</div>
+          <div class="member-item">3. __________________ [5è]</div>
+          <div class="member-item">2. __________________ [6è]</div>
+          <div class="member-item">4. __________________ [5è]</div>
+          <div class="member-item" style="grid-column: span 2;">5. __________________ [5è]</div>
+        </div>
+      </div>
+      <div class="logo-box">
+        <span>✏️ Dibuixeu aquí<br>l'Escut de l'Equip</span>
+      </div>
+    </div>
+
+    <!-- REPTES -->
+    <div class="challenges-grid">
+
+      <!-- REPTE 1 -->
+      <div class="challenge-card card-c1">
+        <div class="stamp-box">SEGELL<br>REPTE 1</div>
+        <div class="card-head">
+          <span class="card-title">🏃 Repte 1: Velocitat i Obstacles</span>
+        </div>
+        <div class="checkbox-item">
+          <div class="square-box"></div>
+          <span>Hem fet 5 sortides explosives en diferents posicions (dempeus, asseguts, esquena).</span>
+        </div>
+        <div class="checkbox-item">
+          <div class="square-box"></div>
+          <span>Hem superat la sèrie de gomes a 3 passes rítmiques sense fer-les caure.</span>
+        </div>
+      </div>
+
+      <!-- REPTE 2 -->
+      <div class="challenge-card card-c2">
+        <div class="stamp-box">SEGELL<br>REPTE 2</div>
+        <div class="card-head">
+          <span class="card-title">🤝 Repte 2: La Màgia dels Relleus</span>
+        </div>
+        <div class="checkbox-item">
+          <div class="square-box"></div>
+          <span>Hem cridat <strong>"HOP!"</strong> ben fort abans d'entregar el testimoni.</span>
+        </div>
+        <div class="checkbox-item">
+          <div class="square-box"></div>
+          <span>El receptor ha començat a córrer abans de rebre el testimoni (en moviment!).</span>
+        </div>
+      </div>
+
+      <!-- REPTE 3 -->
+      <div class="challenge-card card-c3">
+        <div class="stamp-box">SEGELL<br>REPTE 3</div>
+        <div class="card-head">
+          <span class="card-title">🦘 Repte 3: Salts sense Pors</span>
+        </div>
+        <div class="checkbox-item">
+          <div class="square-box"></div>
+          <span>Salt de llargada: hem fet batuda a 1 peu i caiguda flexionada a 2 peus junts.</span>
+        </div>
+        <div class="checkbox-item">
+          <div class="square-box"></div>
+          <span>Salt d'alçada: tots hem saltat la goma amb tisora caient suau al <strong>llevapors</strong>!</span>
+        </div>
+      </div>
+
+      <!-- REPTE 4 -->
+      <div class="challenge-card card-c4">
+        <div class="stamp-box">SEGELL<br>REPTE 4</div>
+        <div class="card-head">
+          <span class="card-title">🚀 Repte 4: Llançaments i Inclusió</span>
+        </div>
+        <div class="checkbox-item">
+          <div class="square-box"></div>
+          <span>Hem fet sonar el vòrtex llançant-lo amb una paràbola alta (angle de 45°).</span>
+        </div>
+        <div class="checkbox-item">
+          <div class="square-box"></div>
+          <span>Hem provat el llançament en cadira de rodes (para-atletisme) amb força de tronc.</span>
+        </div>
+      </div>
+
+      <!-- REPTE 5: Puntuació i Míting -->
+      <div class="challenge-card card-c5">
+        <div class="card-head">
+          <span class="card-title">🏆 Repte Final: El Míting Atlètic Cooperatiu</span>
+          <span style="font-size: 0.8rem; font-weight: bold; color: #be123c;">Punts Sumats per tot l'Equip: _________ punts</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+          <div class="checkbox-item">
+            <div class="square-box"></div>
+            <span>Hem dosificat el ritme de cursa (zona Borg 5-6) parlant sense ofegar-nos.</span>
+          </div>
+          <div class="checkbox-item">
+            <div class="square-box"></div>
+            <span>Hem participat a les 4 estacions del Míting sumant cadascú el seu màxim esforç.</span>
+          </div>
+          <div class="checkbox-item">
+            <div class="square-box"></div>
+            <span>Hem animat tothom i hem ajudat a recollir el material ràpidament.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- REFLEXIÓ D'EQUIP -->
+    <div class="reflection-box">
+      <div class="reflection-title">
+        🌟 Valoració Final d'Equip: Com ens hem ajudat entre 5è i 6è?
+      </div>
+      <div class="line-dots"></div>
+      <div class="line-dots"></div>
+      <div style="display: flex; justify-content: space-between; margin-top: 6px; font-weight: bold; color: #713f12; font-size: 0.80rem;">
+        <span>El nostre gran moment com a equip: ___________________________________________</span>
+        <span>Vist i Plau del Mestre/a: [  🏅  ]</span>
+      </div>
+      <div style="margin-top: 6px; font-size: 0.73rem; color: #854d0e; text-align: right; border-top: 1px dashed #fde047; padding-top: 4px;">
+        📝 Per a la síntesi detallada i signatures solemnes de la Sessió 10: <a href="Tancament_Passaport_Sessio_10.html" target="_blank" style="color: #1e3a8a; font-weight: bold; text-decoration: underline;">Obrir el Full de Tancament i Contraportada</a>.
+      </div>
+    </div>
+
+  </div>
+
+<style>
+  .app-footer { margin-top: 1.5rem; padding: 0.6rem 1rem; background-color: #f8f9fa; border-top: 1px solid #e9ecef; text-align: center; font-family: system-ui, -apple-system, sans-serif; font-size: 0.78rem; color: #6c757d; }
+  .app-footer .footer-content { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; }
+  .app-footer .cc-badge { height: 22px; width: auto; display: block; }
+  .app-footer .footer-legal { line-height: 1.4; }
+  .app-footer a { color: #495057; text-decoration: none; font-weight: 500; }
+  .app-footer a:hover { text-decoration: underline; color: #0d6efd; }
+  @media print { .app-footer { display: none !important; } }
+</style>
+<footer class="app-footer">
+  <div class="footer-content">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" class="cc-badge" width="70" height="24" />
+    </a>
+    <span class="footer-legal">
+      © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
+
