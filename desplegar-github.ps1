@@ -7,6 +7,7 @@
 #>
 
 param(
+  [Alias("RemoteUrl")]
   [string]$RepoUrl = "",
   [string]$MissatgeCommit = "Actualització del Portal d'Educació Física (Korfbal i Atletisme)"
 )
