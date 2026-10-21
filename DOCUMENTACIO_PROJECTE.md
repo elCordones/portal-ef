@@ -12,7 +12,7 @@
   - `public/recursos/`: Actius estàtics servits pel portal (17 documents HTML interactius/imprimibles amb favicon SVG i peu de llicència, script Google Apps Script i 8 fitxers `.xlsx`/`.csv` per a iDoceo).
   - `.github/workflows/deploy.yml`, `.gitignore` i `desplegar-github.ps1`: Infraestructura completa de desplegament continu a GitHub Pages.
 
-## 2. Estat Actual i Punt de Control (Darrera sessió: 2026-10-20)
+## 2. Estat Actual i Punt de Control (Darrera sessió: 2026-10-21)
 - **Estat general**: 100% Funcional i Desplegat en Producció a GitHub Pages (`https://elcordones.github.io/portal-ef/`).
 - **Enllaços oficials del projecte**:
   - **Portal públic (GitHub Pages)**: `https://elcordones.github.io/portal-ef/`
@@ -23,10 +23,11 @@
   - [x] **Integració completa de la SdA d'Atletisme (`atletisme/` i `atletisme/sessions/sessio-01.md` a `sessio-10.md`)**: Incorporades les 5 pàgines troncals i les 10 sessions desenvolupades minut a minut amb esquemes `.court-grid`, taules biomecàniques, matrius de rotació, consignes docents, DUA (TEA, TDAH, nouvinguts francòfons, mentoria 5è-6è) i focus d'avaluació iDoceo.
   - [x] **Integració d'Aplicacions Web, Imprimibles i Paquets iDoceo a `public/recursos/`**: Incorporats i auditats tots els HTML interactius (Web App Diana Chromebooks, Simulador de Notes, Passaport, Tancament S10, Cartes TCG, Àlbum, Guies Google Docs) amb favicon SVG minimalista i peu de llicència resumit (`apps-escolars` / `tecnopedagog`).
   - [x] **Acabat Visual i Llicenciament Global al Portal**: Peu de pàgina `.app-footer` injectat a totes les vistes de VitePress via slot `layout-bottom`, i substitució de blocs Mermaid/LaTeX crus per diagrames visuals HTML/CSS natius.
-  - [x] **Desplegament Continu (CI/CD) actiu a GitHub Pages (`elCordones/portal-ef`)**: Workflow `.github/workflows/deploy.yml` operatiu, GitHub Pages activat en mode `workflow` i verificat amb resposta `HTTP 200 OK` a `https://elcordones.github.io/portal-ef/`.
+  - [x] **Desplegament Continu (CI/CD) actiu a GitHub Pages (`elCordones/portal-ef`)**: Workflow `.github/workflows/deploy.yml` operatiu, GitHub Pages fixat explícitament en mode `build_type: "workflow"` (desactivant el procés `legacy` de Jekyll que sobreescrivia el portal) i verificat amb resposta `HTTP 200 OK` (VitePress v1.6.4) a `https://elcordones.github.io/portal-ef/`.
 - **Punt exacte on ens hem quedat**:
-  - Fase 1 del Portal d'Educació Física tancada al 100%. Tant la SdA 1 (Korfbal, 8 sessions) com la SdA 2 (Atletisme, 10 sessions) i els seus 26 recursos associats estan publicats i operatius en línia.
+  - Corregit l'origen de publicació a l'API de GitHub Pages (`build_type: "workflow"` en lloc de `"legacy"`), redesplegat el workflow `deploy.yml` i verificat que tant l'arrel com les subrutes (`/korfbal/`, `/atletisme/`, `/recursos/`) serveixen l'aplicació VitePress compilada.
 - **Decisions tècniques i incidències conegudes**:
+  - **Resolució d'incidència a GitHub Pages (2026-10-21)**: El repositori tenia configurat `"build_type": "legacy"` (Deploy from a branch `main` amb Jekyll), fet que provocava que el workflow automàtic `pages build and deployment` s'executés en paral·lel al nostre `.github/workflows/deploy.yml` i acabés 3 segons més tard, sobreescrivint el portal VitePress amb el `index.md` cru renderitzat per Jekyll. S'ha actualitzat la configuració del repositori via API a `"build_type": "workflow"` i s'ha rellançat el desplegament de VitePress.
   - Tots els enllaços cap a recursos estàtics de `public/recursos/` utilitzen `:href="$withBase('/recursos/...')"` per garantir el funcionament idèntic en local (`http://localhost:5173/`) i sota subdirectori de GitHub Pages (`https://elcordones.github.io/portal-ef/`).
   - Els fitxers de gestió interna (`README.md`, `DOCUMENTACIO_PROJECTE.md`, `Bucle Gauntlet.md`) estan exclosos de la compilació de VitePress mitjançant `srcExclude`.
 
