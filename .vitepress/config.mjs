@@ -31,28 +31,54 @@ export default defineConfig({
     nav: [
       { text: 'Inici', link: '/' },
       {
-        text: '🏀 Korfbal (8 Sessions)',
+        text: '📚 Situacions d\'Aprenentatge',
         items: [
-          { text: '🎯 Visió General i Context', link: '/korfbal/' },
-          { text: '📋 Programació (Decret 175/2022)', link: '/korfbal/programacio' },
-          { text: '🧩 Mesures DUA i Metodologia', link: '/korfbal/dua-metodologia' },
-          { text: '⏱️ Sessions a Pista (S1 – S8)', link: '/korfbal/sessions/sessio-01' },
-          { text: '🃏 Àlbum i Cartes Tàctiques (TCG)', link: '/korfbal/materials' },
-          { text: '📊 Avaluació i Paquet iDoceo', link: '/korfbal/avaluacio' }
+          {
+            text: '🟢 Cicle Superior Primària (5è i 6è)',
+            items: [
+              { text: '🏀 SdA 1 · Korfbal Coeducatiu (8 Sessions)', link: '/korfbal/' },
+              { text: '🏃 SdA 2 · Atletisme Cooperatiu (10 Sessions)', link: '/atletisme/' }
+            ]
+          },
+          {
+            text: '🗂️ Navegació Global',
+            items: [
+              { text: '🔎 Explorar Catàleg amb Filtres (CI · CM · CS · ESO)', link: '/#cataleg-sda' }
+            ]
+          }
         ]
       },
       {
-        text: '🏃 Atletisme (10 Sessions)',
+        text: '🛠️ Web Apps i Recursos',
         items: [
-          { text: '🎯 Visió General i Context', link: '/atletisme/' },
-          { text: '📋 Programació (Decret 175/2022)', link: '/atletisme/programacio' },
-          { text: '🧩 Mesures DUA i Seguretat', link: '/atletisme/dua-metodologia' },
-          { text: '⏱️ Sessions a Pista (S1 – S10)', link: '/atletisme/sessions/sessio-01' },
-          { text: '🛂 Passaport i Web App Diana', link: '/atletisme/materials' },
-          { text: '📊 Avaluació i Paquet iDoceo', link: '/atletisme/avaluacio' }
+          {
+            text: '💻 Web Apps Interactives (Chromebooks i Docent)',
+            items: [
+              { text: '🎯 Web App: Diana d\'Autoavaluació (Chromebooks)', link: '/recursos/atletisme/Diana_Autoavaluacio_Chromebooks.html', target: '_blank' },
+              { text: '🧮 Simulador de Qualificacions (Decret 175/2022)', link: '/recursos/atletisme/Rubrica_Avaluacio_SdA_Atletisme.html', target: '_blank' },
+              { text: '📔 Àlbum i Laboratori Tàctic de Korfbal', link: '/recursos/korfbal/Album_Cartes_Tactiques_Korfbal.html', target: '_blank' }
+            ]
+          },
+          {
+            text: '🖨️ Imprimibles DIN-A4 i Gamificació',
+            items: [
+              { text: '🃏 Baralla de 8 Cartes Tàctiques (TCG Korfbal)', link: '/recursos/korfbal/Cartes_Tactiques_Korfbal_Imprimibles.html', target: '_blank' },
+              { text: '🛂 Passaport Atlètic Cooperatiu d\'Equip', link: '/recursos/atletisme/Passaport_Athletic_Alumnat.html', target: '_blank' },
+              { text: '🇫🇷 Fitxa Bilingüe Coavaluació Relleus (CAT/FR)', link: '/recursos/atletisme/Coavaluacio_Relleus_Alumnat.html', target: '_blank' }
+            ]
+          },
+          {
+            text: '📋 Guies Google Docs i Quaderns iDoceo',
+            items: [
+              { text: '📖 Guia Docent Korfbal (Copiar a Google Docs)', link: '/recursos/korfbal/Guia_Docent_SdA_Korfbal_CS.html', target: '_blank' },
+              { text: '📖 Guia Docent Atletisme (Copiar a Google Docs)', link: '/recursos/atletisme/Guia_Docent_SdA_Atletisme_CS.html', target: '_blank' },
+              { text: '📊 Rúbrica i Paquet iDoceo — Korfbal', link: '/korfbal/avaluacio' },
+              { text: '📊 Rúbrica i Paquet iDoceo — Atletisme', link: '/atletisme/avaluacio' }
+            ]
+          }
         ]
       },
-      { text: '🚀 Guia i GitHub Pages', link: '/ARQUITECTURA_I_GUIA_PORTAL_WEB' }
+      { text: '🚀 Guia del Portal', link: '/ARQUITECTURA_I_GUIA_PORTAL_WEB' }
     ],
 
     sidebar: {

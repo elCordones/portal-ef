@@ -31,11 +31,95 @@ features:
     details: Rúbriques oficials dels 7 criteris ponderats, mirada focalitzada a pista, dianes d'autoavaluació en Chromebooks i quaderns Excel/CSV per a iDoceo.
 ---
 
-## 📚 Catàleg Oficial de Situacions d'Aprenentatge Publicades
+<script setup>
+import { ref, computed } from 'vue';
+
+const activeCycle = ref('all');
+const activeFamily = ref('all');
+
+const cycleFilters = [
+  { id: 'all', label: 'Totes les etapes' },
+  { id: 'ci', label: 'Cicle Inicial (1r i 2n)' },
+  { id: 'cm', label: 'Cicle Mitjà (3r i 4t)' },
+  { id: 'cs', label: 'Cicle Superior (5è i 6è)' },
+  { id: 'eso', label: 'Secundària (ESO)' }
+];
+
+const familyFilters = [
+  { id: 'all', label: 'Tots els àmbits' },
+  { id: 'equip', label: '🏀 Coeducatius d\'Equip' },
+  { id: 'atletics', label: '🏃 Atlètics i Salut' },
+  { id: 'expressio', label: '🤸 Expressió i Acrosport' },
+  { id: 'natura', label: '🧭 Medi Natural' }
+];
+
+const matchesSda = (cycle, family) => {
+  const cMatch = activeCycle.value === 'all' || activeCycle.value === cycle;
+  const fMatch = activeFamily.value === 'all' || activeFamily.value === family;
+  return cMatch && fMatch;
+};
+
+const visibleSdaCount = computed(() => {
+  let count = 0;
+  if (matchesSda('cs', 'equip')) count++;
+  if (matchesSda('cs', 'atletics')) count++;
+  return count;
+});
+
+const hasActiveFilters = computed(() => activeCycle.value !== 'all' || activeFamily.value !== 'all');
+
+const resetFilters = () => {
+  activeCycle.value = 'all';
+  activeFamily.value = 'all';
+};
+</script>
+
+## 📚 Catàleg Oficial de Situacions d'Aprenentatge Publicades {#cataleg-sda}
+
+<div class="catalog-filter-panel" role="region" aria-label="Filtres del catàleg de Situacions d'Aprenentatge">
+  <div class="filter-row">
+    <span class="filter-group-label">🎓 Etapa / Cicle:</span>
+    <div class="filter-chips">
+      <button
+        v-for="item in cycleFilters"
+        :key="item.id"
+        type="button"
+        class="filter-chip"
+        :class="{ active: activeCycle === item.id }"
+        @click="activeCycle = item.id"
+      >
+        {{ item.label }}
+      </button>
+    </div>
+  </div>
+  <div class="filter-row">
+    <span class="filter-group-label">🏅 Família Motriu:</span>
+    <div class="filter-chips">
+      <button
+        v-for="item in familyFilters"
+        :key="item.id"
+        type="button"
+        class="filter-chip"
+        :class="{ active: activeFamily === item.id }"
+        @click="activeFamily = item.id"
+      >
+        {{ item.label }}
+      </button>
+    </div>
+  </div>
+  <div class="filter-status-bar">
+    <span class="filter-count">
+      Mostrant <strong>{{ visibleSdaCount }}</strong> {{ visibleSdaCount === 1 ? "Situació d'Aprenentatge" : "Situacions d'Aprenentatge" }}
+    </span>
+    <button v-if="hasActiveFilters" type="button" class="filter-reset-btn" @click="resetFilters">
+      ↺ Restablir filtres
+    </button>
+  </div>
+</div>
 
 <div class="sda-bento-grid">
   <!-- BENTO CARD 1: KORFBAL -->
-  <article class="bento-card bento-korfbal">
+  <article v-show="matchesSda('cs', 'equip')" class="bento-card bento-korfbal">
     <div class="bento-glow"></div>
     <div class="bento-header">
       <span class="bento-status-pill">🏀 SdA 01 · Cicle Superior (5è i 6è)</span>
@@ -82,7 +166,7 @@ features:
   </article>
 
   <!-- BENTO CARD 2: ATLETISME -->
-  <article class="bento-card bento-atletisme">
+  <article v-show="matchesSda('cs', 'atletics')" class="bento-card bento-atletisme">
     <div class="bento-glow"></div>
     <div class="bento-header">
       <span class="bento-status-pill">🏃 SdA 02 · Cicle Superior (5è i 6è)</span>
@@ -129,6 +213,16 @@ features:
       <a class="bento-btn bento-btn-ghost" :href="$withBase('/atletisme/avaluacio.html')">📊 Rúbrica</a>
     </div>
   </article>
+
+  <!-- ESTAT BUIT QUAN EL FILTRE ENCARA NO TÉ SDA PUBLICADA -->
+  <div v-if="visibleSdaCount === 0" class="bento-card bento-empty-state">
+    <div class="empty-state-icon">🚧</div>
+    <h4>Properament noves Situacions d'Aprenentatge en aquesta categoria</h4>
+    <p>Actualment les SdA publicades corresponen a <strong>Cicle Superior (5è i 6è)</strong> en els àmbits de <strong>Coeducatius d'Equip (Korfbal)</strong> i <strong>Atlètics i Salut (Atletisme)</strong>. Noves unitats en preparació!</p>
+    <button type="button" class="bento-btn bento-btn-ghost" @click="resetFilters">
+      ↺ Mostrar totes les SdA disponibles (2)
+    </button>
+  </div>
 
   <!-- BENTO CARD 3: SPAN 2 ARQUITECTURA CURRICULAR -->
   <div class="bento-card bento-wide">

@@ -125,13 +125,135 @@
 }
 
 /* ==========================================================================
-   1. BENTO GRID CATALOG (HOME PAGE)
+   1. BENTO GRID CATALOG & DUAL FILTER PANEL (HOME PAGE)
    ========================================================================== */
+.catalog-filter-panel {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-group-label {
+  font-family: var(--vp-font-family-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  min-width: 7.8rem;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filter-chip {
+  font-family: var(--vp-font-family-base);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+  border: 1px solid var(--vp-c-divider);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.filter-chip.active {
+  background: var(--vp-c-brand-1);
+  color: #ffffff;
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.22);
+}
+
+.dark .filter-chip.active {
+  color: #0f172a;
+}
+
+.filter-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--vp-c-divider);
+  font-size: 0.78rem;
+  color: var(--vp-c-text-2);
+}
+
+.filter-reset-btn {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  border: 1px solid transparent;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.filter-reset-btn:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.bento-empty-state {
+  grid-column: span 2;
+  align-items: center;
+  text-align: center;
+  padding: 2.2rem 1.5rem;
+  border-style: dashed;
+}
+
+@media (max-width: 860px) {
+  .bento-empty-state {
+    grid-column: span 1;
+  }
+}
+
+.empty-state-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.bento-empty-state h4 {
+  margin: 0 0 0.4rem !important;
+  font-family: var(--vp-font-family-heading);
+  font-size: 1.15rem;
+}
+
+.bento-empty-state p {
+  margin: 0 0 1rem !important;
+  max-width: 560px;
+  font-size: 0.88rem;
+  color: var(--vp-c-text-2);
+}
+
 .sda-bento-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.35rem;
-  margin: 1.5rem 0 2.5rem;
+  margin: 1rem 0 2.5rem;
 }
 
 @media (max-width: 860px) {
@@ -803,10 +925,12 @@
 
 .resource-card {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  padding: 2.25rem 1.1rem 1.05rem 1.05rem;
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  row-gap: 0.55rem;
+  column-gap: 0.85rem;
+  align-items: start;
+  padding: 0.85rem 1.05rem 1rem 1.05rem;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 14px;
@@ -823,18 +947,17 @@
   box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.12);
 }
 
-/* Automatic Semantic Format Badge (top-left header strip, zero text overlap) */
+/* Automatic Semantic Format Badge in its own dedicated row 1 (zero overlap possible) */
 .resource-card::before {
   content: 'IMPRIMIBLE A4';
-  position: absolute;
-  top: 0.55rem;
-  left: 1.05rem;
+  grid-column: 1 / -1;
+  justify-self: start;
   font-family: var(--vp-font-family-heading);
   font-size: 0.64rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   line-height: 1.2;
-  padding: 0.18rem 0.5rem;
+  padding: 0.18rem 0.52rem;
   border-radius: 5px;
   background: rgba(100, 116, 139, 0.14);
   color: var(--vp-c-text-2);
@@ -896,22 +1019,30 @@
   color: #fcd34d;
 }
 
-/* Animated Diagonal Arrow on Resource Card */
+/* Animated Diagonal Arrow on Resource Card (overrides VitePress external-link mask) */
+.vp-doc a.resource-card::after,
 .resource-card::after {
-  content: '↗';
-  position: absolute;
-  top: 0.5rem;
-  right: 0.7rem;
+  content: '↗' !important;
+  position: absolute !important;
+  top: 0.7rem !important;
+  right: 0.85rem !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  background: none !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
   font-family: var(--vp-font-family-mono);
   font-size: 0.88rem;
   font-weight: 700;
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-3) !important;
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
 }
 
+.vp-doc a.resource-card:hover::after,
 .resource-card:hover::after {
   transform: translate(3px, -3px);
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1) !important;
 }
 
 .resource-icon {
