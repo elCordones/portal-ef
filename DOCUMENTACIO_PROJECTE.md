@@ -5,8 +5,9 @@
 - **Públic destinatari / Usuaris**: Docents d'Educació Física i alumnat de Cicle Superior d'Educació Primària (grups combinats de 5è i 6è, 25 alumnes, amb mesures DUA per a TEA, TDAH i nouvinguts francòfons).
 - **Stack tecnològic**: VitePress 1.6.4 (Vue 3 + Markdown + CSS Grid/Flexbox adaptatiu), HTML5/SVG interactiu client-side per a les eines d'alumnat, i GitHub Actions per a CI/CD cap a GitHub Pages.
 - **Arquitectura i fitxers clau**:
-  - `.vitepress/config.mjs`: Configuració general, detecció dinàmica de `base` per a GitHub Pages (`GITHUB_REPOSITORY`), menús desplegables i cercador local en català.
-  - `.vitepress/theme/index.js` i `custom.css`: Extensió del tema amb injecció automàtica del peu de pàgina de llicenciament resumit (`© David Cordones · 2026 | AGPL v3 · CC BY-SA 4.0` amb insígnia SVG), helper global `$withBase` i targetes tàctiques `.court-grid` i `.resource-grid`.
+  - `.vitepress/config.mjs`: Configuració general, càrrega de les tipografies *Outfit* i *JetBrains Mono* (Google Fonts), detecció dinàmica de `base` per a GitHub Pages (`GITHUB_REPOSITORY`), barra superior escalable amb 2 desplegables categoritzats (`📚 Situacions d'Aprenentatge` per cicle/etapa i `🛠️ Web Apps i Recursos` per tipologia d'eina) i cercador local en català.
+  - `.vitepress/theme/index.js` i `custom.css`: Extensió del tema amb tematització automàtica per esport (`.theme-korfbal` en Blau/Ambre i `.theme-atletisme` en Verd/Taronja), barra píndola superior d'accés ràpid a sessions (`.sda-quickbar` injectada al slot `doc-before`), pissarra tàctica d'entrenador (`.court-grid`), targetes `.resource-card` en CSS Grid de 2 files amb badges semàntics automàtics (`WEB APP`, `IMPRIMIBLE A4`, `GOOGLE DOCS`, `SIMULADOR + A4`, `IDOCEO XLSX/CSV`, `APPS SCRIPT`), i peu de pàgina de llicenciament resumit (`© David Cordones · 2026 | AGPL v3 · CC BY-SA 4.0`).
+  - `index.md`: Portada amb disseny **Bento Grid Asimètric** i **Doble Filtre Combinable en Viu** (`<script setup>` Vue 3) per **Etapa/Cicle** (`all`, `ci`, `cm`, `cs`, `eso`) i per **Família Motriu** (`all`, `equip`, `atletics`, `expressio`, `natura`), comptador dinàmic i estat buit.
   - `korfbal/`: **SdA 1 — Korfbal Coeducatiu: Tothom Suma!** (5 pàgines troncals + 8 sessions completes S1–S8 minut a minut).
   - `atletisme/`: **SdA 2 — Míting d'Atletisme Cooperatiu: Superem els Reptes en Equip!** (5 pàgines troncals + 10 sessions completes S1–S10 minut a minut).
   - `public/recursos/`: Actius estàtics servits pel portal (17 documents HTML interactius/imprimibles amb favicon SVG i peu de llicència, script Google Apps Script i 8 fitxers `.xlsx`/`.csv` per a iDoceo).
@@ -31,9 +32,15 @@
     5. **Targetes de Recursos Interactives en CSS Grid (Zero Superposició)**: El badge de format (`WEB APP`, `IMPRIMIBLE A4`, `GOOGLE DOCS`, `SIMULADOR + A4`, `IDOCEO XLSX/CSV`, `APPS SCRIPT`) ocupa la fila 1 dedicada del Grid (`grid-column: 1 / -1`) evitant qualsevol col·lisió amb el títol o la icona.
   - [x] **Desplegament Continu (CI/CD) i Còpia de Seguretat (`backup-v1-original`)**: Workflow `.github/workflows/deploy.yml` operatiu, GitHub Pages fixat en mode `build_type: "workflow"` i còpia de seguretat de la v1.0 desada a la branca `backup-v1-original` i al tag `v1.0-original`.
 - **Punt exacte on ens hem quedat**:
-  - Desplegada la versió estètica **v2.0 (Bento Hub & Pro Coaching UI)** a producció (`main`) mantenint un punt de restauració exacte de la versió anterior a la branca `backup-v1-original` (tag `v1.0-original`).
+  - Desplegada i verificada en producció la versió **v2.1 (Bento Hub, Navegació Escalable A+C i Doble Filtre Combinable B)** a `https://elcordones.github.io/portal-ef/`.
+  - Es conserva una còpia de seguretat intacta del disseny inicial a la branca `backup-v1-original` i a l'etiqueta Git `v1.0-original` (restaurable en qualsevol moment amb `git reset --hard v1.0-original; git push -f origin main`).
 - **Decisions tècniques i incidències conegudes**:
   - **Resolució d'incidència a GitHub Pages (2026-10-21)**: El repositori tenia configurat `"build_type": "legacy"` (Deploy from a branch `main` amb Jekyll), fet que provocava que el workflow automàtic `pages build and deployment` s'executés en paral·lel al nostre `.github/workflows/deploy.yml` i acabés 3 segons més tard, sobreescrivint el portal VitePress amb el `index.md` cru renderitzat per Jekyll. S'ha actualitzat la configuració del repositori via API a `"build_type": "workflow"` i s'ha rellançat el desplegament de VitePress.
+  - **Protocol d'integració per a futures Situacions d'Aprenentatge (3a a 10a+ SdA)**:
+    1. Crear la carpeta de la nova SdA (ex: `acrosport/`) amb les 5 pàgines troncals i la subcarpeta `sessions/`, i desar els HTML/iDoceo a `public/recursos/<sda>/`.
+    2. A `.vitepress/config.mjs`: afegir l'enllaç de la nova SdA dins del grup del seu cicle al desplegable `📚 Situacions d'Aprenentatge` (sense crear nous botons d'arrel a la barra superior) i definir el seu bloc a `sidebar`.
+    3. A `.vitepress/theme/index.js`: afegir el prefix de la nova SdA a `currentSda` i `renderQuickBar` perquè mostri automàticament la barra píndola superior (`S1–Sn`).
+    4. A `index.md`: afegir la targeta `<article v-show="matchesSda('<cicle>', '<familia>')" class="bento-card ...">` dins de `.sda-bento-grid` i sumar-la al còmput `visibleSdaCount`.
   - Tots els enllaços cap a recursos estàtics de `public/recursos/` utilitzen `:href="$withBase('/recursos/...')"` per garantir el funcionament idèntic en local (`http://localhost:5173/`) i sota subdirectori de GitHub Pages (`https://elcordones.github.io/portal-ef/`).
   - Els fitxers de gestió interna (`README.md`, `DOCUMENTACIO_PROJECTE.md`, `Bucle Gauntlet.md`) estan exclosos de la compilació de VitePress mitjançant `srcExclude`.
 

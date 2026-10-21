@@ -109,9 +109,30 @@ Cada vegada que afegeixis una nova SdA o modifiquis una sessió i executis `.\de
 
 ---
 
-## 5. Com Incorporar una Nova Situació d'Aprenentatge al Portal
+## 5. Com Incorporar una Nova Situació d'Aprenentatge al Portal (Arquitectura Escalable v2.1)
+
+El portal està dissenyat amb una arquitectura escalable capaç d'allotjar **10, 15 o 20 Situacions d'Aprenentatge** sense saturar la barra superior de navegació:
 
 1. **Crear la carpeta de la nova SdA** (ex: `acrosport/`) amb l'estructura modular: `index.md`, `programacio.md`, `dua-metodologia.md`, `materials.md`, `avaluacio.md` i `sessions/sessio-01.md`...
-2. **Desar els imprimibles i quaderns d'iDoceo** a `public/recursos/acrosport/`.
-3. **Afegir el menú a `.vitepress/config.mjs`** dins de `themeConfig.nav` i `themeConfig.sidebar`.
-4. **Executar `npm run docs:build`** per validar que no hi ha cap enllaç trencat.
+2. **Desar els imprimibles, Web Apps i quaderns d'iDoceo** a `public/recursos/acrosport/`.
+3. **Registrar l'SdA als desplegables categoritzats de `.vitepress/config.mjs`**:
+   * Dins de `themeConfig.nav`, afegir l'entrada sota el grup del seu cicle educatiu dins del desplegable **`📚 Situacions d'Aprenentatge`** (i les seves eines destacades dins de **`🛠️ Web Apps i Recursos`**).
+   * Dins de `themeConfig.sidebar`, afegir l'arbre lateral per a `/acrosport/`.
+4. **Activar la barra píndola superior (`.sda-quickbar`) a `.vitepress/theme/index.js`**:
+   * Afegir la detecció de la nova ruta a `currentSda` i `renderQuickBar` perquè totes les pàgines de la nova SdA mostrin automàticament les píndoles d'accés ràpid (`S1`, `S2`...).
+5. **Afegir la targeta al Bento Grid filtrable de `index.md`**:
+   * Incorporar la targeta `<article v-show="matchesSda('<cicle>', '<familia>')" class="bento-card ...">` indicant el seu cicle (`ci`, `cm`, `cs` o `eso`) i la seva família motriu (`equip`, `atletics`, `expressio` o `natura`), i afegir la condició a `visibleSdaCount`.
+6. **Executar `.\desplegar-github.ps1`** per compilar, validar enllaços i publicar a GitHub Pages.
+
+---
+
+## 6. Gestió de Versions i Còpia de Seguretat (`v1.0-original`)
+
+El repositori disposa d'un punt de control i còpia de seguretat de la primera versió d'estil documental a GitHub:
+* **Branca de seguretat:** `backup-v1-original`
+* **Etiqueta (Tag) fixa:** `v1.0-original`
+* **Comanda de restauració (si mai calgués tornar al disseny v1.0):**
+  ```powershell
+  git reset --hard v1.0-original
+  git push -f origin main
+  ```
