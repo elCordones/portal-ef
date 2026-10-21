@@ -31,7 +31,7 @@ features:
     details: Rúbriques oficials dels 7 criteris ponderats, mirada focalitzada a pista, dianes d'autoavaluació en Chromebooks i quaderns Excel/CSV per a iDoceo.
 ---
 
-## 📚 Catàleg Oficial de Situacions d'Aprenentatge (Bento Hub)
+## 📚 Catàleg Oficial de Situacions d'Aprenentatge Publicades
 
 <div class="sda-bento-grid">
   <!-- BENTO CARD 1: KORFBAL -->
