@@ -2,7 +2,11 @@
   --vp-c-brand-1: #1e3a8a;
   --vp-c-brand-2: #2563eb;
   --vp-c-brand-3: #3b82f6;
-  --vp-c-brand-soft: #eff6ff;
+  --vp-c-brand-soft: rgba(37, 99, 235, 0.12);
+  --vp-font-family-heading: 'Outfit', var(--vp-font-family-base);
+  --vp-font-family-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #059669 100%);
 }
 
 .dark {
@@ -10,54 +14,650 @@
   --vp-c-brand-2: #3b82f6;
   --vp-c-brand-3: #2563eb;
   --vp-c-brand-soft: rgba(59, 130, 246, 0.16);
+  --vp-home-hero-name-background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 50%, #34d399 100%);
 }
 
-/* Responsive Tactical Court Diagram for Mobile & Desktop */
-.court-grid {
+/* Dynamic Theme Per Sport (Korfbal vs Atletisme) */
+.theme-korfbal {
+  --vp-c-brand-1: #1e40af;
+  --vp-c-brand-2: #2563eb;
+  --vp-c-brand-3: #d97706;
+  --vp-c-brand-soft: rgba(37, 99, 235, 0.12);
+}
+
+.dark .theme-korfbal {
+  --vp-c-brand-1: #60a5fa;
+  --vp-c-brand-2: #3b82f6;
+  --vp-c-brand-3: #fbbf24;
+  --vp-c-brand-soft: rgba(59, 130, 246, 0.18);
+}
+
+.theme-atletisme {
+  --vp-c-brand-1: #047857;
+  --vp-c-brand-2: #059669;
+  --vp-c-brand-3: #ea580c;
+  --vp-c-brand-soft: rgba(5, 150, 105, 0.12);
+}
+
+.dark .theme-atletisme {
+  --vp-c-brand-1: #34d399;
+  --vp-c-brand-2: #10b981;
+  --vp-c-brand-3: #fb923c;
+  --vp-c-brand-soft: rgba(16, 185, 129, 0.18);
+}
+
+/* Geometric Typography for Headings & Hero */
+.VPHero .name,
+.VPHero .text,
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.bento-title,
+.sda-quickbar-tag {
+  font-family: var(--vp-font-family-heading);
+  letter-spacing: -0.02em;
+}
+
+.vp-doc h1 {
+  font-weight: 800;
+  line-height: 1.18;
+}
+
+.vp-doc h2 {
+  font-weight: 700;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 1.5rem;
+}
+
+/* Glassmorphism Navbar */
+.VPNavBar {
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+.dark .VPNavBar {
+  background-color: rgba(22, 22, 24, 0.82) !important;
+  border-bottom: 1px solid rgba(46, 46, 50, 0.8) !important;
+}
+
+/* Subtle Tactical Grid Background on Home Hero */
+.VPHome .VPHero {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 2.5rem;
+}
+
+.VPHome .VPHero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(5, 150, 105, 0.08) 0%, transparent 45%),
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.VPHome .VPHero .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced Home Feature Cards */
+.VPFeature {
+  border: 1px solid var(--vp-c-divider) !important;
+  border-radius: 16px !important;
+  background: linear-gradient(180deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  border-color: var(--vp-c-brand-2) !important;
+  box-shadow: 0 14px 28px -10px rgba(30, 58, 138, 0.12);
+}
+
+/* ==========================================================================
+   1. BENTO GRID CATALOG (HOME PAGE)
+   ========================================================================== */
+.sda-bento-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.75rem;
-  background: #f8fafc;
-  border: 2px dashed #16a34a;
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  margin: 1rem 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.35rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+@media (max-width: 860px) {
+  .sda-bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bento-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 1.65rem;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+}
+
+.bento-korfbal {
+  background: linear-gradient(160deg, rgba(30, 58, 138, 0.05) 0%, var(--vp-c-bg-soft) 55%, rgba(217, 119, 6, 0.05) 100%);
+  border-top: 4px solid #2563eb;
+}
+
+.bento-korfbal:hover {
+  border-color: #2563eb;
+  box-shadow: 0 20px 38px -15px rgba(37, 99, 235, 0.18);
+}
+
+.bento-atletisme {
+  background: linear-gradient(160deg, rgba(4, 120, 87, 0.06) 0%, var(--vp-c-bg-soft) 55%, rgba(234, 88, 12, 0.05) 100%);
+  border-top: 4px solid #059669;
+}
+
+.bento-atletisme:hover {
+  border-color: #059669;
+  box-shadow: 0 20px 38px -15px rgba(5, 150, 105, 0.18);
+}
+
+.bento-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.bento-status-pill {
+  font-family: var(--vp-font-family-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+}
+
+.bento-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+}
+
+.dark .bento-live-badge {
+  color: #86efac;
+  background: rgba(22, 163, 74, 0.22);
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 rgba(22, 163, 74, 0.6);
+  animation: pulse-live 2s infinite;
+}
+
+@keyframes pulse-live {
+  0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6); }
+  70% { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+}
+
+.bento-title {
+  margin: 0 0 0.6rem !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 1.45rem !important;
+  line-height: 1.25 !important;
+}
+
+.bento-title a {
+  color: var(--vp-c-text-1) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.bento-korfbal .bento-title a:hover {
+  color: #2563eb !important;
+}
+
+.bento-atletisme .bento-title a:hover {
+  color: #059669 !important;
+}
+
+.bento-desc {
+  margin: 0 0 1.1rem !important;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--vp-c-text-2);
+}
+
+.bento-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+
+.bento-metric {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 0.55rem 0.65rem;
+  text-align: center;
+}
+
+.bento-metric strong {
+  display: block;
+  font-family: var(--vp-font-family-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
+  line-height: 1.2;
+}
+
+.bento-metric span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.15rem;
+}
+
+/* Direct Session Jump Strip inside Bento Card */
+.bento-sessions-box {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  margin-bottom: 1.15rem;
+}
+
+.bento-sessions-label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--vp-c-text-2);
+  margin-bottom: 0.45rem;
+}
+
+.bento-session-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.bento-session-pills a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.15rem;
+  height: 1.85rem;
+  padding: 0 0.45rem;
+  border-radius: 8px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1) !important;
+  border: 1px solid var(--vp-c-divider);
+  transition: all 0.18s ease;
+}
+
+.bento-korfbal .bento-session-pills a:hover {
+  background: #2563eb;
+  color: #ffffff !important;
+  border-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.bento-atletisme .bento-session-pills a:hover {
+  background: #059669;
+  color: #ffffff !important;
+  border-color: #059669;
+  transform: translateY(-2px);
+}
+
+.bento-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: auto;
+}
+
+.bento-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 10px;
+  font-family: var(--vp-font-family-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.bento-korfbal .bento-btn-primary {
+  background: #1e40af;
+  color: #ffffff !important;
+}
+
+.bento-korfbal .bento-btn-primary:hover {
+  background: #1d4ed8;
+  transform: translateX(2px);
+}
+
+.bento-atletisme .bento-btn-primary {
+  background: #047857;
+  color: #ffffff !important;
+}
+
+.bento-atletisme .bento-btn-primary:hover {
+  background: #059669;
+  transform: translateX(2px);
+}
+
+.bento-btn-ghost {
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1) !important;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.bento-btn-ghost:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+/* Wide Bento Card (Span 2) */
+.bento-wide {
+  grid-column: span 2;
+  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%);
+  padding: 1.4rem 1.65rem;
+}
+
+@media (max-width: 860px) {
+  .bento-wide {
+    grid-column: span 1;
+  }
+}
+
+.bento-wide-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bento-kicker {
+  display: inline-block;
+  font-family: var(--vp-font-family-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--vp-c-brand-2);
+  margin-bottom: 0.2rem;
+}
+
+.bento-wide-info h4 {
+  margin: 0 0 0.35rem !important;
+  font-family: var(--vp-font-family-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.bento-wide-info p {
+  margin: 0 !important;
+  font-size: 0.88rem;
+  color: var(--vp-c-text-2);
+}
+
+.bento-ce-pills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 0.65rem;
+}
+
+.ce-chip {
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+}
+
+.ce-chip strong {
+  display: block;
+  font-family: var(--vp-font-family-heading);
+  font-size: 0.85rem;
+  margin-bottom: 0.15rem;
+}
+
+.ce-chip span {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.35;
+}
+
+.ce-1 { border-left: 4px solid #3b82f6; }
+.ce-2 { border-left: 4px solid #10b981; }
+.ce-3 { border-left: 4px solid #f59e0b; }
+.ce-4 { border-left: 4px solid #8b5cf6; }
+
+/* ==========================================================================
+   2. QUICK SESSION & SDA PILL BAR (PROPOSTA 4 - MOBILE-FIRST THUMB BAR)
+   ========================================================================== */
+.sda-quickbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 1.5rem;
+  border-radius: 14px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  box-shadow: 0 4px 16px -6px rgba(15, 23, 42, 0.06);
+}
+
+.sda-quickbar-korfbal {
+  border-left: 4px solid #2563eb;
+}
+
+.sda-quickbar-atletisme {
+  border-left: 4px solid #059669;
+}
+
+.sda-quickbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+}
+
+.sda-quickbar-group::-webkit-scrollbar {
+  display: none;
+}
+
+.sda-quickbar-divider {
+  height: 1px;
+  background: var(--vp-c-divider);
+  width: 100%;
+}
+
+.sda-quickbar-tag {
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.22rem 0.55rem;
+  border-radius: 6px;
+  background: var(--vp-c-brand-1);
+  color: #ffffff;
+  white-space: nowrap;
+  margin-right: 0.2rem;
+}
+
+.dark .sda-quickbar-tag {
+  color: #0f172a;
+}
+
+.sda-quickbar-sublabel {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--vp-c-text-2);
+  white-space: nowrap;
+  margin-right: 0.2rem;
+}
+
+.sda-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.26rem 0.62rem;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none !important;
+  color: var(--vp-c-text-2) !important;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  transition: all 0.16s ease;
+}
+
+.sda-pill-session {
+  font-family: var(--vp-font-family-mono);
+  font-weight: 700;
+  min-width: 2.1rem;
+}
+
+.sda-pill:hover {
+  color: var(--vp-c-brand-1) !important;
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-1px);
+}
+
+.sda-pill.active {
+  background: var(--vp-c-brand-1);
+  color: #ffffff !important;
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.dark .sda-pill.active {
+  color: #0f172a !important;
+}
+
+/* ==========================================================================
+   3. REALISTIC TACTICAL COURT BOARD (.court-grid - PROPOSTA 3)
+   ========================================================================== */
+.court-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.85rem;
+  background-color: #f0fdf4;
+  background-image:
+    linear-gradient(to right, rgba(22, 163, 74, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(22, 163, 74, 0.09) 1px, transparent 1px);
+  background-size: 24px 24px;
+  border: 2px solid #16a34a;
+  border-radius: 16px;
+  padding: 1.15rem;
+  margin: 1.25rem 0;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.7), 0 10px 24px -10px rgba(22, 101, 52, 0.14);
 }
 
 .dark .court-grid {
-  background: #1e293b;
+  background-color: #0f1f18;
+  background-image:
+    linear-gradient(to right, rgba(34, 197, 94, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 197, 94, 0.1) 1px, transparent 1px);
   border-color: #22c55e;
+  box-shadow: inset 0 0 0 3px rgba(15, 23, 42, 0.6), 0 10px 24px -10px rgba(0, 0, 0, 0.4);
 }
 
 .court-zone {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
   border: 1px solid #cbd5e1;
-  border-radius: 0.375rem;
-  padding: 0.75rem;
+  border-top: 4px solid #64748b;
+  border-radius: 12px;
+  padding: 0.9rem 0.85rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.25rem;
-  min-height: 5.5rem;
+  gap: 0.35rem;
+  min-height: 6.2rem;
   color: #0f172a;
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.court-zone:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -6px rgba(15, 23, 42, 0.12);
 }
 
 .dark .court-zone {
-  background: #0f172a;
+  background: rgba(15, 23, 42, 0.92);
   border-color: #334155;
+  border-top-color: #94a3b8;
   color: #f1f5f9;
 }
 
 .court-zone strong {
+  font-family: var(--vp-font-family-heading);
   font-size: 0.82rem;
-  letter-spacing: 0.02em;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+  background: rgba(100, 116, 139, 0.1);
+}
+
+.court-zone div {
+  font-weight: 700;
+  font-size: 0.92rem;
 }
 
 .court-zone small {
   font-size: 0.78rem;
-  line-height: 1.35;
+  line-height: 1.4;
   color: #475569;
 }
 
@@ -66,109 +666,295 @@
 }
 
 .court-zone.ball {
-  background: #eff6ff;
-  border-color: #3b82f6;
+  background: #f8fbff;
+  border-color: #93c5fd;
+  border-top: 4px solid #2563eb;
+}
+
+.court-zone.ball strong {
+  background: rgba(37, 99, 235, 0.12);
+  color: #1e40af;
 }
 
 .dark .court-zone.ball {
-  background: rgba(37, 99, 235, 0.18);
-  border-color: #60a5fa;
+  background: rgba(30, 58, 138, 0.28);
+  border-color: #3b82f6;
+  border-top-color: #60a5fa;
+}
+
+.dark .court-zone.ball strong {
+  background: rgba(96, 165, 250, 0.2);
+  color: #93c5fd;
 }
 
 .court-zone.free {
-  background: #f0fdf4;
-  border-color: #22c55e;
+  background: #f7fee7;
+  border-color: #86efac;
+  border-top: 4px solid #16a34a;
+}
+
+.court-zone.free strong {
+  background: rgba(22, 163, 74, 0.14);
+  color: #166534;
 }
 
 .dark .court-zone.free {
-  background: rgba(22, 163, 74, 0.18);
-  border-color: #4ade80;
+  background: rgba(20, 83, 45, 0.32);
+  border-color: #22c55e;
+  border-top-color: #4ade80;
+}
+
+.dark .court-zone.free strong {
+  background: rgba(74, 222, 128, 0.2);
+  color: #86efac;
 }
 
 .court-zone.defense {
-  background: #fef2f2;
-  border-color: #ef4444;
+  background: #fffbeb;
+  border-color: #fcd34d;
+  border-top: 4px solid #d97706;
+}
+
+.court-zone.defense strong {
+  background: rgba(217, 119, 6, 0.14);
+  color: #92400e;
 }
 
 .dark .court-zone.defense {
-  background: rgba(220, 38, 38, 0.18);
-  border-color: #f87171;
+  background: rgba(120, 53, 15, 0.28);
+  border-color: #f59e0b;
+  border-top-color: #fbbf24;
 }
 
-/* Badges for PE Sessions */
+.dark .court-zone.defense strong {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fde68a;
+}
+
+/* ==========================================================================
+   4. DIGITAL TIMER CHRONOGRAM TABLES & PE BADGES (PROPOSTA 4)
+   ========================================================================== */
 .pe-badge {
-  display: inline-block;
-  padding: 0.15rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.72rem;
   border-radius: 9999px;
+  font-family: var(--vp-font-family-heading);
   font-size: 0.78rem;
-  font-weight: 600;
-  margin-right: 0.4rem;
-  margin-bottom: 0.35rem;
+  font-weight: 700;
+  margin-right: 0.45rem;
+  margin-bottom: 0.4rem;
+  border: 1px solid transparent;
 }
 
-.pe-badge-time { background: #dbeafe; color: #1e40af; }
-.pe-badge-dua { background: #f3e8ff; color: #6b21a8; }
-.pe-badge-curric { background: #fee2e2; color: #991b1b; }
-.pe-badge-team { background: #dcfce7; color: #166534; }
+.pe-badge-time { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
+.pe-badge-dua { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+.pe-badge-curric { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+.pe-badge-team { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
 
-.dark .pe-badge-time { background: rgba(59, 130, 246, 0.25); color: #93c5fd; }
-.dark .pe-badge-dua { background: rgba(168, 85, 247, 0.25); color: #d8b4fe; }
-.dark .pe-badge-curric { background: rgba(239, 68, 68, 0.25); color: #fca5a5; }
-.dark .pe-badge-team { background: rgba(34, 197, 94, 0.25); color: #86efac; }
+.dark .pe-badge-time { background: rgba(59, 130, 246, 0.2); color: #93c5fd; border-color: rgba(59, 130, 246, 0.35); }
+.dark .pe-badge-dua { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border-color: rgba(168, 85, 247, 0.35); }
+.dark .pe-badge-curric { background: rgba(245, 158, 11, 0.2); color: #fde68a; border-color: rgba(245, 158, 11, 0.35); }
+.dark .pe-badge-team { background: rgba(34, 197, 94, 0.2); color: #86efac; border-color: rgba(34, 197, 94, 0.35); }
 
-/* Resource Cards Grid for Printables, Web Apps & iDoceo */
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0.75rem;
-  margin: 1rem 0 1.5rem;
-}
-
-.resource-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 0.85rem 1rem;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 0.5rem;
-  text-decoration: none !important;
-  color: var(--vp-c-text-1) !important;
-  transition: border-color 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
-}
-
-.resource-card:hover {
-  border-color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-soft);
-  transform: translateY(-2px);
-}
-
-.resource-icon {
-  font-size: 1.5rem;
-  line-height: 1.2;
-  flex-shrink: 0;
-}
-
-.resource-card strong {
-  display: block;
-  font-size: 0.9rem;
-  color: var(--vp-c-brand-1);
-  margin-bottom: 0.15rem;
-}
-
-.resource-card small {
-  display: block;
-  font-size: 0.78rem;
-  line-height: 1.35;
-  color: var(--vp-c-text-2);
-}
-
-/* Responsive tables with touch scroll */
+/* Responsive tables with touch scroll & Digital Stopwatch Chips */
 .vp-doc table {
   display: block;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+}
+
+.vp-doc th {
+  font-family: var(--vp-font-family-heading);
+  font-weight: 700;
+  background-color: var(--vp-c-bg-soft) !important;
+}
+
+.vp-doc tr:hover td {
+  background-color: var(--vp-c-brand-soft);
+}
+
+/* Digital Stopwatch Pill for Chronogram Time Cells */
+.vp-doc table td:first-child[style*="center"] > strong:only-child {
+  display: inline-block;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.77rem;
+  font-weight: 700;
+  padding: 0.22rem 0.55rem;
+  border-radius: 7px;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  white-space: nowrap;
+}
+
+.theme-atletisme .vp-doc table td:first-child[style*="center"] > strong:only-child {
+  border-color: rgba(5, 150, 105, 0.25);
+}
+
+/* ==========================================================================
+   5. INTERACTIVE RESOURCE CARDS WITH FORMAT BADGES & ANIMATED ARROW (PROPOSTA 5)
+   ========================================================================== */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.9rem;
+  margin: 1.15rem 0 1.75rem;
+}
+
+.resource-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.35rem 2.2rem 1rem 1.05rem;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  text-decoration: none !important;
+  color: var(--vp-c-text-1) !important;
+  overflow: hidden;
+  transition: border-color 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background-color 0.22s ease;
+}
+
+.resource-card:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.12);
+}
+
+/* Automatic Semantic Format Badge (top-right corner) */
+.resource-card::before {
+  content: 'IMPRIMIBLE A4';
+  position: absolute;
+  top: 0.5rem;
+  right: 2rem;
+  font-family: var(--vp-font-family-heading);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 5px;
+  background: rgba(100, 116, 139, 0.14);
+  color: var(--vp-c-text-2);
+}
+
+.resource-card[href*="Chromebooks"]::before {
+  content: 'WEB APP';
+  background: rgba(37, 99, 235, 0.15);
+  color: #2563eb;
+}
+.dark .resource-card[href*="Chromebooks"]::before {
+  color: #60a5fa;
+}
+
+.resource-card[href*="Rubrica"]::before {
+  content: 'SIMULADOR + A4';
+  background: rgba(139, 92, 246, 0.15);
+  color: #7c3aed;
+}
+.dark .resource-card[href*="Rubrica"]::before {
+  color: #c4b5fd;
+}
+
+.resource-card[href*="Guia_Docent"]::before,
+.resource-card[href*="Guia_Detallada"]::before {
+  content: 'GOOGLE DOCS';
+  background: rgba(14, 165, 233, 0.15);
+  color: #0284c7;
+}
+.dark .resource-card[href*="Guia_Docent"]::before,
+.dark .resource-card[href*="Guia_Detallada"]::before {
+  color: #7dd3fc;
+}
+
+.resource-card[href*=".xlsx"]::before {
+  content: 'IDOCEO XLSX';
+  background: rgba(22, 163, 74, 0.16);
+  color: #15803d;
+}
+.dark .resource-card[href*=".xlsx"]::before {
+  color: #86efac;
+}
+
+.resource-card[href*=".csv"]::before {
+  content: 'IDOCEO CSV';
+  background: rgba(16, 185, 129, 0.15);
+  color: #047857;
+}
+.dark .resource-card[href*=".csv"]::before {
+  color: #6ee7b7;
+}
+
+.resource-card[href*=".js"]::before {
+  content: 'APPS SCRIPT';
+  background: rgba(245, 158, 11, 0.18);
+  color: #b45309;
+}
+.dark .resource-card[href*=".js"]::before {
+  color: #fcd34d;
+}
+
+/* Animated Diagonal Arrow on Resource Card */
+.resource-card::after {
+  content: '↗';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--vp-c-text-3);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+}
+
+.resource-card:hover::after {
+  transform: translate(3px, -3px);
+  color: var(--vp-c-brand-1);
+}
+
+.resource-icon {
+  font-size: 1.65rem;
+  line-height: 1;
+  flex-shrink: 0;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  width: 2.6rem;
+  height: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.resource-card:hover .resource-icon {
+  transform: scale(1.06);
+  border-color: var(--vp-c-brand-1);
+}
+
+.resource-card strong {
+  display: block;
+  font-family: var(--vp-font-family-heading);
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+.resource-card:hover strong {
+  color: var(--vp-c-brand-1);
+}
+
+.resource-card small {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--vp-c-text-2);
 }
 
 /* Teacher Cue Container */
@@ -182,7 +968,9 @@
   font-size: 0.95rem;
 }
 
-/* Mandatory Compact Licensing Footer (apps-escolars & tecnopedagog skills) */
+/* ==========================================================================
+   6. MANDATORY COMPACT LICENSING FOOTER (apps-escolars & tecnopedagog)
+   ========================================================================== */
 .app-footer {
   margin-top: auto;
   padding: 0.6rem 1rem;
