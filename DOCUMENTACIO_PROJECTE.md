@@ -13,13 +13,17 @@
   - `public/recursos/`: Actius estàtics servits pel portal (17 documents HTML interactius/imprimibles amb favicon SVG i peu de llicència, script Google Apps Script i 8 fitxers `.xlsx`/`.csv` per a iDoceo).
   - `.github/workflows/deploy.yml`, `.gitignore` i `desplegar-github.ps1`: Infraestructura completa de desplegament continu a GitHub Pages.
 
-## 2. Estat Actual i Punt de Control (Darrera sessió: 2026-10-21)
+## 2. Estat Actual i Punt de Control (Darrera sessió: 2026-10-23)
 - **Estat general**: 100% Funcional i Desplegat en Producció a GitHub Pages (`https://elcordones.github.io/portal-ef/`).
 - **Enllaços oficials del projecte**:
   - **Portal públic (GitHub Pages)**: `https://elcordones.github.io/portal-ef/`
   - **Repositori GitHub**: `https://github.com/elCordones/portal-ef`
   - **Directori local de treball**: `C:\Users\dcordone\Desktop\AGY\Portal EF`
 - **Funcionalitats completades**:
+  - [x] **Ajust Tàctic i DUA a la SdA de Korfbal (Sessió 1 · Act. 2.1 "El Desmarcatge dels 4 Quadrants")**:
+    - S'ha corregit la ràtio de l'activitat per ajustar-la fidelment a equips de 5 alumnes en **situació motriu 3x2**: 3 atacants perifèrics ocupant 3 dels 4 quadrants + 2 defensors centrals en tàndem cooperatiu (D1 i D2 - parella mixta), deixant exactament 1 quadrant lliure per al tall immediat post-passada.
+    - Actualitzat el cronograma minut a minut, la descripció pedagògica pas a pas, la graella interactiva de pista `.court-grid`, l'esquema espacial ASCII i les mesures DUA/rotació olímpica (cada 60'', TCM > 85%) a `korfbal/sessions/sessio-01.md`.
+    - Punts validats i publicats a GitHub (`commit de180a3`).
   - [x] **Desenvolupament íntegre de les 8 sessions de Korfbal (`korfbal/sessions/sessio-01.md` a `sessio-08.md`)**: Eliminats els esborranys resumits de S3–S8 i desplegats els 8 components obligatoris de l'estàndard d'excel·lència d'EF en totes les sessions, incloent la rúbrica oficial completa dels 7 criteris ponderats (10%, 15%, 20%, 15%, 15%, 10%, 15% = 100%).
   - [x] **Integració completa de la SdA d'Atletisme (`atletisme/` i `atletisme/sessions/sessio-01.md` a `sessio-10.md`)**: Incorporades les 5 pàgines troncals i les 10 sessions desenvolupades minut a minut amb esquemes `.court-grid`, taules biomecàniques, matrius de rotació, consignes docents, DUA (TEA, TDAH, nouvinguts francòfons, mentoria 5è-6è) i focus d'avaluació iDoceo.
   - [x] **Integració d'Aplicacions Web, Imprimibles i Paquets iDoceo a `public/recursos/`**: Incorporats i auditats tots els HTML interactius (Web App Diana Chromebooks, Simulador de Notes, Passaport, Tancament S10, Cartes TCG, Àlbum, Guies Google Docs) amb favicon SVG minimalista i peu de llicència resumit (`apps-escolars` / `tecnopedagog`).
@@ -32,8 +36,8 @@
     5. **Targetes de Recursos Interactives en CSS Grid (Zero Superposició)**: El badge de format (`WEB APP`, `IMPRIMIBLE A4`, `GOOGLE DOCS`, `SIMULADOR + A4`, `IDOCEO XLSX/CSV`, `APPS SCRIPT`) ocupa la fila 1 dedicada del Grid (`grid-column: 1 / -1`) evitant qualsevol col·lisió amb el títol o la icona.
   - [x] **Desplegament Continu (CI/CD) i Còpia de Seguretat (`backup-v1-original`)**: Workflow `.github/workflows/deploy.yml` operatiu, GitHub Pages fixat en mode `build_type: "workflow"` i còpia de seguretat de la v1.0 desada a la branca `backup-v1-original` i al tag `v1.0-original`.
 - **Punt exacte on ens hem quedat**:
-  - Desplegada i verificada en producció la versió **v2.1 (Bento Hub, Navegació Escalable A+C i Doble Filtre Combinable B)** a `https://elcordones.github.io/portal-ef/`.
-  - Es conserva una còpia de seguretat intacta del disseny inicial a la branca `backup-v1-original` i a l'etiqueta Git `v1.0-original` (restaurable en qualsevol moment amb `git reset --hard v1.0-original; git push -f origin main`).
+  - Ajustada l'activitat 2.1 de la S1 de Korfbal a situació 3x2 (amb 2 defensors) i desplegada amb èxit al repositori de GitHub (`origin/main`).
+  - La documentació global del projecte queda actualitzada a data 2026-10-23.
 - **Decisions tècniques i incidències conegudes**:
   - **Resolució d'incidència a GitHub Pages (2026-10-21)**: El repositori tenia configurat `"build_type": "legacy"` (Deploy from a branch `main` amb Jekyll), fet que provocava que el workflow automàtic `pages build and deployment` s'executés en paral·lel al nostre `.github/workflows/deploy.yml` i acabés 3 segons més tard, sobreescrivint el portal VitePress amb el `index.md` cru renderitzat per Jekyll. S'ha actualitzat la configuració del repositori via API a `"build_type": "workflow"` i s'ha rellançat el desplegament de VitePress.
   - **Protocol d'integració per a futures Situacions d'Aprenentatge (3a a 10a+ SdA)**:
