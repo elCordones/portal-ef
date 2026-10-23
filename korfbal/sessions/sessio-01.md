@@ -24,7 +24,7 @@
 | :---: | :--- | :--- | :--- |
 | **00' – 05' (5')** | **Act. 1.1: Assemblea Inaugural**<br>Història del Korfbal, bateig d'equips i Àlbums | Grup classe assegut en semicercle davant la pissarra mòbil | Pissarra de pista, 5 Àlbums de Cartes i targetes de rol |
 | **05' – 15' (10')** | **Act. 1.2: La Teranyina Coeducativa**<br>Escalfament dinàmic de passada i peu de pivot | 25 alumnes en dispersió activa. 4 pilotes simultànies amb passada obligatòria a l'altre gènere | Pista completa (28 x 15 m), 4 pilotes de Korfbal |
-| **15' – 30' (15')** | **Act. 2.1: El Desmarcatge dels 4 Quadrants**<br>Passar i tallar a l'espai buit (TCM > 85%) | **5 estacions simultànies de 8 x 8 m** (1 per equip: 4 atacants + 1 defensor al mig) | 20 cons xinesos (4 per estació), 5 pilotes |
+| **15' – 30' (15')** | **Act. 2.1: El Desmarcatge dels 4 Quadrants**<br>Passar i tallar a l'espai buit (TCM > 85%) | **5 estacions simultànies de 8 x 8 m** (1 per equip: 3 atacants + 2 defensors centrals en situació 3x2) | 20 cons xinesos (4 per estació), 5 pilotes |
 | **30' – 50' (20')** | **Act. 2.2: Pilota Torre Cooperativa**<br>Partits 4x4 en 2 camps + Zona Tècnica activa | **Camp 1 (4x4) + Camp 2 (4x4) + Zona Tècnica** (1 equip amb rols d'arbitratge i temps). 5 torns de 4' | 4 cèrcols grans (torres), 2 pilotes, petos, cronòmetres |
 | **50' – 60' (10')** | **Part Final: Calma, Carta #01 i Higiene**<br>Estiraments, diàleg socràtic i rentat de mans | Equips en rotllana. Desbloqueig i adhesió de la **Carta #01: "La Torre Imparable"** | Cartes #01, cola/adhesius, aigua i sabó |
 
@@ -50,33 +50,65 @@
 ## ⚡ 4. Part Principal: Desmarcatge i Joc Cooperatiu (35 minuts)
 
 ### Activitat 2.1: El Desmarcatge dels 4 Quadrants (15 minuts · 5 Estacions Simultànies)
-* **Objectiu tàctic:** Automatitzar la seqüència *recepció ➔ peu de pivot ➔ passada ➔ tall immediat al quadrant buit*.
-* **Organització espacial:** 5 quadrats independents de 8 x 8 m (1 per equip), dividits internament en 4 quadrants de 4 x 4 m. **Zero cues: els 25 alumnes estan en moviment continu.**
+* **Objectiu tàctic:** Interioritzar la regla fonamental de no desplaçar-se amb pilota i consolidar la seqüència *recepció ➔ peu de pivot ➔ passada precisa ➔ tall immediat a l'espai buit* davant d'oposició tàctica semi-activa.
+* **Organització espacial:** 5 quadrats independents de 8 x 8 m delimitats amb cons xinesos (1 per a cadascun dels 5 equips estables). Cada quadrat es divideix internament en 4 quadrants de 4 x 4 m (Q1, Q2, Q3 i Q4).
+* **Distribució per estació (5 alumnes en situació 3x2 · Zero cues · TCM > 85%):**
+  * **3 Atacants perifèrics (Jugadors/es A, B i C):** Ocupen 3 dels 4 quadrants (un quadrant queda expressament buit per permetre la mobilitat i el tall).
+  * **2 Defensors/es a la zona central (D1 i D2 · Parella mixta):** Operen des del centre a > 1 m de distància reglamentària sense contacte físic. D1 surt a pressionar el portador/a de la pilota i D2 tapa la línia de passada cap al segon suport o cap a la cursa de tall.
+  * **1 Quadrant buit (Espai lliure):** Destí dinàmic de l'esprint immediat de l'atacant que acaba de passar la pilota.
 
-#### 📐 Esquema Tàctic d'Estació Adaptatiu (Els 4 Quadrants)
+#### 📐 Esquema Tàctic d'Estació Adaptatiu (Els 4 Quadrants · Situació 3x2)
 
 <div class="court-grid">
   <div class="court-zone ball">
     <strong>[ QUADRANT 1 ]</strong>
     <div>👤 Atacant A (Amb pilota 🏐)</div>
-    <small>1. Clava peu de pivot<br>2. Passa de pit a B i esprinta al Q4</small>
+    <small>1. Clava peu de pivot (sense bot)<br>2. Passa a B o C i esprinta immediatament al Q4 buit</small>
   </div>
   <div class="court-zone">
     <strong>[ QUADRANT 2 ]</strong>
-    <div>👤 Atacant B (Receptor/a)</div>
-    <small>Demana pilota amb mans en "W" i obre línia de passada</small>
+    <div>👤 Atacant B (Receptor/a 1)</div>
+    <small>Demana pilota amb mans en "W", ofereix suport i connecta ràpidament amb A o C</small>
   </div>
   <div class="court-zone defense">
-    <strong>[ CENTRE DE L'ESTACIÓ ]</strong>
-    <div>🛡️ Defensor/a Central</div>
-    <small>Tapa línies de passada a > 1 m sense contacte físic (rota cada 60'')</small>
+    <strong>[ ZONA CENTRAL · 2 DEFENSORS ]</strong>
+    <div>🛡️ Defensors D1 i D2 (Parella Mixta)</div>
+    <small>D1 pressiona a qui té pilota (> 1 m) · D2 intercepta línia al quadrant buit (rotació cada 60'')</small>
+  </div>
+  <div class="court-zone">
+    <strong>[ QUADRANT 3 ]</strong>
+    <div>👤 Atacant C (Receptor/a 2)</div>
+    <small>Segon suport perifèric; es desmarca i prepara recepció segura si B està marcat</small>
   </div>
   <div class="court-zone free">
     <strong>[ QUADRANT 4 · ESPAI BUIT ]</strong>
     <div>🟢 ZONA LLIURE D'ATRACCIÓ</div>
-    <small>Destí immediat de la cursa en tall de l'Atacant A després de passar</small>
+    <small>Destí de l'esprint immediat en tall de qui passa; mai 2 persones al mateix quadrant</small>
   </div>
 </div>
+
+```
++-----------------------------------+-----------------------------------+
+|          [ QUADRANT 1 ]           |          [ QUADRANT 2 ]           |
+|     👤 Atacant A (amb pilota 🏐)  |       👤 Atacant B (receptor)     |
+|   (Passa a B o C i corre al Q4)   |      (Mans en W, obre línia)      |
++-----------------------------------+-----------------------------------+
+|                     🛡️ Defensor/a 1 (pressió a 1 m)                   |
+|                     🛡️ Defensor/a 2 (tapa línia tall)                 |
+|                     [ ZONA CENTRAL - PARELLA MIXTA ]                  |
++-----------------------------------+-----------------------------------+
+|      [ QUADRANT 4 · ESPAI BUIT ]  |          [ QUADRANT 3 ]           |
+|        🟢 ZONA LLIURE EN TALL     |        👤 Atacant C (suport)      |
+|    (Destí de la cursa post-passada)|     (Alternativa de passada neta) |
++-----------------------------------+-----------------------------------+
+```
+
+#### 🔄 Dinàmica de Joc, Relleus i Mesures DUA
+1. **Regla dels 4 quadrants:** MAI hi pot haver dues persones en el mateix quadrant. Està prohibit botar la pilota; només es permet pivotar sobre un peu.
+2. **Passar i tallar a l'espai lliure:** En el mateix instant en què un atacant deixa anar la pilota, ha d'iniciar una cursa ràpida cap al quadrant buit per tornar a generar una línia de passada neta.
+3. **Treball defensiu col·laboratiu (2 Defensors en tàndem):** D1 pressiona el llançador amb braços alçats a 1 m (sense contacte), mentre D2 cobreix l'espai i busca interceptar la passada cap al tall o cap al segon receptor.
+4. **Rotació olímpica cada 60 segons:** Al senyal acústic del mestre, 2 atacants entren al mig com a nous defensors i els 2 defensors passen a la perifèria com a atacants. En 5 minuts (1 cicle complet de 5 rotacions), tots 5 alumnes han experimentat tots els rols sota pressió (TCM > 85%).
+5. **Mesura DUA / Multinivell:** Si un grup necessita menor oposició inicial, D2 actua com a àrbitre/a de suport amb targeta de rol, comptant en veu alta 5 passades consecutives i verificant el peu de pivot abans d'incorporar-se a la defensa activa completa.
 
 #### 🧬 Taula Biomecànica i Tècnica de la Passada i Peu de Pivot
 
