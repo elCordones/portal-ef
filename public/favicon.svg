@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="46" fill="url(#bg)" stroke="#93c5fd" stroke-width="2"/>
+  <line x1="18" y1="18" x2="82" y2="82" stroke="#ffffff" stroke-width="4" stroke-opacity="0.4"/>
+  <line x1="82" y1="18" x2="18" y2="82" stroke="#ffffff" stroke-width="4" stroke-opacity="0.4"/>
+  <circle cx="50" cy="50" r="32" fill="url(#gold)" stroke="#ffffff" stroke-width="2.5"/>
+  <circle cx="50" cy="50" r="17" fill="#ffffff"/>
+  <text x="50" y="55.5" font-family="system-ui, -apple-system, Arial, sans-serif" font-size="16" font-weight="800" fill="#1e3a8a" text-anchor="middle">EF</text>
+</svg>

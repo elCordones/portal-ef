@@ -13,12 +13,18 @@ export default defineConfig({
   cleanUrls: false,
   srcExclude: ['README.md', 'DOCUMENTACIO_PROJECTE.md', 'Bucle Gauntlet.md'],
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="%231e3a8a"/><circle cx="50" cy="50" r="32" fill="%23d97706"/><circle cx="50" cy="50" r="16" fill="%23ffffff"/></svg>' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${base}favicon-32x32.png` }],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${base}apple-touch-icon.png` }],
+    ['link', { rel: 'apple-touch-icon-precomposed', sizes: '180x180', href: `${base}apple-touch-icon-precomposed.png` }],
+    ['link', { rel: 'manifest', href: `${base}manifest.webmanifest` }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Outfit:wght@500;600;700;800&display=swap' }],
     ['meta', { name: 'theme-color', content: '#1e3a8a' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-title', content: 'Portal EF' }],
+    ['meta', { name: 'application-name', content: 'Portal EF' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }]
   ],
 

@@ -10,7 +10,7 @@
   - `index.md`: Portada amb disseny **Bento Grid Asimètric** i **Doble Filtre Combinable en Viu** (`<script setup>` Vue 3) per **Etapa/Cicle** (`all`, `ci`, `cm`, `cs`, `eso`) i per **Família Motriu** (`all`, `equip`, `atletics`, `expressio`, `natura`), comptador dinàmic i estat buit.
   - `korfbal/`: **SdA 1 — Korfbal Coeducatiu: Tothom Suma!** (5 pàgines troncals + 8 sessions completes S1–S8 minut a minut).
   - `atletisme/`: **SdA 2 — Míting d'Atletisme Cooperatiu: Superem els Reptes en Equip!** (5 pàgines troncals + 10 sessions completes S1–S10 minut a minut).
-  - `public/recursos/`: Actius estàtics servits pel portal (17 documents HTML interactius/imprimibles amb favicon SVG i peu de llicència, script Google Apps Script i 8 fitxers `.xlsx`/`.csv` per a iDoceo).
+  - `public/recursos/` i arrel `public/`: Actius estàtics servits pel portal (17 documents HTML interactius/imprimibles amb favicon SVG, `apple-touch-icon.png` i peu de llicència, script Google Apps Script, 8 fitxers `.xlsx`/`.csv` per a iDoceo, i suite d'icones PWA/iOS a `public/`: `apple-touch-icon.png` 180x180, `icon-192.png`, `icon-512.png`, `favicon-32x32.png`, `favicon.svg` i `manifest.webmanifest`).
   - `.github/workflows/deploy.yml`, `.gitignore` i `desplegar-github.ps1`: Infraestructura completa de desplegament continu a GitHub Pages.
 
 ## 2. Estat Actual i Punt de Control (Darrera sessió: 2026-10-23)
@@ -20,6 +20,10 @@
   - **Repositori GitHub**: `https://github.com/elCordones/portal-ef`
   - **Directori local de treball**: `C:\Users\dcordone\Desktop\AGY\Portal EF`
 - **Funcionalitats completades**:
+  - [x] **Suport Natiu d'Icona per a iPhone / iPad (`apple-touch-icon.png`) i PWA Manifest**:
+    - Solucionada la limitació de Safari a iOS (que ignora els favicons en format SVG inline i mostrava una icona genèrica amb la lletra «P» en afegir a la pantalla d'inici).
+    - Generats els actius PNG d'alta definició amb l'emblema tàctic «EF» sobre fons blau marí/or (`public/apple-touch-icon.png` i `apple-touch-icon-precomposed.png` a 180×180 px, `icon-192.png`, `icon-512.png`, `favicon-32x32.png`, `favicon.svg` i `manifest.webmanifest`).
+    - Enllaçats dinàmicament amb `${base}` a `.vitepress/config.mjs` (amb `apple-mobile-web-app-title: "Portal EF"`) i a les 17 aplicacions HTML independents de `public/recursos/`.
   - [x] **Ajust Tàctic i DUA a la SdA de Korfbal (Sessió 1 · Act. 2.1 "El Desmarcatge dels 4 Quadrants")**:
     - S'ha corregit la ràtio de l'activitat per ajustar-la fidelment a equips de 5 alumnes en **situació motriu 3x2**: 3 atacants perifèrics ocupant 3 dels 4 quadrants + 2 defensors centrals en tàndem cooperatiu (D1 i D2 - parella mixta), deixant exactament 1 quadrant lliure per al tall immediat post-passada.
     - Actualitzat el cronograma minut a minut, la descripció pedagògica pas a pas, la graella interactiva de pista `.court-grid`, l'esquema espacial ASCII i les mesures DUA/rotació olímpica (cada 60'', TCM > 85%) a `korfbal/sessions/sessio-01.md`.
