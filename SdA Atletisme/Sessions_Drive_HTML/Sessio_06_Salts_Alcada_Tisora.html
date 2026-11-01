@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessió 6 - SdA Atletisme Cicle Superior</title>
+  <style>
+
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #dbeafe;
+      --secondary: #0d9488;
+      --secondary-light: #ccfbf1;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --part-ini: #e0f2fe;
+      --part-pri: #dcfce7;
+      --part-fin: #fef9c3;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Action bar */
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .action-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-bar button:hover {
+      background: #1d4ed8;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.1rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-top: 35px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: var(--secondary);
+      font-size: 1.25rem;
+      margin-top: 25px;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .badge-time-60 { background: #dbeafe; color: #1e40af; }
+    .badge-time-45 { background: #fef3c7; color: #92400e; }
+    .badge-dua { background: #f3e8ff; color: #6b21a8; }
+    .badge-eval { background: #fee2e2; color: #991b1b; }
+
+    /* Cards */
+    .session-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .session-header {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .session-header h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .session-body {
+      padding: 20px;
+    }
+
+    .part-box {
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .part-box.inicial {
+      background-color: #f0f9ff;
+      border-left: 4px solid #0284c7;
+    }
+    .part-box.principal {
+      background-color: #f0fdf4;
+      border-left: 4px solid #16a34a;
+    }
+    .part-box.final {
+      background-color: #fffbeb;
+      border-left: 4px solid #d97706;
+    }
+    .part-box.avaluacio {
+      background-color: #fdf2f8;
+      border-left: 4px solid #db2777;
+    }
+    .part-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .part-box.inicial .part-title { color: #0369a1; }
+    .part-box.principal .part-title { color: #15803d; }
+    .part-box.final .part-title { color: #b45309; }
+    .part-box.avaluacio .part-title { color: #be185d; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #334155;
+      font-weight: 600;
+    }
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    /* DUA Alerts */
+    .alert-dua {
+      background-color: #faf5ff;
+      border-left: 4px solid #9333ea;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+    .alert-dua strong {
+      color: #6b21a8;
+    }
+
+    .ascii-diagram {
+      background-color: #0f172a;
+      color: #38bdf8;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.80rem;
+      line-height: 1.35;
+      padding: 12px 14px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 12px 0;
+      white-space: pre;
+      border: 1px solid #1e293b;
+    }
+    .tech-keys {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #3b82f6;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+    }
+    .teacher-cue {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-left: 4px solid #eab308;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .print-box {
+      background: #fdfefe;
+      border: 2px dashed #94a3b8;
+      border-radius: 8px;
+      padding: 18px;
+      margin: 20px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .action-bar { display: none; }
+      .session-card { page-break-inside: avoid; }
+      .ascii-diagram { background: #f8fafc; color: #0f172a; border: 1px solid #94a3b8; }
+    }
+  
+    body { padding: 15px; background: #f8fafc; }
+    .container { max-width: 950px; margin: 0 auto; background: white; padding: 25px 30px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="action-bar" style="display: flex; justify-content: space-between; align-items: center; background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px 18px; border-radius: 8px; margin-bottom: 20px;">
+    <div>
+      <a href="../Guia_Docent_SdA_Atletisme_CS.html" style="color: #1e3a8a; text-decoration: none; font-weight: 600; font-size: 0.85rem;">⬅️ Tornar a la Guia Global (10 Sessions)</a>
+      <div style="font-size: 0.82rem; color: #475569; margin-top: 3px;">Fitxer optimitzat per a la subpestanya de <strong>Google Drive / Docs</strong></div>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button onclick="copyStandaloneToClipboard(this)" style="background: #0284c7; color: white; border: none; padding: 7px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">
+        📋 Copiar per a Google Docs
+      </button>
+      <button onclick="window.print()" style="background: #1e3a8a; color: white; border: none; padding: 7px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.82rem;">
+        🖨️ Imprimir / PDF
+      </button>
+    </div>
+  </div>
+
+  <div id="session-container">
+<!-- SESSIÓ 6 -->
+  <div class="session-card" id="session-card-6">
+    <div class="session-header">
+      <h4>SESSIÓ 6: Salts II &mdash; Salt d'Alçada amb Tisora i Matalàs Llevapors</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Gestió de la Por (CE3 Crit. 3.2 / CE2 Crit. 2.1)</span>
+        <span>Gimnàs Interior Cobert</span>
+       <button class="copy-btn" onclick="copySessionToClipboard('session-card-6', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button></div>
+    </div>
+    <div class="session-body">
+      <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #1e3a8a; color: #ffffff;">
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 25%;">⬅️ Aproximació Corba Esquerra</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 26%;">🚧 Goma Inclinada (DUA)</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 25%;">➡️ Aproximació Corba Dreta</th>
+      <th style="padding: 9px 12px; border: 1px solid #cbd5e1; width: 24%;">🛏️ Recepció Segura</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Batuda Cama Dreta</strong><br>
+        (Cama de fora). Cursa diagonal de 3-4 passes arribant a uns 30° d'angle respecte a la goma.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f0fdf4;">
+        <strong>Alçades multinivell:</strong><br>
+        • Con 1: <strong>50 cm</strong> (iniciació)<br>
+        • Mig: <strong>65 cm</strong> (mitjana)<br>
+        • Con 2: <strong>80 cm</strong> (repte alt)<br>
+        <em>Cada alumne tria el punt de salt!</em>
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <strong>Batuda Cama Esquerra</strong><br>
+        (Cama de fora). Cursa simètrica en corba per a atletes que baten amb l'altre peu.
+      </td>
+      <td style="padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+        <strong>Matalàs Llevapors</strong><br>
+        Recepció dempeus sobre la cama d'atac i flexió d'amortiment amb genolls tous.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts)</div>
+        <p>Normes d'or de seguretat del matalàs llevapors: 1) Només salta un alumne a la vegada; 2) Desallotjament immediat pels laterals; 3) La goma cedeix sense cap dolor. Mobilitat de malucs amb balancí de cames a la paret.</p>
+      </div>
+
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts)</div>
+        <p><strong>Activitat 2.1 &mdash; Descobriment de la Tisora a Terra (8'):</strong></p>
+        <table style="width: 100%; border-collapse: collapse; margin: 14px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+  <thead>
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <th colspan="4" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; font-size: 0.88rem;">
+        ✂️ Biomecànica del Salt d'Alçada en Tisora (4 Fases)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">1. Carrera en Corba</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          3-4 passes d'aproximació diagonal en corba suau (angle de 30-40°). Tronc dret mantenint la velocitat.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">2. Batuda Exterior</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          Batuda amb la <strong>cama exterior</strong> (la més allunyada de la goma). Impuls ràpid convertint la cursa en alçada.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f8fafc;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">3. Cama d'Atac</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          La <strong>cama interior</strong> puja estirada amunt per sobre de la goma, acompanyada d'una flexió de tronc endavant.
+        </div>
+      </td>
+      <td style="width: 25%; padding: 10px 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #ffffff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">4. Cama de Remolc</div>
+        <div style="font-size: 0.8rem; color: #334155; line-height: 1.4;">
+          La cama de batuda puja immediatament darrere en moviment de "tisora". Aterratge dempeus amortint primer amb la cama d'atac.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Pràctica del gest sobre línies pintades al terra del gimnàs per interioritzar la seqüència de cames sense alçada.</p>
+
+        <p style="margin-top: 15px;"><strong>Activitat 2.2 &mdash; El Gran Salt sobre la Goma Inclinada (17'):</strong> Cursa diagonal de 4 passes i franqueig en tisora sobre el llevapors. Tria autònoma de l'alçada DUA: 50 cm (iniciar confiança), 65 cm (estàndard) o 80 cm (repte). Zero eliminacions: si es toca la goma, es repensa el punt de batuda i es repeteix.</p>
+        <div class="teacher-cue">Consigna mestre: "El llevapors és un núvol gegant de seguretat! Si toqueu la goma caurà amb vosaltres i no us farà res: confieu en el vostre cos!"</div>
+      </div>
+
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts)</div>
+        <p>Relaxació guiada estirats al voltant i sobre el llevapors amb música suau. Posada en comú: <em>Com hem superat la por inicial?</em> Registre al Passaport.</p>
+      </div>
+
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent (Gestió Emocional - CE3 Crit. 3.2)</div>
+        <p><strong>Què observar:</strong> Valentia per afrontar el salt, superació de bloquejos i tècnica bàsica de tisora.</p>
+        <p><strong>Com registrar-ho:</strong> Anotar a la columna del Criteri 3.2 a iDoceo el grau de gestió emocional assolit.</p>
+      </div>
+    </div>
+  </div>
+
+  
+  </div>
+</div>
+
+<script>
+async function copyStandaloneToClipboard(btn) {
+  const container = document.getElementById('session-container');
+  const clone = container.cloneNode(true);
+  const copyBtn = clone.querySelector('.copy-btn');
+  if (copyBtn) copyBtn.remove();
+  
+  const blobHtml = new Blob([clone.outerHTML], { type: 'text/html' });
+  const blobText = new Blob([clone.innerText], { type: 'text/plain' });
+  try {
+    const item = new ClipboardItem({ 'text/html': blobHtml, 'text/plain': blobText });
+    await navigator.clipboard.write([item]);
+    const oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Copiat per a Google Docs!';
+    btn.style.background = '#15803d';
+    setTimeout(() => {
+      btn.innerHTML = oldText;
+      btn.style.background = '#0284c7';
+    }, 2500);
+  } catch (err) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = clone.outerHTML;
+    tempDiv.style.position = 'fixed';
+    tempDiv.style.left = '-9999px';
+    document.body.appendChild(tempDiv);
+    const range = document.createRange();
+    range.selectNodeContents(tempDiv);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    document.body.removeChild(tempDiv);
+    btn.innerHTML = '✅ Copiat!';
+    setTimeout(() => { btn.innerHTML = '📋 Copiar per a Google Docs'; }, 2000);
+  }
+}
+
+async function copySessionToClipboard(cardId, btn) {
+  copyStandaloneToClipboard(btn);
+}
+</script>
+</body>
+</html>

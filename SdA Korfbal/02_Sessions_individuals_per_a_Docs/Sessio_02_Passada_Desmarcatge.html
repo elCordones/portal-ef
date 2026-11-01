@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessió 2: La Xarxa de Passades Dinàmiques i Desmarcatge en Tall (Sense Botar) - SdA Korfbal Cicle Superior</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #dbeafe;
+      --secondary: #0d9488;
+      --secondary-light: #ccfbf1;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --part-ini: #e0f2fe;
+      --part-pri: #dcfce7;
+      --part-fin: #fef9c3;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .action-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-bar button:hover {
+      background: #1d4ed8;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .badge-time-60 { background: #dbeafe; color: #1e40af; }
+    .badge-time-45 { background: #fef3c7; color: #92400e; }
+    .badge-dua { background: #f3e8ff; color: #6b21a8; }
+    .badge-eval { background: #fee2e2; color: #991b1b; }
+
+    .session-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .session-header {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .session-header h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .session-body {
+      padding: 20px;
+    }
+
+    .part-box {
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .part-box.inicial {
+      background-color: #f0f9ff;
+      border-left: 4px solid #0284c7;
+    }
+    .part-box.principal {
+      background-color: #f0fdf4;
+      border-left: 4px solid #16a34a;
+    }
+    .part-box.final {
+      background-color: #fffbeb;
+      border-left: 4px solid #d97706;
+    }
+    .part-box.avaluacio {
+      background-color: #fdf2f8;
+      border-left: 4px solid #db2777;
+    }
+    .part-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .part-box.inicial .part-title { color: #0369a1; }
+    .part-box.principal .part-title { color: #15803d; }
+    .part-box.final .part-title { color: #b45309; }
+    .part-box.avaluacio .part-title { color: #be185d; }
+
+    .teacher-cue {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-left: 4px solid #eab308;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .action-bar { display: none; }
+      .session-card { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="action-bar">
+    <div>
+      <strong>SdA Korfbal Coeducatiu: Tothom Suma!</strong>
+      <div style="font-size: 0.85rem; color: #475569;">Fitxer independent per a Google Drive &mdash; Clic a 'Copiar' i enganxa directament a Google Docs</div>
+    </div>
+    <button onclick="window.print()">
+      🖨️ Imprimir / Desar en PDF
+    </button>
+  </div>
+
+  <h1>Sessió 2: La Xarxa de Passades Dinàmiques i Desmarcatge en Tall (Sense Botar)</h1>
+
+  <div class="session-card" id="session-card-2">
+    <div class="session-header">
+      <h4>SESSIÓ 2: La Xarxa de Passades Dinàmiques i Desmarcatge en Tall (Sense Botar)</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Avaluació Formativa (CE1 - Crit 1.2 / CE2 - Crit 2.1)</span>
+        <span>Pista Poliesportiva</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-2', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (45 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 03' (3')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea de Reactivació</strong><br><span style="font-size: 0.78rem; color: #475569;">El secret del tall a l'espai buit</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Grup classe en rotllana. Breu connexió amb la Carta #01 i presentació del repte del dia.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pissarra de pista, Àlbums d'Equip.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">03' &ndash; 10' (7')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: Cua de Drac Coeducativa</strong><br><span style="font-size: 0.78rem; color: #475569;">Escalfament lúdic i coordinació motriu</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">5 cadenes humanes de 5 alumnes (1 drac per equip). El cap protegeix la cua de pilotes rodolants.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pista completa, 6 pilotes toves rodolant.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">10' &ndash; 23' (13')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.1: L'Estrella Dinàmica</strong><br><span style="font-size: 0.78rem; color: #475569;">Passar i tallar en circuit &mdash; TCM > 85%</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>5 estacions d'estrella simultànies</strong> (1 per equip). Pilotada, tall a l'espai i rotació de con.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">25 cons de 4 colors (5 per estrella), 5 pilotes.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">23' &ndash; 37' (14')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.2: Rondo 4x1 amb Suport Espacial</strong><br><span style="font-size: 0.78rem; color: #475569;">Línies de passada obertes i Borg 5-6</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>5 rondos simultanis de 8x8 m</strong> (1 per equip). 4 atacants a la perifèria + 1 defensor al mig (rotació cada 60'').</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">20 cons delimitadors, 5 pilotes, escala Borg.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">37' &ndash; 45' (8')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #02</strong><br><span style="font-size: 0.78rem; color: #475569;">Respiració, autoregulació i higiene</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Equips en rotllana. Autoavaluació de l'esforç (Borg). Desbloqueig de la Carta #02 "El Tall Llampec".</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cartes #02, cola/adhesiu, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts) &mdash; Activació Motriu i Cohesió Grupal</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea de Reactivació: "El Tall a l'Espai Buit" (3 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Alumnat en semicercle davant la pissarra de pista.</li>
+          <li><strong>Desenvolupament:</strong> Recordatori de la consigna clau de la Sessió 1: <em>"A qui hem de passar la pilota? A qui està parat i marcat o a qui corre cap a un espai buit?"</em>. S'explica el concepte de <strong>tall ofensiu</strong>: canvi de ritme sobtat per allunyar-se del defensor i oferir una línia de passada neta.</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament Dinàmic: "Cua de Drac Coeducativa" (7 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Pista poliesportiva completa. 5 equips formant cadascun una cadena humana agafats per les espatlles o la cintura.</li>
+          <li><strong>Desenvolupament:</strong> El primer de la fila és el "cap del drac" i l'últim és la "cua". 3 alumnes neutrals o el docent fan rodolar pilotes toves per terra intentant tocar la cua del drac. El cap i el cos han de moure's coordinadament per protegir la seva cua mitjançant desplaçaments laterals i canvis de direcció ràpids. Rotació del cap i la cua cada 90 segons.</li>
+        </ul>
+        <div class="teacher-cue">📢 <strong>Consigna literal del docent:</strong> "Comuniquem-nos amb el cos! La pilota mai ha d'anar al peu de qui està aturat, sinó dos metres per davant d'on està corrent!"</div>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts) &mdash; Dinàmica de Passada, Mobilitat i Autoregulació</div>
+
+        <!-- ACTIVITAT 2.1 -->
+        <div style="background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <h5 style="margin: 0 0 8px 0; color: #15803d; font-size: 1.05rem;">Activitat 2.1 &mdash; L'Estrella Dinàmica Coeducativa (13 minuts) &mdash; 5 Estacions Simultànies (TCM &gt; 85%)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu motriu:</strong> Automatitzar la seqüència recepció &rarr; peu de pivot &rarr; passada precisa &rarr; cursa immediata de relleu sense pauses.</p>
+          <p style="margin: 0 0 10px 0;"><strong>Disposició espacial:</strong> La pista es divideix en <strong>5 estacions idèntiques d'Estrella</strong> (1 per a cadascun dels 5 equips). Cada estrella consta d'1 con central (Pivot) i 4 cons exteriors situats a 5-6 metres en forma de creu.</p>
+
+          <!-- GRÀFIC DE L'ESTACIÓ DE L'ESTRELLA -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px dashed #16a34a; background-color: #f7fee7;">
+            <thead>
+              <tr style="background-color: #15803d; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="3" style="padding: 8px 12px; text-align: left;">📐 ESQUEMA GRÀFIC D'1 ESTACIÓ: L'ESTRELLA DINÀMICA (5 Estacions a Pista)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 30%;"></td>
+                <td style="width: 40%; text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ CON EXTERIOR 1 (NORD) ]</div>
+                  <div style="padding: 6px; background: #dbeafe; border-radius: 6px; margin-top: 4px;">👤 <strong>Receptor/a 1</strong></div>
+                  <div style="font-size: 0.72rem; color: #059669; margin-top: 2px;">Finta cap a fora i tall cap al con</div>
+                </td>
+                <td style="width: 30%;"></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ CON EXT. 4 (OEST) ]</div>
+                  <div style="padding: 6px; background: #f1f5f9; border-radius: 6px; margin-top: 4px;">👤 <strong>Receptor/a 4</strong></div>
+                </td>
+                <td style="text-align: center; padding: 14px; border: 2px solid #16a34a; background: #dcfce7;">
+                  <div style="font-weight: bold; color: #166534; font-size: 0.90rem;">⭐ CON CENTRAL (PIVOT)</div>
+                  <div style="padding: 6px; background: #ffffff; border-radius: 6px; border: 1px solid #86efac; margin-top: 4px;">
+                    👤 <strong>Pivot amb Pilota 🏐</strong><br>
+                    <span style="font-size: 0.72rem; color: #15803d;">Peu clavat &bull; Gira 90° &bull; Passa</span>
+                  </div>
+                  <div style="font-size: 0.72rem; color: #166534; margin-top: 4px;"><em>En passar &rarr; Corre a substituir el con receptor</em></div>
+                </td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ CON EXT. 2 (EST) ]</div>
+                  <div style="padding: 6px; background: #f1f5f9; border-radius: 6px; margin-top: 4px;">👤 <strong>Receptor/a 2</strong></div>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 30%;"></td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ CON EXTERIOR 3 (SUD) ]</div>
+                  <div style="padding: 6px; background: #f1f5f9; border-radius: 6px; margin-top: 4px;">👤 <strong>Receptor/a 3</strong></div>
+                </td>
+                <td style="width: 30%;"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Desenvolupament i Variació de Passades:</strong></p>
+          <ol style="margin: 4px 0 10px 18px; padding: 0;">
+            <li>El jugador del centre rep la pilota, pivota sobre un peu i passa a un dels cons exteriors.</li>
+            <li><strong>Principi de relleu actiu:</strong> Just després de passar la pilota, el passador esprinta per ocupar el con cap on ha passat la pilota; qui ha rebut passa a ocupar el centre (pivot).</li>
+            <li><strong>Progressió tècnica cada 3-4 minuts:</strong>
+              <ul style="margin: 2px 0 0 15px;">
+                <li><em>Minut 10-14:</em> <strong>Passada de pit a dues mans</strong> (tensa, al pit).</li>
+                <li><em>Minut 14-18:</em> <strong>Passada picada a terra</strong> (el bot colpeja el terra a 2/3 de distància per superar braços defensius).</li>
+                <li><em>Minut 18-23:</em> <strong>Passada per sobre del cap a 2 mans</strong> (ideal per a passades llargues i parabòliques).</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+
+        <!-- ACTIVITAT 2.2 -->
+        <div style="background-color: #ffffff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px;">
+          <h5 style="margin: 0 0 8px 0; color: #1e3a8a; font-size: 1.05rem;">Activitat 2.2 &mdash; Rondo Cooperatiu 4x1 amb Suport Espacial (14 minuts) &mdash; 5 Rondos Simultanis</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu tàctic:</strong> Conservar la possessió sense botar davant oposició activa, ajustant la posició als costats del quadrat per obrir angles de passada clars.</p>
+          <p style="margin: 0 0 10px 0;"><strong>Disposició:</strong> 5 quadrats de 8 x 8 metres (1 per equip). 4 atacants repartits pels 4 costats del quadrat + 1 defensor/a actiu al mig.</p>
+
+          <!-- GRÀFIC RONDO 4x1 -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px solid #2563eb; background-color: #eff6ff;">
+            <thead>
+              <tr style="background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="3" style="padding: 8px 12px; text-align: left;">🛡️ ESQUEMA DEL RONDO COEDUCATIU 4x1 AMB SUPORT LATERAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 25%;"></td>
+                <td style="width: 50%; text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  👤 <strong>Atacant Nord</strong> &mdash; <em>Es mou lateralment per la línia</em>
+                </td>
+                <td style="width: 25%;"></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  👤 <strong>Atacant Oest</strong><br>(amb pilota 🏐)<br>
+                  <span style="font-size: 0.72rem; color: #15803d;">Té dues línies de passada</span>
+                </td>
+                <td style="text-align: center; padding: 15px; border: 2px solid #ef4444; background: #fee2e2;">
+                  🛡️ <strong>DEFENSOR/A ACTIU/VA</strong><br>
+                  <span style="font-size: 0.74rem; color: #991b1b;">Intenta tallar sense contacte personal</span>
+                </td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  👤 <strong>Atacant Est</strong><br>
+                  <span style="font-size: 0.72rem; color: #0284c7;">Desplaçament de suport</span>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 25%;"></td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  👤 <strong>Atacant Sud</strong> &mdash; <em>Opció de passada llarga o recolzament</em>
+                </td>
+                <td style="width: 25%;"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Desenvolupament i Autoregulació Borg:</strong></p>
+          <ol style="margin: 4px 0 10px 18px; padding: 0;">
+            <li>L'objectiu dels 4 atacants és connectar <strong>10 passades consecutives</strong> sense que el defensor toqui la pilota.</li>
+            <li>Els atacants adjacents han de moure's pels costats del quadrat per oferir sempre <strong>dues línies de passada obertes</strong> (suport en triangle).</li>
+            <li><strong>Rotació del defensor:</strong> Cada 60 segons o quan el defensor intercepta 2 pilotes netes.</li>
+            <li><strong>Control d'esforç aeròbic (Escala Borg 1-10):</strong> A la meitat de l'exercici, el docent demana l'índex Borg dels alumnes. L'objectiu fisiològic és situar-se a la zona de treball aeròbic sostenible (<strong>Borg 5-6: "Puc parlar amb frases curtes però noto el cor actiu"</strong>).</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Tornada a la Calma i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Respiració i tornada a la calma (4'):</strong> Asseguts en rotllanes d'equip. Exercicis de respiració diafragmàtica 4-4-4 (inspiració 4s, retenció 4s, expiració lenta 4s) per reduir la freqüència cardíaca (tornada a Borg 2-3).</li>
+          <li><strong>Desbloqueig de la Carta #02: "El Tall Llampec" (3'):</strong> Entrega i adhesió de la Carta #02 a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: Finestra de 3 segons de passada protegida sense pressió rival en el torneig final).</li>
+          <li><strong>Higiene i recollida (3'):</strong> Neteja de mans i cara; recollida ordenada dels cons i pilotes per equips.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent a Peu de Pista (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Mirada focalitzada sobre l'Equip 3 i l'Equip 4:</strong></p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Criteri 1.2 (Pes 15%):</strong> Autoregulació de l'esforç físic segons l'Escala de Borg (manté una intensitat sostinguda sense aturar-se d'esgotament).</li>
+          <li><strong>Criteri 2.1 (Pes 20%):</strong> Precisió en lliurar la pilota a la trajectòria de la carrera del company/a i no al lloc on estava aturat.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+async function copySessionToClipboard(cardId, btn) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  
+  const clone = card.cloneNode(true);
+  const copyBtn = clone.querySelector('.copy-btn');
+  if (copyBtn) copyBtn.remove();
+  
+  const htmlBlob = new Blob([clone.outerHTML], { type: 'text/html' });
+  const textBlob = new Blob([clone.innerText], { type: 'text/plain' });
+  
+  try {
+    const item = new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob });
+    await navigator.clipboard.write([item]);
+    const oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Copiat per a Drive!';
+    btn.style.background = '#15803d';
+    setTimeout(() => {
+      btn.innerHTML = oldText;
+      btn.style.background = '#0284c7';
+    }, 2500);
+  } catch (err) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = clone.outerHTML;
+    tempDiv.style.position = 'fixed';
+    tempDiv.style.left = '-9999px';
+    document.body.appendChild(tempDiv);
+    const range = document.createRange();
+    range.selectNodeContents(tempDiv);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    document.body.removeChild(tempDiv);
+    btn.innerHTML = '✅ Copiat!';
+    setTimeout(() => { btn.innerHTML = '📋 Copiar per a Google Docs'; }, 2000);
+  }
+}
+</script>
+</body>
+</html>

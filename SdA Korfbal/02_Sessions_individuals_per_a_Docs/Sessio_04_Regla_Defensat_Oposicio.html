@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessió 4: La Regla del Defensat i Oposició Legal 1x1 - SdA Korfbal Cicle Superior</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #dbeafe;
+      --secondary: #0d9488;
+      --secondary-light: #ccfbf1;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --part-ini: #e0f2fe;
+      --part-pri: #dcfce7;
+      --part-fin: #fef9c3;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .action-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-bar button:hover {
+      background: #1d4ed8;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .badge-time-60 { background: #dbeafe; color: #1e40af; }
+    .badge-time-45 { background: #fef3c7; color: #92400e; }
+    .badge-dua { background: #f3e8ff; color: #6b21a8; }
+    .badge-eval { background: #fee2e2; color: #991b1b; }
+
+    .session-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .session-header {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .session-header h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .session-body {
+      padding: 20px;
+    }
+
+    .part-box {
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .part-box.inicial {
+      background-color: #f0f9ff;
+      border-left: 4px solid #0284c7;
+    }
+    .part-box.principal {
+      background-color: #f0fdf4;
+      border-left: 4px solid #16a34a;
+    }
+    .part-box.final {
+      background-color: #fffbeb;
+      border-left: 4px solid #d97706;
+    }
+    .part-box.avaluacio {
+      background-color: #fdf2f8;
+      border-left: 4px solid #db2777;
+    }
+    .part-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .part-box.inicial .part-title { color: #0369a1; }
+    .part-box.principal .part-title { color: #15803d; }
+    .part-box.final .part-title { color: #b45309; }
+    .part-box.avaluacio .part-title { color: #be185d; }
+
+    .teacher-cue {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-left: 4px solid #eab308;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .action-bar { display: none; }
+      .session-card { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="action-bar">
+    <div>
+      <strong>SdA Korfbal Coeducatiu: Tothom Suma!</strong>
+      <div style="font-size: 0.85rem; color: #475569;">Fitxer independent per a Google Drive &mdash; Clic a 'Copiar' i enganxa directament a Google Docs</div>
+    </div>
+    <button onclick="window.print()">
+      🖨️ Imprimir / Desar en PDF
+    </button>
+  </div>
+
+  <h1>Sessió 4: La Regla del Defensat i Oposició Legal 1x1</h1>
+
+  <div class="session-card" id="session-card-4">
+    <div class="session-header">
+      <h4>SESSIÓ 4: La Regla del "Defensat" (*Verdedigd*) i Oposició Legal 1x1</h4>
+      <div>
+        <span class="badge badge-time-45">45 minuts</span>
+        <span class="badge badge-eval">Avaluació Formativa (CE2 - Crit 2.2 / CE3 - Crit 3.2)</span>
+        <span>2 Mitjos Camps</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-4', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (45 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 03' (3')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea Tècnica</strong><br><span style="font-size: 0.78rem; color: #475569;">Les 4 regles d'or del "Defensat"</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Alumnat en semicercle. Demostració docent amb parella model del mateix gènere.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pissarra de pista, 1 pal de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">03' &ndash; 10' (7')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: L'Ombra Coeducativa</strong><br><span style="font-size: 0.78rem; color: #475569;">Duel motriu lateral sense contacte</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Parelles del mateix gènere (noi-noi / noia-noia). Desplaçaments defensius en mirall mantenint 1 m.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pista completa delimitada amb cons.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">10' &ndash; 22' (12')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.1: Trios de Decisió 1x1</strong><br><span style="font-size: 0.78rem; color: #475569;">"Puc Tirar o He de Passar?"</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>8 trios simultanis:</strong> 1 atacant, 1 defensor legal i 1 àrbitre auxiliar. Rotació cada 45''.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cons de posició, 8 pilotes de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">22' &ndash; 37' (15')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.2: Joc Reduït 2x2 Coeducatiu</strong><br><span style="font-size: 0.78rem; color: #475569;">Defensa estricta noi-noi i noia-noia</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>4 camps reduïts de 2x2:</strong> 1 noi i 1 noia en atac vs 1 noi i 1 noia en defensa + 1 alumne/a àrbitre de suport.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">2 pals oficials + 2 cèrcols auxiliars, petos.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">37' &ndash; 45' (8')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #04</strong><br><span style="font-size: 0.78rem; color: #475569;">Joc net, carta tàctica i higiene</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Equips en rotllana. Desbloqueig de la Carta #04 "L'Escut Legal 1x1". Recollida i rentat de mans.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cartes #04, cola/adhesiu, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (10 minuts) &mdash; La Filosofia del "Defensat" (*Verdedigd*)</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea: Les 4 Condicions Simultànies del Defensat (3 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Principi fonamental:</strong> Al Korfbal està prohibit llançar a cistella si un rival et defensa legalment. La intenció d'aquesta norma és premiar el desmarcatge i la passada, i evitar que una persona més alta o forta pugui tirar per sobre dels altres.</li>
+          <li><strong>Defensa per gènere:</strong> Un noi només pot defensar un noi; una noia només pot defensar una noia (garantia d'equitat coeducativa absoluta).</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament: "L'Ombra Coeducativa" (7 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Parelles del mateix gènere repartides per la pista separades per una línia.</li>
+          <li><strong>Desenvolupament:</strong> Un alumne/a fa de "guia" fent fintes i canvis de direcció ràpids; l'altre fa d'"ombra" mantenint la posició defensiva (genolls flexionats, centre de gravetat baix, braços oberts, distància de seguretat de ~1 m sense contacte corporal). Canvi de rols cada 60 segons.</li>
+        </ul>
+        <div class="teacher-cue">📢 <strong>Consigna literal del docent:</strong> "Si el defensor està més a prop del cistell que tu, cara a cara, a distància de braç i amb la mà amunt... ESTÀS DEFENSAT! No pots tirar! Has de passar!"</div>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (25 minuts) &mdash; Presa de Decisió Tàctica i 2x2 Coeducatiu</div>
+
+        <!-- ESQUEMA DEL DEFENSAT -->
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.84rem; border: 2px solid #1e3a8a; background-color: #ffffff;">
+          <thead>
+            <tr style="background-color: #1e3a8a; color: #ffffff;">
+              <th colspan="3" style="padding: 10px 12px; text-align: left;">🛡️ LES 4 CONDICIONS SIMULTÀNIES PERQUÈ UN TIR SIGUI IL·LEGAL ("DEFENSAT")</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 33%; padding: 10px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #1e3a8a;">1. En línia a Cistella:</strong><br>El defensor/a està situat <strong>més a prop del pal</strong> que l'atacant (interposat entre cistella i pilota).
+              </td>
+              <td style="width: 33%; padding: 10px; border: 1px solid #cbd5e1; background-color: #ffffff;">
+                <strong style="color: #15803d;">2. Cara a Cara:</strong><br>El defensor mira directament als ulls de l'atacant (no d'esquena ni corrent de costat).
+              </td>
+              <td style="width: 33%; padding: 10px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #c2410c;">3. Distància de Braç:</strong><br>A menys de la llargada d'un braç estès de l'atacant (~70-90 cm, sense tocar-lo!).
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="padding: 10px; border: 1px solid #cbd5e1; background-color: #fee2e2; color: #991b1b; font-weight: bold; text-align: center;">
+                ✋ 4. Braç Estès cap a la Pilota: El defensor té el braç aixecat intentant bloquejar la trajectòria.<br>
+                <span style="font-size: 0.78rem; font-weight: normal; color: #7f1d1d;">&rarr; Si es donen les 4 condicions simultànies: <strong>TIR TOTALMENT IL·LEGAL</strong> (si l'atacant llença, és falta i possessió rival).</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ACTIVITAT 4.1 -->
+        <div style="background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <h5 style="margin: 0 0 8px 0; color: #15803d; font-size: 1.05rem;">Activitat 4.1 &mdash; Trios de Decisió: "Puc Llançar o He de Passar?" (12 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Organització:</strong> 8 trios simultanis a la pista (24 alumnes + 1 tutor/a de suport): 1 passador/atacant, 1 defensor legal (mateix gènere) i 1 àrbitre auxiliar.</p>
+          <p style="margin: 0 0 8px 0;"><strong>Desenvolupament:</strong> L'atacant rep una passada a 4 metres de cistella. El defensor surt a marcar-lo des de 2 metres:</p>
+          <ul style="margin: 0 0 0 20px; font-size: 0.84rem;">
+            <li>Si el defensor <strong>arriba a temps</strong> i col·loca el braç &rarr; L'àrbitre crida <em>"DEFENSAT!"</em>. L'atacant té 2 segons per pivotar i passar.</li>
+            <li>Si el defensor <strong>arriba tard o desplaçat</strong> &rarr; L'àrbitre crida <em>"LLIURE!"</em>. L'atacant fa tir parabòlic immediat.</li>
+          </ul>
+        </div>
+
+        <!-- ACTIVITAT 4.2 -->
+        <div style="background-color: #ffffff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px;">
+          <h5 style="margin: 0 0 8px 0; color: #1e3a8a; font-size: 1.05rem;">Activitat 4.2 &mdash; Joc Reduït 2x2 Coeducatiu amb Marcatge Estricte (13 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Disposició:</strong> 4 mitjos camps reduïts. Cada partit enfronta 1 parella mixta atacant (1 noi + 1 noia) contra 1 parella mixta defensora (1 noi + 1 noia).</p>
+          <p style="margin: 0 0 8px 0;"><strong>Regla crucial de gènere:</strong> El noi només pot defensar el noi rival; la noia només pot defensar la noia rival. Està expressament prohibit fer ajudes defensives creuades contra el gènere contrari.</p>
+          <p style="margin: 0 0 0 0; font-size: 0.82rem; color: #1e40af;"><strong>Objectiu tàctic:</strong> Utilitzar el <em>passa i talla</em> per allunyar-se de la marca defensiva i poder fer tirs nets en posició "LLIURE".</p>
+        </div>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Tornada a la Calma i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Reflexió en rotllana (4'):</strong> <em>"Com ens sentim quan sabem que ningú pot tirar per sobre nostre pel sol fet de ser més alt/a? Per què el Korfbal és just per a tothom?"</em>.</li>
+          <li><strong>Desbloqueig de la Carta #04: "L'Escut Legal 1x1" (3'):</strong> S'enganxa la quarta carta a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: +1 punt extra de Fair Play en forçar legalment la situació de defensat al torneig).</li>
+          <li><strong>Higiene i recollida (3'):</strong> Rentat de mans i cara abans de sortir de la pista.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent a Peu de Pista (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Mirada focalitzada sobre l'Equip 2 i l'Equip 3:</strong></p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Criteri 2.2 (Pes 15%):</strong> Presa de decisió ràpida (passar quan s'està defensat en lloc de forçar un llançament il·legal).</li>
+          <li><strong>Criteri 3.2 (Pes 10%):</strong> Acceptació de la veu de l'àrbitre (*"Defensat"*), absència de contacte corporal i marcatge estricte a companys del mateix gènere.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+async function copySessionToClipboard(cardId, btn) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  
+  const clone = card.cloneNode(true);
+  const copyBtn = clone.querySelector('.copy-btn');
+  if (copyBtn) copyBtn.remove();
+  
+  const htmlBlob = new Blob([clone.outerHTML], { type: 'text/html' });
+  const textBlob = new Blob([clone.innerText], { type: 'text/plain' });
+  
+  try {
+    const item = new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob });
+    await navigator.clipboard.write([item]);
+    const oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Copiat per a Drive!';
+    btn.style.background = '#15803d';
+    setTimeout(() => {
+      btn.innerHTML = oldText;
+      btn.style.background = '#0284c7';
+    }, 2500);
+  } catch (err) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = clone.outerHTML;
+    tempDiv.style.position = 'fixed';
+    tempDiv.style.left = '-9999px';
+    document.body.appendChild(tempDiv);
+    const range = document.createRange();
+    range.selectNodeContents(tempDiv);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    document.body.removeChild(tempDiv);
+    btn.innerHTML = '✅ Copiat!';
+    setTimeout(() => { btn.innerHTML = '📋 Copiar per a Google Docs'; }, 2000);
+  }
+}
+</script>
+</body>
+</html>

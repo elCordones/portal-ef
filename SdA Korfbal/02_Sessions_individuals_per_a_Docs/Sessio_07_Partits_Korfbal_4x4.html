@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessió 7: Partits Reals Reduïts 4x4 Coeducatius i Avaluació Focalitzada - SdA Korfbal Cicle Superior</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #dbeafe;
+      --secondary: #0d9488;
+      --secondary-light: #ccfbf1;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --part-ini: #e0f2fe;
+      --part-pri: #dcfce7;
+      --part-fin: #fef9c3;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .action-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-bar button:hover {
+      background: #1d4ed8;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .badge-time-60 { background: #dbeafe; color: #1e40af; }
+    .badge-time-45 { background: #fef3c7; color: #92400e; }
+    .badge-dua { background: #f3e8ff; color: #6b21a8; }
+    .badge-eval { background: #fee2e2; color: #991b1b; }
+
+    .session-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .session-header {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .session-header h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .session-body {
+      padding: 20px;
+    }
+
+    .part-box {
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .part-box.inicial {
+      background-color: #f0f9ff;
+      border-left: 4px solid #0284c7;
+    }
+    .part-box.principal {
+      background-color: #f0fdf4;
+      border-left: 4px solid #16a34a;
+    }
+    .part-box.final {
+      background-color: #fffbeb;
+      border-left: 4px solid #d97706;
+    }
+    .part-box.avaluacio {
+      background-color: #fdf2f8;
+      border-left: 4px solid #db2777;
+    }
+    .part-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .part-box.inicial .part-title { color: #0369a1; }
+    .part-box.principal .part-title { color: #15803d; }
+    .part-box.final .part-title { color: #b45309; }
+    .part-box.avaluacio .part-title { color: #be185d; }
+
+    .teacher-cue {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-left: 4px solid #eab308;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .action-bar { display: none; }
+      .session-card { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="action-bar">
+    <div>
+      <strong>SdA Korfbal Coeducatiu: Tothom Suma!</strong>
+      <div style="font-size: 0.85rem; color: #475569;">Fitxer independent per a Google Drive &mdash; Clic a 'Copiar' i enganxa directament a Google Docs</div>
+    </div>
+    <button onclick="window.print()">
+      🖨️ Imprimir / Desar en PDF
+    </button>
+  </div>
+
+  <h1>Sessió 7: Partits Reals Reduïts 4x4 Coeducatius i Avaluació Focalitzada</h1>
+
+  <div class="session-card" id="session-card-7">
+    <div class="session-header">
+      <h4>SESSIÓ 7: Partits Reals Reduïts 4x4 Coeducatius i Avaluació Focalitzada</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Avaluació Sumativa Docent (CE2, CE3, CE4)</span>
+        <span>2 Mitjos Camps</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-7', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (60 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 05' (5')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea Tàctica</strong><br><span style="font-size: 0.78rem; color: #475569;">Bateig de la lliga de pista i regles oficials</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Alumnat en rotllana d'equips. Recordatori de les 6 normes d'or del Korfbal i del canvi de zones.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Pissarra de pista, Àlbums d'Equip.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">05' &ndash; 15' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: Escalfament Autònom d'Equip</strong><br><span style="font-size: 0.78rem; color: #475569;">Cotutoria 6è-5è i tirs de calibració</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Cada equip disposa d'un espai delimitat. Carrera, mobilitat articular i 5 tirs per membre als pals.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Pista completa, 5 pilotes de Korfbal.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">15' &ndash; 50' (35')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Principal: Lliga de Partits 4x4</strong><br><span style="font-size: 0.78rem; color: #475569;">5 torns de 6-7' &mdash; Avaluació focalitzada</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Camp 1 (4x4) + Camp 2 (4x4) + Taula Tècnica Central (Equip de Suport).</strong> Rotació olímpica rigorosa.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">2 pistes transversals completes, petos, iDoceo.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">50' &ndash; 60' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #07</strong><br><span style="font-size: 0.78rem; color: #475569;">Autoavaluació del joc net i higiene</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Equips en rotllana. Desbloqueig de la Carta #07 "El Rellotge de Zones". Recollida cooperativa i rentat.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Cartes #07, cola/adhesiu, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts) &mdash; Autonomia i Activació d'Equip</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea Tàctica (5 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li>Revisió de la dinàmica de competició: els partits es juguen amb reglament oficial adaptat (4x4 mixt paritari: 2 nois i 2 noies per zona, rotació de cistella cada 2 gols, defensa exclusiva al mateix gènere i zero contacte físic).</li>
+          <li>S'assigna a cada equip la seva tasca per a la fase d'escalfament liderada pels capitans/es de 6è en cotutoria amb l'alumnat de 5è.</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament Autònom per Equips (10 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li>Cada equip disposa d'un espai de pista assignat: realitzen 3 minuts de carrera contínua amb canvis de direcció, 3 minuts de mobilitat articular activa (turmells, malucs, espatlles) i 4 minuts de sèries de tir a cistella en parelles (tir lliure i entrada <em>doorloopbal</em>).</li>
+        </ul>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts) &mdash; Lliga de Partits 4x4 i Avaluació Focalitzada (iDoceo)</div>
+
+        <!-- PLÀNOL DE JOC SESSIÓ 7 -->
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px solid #1e3a8a; background-color: #f8fafc;">
+          <thead>
+            <tr style="background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+              <th colspan="2" style="padding: 9px 12px; text-align: left;">🏟️ DISPOSICIÓ DE LA PISTA POLIESPORTIVA &mdash; PARTITS 4x4 SIMULTANIS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; background-color: #f0fdf4; vertical-align: top;">
+                <div style="font-weight: bold; color: #15803d; text-align: center; margin-bottom: 6px;">🟢 CAMP 1 (14 x 15 m) &mdash; Partit 4x4</div>
+                <div style="text-align: center; padding: 8px; background: #ffffff; border-radius: 4px; border: 1px solid #86efac;">
+                  🧺 [ PAL 1 ] (Zona Atac 1 / Defensa 2)<br>
+                  <div style="font-size: 0.74rem; color: #166534; margin: 4px 0;">-- Línia divisòria de 2 zones (sense creuar) --</div>
+                  🧺 [ PAL 2 ] (Zona Defensa 1 / Atac 2)
+                </div>
+              </td>
+              <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; background-color: #eff6ff; vertical-align: top;">
+                <div style="font-weight: bold; color: #1d4ed8; text-align: center; margin-bottom: 6px;">🔵 CAMP 2 (14 x 15 m) &mdash; Partit 4x4</div>
+                <div style="text-align: center; padding: 8px; background: #ffffff; border-radius: 4px; border: 1px solid #93c5fd;">
+                  🧺 [ PAL 3 ] (Zona Atac 3 / Defensa 4)<br>
+                  <div style="font-size: 0.74rem; color: #1e40af; margin: 4px 0;">-- Línia divisòria de 2 zones (sense creuar) --</div>
+                  🧺 [ PAL 4 ] (Zona Defensa 3 / Atac 4)
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="padding: 10px 14px; border: 1px solid #cbd5e1; background-color: #fffbeb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.80rem;">
+                <strong style="color: #b45309;">📋 TAULA TÈCNICA CENTRAL (Equip en rotació &mdash; Ex: Equip 5):</strong>
+                <div style="margin-top: 4px; color: #78350f;">
+                  Assumeix el control complet de la competició: 1 Àrbitre de Camp 1, 1 Àrbitre de Camp 2, 2 Jutges de Defensat a peu de cistella i 1 Anotador/a d'Acta de Joc Net.
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- MATRIU DE COMPETICIÓ SESSIÓ 7 -->
+        <h6 style="margin: 12px 0 6px 0; color: #1e3a8a; font-size: 0.90rem;">🔄 Matriu de Rotació de la Lliga (5 torns de 6-7 minuts = 35 minuts totals)</h6>
+        <table style="width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.82rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+          <thead>
+            <tr style="background-color: #334155; color: #ffffff;">
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 14%;">Torn (Temps)</th>
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #15803d;">Camp 1 (4x4)</th>
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #1d4ed8;">Camp 2 (4x4)</th>
+              <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 30%; background-color: #b45309;">Taula Tècnica i Arbitratge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 1 (0' &ndash; 7')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 2</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 3 vs Equip 4</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 5 (Arbitratge)</td>
+            </tr>
+            <tr style="background-color: #f8fafc;">
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 2 (7' &ndash; 14')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 1</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 3</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 4 (Arbitratge)</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 3 (14' &ndash; 21')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 4 vs Equip 5</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 3</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 2 (Arbitratge)</td>
+            </tr>
+            <tr style="background-color: #f8fafc;">
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 4 (21' &ndash; 28')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 4</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 3</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 1 (Arbitratge)</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 5 (28' &ndash; 35')</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 4</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 5</td>
+              <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 3 (Arbitratge)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Tornada a la Calma i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Estiraments i reflexió guiada (4'):</strong> Asseguts per equips, es valora l'eficàcia del canvi de zones i l'arbitratge dels companys.</li>
+          <li><strong>Desbloqueig de la Carta #07: "El Rellotge de Zones" (3'):</strong> S'enganxa la penúltima carta a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: +3 punts de bonificació si l'equip finalitza el partit sense cap falta per botar).</li>
+          <li><strong>Higiene i recollida (3'):</strong> Rentat de mans i cara abans de la tornada a l'aula.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent Focalitzada (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Avaluació sumativa docent amb rúbrica oficial (Decret 175/2022):</strong> El docent aprofita els 35 minuts de partits continus per observar amb el quadern d'avaluació iDoceo els indicadors clau:</p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Crit. 2.1 (Pes 20%):</strong> Desmarcatges dinàmics, passades precises i respecte al peu de pivot.</li>
+          <li><strong>Crit. 2.2 (Pes 15%):</strong> Eficàcia de tir i respecte a la regla del "defensat".</li>
+          <li><strong>Crit. 3.1 (Pes 15%):</strong> Distribució paritària de passades i protagonisme mixt nois/noies.</li>
+          <li><strong>Crit. 3.2 (Pes 10%):</strong> Acceptació de les decisions arbitrals dels companys i respecte al rival.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+async function copySessionToClipboard(cardId, btn) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  
+  const clone = card.cloneNode(true);
+  const copyBtn = clone.querySelector('.copy-btn');
+  if (copyBtn) copyBtn.remove();
+  
+  const htmlBlob = new Blob([clone.outerHTML], { type: 'text/html' });
+  const textBlob = new Blob([clone.innerText], { type: 'text/plain' });
+  
+  try {
+    const item = new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob });
+    await navigator.clipboard.write([item]);
+    const oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Copiat per a Drive!';
+    btn.style.background = '#15803d';
+    setTimeout(() => {
+      btn.innerHTML = oldText;
+      btn.style.background = '#0284c7';
+    }, 2500);
+  } catch (err) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = clone.outerHTML;
+    tempDiv.style.position = 'fixed';
+    tempDiv.style.left = '-9999px';
+    document.body.appendChild(tempDiv);
+    const range = document.createRange();
+    range.selectNodeContents(tempDiv);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    document.body.removeChild(tempDiv);
+    btn.innerHTML = '✅ Copiat!';
+    setTimeout(() => { btn.innerHTML = '📋 Copiar per a Google Docs'; }, 2000);
+  }
+}
+</script>
+</body>
+</html>

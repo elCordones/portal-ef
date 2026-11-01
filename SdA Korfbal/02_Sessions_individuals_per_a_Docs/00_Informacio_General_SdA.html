@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informació General i Concreció Curricular - SdA Korfbal Cicle Superior</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #dbeafe;
+      --secondary: #0d9488;
+      --secondary-light: #ccfbf1;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .action-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-bar button:hover {
+      background: #1d4ed8;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .badge-time-60 { background: #dbeafe; color: #1e40af; }
+    .badge-time-45 { background: #fef3c7; color: #92400e; }
+    .badge-dua { background: #f3e8ff; color: #6b21a8; }
+    .badge-eval { background: #fee2e2; color: #991b1b; }
+
+    .session-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .session-header {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .session-header h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .session-body {
+      padding: 20px;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .action-bar { display: none; }
+      .session-card { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="action-bar">
+    <div>
+      <strong>SdA Korfbal Coeducatiu: Tothom Suma!</strong>
+      <div style="font-size: 0.85rem; color: #475569;">Fitxer independent per a Google Drive &mdash; Clic a 'Copiar' i enganxa a la pestanya 1 de Google Docs</div>
+    </div>
+    <button onclick="window.print()">
+      🖨️ Imprimir / Desar en PDF
+    </button>
+  </div>
+
+  <h1>Informació General i Programació de la SdA</h1>
+
+  <div class="session-card" id="session-card-info">
+    <div class="session-header">
+      <h4>INFORMACIÓ GENERAL I CONCRECIÓ CURRICULAR: SdA Korfbal Coeducatiu</h4>
+      <div>
+        <span class="badge badge-time-60">8 Sessions (4 setmanes)</span>
+        <span class="badge badge-time-45">Cicle Superior (5è i 6è)</span>
+        <span class="badge badge-dua">Mesures DUA</span>
+        <span class="badge badge-eval">Decret 175/2022</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-info', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+
+      <h3 style="color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-top: 5px;">1. Fitxa Tècnica i Context</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.85rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <tbody>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; width: 25%; text-align: left;">Títol de la SdA</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1; font-weight: bold; color: #0f172a;">Korfbal Coeducatiu: Tothom Suma!</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Etapa i Curs</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">Educació Primària &mdash; Cicle Superior (25 alumnes: paritat nois/noies i grups combinats de 5è i 6è).</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Temporalització</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">8 sessions (4 setmanes): 2 sessions per setmana (Sessió A de <strong>60 minuts</strong> i Sessió B de <strong>45 minuts</strong>).</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Espais i Zones</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">Pista poliesportiva exterior dividida en 2 mitjos camps de Korfbal (o gimnàs cobert de 20x20 m).</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Material Clau</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">2 cistelles oficials de Korfbal (pal 3,0 m sense tauler a 360°), 10 pilotes de Korfbal núm. 4 / voleibol suau, 30 cons xinesos, petos diferencials (nois/noies i equips), ringos, cèrcols i carpetes per a l'Àlbum de Cartes.</td>
+          </tr>
+          <tr>
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; background-color: #f1f5f9; color: #1e3a8a; text-align: left;">Repte Final / Tasca Autèntica</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1; font-weight: 600; color: #15803d;">"El Gran Torneig Coeducatiu de Korfbal: Tothom Suma!" amb arbitratge compartit, activació de cartes tàctiques i acta de Joc Net.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-top: 20px;">2. Concreció Curricular i Ponderació Oficial d'Avaluació (Decret 175/2022)</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 12%;">Criteri</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 8%;">CE</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 48%;">Descripció Curricular de l'Estàndard</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 22%;">Sabers Bàsics Associats</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 10%;">Pes %</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 1.1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #0369a1;">CE1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Hàbits saludables, escalfament dinàmic autònom i higiene post-pràctica.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Vida activa: prevenció i hàbits.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1e3a8a; background-color: #f0f9ff;">10%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 1.2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #0369a1;">CE1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Autoregulació de l'esforç, dosificació aeròbica i Escala de Borg infantil (1-10).</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Autonomia i esforç aeròbic.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #1e3a8a; background-color: #f0f9ff;">15%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 2.1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #15803d;">CE2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Desmarcatge dinàmic, passades precises en moviment i ocupació espacial sense botar.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Jocs d'invasió: peu de pivot i espais.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d; background-color: #f0fdf4;">20%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 2.2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #15803d;">CE2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Eficàcia en el tir a cistella 360° i respecte rigorós a la regla del "defensat".</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Tir en paràbola i defensa 1x1 legal.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d; background-color: #f0fdf4;">15%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 3.1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #b45309;">CE3</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Coeducació activa, equitat de gènere i col·laboració equitativa en equips mixtos.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Interacció: paritat i cooperació.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fffbeb;">15%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 3.2</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #b45309;">CE3</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Joc net, acceptació de la norma i arbitratge compartit entre iguals.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Resolució pacífica i respecte arbitral.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fffbeb;">10%</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-weight: bold; text-align: center; background-color: #f8fafc;">Crit. 4.1</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: 600; color: #6b21a8;">CE4</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Cultura motriu: història del Korfbal i reconeixement de la Selecció Catalana.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Manifestacions: esport català oficial.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #6b21a8; background-color: #faf5ff;">15%</td>
+          </tr>
+          <tr style="background-color: #f1f5f9; font-weight: bold;">
+            <td colspan="4" style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: right;">TOTAL QUALIFICACIÓ OFICIAL (AE &ge; 3.5 | AN &ge; 2.8 | AS &ge; 2.0 | NA &lt; 2.0):</td>
+            <td style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.95rem; color: #1e3a8a;">100%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-top: 20px;">3. Mesures d'Atenció a la Diversitat (DUA)</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <tbody>
+          <tr style="background-color: #faf5ff;">
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; color: #6b21a8; width: 25%; text-align: left;">Alumne amb TEA</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">
+              <strong>Anticipació visual i predictibilitat:</strong> Pissarra de sessió estructurada a peu de pista (<em>Assemblea &rarr; Escalfament &rarr; Repte 1 &rarr; Repte 2 &rarr; Calma</em>). Senyals visuals no agressius (paleta de colors en lloc de xiulet fort). Rol clar i estructurat com a Custodi de l'Àlbum de Cartes d'Equip. Racó de calma sensorial habilitat al gimnàs.
+            </td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; color: #15803d; text-align: left;">Alumne amb TDAH</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">
+              <strong>Zero temps morts (TCM &gt; 60%):</strong> Erradicació de files i explicacions llargues. Consignes quirúrgiques de menys de 45 segons amb modelatge d'un company. Rols actius continus mitjançant targetes plastificades (àrbitre auxiliar, cronometrador de possessió, encarregat de material).
+            </td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <th style="padding: 9px 12px; border: 1px solid #cbd5e1; color: #0369a1; text-align: left;">Mentoria 5è - 6è</th>
+            <td style="padding: 9px 12px; border: 1px solid #cbd5e1;">
+              <strong>Equips cooperatius estables:</strong> 5 equips de 5 alumnes (2-3 de 5è i 2-3 de 6è paritaris nois/noies). L'alumnat de 6è assumeix rols de dinamització positiva i suport tècnic cap als companys de 5è, promovent l'empatia i l'ajuda mútua.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 6px; margin-top: 20px;">4. Calendari i Seqüenciació de les 8 Sessions</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0 18px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.83rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #334155; color: #ffffff;">
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; width: 10%;">Sessió</th>
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; width: 10%;">Durada</th>
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: left; width: 42%;">Contingut i Repte Clau</th>
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: left; width: 23%;">Carta Tàctica Desbloquejada</th>
+            <th style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">Focus Avaluació</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S1</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">60 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Descobriment del Korfbal, equips coeducatius i pilota torre.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 1: Torre Coeducativa</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Inicial (2.1 / 3.1)</td>
+          </tr>
+          <tr style="background-color: #f8fafc;">
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S2</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">45 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Tècnica de passada ràpida, peu de pivot i talls a l'espai buit.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 2: Estrella Dinàmica</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.1)</td>
+          </tr>
+          <tr>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S3</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">60 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">El tir a cistella 360° sense tauler des dels 4 quadrants.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 3: Paràbola d'Or 360°</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.2)</td>
+          </tr>
+          <tr style="background-color: #f8fafc;">
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S4</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">45 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">La regla d'or del "Defensat" i duel legal 1x1 del mateix gènere.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 4: Escut Legal 1x1</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.2 / 3.2)</td>
+          </tr>
+          <tr>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S5</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">60 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Entrades a cistella en carrera, rol tàctic del poste i rebot.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 5: El Poste Mestre</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.1 / 1.2)</td>
+          </tr>
+          <tr style="background-color: #f8fafc;">
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S6</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">45 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Joc preesportiu: Ringo Korfbal i ocupació de 2 zones.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 6: Ringo Volador</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 3.1 / 3.2)</td>
+          </tr>
+          <tr>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S7</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">60 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">Partits de Korfbal 4x4 coeducatiu amb canvi de zona i rol.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 7: Rellotge de Zones</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Formativa (Crit 2.1 / 2.2)</td>
+          </tr>
+          <tr style="background-color: #f8fafc;">
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">S8</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center;">45 min</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1;">El Gran Torneig Coeducatiu Final "Tothom Suma!" i Diana de Cloenda.</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: 600; color: #1e3a8a;">Carta 8: Tothom Suma! (Llegendària)</td>
+            <td style="padding: 7px 10px; border: 1px solid #cbd5e1; text-align: center; font-size: 0.78rem;">Sumativa Global (Tots)</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+<script>
+async function copySessionToClipboard(cardId, btn) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  
+  const clone = card.cloneNode(true);
+  const copyBtn = clone.querySelector('.copy-btn');
+  if (copyBtn) copyBtn.remove();
+  
+  const htmlBlob = new Blob([clone.outerHTML], { type: 'text/html' });
+  const textBlob = new Blob([clone.innerText], { type: 'text/plain' });
+  
+  try {
+    const item = new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob });
+    await navigator.clipboard.write([item]);
+    const oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Copiat per a Docs!';
+    btn.style.background = '#15803d';
+    setTimeout(() => {
+      btn.innerHTML = oldText;
+      btn.style.background = '#0284c7';
+    }, 2500);
+  } catch (err) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = clone.outerHTML;
+    tempDiv.style.position = 'fixed';
+    tempDiv.style.left = '-9999px';
+    document.body.appendChild(tempDiv);
+    const range = document.createRange();
+    range.selectNodeContents(tempDiv);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    document.body.removeChild(tempDiv);
+    btn.innerHTML = '✅ Copiat!';
+    setTimeout(() => { btn.innerHTML = '📋 Copiar per a Google Docs'; }, 2000);
+  }
+}
+</script>
+</body>
+</html>

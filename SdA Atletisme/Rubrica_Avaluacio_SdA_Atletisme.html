@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rúbrica d'Avaluació Competencial - SdA Atletisme Cicle Superior</title>
+  <!-- Favicon SVG Minimalista (Pista d'atletisme i cronòmetre) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230284c7'/%3E%3Cpath d='M16 6a10 10 0 1 0 10 10A10 10 0 0 0 16 6zm1 10.5V11a1 1 0 0 0-2 0v6a1 1 0 0 0 .5.87l4 2.31a1 1 0 1 0 1-1.74z' fill='%23ffffff'/%3E%3Cpath d='M8 26c2-3 5-4 8-4s6 1 8 4' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #e2e8f0;
+      
+      /* Level Colors */
+      --n1-bg: #fee2e2;
+      --n1-border: #f87171;
+      --n1-text: #991b1b;
+      --n1-badge: #ef4444;
+
+      --n2-bg: #fef3c7;
+      --n2-border: #fbbf24;
+      --n2-text: #92400e;
+      --n2-badge: #f59e0b;
+
+      --n3-bg: #e0f2fe;
+      --n3-border: #38bdf8;
+      --n3-text: #0369a1;
+      --n3-badge: #0284c7;
+
+      --n4-bg: #dcfce7;
+      --n4-border: #4ade80;
+      --n4-text: #166534;
+      --n4-badge: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.55;
+      padding: 1.5rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* HEADER */
+    header.rubric-header {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #38bdf8 100%);
+      color: white;
+      padding: 2rem 2.5rem;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.rubric-header::after {
+      content: "🏃‍♂️";
+      position: absolute;
+      right: 20px;
+      bottom: -15px;
+      font-size: 7rem;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .badge-header {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    header p.subtitle {
+      font-size: 1.05rem;
+      opacity: 0.95;
+      max-width: 800px;
+    }
+
+    /* TOOLBAR & ACTIONS */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .toolbar-info {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .toolbar-info strong {
+      color: var(--text-main);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-outline:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .btn-success {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .btn-success:hover {
+      background-color: #059669;
+    }
+
+    /* QUICK CALCULATOR BANNER */
+    .interactive-calc-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .calc-info h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      color: #1e40af;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .calc-info p {
+      font-size: 0.875rem;
+      color: #3b82f6;
+    }
+
+    .calc-score-display {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.08);
+      border: 1px solid #dbeafe;
+    }
+
+    .score-item {
+      text-align: center;
+    }
+
+    .score-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .score-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.1;
+    }
+
+    .qual-badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: center;
+      min-width: 60px;
+    }
+
+    .qual-AE { background-color: var(--n4-bg); color: var(--n4-text); border: 1px solid var(--n4-border); }
+    .qual-AN { background-color: var(--n3-bg); color: var(--n3-text); border: 1px solid var(--n3-border); }
+    .qual-AS { background-color: var(--n2-bg); color: var(--n2-text); border: 1px solid var(--n2-border); }
+    .qual-NA { background-color: var(--n1-bg); color: var(--n1-text); border: 1px solid var(--n1-border); }
+    .qual-pendent { background-color: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }
+
+    /* RUBRIC TABLE MATRIX */
+    .table-container {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      overflow-x: auto;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      margin-bottom: 2.5rem;
+    }
+
+    table.rubric-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+
+    table.rubric-table th {
+      font-family: 'Outfit', sans-serif;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      border-bottom: 2px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      background: #f8fafc;
+      z-index: 2;
+    }
+
+    table.rubric-table th.col-crit {
+      width: 24%;
+      min-width: 250px;
+      color: var(--text-main);
+    }
+
+    table.rubric-table th.col-n1 {
+      width: 19%;
+      min-width: 190px;
+      background-color: #fef2f2;
+      color: var(--n1-text);
+      border-bottom-color: var(--n1-border);
+    }
+
+    table.rubric-table th.col-n2 {
+      width: 19%;
+      min-width: 190px;
+      background-color: #fffbeb;
+      color: var(--n2-text);
+      border-bottom-color: var(--n2-border);
+    }
+
+    table.rubric-table th.col-n3 {
+      width: 19%;
+      min-width: 190px;
+      background-color: #f0f9ff;
+      color: var(--n3-text);
+      border-bottom-color: var(--n3-border);
+    }
+
+    table.rubric-table th.col-n4 {
+      width: 19%;
+      min-width: 190px;
+      background-color: #f0fdf4;
+      color: var(--n4-text);
+      border-bottom-color: var(--n4-border);
+    }
+
+    .th-title {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .th-sub {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-top: 0.15rem;
+    }
+
+    table.rubric-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+      transition: background-color 0.15s ease;
+    }
+
+    table.rubric-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Criterion Column Style */
+    .crit-cell {
+      background-color: #fafbfc;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .crit-code {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.35rem;
+    }
+
+    .crit-weight {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #475569;
+      background: #e2e8f0;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      margin-left: 0.3rem;
+    }
+
+    .crit-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    .crit-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .crit-ce {
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+
+    /* Level Interactive Cell Style */
+    .level-cell {
+      cursor: pointer;
+      position: relative;
+      border-right: 1px solid #f1f5f9;
+      line-height: 1.45;
+    }
+
+    .level-cell:hover {
+      filter: brightness(0.97);
+    }
+
+    .level-cell.selected-n1 {
+      background-color: var(--n1-bg) !important;
+      outline: 2px solid var(--n1-badge);
+      outline-offset: -2px;
+    }
+
+    .level-cell.selected-n2 {
+      background-color: var(--n2-bg) !important;
+      outline: 2px solid var(--n2-badge);
+      outline-offset: -2px;
+    }
+
+    .level-cell.selected-n3 {
+      background-color: var(--n3-bg) !important;
+      outline: 2px solid var(--n3-badge);
+      outline-offset: -2px;
+    }
+
+    .level-cell.selected-n4 {
+      background-color: var(--n4-bg) !important;
+      outline: 2px solid var(--n4-badge);
+      outline-offset: -2px;
+    }
+
+    .cell-check {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .level-cell[class*="selected-"] .cell-check {
+      display: block;
+    }
+
+    /* DUA & EXTRA CARDS */
+    .grid-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .info-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .info-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .info-card li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .info-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0.4rem;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+      top: -0.05rem;
+    }
+
+    /* FOOTER (apps-escolars standard) */
+    .app-footer {
+      margin-top: auto;
+      padding: 0.85rem 1rem;
+      background-color: #f8f9fa;
+      border-top: 1px solid #e9ecef;
+      text-align: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.78rem;
+      color: #6c757d;
+    }
+
+    .app-footer .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .app-footer .cc-badge {
+      height: 22px;
+      width: auto;
+      display: block;
+    }
+
+    .app-footer .footer-legal {
+      line-height: 1.4;
+    }
+
+    .app-footer a {
+      color: #495057;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .app-footer a:hover {
+      text-decoration: underline;
+      color: #0d6efd;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        color: black;
+      }
+
+      .toolbar, .interactive-calc-box, .app-footer, .btn, .no-print {
+        display: none !important;
+      }
+
+      header.rubric-header {
+        background: none !important;
+        color: black !important;
+        padding: 0 0 1rem 0;
+        box-shadow: none;
+        border-radius: 0;
+        border-bottom: 2px solid #000;
+        margin-bottom: 1.5rem;
+      }
+
+      header.rubric-header::after {
+        display: none;
+      }
+
+      .badge-header {
+        border: 1px solid #666;
+        color: #333;
+        background: transparent;
+      }
+
+      .table-container {
+        border: 1px solid #333;
+        box-shadow: none;
+        overflow: visible;
+      }
+
+      table.rubric-table th, table.rubric-table td {
+        border: 1px solid #999;
+        font-size: 0.75rem;
+        padding: 0.5rem;
+      }
+
+      table.rubric-table th.col-n1 { background-color: #fee2e2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      table.rubric-table th.col-n2 { background-color: #fef3c7 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      table.rubric-table th.col-n3 { background-color: #e0f2fe !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      table.rubric-table th.col-n4 { background-color: #dcfce7 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+      .grid-info {
+        page-break-before: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header class="rubric-header">
+      <span class="badge-header">Decret 175/2022 · Cicle Superior Primària (5è i 6è)</span>
+      <h1>Rúbrica Competencial d'Avaluació</h1>
+      <p class="subtitle">Situació d'Aprenentatge: <strong>«Míting d'Atletisme Cooperatiu»</strong> — Educació Física escolar orientada a la competència motriu, l'autoregulació i la inclusió DUA.</p>
+    </header>
+
+    <!-- TOOLBAR & ACTIONS -->
+    <div class="toolbar">
+      <div class="toolbar-info">
+        <span><strong>Triangulació d'avaluació:</strong> Heteroavaluació (60%) + Passaport d'equip (20%) + Coavaluació (10%) + Autoavaluació (10%)</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn btn-primary" onclick="window.print()">
+          🖨️ Imprimir / Desar en PDF
+        </button>
+        <button class="btn btn-outline" onclick="resetCalculator()">
+          🔄 Restablir Calculadora
+        </button>
+        <a class="btn btn-outline" href="iDoceo/Avaluacio_iDoceo_SdA_Atletisme.xlsx" download title="Descarregar fitxer Excel mestre per a iDoceo">
+          📊 Excel per a iDoceo (.xlsx)
+        </a>
+        <a class="btn btn-outline" href="iDoceo/Columnes_Criteris_iDoceo.csv" download title="Descarregar CSV amb criteris per columna">
+          📑 CSV Columnes Criteris
+        </a>
+        <a class="btn btn-outline" href="iDoceo/Rubrica_Global_iDoceo.csv" download title="Descarregar rúbrica global per a iDoceo">
+          📋 CSV Rúbrica Global
+        </a>
+      </div>
+    </div>
+
+    <!-- QUICK INTERACTIVE CALCULATOR BANNER -->
+    <div class="interactive-calc-box no-print">
+      <div class="calc-info">
+        <h3>⚡ Simulador i Calculadora d'Assoliment en Directe</h3>
+        <p>Fes clic sobre qualsevol casella de la taula per marcar el nivell de l'alumne/a (1 a 4). El càlcul es fa automàticament:</p>
+      </div>
+      <div class="calc-score-display">
+        <div class="score-item">
+          <div class="score-label">Mitjana (1-4)</div>
+          <div class="score-val" id="displayScore1to4">—</div>
+        </div>
+        <div class="score-item">
+          <div class="score-label">Nota Base 10</div>
+          <div class="score-val" id="displayScore10">—</div>
+        </div>
+        <div class="score-item">
+          <div class="score-label">Qualificació Oficial</div>
+          <div class="qual-badge qual-pendent" id="displayQual">Pendent</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUBRIC TABLE MATRIX -->
+    <div class="table-container">
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th class="col-crit">Criteri i Competència</th>
+            <th class="col-n1">
+              <span class="th-title">Nivell 1: Inicial</span>
+              <span class="th-sub">No assolit / 1.0 - 4.9</span>
+            </th>
+            <th class="col-n2">
+              <span class="th-title">Nivell 2: Mitjà</span>
+              <span class="th-sub">Satisfactori / 5.0 - 6.9</span>
+            </th>
+            <th class="col-n3">
+              <span class="th-title">Nivell 3: Avançat</span>
+              <span class="th-sub">Notable / 7.0 - 8.9</span>
+            </th>
+            <th class="col-n4">
+              <span class="th-title">Nivell 4: Excel·lent</span>
+              <span class="th-sub">Excel·lent / 9.0 - 10.0</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- CRITERI 1.1 -->
+          <tr data-crit="1.1" data-weight="0.10">
+            <td class="crit-cell">
+              <span class="crit-code">EF.CS.1.1</span>
+              <span class="crit-weight">Pes: 10%</span>
+              <div class="crit-title">1.1. Hàbits i Escalfament</div>
+              <div class="crit-desc">Conèixer i aplicar rutines d'escalfament dinàmic, prevenció de lesions i hàbits d'higiene corporal i hidratació.</div>
+              <div class="crit-ce">🔗 CE1. Vida activa i saludable</div>
+            </td>
+            <td class="level-cell" onclick="selectLevel('1.1', 1, this)">
+              <span class="cell-check">✅</span>
+              No realitza l'escalfament o es distreu contínuament; descuida els hàbits bàsics d'higiene i hidratació.
+            </td>
+            <td class="level-cell" onclick="selectLevel('1.1', 2, this)">
+              <span class="cell-check">✅</span>
+              Participa en l'escalfament imitant els companys, però sense iniciativa pròpia ni cura postural; requereix recordatoris d'higiene.
+            </td>
+            <td class="level-cell" onclick="selectLevel('1.1', 3, this)">
+              <span class="cell-check">✅</span>
+              Executa l'escalfament dinàmic de manera autònoma i responsable; compleix els hàbits d'higiene i hidratació de forma sistemàtica.
+            </td>
+            <td class="level-cell" onclick="selectLevel('1.1', 4, this)">
+              <span class="cell-check">✅</span>
+              Proposa i dirigeix exercicis d'escalfament específics a l'equip mixt, argumentant la importància de prevenir lesions i cuidant el benestar col·lectiu.
+            </td>
+          </tr>
+
+          <!-- CRITERI 1.2 -->
+          <tr data-crit="1.2" data-weight="0.15">
+            <td class="crit-cell">
+              <span class="crit-code">EF.CS.1.2</span>
+              <span class="crit-weight">Pes: 15%</span>
+              <div class="crit-title">1.2. Autoregulació del Ritme i Borg</div>
+              <div class="crit-desc">Reconèixer i autoregular la intensitat de l'esforç mitjançant la freqüència cardíaca i l'Escala de Borg en activitats aeròbiques.</div>
+              <div class="crit-ce">🔗 CE1. Vida activa i saludable</div>
+            </td>
+            <td class="level-cell" onclick="selectLevel('1.2', 1, this)">
+              <span class="cell-check">✅</span>
+              Surt a màxima velocitat i s'atura de cop per esgotament; no identifica el seu nivell a l'Escala de Borg ni sap prendre's el pols.
+            </td>
+            <td class="level-cell" onclick="selectLevel('1.2', 2, this)">
+              <span class="cell-check">✅</span>
+              Reconeix el cansament extrem, però li costa mantenir un ritme constant; necessita ajuda per identificar la freqüència cardíaca o la zona Borg 5-6.
+            </td>
+            <td class="level-cell" onclick="selectLevel('1.2', 3, this)">
+              <span class="cell-check">✅</span>
+              Regula el ritme de cursa aeròbica de forma sostinguda (zona Borg 5-6), dialogant amb la parella de cursa i controlant la respiració; sap localitzar les pulsacions.
+            </td>
+            <td class="level-cell" onclick="selectLevel('1.2', 4, this)">
+              <span class="cell-check">✅</span>
+              Domina la dosificació del ritme en qualsevol distància; calcula i interpreta el pols abans/després de l'esforç, i assessora els companys per trobar el seu ritme òptim.
+            </td>
+          </tr>
+
+          <!-- CRITERI 2.1 -->
+          <tr data-crit="2.1" data-weight="0.20">
+            <td class="crit-cell">
+              <span class="crit-code">EF.CS.2.1</span>
+              <span class="crit-weight">Pes: 20%</span>
+              <div class="crit-title">2.1. Cursa, Relleus i Salts</div>
+              <div class="crit-desc">Executar habilitats motrius d'atletisme: acceleració, cursa rítmica, franqueig d'obstacles, batuda i recepció en salts.</div>
+              <div class="crit-ce">🔗 CE2. Resolució de situacions motrius</div>
+            </td>
+            <td class="level-cell" onclick="selectLevel('2.1', 1, this)">
+              <span class="cell-check">✅</span>
+              S'atura totalment en rebre el testimoni; fa salts verticals o caigudes desequilibrades i rígides amb risc lesiu.
+            </td>
+            <td class="level-cell" onclick="selectLevel('2.1', 2, this)">
+              <span class="cell-check">✅</span>
+              Fa el traspàs del testimoni amb vacil·lacions o esperant aturat; franqueja obstacles tocant sovint la goma; aterra en salt amb coordinació irregular.
+            </td>
+            <td class="level-cell" onclick="selectLevel('2.1', 3, this)">
+              <span class="cell-check">✅</span>
+              Sincronitza la cursa per rebre el testimoni en moviment; supera obstacles amb ritme de 3 passes; executa la tisora amb batuda a 1 peu i recepció flexionada i segura a 2 peus.
+            </td>
+            <td class="level-cell" onclick="selectLevel('2.1', 4, this)">
+              <span class="cell-check">✅</span>
+              Mostra una mecànica de cursa fluida i eficient; coordina l'avís «HOP!» i el lliurament a alta velocitat en zona de canvi; domina el salt d'alçada i llargada amb tècnica i equilibri impecables.
+            </td>
+          </tr>
+
+          <!-- CRITERI 2.2 -->
+          <tr data-crit="2.2" data-weight="0.15">
+            <td class="crit-cell">
+              <span class="crit-code">EF.CS.2.2</span>
+              <span class="crit-weight">Pes: 15%</span>
+              <div class="crit-title">2.2. Llançaments i Paràbola</div>
+              <div class="crit-desc">Aplicar tècniques de llançament amb diferents mòbils (vòrtex, pilota medicinal), aprofitant la palanca de tronc i cames de forma segura.</div>
+              <div class="crit-ce">🔗 CE2. Resolució de situacions motrius</div>
+            </td>
+            <td class="level-cell" onclick="selectLevel('2.2', 1, this)">
+              <span class="cell-check">✅</span>
+              Llança només fent força descontrolada de braç sense posició de perfil, o incompleix el protocol de seguretat de llançament.
+            </td>
+            <td class="level-cell" onclick="selectLevel('2.2', 2, this)">
+              <span class="cell-check">✅</span>
+              Adopta la posició de perfil però llança amb trajectòria massa plana o caiguda; respecta el protocol de seguretat amb supervisió docent.
+            </td>
+            <td class="level-cell" onclick="selectLevel('2.2', 3, this)">
+              <span class="cell-check">✅</span>
+              Aplica la cadena cinètica coordinant impuls de cames, torsió de tronc i fuetada de braç per sobre de l'espatlla (paràbola a ~45° amb vòrtex i pes); respecta rigorosament la seguretat.
+            </td>
+            <td class="level-cell" onclick="selectLevel('2.2', 4, this)">
+              <span class="cell-check">✅</span>
+              Coordina amb gran precisió i fluïdesa la palanca corporal aconseguint paràboles òptimes (xiulet continuat del vòrtex); transfereix amb destresa la tècnica al llançament adaptat en cadira.
+            </td>
+          </tr>
+
+          <!-- CRITERI 3.1 -->
+          <tr data-crit="3.1" data-weight="0.15">
+            <td class="crit-cell">
+              <span class="crit-code">EF.CS.3.1</span>
+              <span class="crit-weight">Pes: 15%</span>
+              <div class="crit-title">3.1. Cooperació i Joc Net</div>
+              <div class="crit-desc">Col·laborar activament en equips mixtos (5è-6è), respectant les normes, acceptant la diversitat de capacitats i donant suport mutu.</div>
+              <div class="crit-ce">🔗 CE3. Autoregulació emocional i cooperació</div>
+            </td>
+            <td class="level-cell" onclick="selectLevel('3.1', 1, this)">
+              <span class="cell-check">✅</span>
+              Mostra conductes individualistes o competitives excloents; rebutja companys de l'altre curs (5è/6è) o no respecta els torns.
+            </td>
+            <td class="level-cell" onclick="selectLevel('3.1', 2, this)">
+              <span class="cell-check">✅</span>
+              Col·labora en l'equip només amb el seu subgrup d'afinitat; participa en la coavaluació de forma superficial o mecànica.
+            </td>
+            <td class="level-cell" onclick="selectLevel('3.1', 3, this)">
+              <span class="cell-check">✅</span>
+              Participa activament i solidària a l'equip mixt 5è-6è, animant tothom, respectant els diferents ritmes i utilitzant el full de coavaluació amb respecte i rigor.
+            </td>
+            <td class="level-cell" onclick="selectLevel('3.1', 4, this)">
+              <span class="cell-check">✅</span>
+              Exerceix un lideratge positiu, empàtic i inclusiu; facilita la integració de l'alumnat NESE i nouvingut; promou el joc net i resol desacords amb diàleg assertiu.
+            </td>
+          </tr>
+
+          <!-- CRITERI 3.2 -->
+          <tr data-crit="3.2" data-weight="0.10">
+            <td class="crit-cell">
+              <span class="crit-code">EF.CS.3.2</span>
+              <span class="crit-weight">Pes: 10%</span>
+              <div class="crit-title">3.2. Gestió de la Por i Emocions</div>
+              <div class="crit-desc">Gestionar les emocions pròpies (por davant del salt d'alçada, frustració davant l'error) i practicar la coavaluació constructiva.</div>
+              <div class="crit-ce">🔗 CE3. Autoregulació emocional i cooperació</div>
+            </td>
+            <td class="level-cell" onclick="selectLevel('3.2', 1, this)">
+              <span class="cell-check">✅</span>
+              Es bloqueja davant d'obstacles o alçades sense intentar-ho; reacciona amb frustració o abandó davant de l'error o el cansament.
+            </td>
+            <td class="level-cell" onclick="selectLevel('3.2', 2, this)">
+              <span class="cell-check">✅</span>
+              Mostra dubtes i inseguretat davant del matalàs llevapors o el repte; necessita acompanyament constant del docent per provar-ho.
+            </td>
+            <td class="level-cell" onclick="selectLevel('3.2', 3, this)">
+              <span class="cell-check">✅</span>
+              Reconeix les seves emocions i pors davant del repte motriu (salt, cursa d'obstacles); és capaç de superar-les amb determinació i accepta l'error com a part del procés.
+            </td>
+            <td class="level-cell" onclick="selectLevel('3.2', 4, this)">
+              <span class="cell-check">✅</span>
+              Mostra gran maduresa i resiliència; transforma la por en motivació de superació personal i ajuda els companys que tenen bloquejos emocionals mitjançant el reforç positiu.
+            </td>
+          </tr>
+
+          <!-- CRITERI 4.1 -->
+          <tr data-crit="4.1" data-weight="0.15">
+            <td class="crit-cell">
+              <span class="crit-code">EF.CS.4.1</span>
+              <span class="crit-weight">Pes: 15%</span>
+              <div class="crit-title">4.1. Para-Atletisme i Inclusió</div>
+              <div class="crit-desc">Experimentar modalitats de para-atletisme (llançament en cadira de rodes) i valorar la pràctica de l'esport adaptat com un dret i riquesa humana.</div>
+              <div class="crit-ce">🔗 CE4. Manifestacions de la cultura motriu</div>
+            </td>
+            <td class="level-cell" onclick="selectLevel('4.1', 1, this)">
+              <span class="cell-check">✅</span>
+              Mostra desinterès o comentaris poc reflexius davant les adaptacions d'esport adaptat; no percep el valor de la inclusió.
+            </td>
+            <td class="level-cell" onclick="selectLevel('4.1', 2, this)">
+              <span class="cell-check">✅</span>
+              Participa en les activitats de llançament adaptat en cadira com un joc més, sense reflexionar sobre les dificultats reals de mobilitat reduïda.
+            </td>
+            <td class="level-cell" onclick="selectLevel('4.1', 3, this)">
+              <span class="cell-check">✅</span>
+              Experimenta el para-atletisme amb serietat i respecte, reconeixent l'esforç muscular de tronc/braços i valorant l'esport adaptat com un dret fonamental.
+            </td>
+            <td class="level-cell" onclick="selectLevel('4.1', 4, this)">
+              <span class="cell-check">✅</span>
+              Reflexiona profundament sobre l'accessibilitat esportiva, proposa adaptacions multinivell per a la pista escolar i mostra una sensibilitat exemplar vers la diversitat funcional.
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CARDS DE SUPORT DUA I INSTRUCCIONS IDOCEO -->
+    <div class="grid-info">
+      <div class="info-card">
+        <h3>♿ Pautes d'Atenció DUA a la Rúbrica</h3>
+        <ul>
+          <li><strong>Alumne TEA:</strong> Avaluar l'ús autònom del panell d'anticipació i el compliment del rol estructurat assignat a l'equip (ex: cronometrador).</li>
+          <li><strong>Alumne TDAH:</strong> Eliminar penalitzacions per inquietud motriu; valorar el compromís motriu actiu en rols sense temps morts (jutge de pista, comptador).</li>
+          <li><strong>Alumnes Nouvinguts:</strong> Suport en la comprensió de les fitxes bilingües (català-francès) i l'acompanyament pel <em>buddy</em> de 6è.</li>
+          <li><strong>Equips Mixtos 5è-6è:</strong> Ponderar la qualitat de l'ajuda entre iguals i el lideratge inclusiu dels alumnes de 6è vers els de 5è.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>📲 Com importar a iDoceo (Passos senzills)</h3>
+        <ul>
+          <li><strong>Opció 1 (Columnes de criteris):</strong> A iDoceo, ves a <em>Exportar / Importar > Importar arxiu CSV</em> i tria <code>iDoceo/Columnes_Criteris_iDoceo.csv</code> per crear les columnes dels 7 criteris.</li>
+          <li><strong>Opció 2 (Mini-rúbriques per columna):</strong> A <em>Tipus de nota i Rúbriques > Importar CSV</em>, tria les 7 mini-rúbriques de <code>iDoceo/Rubriques_Individuals/</code> per tenir un seleccionable específic a cada columna.</li>
+          <li><strong>Opció 3 (Rúbrica global o Excel):</strong> Importa <code>iDoceo/Rubrica_Global_iDoceo.csv</code> o obre el llibre mestre <code>iDoceo/Avaluacio_iDoceo_SdA_Atletisme.xlsx</code> amb totes les pestanyes.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PEU DE PÀGINA REGULAT (apps-escolars) -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Llicència Creative Commons BY-SA 4.0">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" alt="CC BY-SA 4.0" class="cc-badge" width="70" height="24" />
+      </a>
+      <span class="footer-legal">
+        © David Cordones · 2026 | Codi: <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">AGPL v3</a> · Contingut: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- LÒGICA INTERACTIVA DE CALCULADORA -->
+  <script>
+    const userSelections = {
+      '1.1': null,
+      '1.2': null,
+      '2.1': null,
+      '2.2': null,
+      '3.1': null,
+      '3.2': null,
+      '4.1': null
+    };
+
+    const weights = {
+      '1.1': 0.10,
+      '1.2': 0.15,
+      '2.1': 0.20,
+      '2.2': 0.15,
+      '3.1': 0.15,
+      '3.2': 0.10,
+      '4.1': 0.15
+    };
+
+    function selectLevel(critId, levelNum, cellElement) {
+      const row = cellElement.parentElement;
+      const allCells = row.querySelectorAll('.level-cell');
+      
+      // Clear previous selection in this row
+      allCells.forEach(td => {
+        td.classList.remove('selected-n1', 'selected-n2', 'selected-n3', 'selected-n4');
+      });
+
+      // Set new selection
+      userSelections[critId] = levelNum;
+      cellElement.classList.add(`selected-n${levelNum}`);
+
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      let totalWeighted = 0;
+      let totalWeightApplied = 0;
+      let allAnswered = true;
+
+      for (const [crit, weight] of Object.entries(weights)) {
+        if (userSelections[crit] !== null) {
+          totalWeighted += userSelections[crit] * weight;
+          totalWeightApplied += weight;
+        } else {
+          allAnswered = false;
+        }
+      }
+
+      const displayScore1to4 = document.getElementById('displayScore1to4');
+      const displayScore10 = document.getElementById('displayScore10');
+      const displayQual = document.getElementById('displayQual');
+
+      if (totalWeightApplied === 0) {
+        displayScore1to4.textContent = '—';
+        displayScore10.textContent = '—';
+        displayQual.textContent = 'Pendent';
+        displayQual.className = 'qual-badge qual-pendent';
+        return;
+      }
+
+      // Normalized average if partially answered
+      const currentAvg = totalWeighted / totalWeightApplied;
+      const score10 = currentAvg * 2.5;
+
+      displayScore1to4.textContent = currentAvg.toFixed(2) + (allAnswered ? '' : ' *');
+      displayScore10.textContent = score10.toFixed(1) + '/10';
+
+      // Qualificació segons Decret 175/2022
+      let qualText = 'NA';
+      let qualClass = 'qual-NA';
+
+      if (currentAvg >= 3.50) {
+        qualText = 'AE (Excel·lent)';
+        qualClass = 'qual-AE';
+      } else if (currentAvg >= 2.80) {
+        qualText = 'AN (Notable)';
+        qualClass = 'qual-AN';
+      } else if (currentAvg >= 2.00) {
+        qualText = 'AS (Satisfactori)';
+        qualClass = 'qual-AS';
+      } else {
+        qualText = 'NA (No assolit)';
+        qualClass = 'qual-NA';
+      }
+
+      displayQual.textContent = qualText;
+      displayQual.className = `qual-badge ${qualClass}`;
+    }
+
+    function resetCalculator() {
+      for (const key in userSelections) {
+        userSelections[key] = null;
+      }
+      document.querySelectorAll('.level-cell').forEach(td => {
+        td.classList.remove('selected-n1', 'selected-n2', 'selected-n3', 'selected-n4');
+      });
+      calculateTotal();
+    }
+  </script>
+</body>
+</html>

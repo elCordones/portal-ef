@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessió 3: El Tir a Cistella 360° i Ringo-Korfbal Tàctic - SdA Korfbal Cicle Superior</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #dbeafe;
+      --secondary: #0d9488;
+      --secondary-light: #ccfbf1;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --part-ini: #e0f2fe;
+      --part-pri: #dcfce7;
+      --part-fin: #fef9c3;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .action-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-bar button:hover {
+      background: #1d4ed8;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .badge-time-60 { background: #dbeafe; color: #1e40af; }
+    .badge-time-45 { background: #fef3c7; color: #92400e; }
+    .badge-dua { background: #f3e8ff; color: #6b21a8; }
+    .badge-eval { background: #fee2e2; color: #991b1b; }
+
+    .session-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .session-header {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .session-header h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+    .session-body {
+      padding: 20px;
+    }
+
+    .part-box {
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .part-box.inicial {
+      background-color: #f0f9ff;
+      border-left: 4px solid #0284c7;
+    }
+    .part-box.principal {
+      background-color: #f0fdf4;
+      border-left: 4px solid #16a34a;
+    }
+    .part-box.final {
+      background-color: #fffbeb;
+      border-left: 4px solid #d97706;
+    }
+    .part-box.avaluacio {
+      background-color: #fdf2f8;
+      border-left: 4px solid #db2777;
+    }
+    .part-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .part-box.inicial .part-title { color: #0369a1; }
+    .part-box.principal .part-title { color: #15803d; }
+    .part-box.final .part-title { color: #b45309; }
+    .part-box.avaluacio .part-title { color: #be185d; }
+
+    .teacher-cue {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-left: 4px solid #eab308;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; padding: 0; max-width: 100%; }
+      .action-bar { display: none; }
+      .session-card { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="action-bar">
+    <div>
+      <strong>SdA Korfbal Coeducatiu: Tothom Suma!</strong>
+      <div style="font-size: 0.85rem; color: #475569;">Fitxer independent per a Google Drive &mdash; Clic a 'Copiar' i enganxa directament a Google Docs</div>
+    </div>
+    <button onclick="window.print()">
+      🖨️ Imprimir / Desar en PDF
+    </button>
+  </div>
+
+  <h1>Sessió 3: El Tir a Cistella 360° i Ringo-Korfbal Tàctic</h1>
+
+  <div class="session-card" id="session-card-3">
+    <div class="session-header">
+      <h4>SESSIÓ 3: El Tir a Cistella 360° i Ringo-Korfbal Tàctic</h4>
+      <div>
+        <span class="badge badge-time-60">60 minuts</span>
+        <span class="badge badge-eval">Avaluació Formativa (CE2 - Crit 2.2 / CE3 - Crit 3.1)</span>
+        <span>2 Mitjos Camps</span>
+        <button class="copy-btn" onclick="copySessionToClipboard('session-card-3', this)" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 6px; font-size: 0.80rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-left: 8px;">📋 Copiar per a Google Docs</button>
+      </div>
+    </div>
+    <div class="session-body">
+      <!-- CRONOGRAMA I DISTRIBUCIÓ TEMPORAL (60 MINUTS) -->
+      <table style="width: 100%; border-collapse: collapse; margin: 10px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background-color: #ffffff;">
+        <thead>
+          <tr style="background-color: #1e3a8a; color: #ffffff;">
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: center; width: 15%;">⏱️ Temps</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 28%;">Fase i Activitat</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 32%;">Distribució dels 25 Alumnes (5 Equips)</th>
+            <th style="padding: 10px 12px; border: 1px solid #cbd5e1; text-align: left; width: 25%;">Espai i Material Clau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">00' &ndash; 05' (5')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.1: Assemblea d'Obertura</strong><br><span style="font-size: 0.78rem; color: #475569;">El tir 360° sense tauler: paràbola pura</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Alumnat assegut al voltant del pal de Korfbal. Demostració docent de l'arc de paràbola.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pal de Korfbal (3 m) separat 3 m de la paret.</td>
+          </tr>
+          <tr style="background-color: #f0f9ff;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #0369a1;">05' &ndash; 15' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 1.2: Llançament de Coets</strong><br><span style="font-size: 0.78rem; color: #475569;">Escalfament de suspensió i impuls</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Parelles amb 1 pilota tova. Llançament vertical simètric a dues mans amb recepció aèria en salt.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Pista completa, 12 pilotes toves o de voleibol.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">15' &ndash; 30' (15')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.1: Circuit dels 4 Quadrants 360°</strong><br><span style="font-size: 0.78rem; color: #475569;">Tir des dels 4 angles del cistell</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>4 estacions de tir simultànies:</strong> 2 cistelles oficials + 2 dianes/cèrcols a piques. Parelles de tirador i rebotejador.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">2 pals Korfbal, 2 piques amb cèrcol, 8 pilotes.</td>
+          </tr>
+          <tr style="background-color: #f0fdf4;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #15803d;">30' &ndash; 50' (20')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Act. 2.2: Ringo-Korfbal Tàctic 360°</strong><br><span style="font-size: 0.78rem; color: #475569;">Partits 4x4 amb àrea protegida</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Camp 1 (Equips 1 vs 2) + Camp 2 (Equips 3 vs 4) + Zona Tècnica (Equip 5). 5 torns de 4 minuts.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">2 pals de Korfbal amb cercle de 2 m de radi prohibit.</td>
+          </tr>
+          <tr style="background-color: #fffbeb;">
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309;">50' &ndash; 60' (10')</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;"><strong>Part Final: Calma i Carta #03</strong><br><span style="font-size: 0.78rem; color: #475569;">Desbloqueig i estiraments de braços</span></td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1;">Rotllanes d'equip. Desbloqueig de la Carta #03 "La Paràbola d'Or 360°". Recollida i higiene.</td>
+            <td style="padding: 8px 10px; border: 1px solid #cbd5e1; font-size: 0.80rem;">Cartes #03, cola/adhesiu, sabó i aigua.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PART INICIAL -->
+      <div class="part-box inicial">
+        <div class="part-title">Part Inicial (15 minuts) &mdash; Principi Biomecànic del Tir 360°</div>
+        
+        <p><strong>Activitat 1.1 &mdash; Assemblea: "Per què la cistella de Korfbal no té tauler?" (5 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Alumnat davant el pal oficial de Korfbal (3,0 m d'alçada), situat reglamentàriament a 3-4 m de la línia de fons.</li>
+          <li><strong>Reflexió motriu:</strong> Al bàsquet sovint s'utilitza el rebot al tauler; al Korfbal, no hi ha tauler ni xarxa. La pilota només entra si arriba des d'una <strong>paràbola molt alta (angle d'entrada > 55°)</strong>. A més, es pot encistellar des dels 360° (davant, costats i per darrere del pal!).</li>
+        </ul>
+
+        <p><strong>Activitat 1.2 &mdash; Escalfament Dinàmic: "Llançament de Coets" (10 minuts):</strong></p>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Disposició:</strong> Parelles distribuïdes per la pista amb 1 pilota tova cada parella.</li>
+          <li><strong>Desenvolupament:</strong> Carrera suau. Al senyal sonor, qui té pilota s'atura, flexiona genolls a 90°, col·loca la pilota davant el front i s'impulsa verticalment llançant la pilota el més amunt possible en línia recta. El company/a corre a atrapar la pilota en el punt més alt del salt abans que toqui el terra. Rotació contínua de rols.</li>
+        </ul>
+        <div class="teacher-cue">📢 <strong>Consigna literal del docent:</strong> "No empenyis la pilota cap endavant com a futbol sala! Al Korfbal la força surt de les cames cap amunt com un coet, i les mans acaben saludant el terra (*snap*)!"</div>
+      </div>
+
+      <!-- PART PRINCIPAL -->
+      <div class="part-box principal">
+        <div class="part-title">Part Principal (35 minuts) &mdash; Tir en els 4 Quadrants i Joc Reduït 360°</div>
+
+        <!-- ACTIVITAT 2.1 -->
+        <div style="background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <h5 style="margin: 0 0 8px 0; color: #15803d; font-size: 1.05rem;">Activitat 2.1 &mdash; Circuit dels 4 Quadrants al voltant del Pal (15 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu biomecànic:</strong> Dominar el llançament a dues mans amb paràbola neta des de 4 angles diferents respecte al pal a una distància fixa de 3 metres.</p>
+
+          <!-- GRÀFIC DELS 4 QUADRANTS -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px dashed #16a34a; background-color: #f7fee7;">
+            <thead>
+              <tr style="background-color: #15803d; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="3" style="padding: 8px 12px; text-align: left;">📐 ESQUEMA DELS 4 QUADRANTS DE TIR 360° AL VOLTANT DEL PAL (Distància 3 m)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 28%;"></td>
+                <td style="width: 44%; text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #1e3a8a;">[ QUADRANT NORD &mdash; 0° FRONTAL ]</div>
+                  <div style="font-size: 0.74rem; color: #15803d;">Tir clàssic davant el pal &bull; Paràbola directa</div>
+                </td>
+                <td style="width: 28%;"></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #b91c1c;">[ QUADRANT OEST &mdash; 270° ]</div>
+                  <div style="font-size: 0.74rem; color: #991b1b;">Lateral esquerre &bull; Canell esquerre ferm</div>
+                </td>
+                <td style="text-align: center; padding: 16px; border: 2px solid #ca8a04; background: #fef08a;">
+                  <div style="font-size: 1.2rem;">🧺 <strong>PAL DE KORFBALL</strong></div>
+                  <div style="font-weight: bold; color: #854d0e; font-size: 0.78rem;">Alçada 3,0 m &bull; Cistella sense tauler</div>
+                  <div style="font-size: 0.70rem; color: #a16207;">Àrea lliure 360° sense paret</div>
+                </td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #15803d;">[ QUADRANT EST &mdash; 90° ]</div>
+                  <div style="font-size: 0.74rem; color: #15803d;">Lateral dret &bull; Extensió equilibrada</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 28%;"></td>
+                <td style="text-align: center; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff;">
+                  <div style="font-weight: bold; color: #b45309;">[ QUADRANT SUD &mdash; 180° POSTERIOR ]</div>
+                  <div style="font-size: 0.74rem; color: #b45309;">⭐ <strong>PER DARRERE DEL PAL</strong> &bull; Tir lliure de referència</div>
+                </td>
+                <td style="width: 28%;"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Desenvolupament per estacions:</strong></p>
+          <ol style="margin: 4px 0 10px 18px; padding: 0;">
+            <li>S'habiliten 4 estacions de llançament a la pista (2 pals oficials als mitjos camps + 2 piques amb cèrcol a les bandes).</li>
+            <li>En cada estació, els alumnes treballen per parelles (1 tirador/a i 1 rebotejador/a).</li>
+            <li><strong>Repte col·lectiu:</strong> Cada parella ha d'aconseguir 3 cistelles des de cadascun dels 4 quadrants (12 cistelles totals) abans de rotar d'estació.</li>
+          </ol>
+        </div>
+
+        <!-- TAULA BIOMECÀNICA -->
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.84rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+          <thead>
+            <tr style="background-color: #0f172a; color: #ffffff;">
+              <th colspan="3" style="padding: 9px 12px; border: 1px solid #cbd5e1; text-align: left;">🎯 3 Claus Biomecàniques del Tir a Cistella de Korfbal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 33%; padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #1e3a8a;">1. Presa Simètrica a 2 Mans:</strong><br>Polzes formant una "T" o "W" darrere la pilota. La pilota surt de davant el front amb la mirada fixa a l'anella groga.
+              </td>
+              <td style="width: 33%; padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #ffffff;">
+                <strong style="color: #15803d;">2. Triple Extensió:</strong><br>Extensió coordinada de turmells, genolls i colzes en un sol moviment fluid ascendent sense pauses mecàniques.
+              </td>
+              <td style="width: 33%; padding: 8px 12px; border: 1px solid #cbd5e1; background-color: #f8fafc;">
+                <strong style="color: #c2410c;">3. Cop de Canells (*Snap*):</strong><br>En deixar anar la pilota en el punt més alt, els canells fan una flexió seca cap avall donant un efecte de retrocés (*backspin*) suau.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ACTIVITAT 2.2 -->
+        <div style="background-color: #ffffff; border: 1px solid #93c5fd; border-radius: 8px; padding: 14px;">
+          <h5 style="margin: 0 0 8px 0; color: #1e3a8a; font-size: 1.05rem;">Activitat 2.2 &mdash; Ringo-Korfbal Tàctic 360° amb Àrea Circular Prohibida (20 minuts)</h5>
+          <p style="margin: 0 0 8px 0;"><strong>Objectiu tàctic:</strong> Aplicar el tir 360° en una situació de joc 4x4 davant oposició legal, respectant la zona de protecció del pal.</p>
+          <p style="margin: 0 0 10px 0;"><strong>Disposició de pista:</strong> 2 mitjos camps simultanis (Camp 1 i Camp 2). Al voltant de cada pal es dibuixa un <strong>cercle prohibit de 2 metres de radi</strong> (marcat amb guix o cons plans).</p>
+
+          <!-- PLÀNOL DE JOC 360° -->
+          <table style="width: 100%; border-collapse: collapse; margin: 12px 0; font-family: monospace, Courier, sans-serif; font-size: 0.82rem; border: 2px solid #1e3a8a; background-color: #f8fafc;">
+            <thead>
+              <tr style="background-color: #1e3a8a; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                <th colspan="2" style="padding: 8px 12px; text-align: left;">🏟️ DISPOSICIÓ DE MITJOS CAMPS &mdash; RINGO-KORFBALL 360°</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #f0fdf4;">
+                  <div style="text-align: center; font-weight: bold; color: #15803d; margin-bottom: 6px;">🟢 MITJÀ CAMP 1 &mdash; Partit 4x4 (Equip 1 vs Equip 2)</div>
+                  <div style="border: 2px dashed #16a34a; background: #ffffff; padding: 10px; border-radius: 6px; text-align: center;">
+                    ⭕ <strong>ÀREA PROHIBIDA (Radi 2 m):</strong><br>
+                    🧺 [ PAL DE KORFBALL AL CENTRE ]<br>
+                    <span style="font-size: 0.72rem; color: #dc2626; font-weight: bold;">PROHIBIT ENTRAR-HI (Atacants i Defensors)</span>
+                  </div>
+                  <div style="font-size: 0.75rem; color: #166534; margin-top: 6px;">
+                    🔄 Els atacants circulen lliurement per l'exterior del cercle a 360°.
+                  </div>
+                </td>
+                <td style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; vertical-align: top; background-color: #eff6ff;">
+                  <div style="text-align: center; font-weight: bold; color: #1d4ed8; margin-bottom: 6px;">🔵 MITJÀ CAMP 2 &mdash; Partit 4x4 (Equip 3 vs Equip 4)</div>
+                  <div style="border: 2px dashed #2563eb; background: #ffffff; padding: 10px; border-radius: 6px; text-align: center;">
+                    ⭕ <strong>ÀREA PROHIBIDA (Radi 2 m):</strong><br>
+                    🧺 [ PAL DE KORFBALL AL CENTRE ]<br>
+                    <span style="font-size: 0.72rem; color: #dc2626; font-weight: bold;">PROHIBIT ENTRAR-HI (Atacants i Defensors)</span>
+                  </div>
+                  <div style="font-size: 0.75rem; color: #1e40af; margin-top: 6px;">
+                    🔄 Els atacants circulen lliurement per l'exterior del cercle a 360°.
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="padding: 10px 14px; border: 1px solid #cbd5e1; background-color: #fffbeb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                  <strong style="color: #b45309;">📋 ZONA TÈCNICA (Equip en rotació &mdash; Ex: Equip 5):</strong>
+                  <div style="font-size: 0.80rem; color: #78350f; margin-top: 3px;">
+                    Control d'arbitratge de no-invasió de l'àrea prohibida, anotació de tirs aconseguits i cronometratge dels torns de 4 minuts.
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- MATRIU DE ROTACIÓ SESSIÓ 3 -->
+          <h6 style="margin: 12px 0 6px 0; color: #1e3a8a; font-size: 0.90rem;">🔄 Matriu de Rotació Olímpica dels 5 Equips (5 torns de 4 minuts = 20 minuts totals)</h6>
+          <table style="width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 0.82rem; border: 1px solid #cbd5e1; background-color: #ffffff;">
+            <thead>
+              <tr style="background-color: #334155; color: #ffffff;">
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 14%;">Torn (Temps)</th>
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #15803d;">Camp 1 (4x4)</th>
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 28%; background-color: #1d4ed8;">Camp 2 (4x4)</th>
+                <th style="padding: 6px 10px; border: 1px solid #cbd5e1; text-align: center; width: 30%; background-color: #b45309;">Zona Tècnica (Rols Actius)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 1 (0' &ndash; 4')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 2</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 3 vs Equip 4</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 5 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+              <tr style="background-color: #f8fafc;">
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 2 (4' &ndash; 8')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 1</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 3</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 4 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 3 (8' &ndash; 12')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 4 vs Equip 5</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 3</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 2 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+              <tr style="background-color: #f8fafc;">
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 4 (12' &ndash; 16')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 4</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 5 vs Equip 3</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 1 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold;">Torn 5 (16' &ndash; 20')</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 1 vs Equip 4</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center;">Equip 2 vs Equip 5</td>
+                <td style="padding: 6px 8px; border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #b45309; background-color: #fefce8;">Equip 3 (Àrbitre Àrea i Àlbum)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PART FINAL -->
+      <div class="part-box final">
+        <div class="part-title">Part Final (10 minuts) &mdash; Tornada a la Calma i Gamificació</div>
+        <ul style="margin: 4px 0 10px 20px; padding: 0;">
+          <li><strong>Estiraments guiats (4'):</strong> Asseguts en rotllana. Estiraments d'espatlles, tríceps i quàdriceps. Reflexió sobre la diferència de llançar des de davant o des de darrere del cistell.</li>
+          <li><strong>Desbloqueig de la Carta #03: "La Paràbola d'Or 360°" (3'):</strong> Lliurament i adhesió a l'<em>Àlbum de Cartes Tàctiques</em> (Poder de Torneig: +2 punts al torneig final si s'anota una cistella des del quadrant posterior del pal).</li>
+          <li><strong>Recollida i higiene (3'):</strong> Neteja personal i desmuntatge ordenat de cons i cèrcols.</li>
+        </ul>
+      </div>
+
+      <!-- FOCUS D'AVALUACIÓ -->
+      <div class="part-box avaluacio">
+        <div class="part-title">Focus d'Avaluació Docent a Peu de Pista (iDoceo)</div>
+        <p style="margin: 0 0 8px 0;"><strong>Mirada focalitzada sobre l'Equip 5 i l'Equip 1:</strong></p>
+        <ul style="margin: 4px 0 0 20px; padding: 0;">
+          <li><strong>Criteri 2.2 (Pes 15%):</strong> Execució tècnica del tir (agafada simètrica, paràbola neta per sobre del cistell i flexió final de canells).</li>
+          <li><strong>Criteri 3.1 (Pes 15%):</strong> Equitat en la finalització (repartiment equitatiu d'oportunitats de tir entre nois i noies de l'equip).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+async function copySessionToClipboard(cardId, btn) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  
+  const clone = card.cloneNode(true);
+  const copyBtn = clone.querySelector('.copy-btn');
+  if (copyBtn) copyBtn.remove();
+  
+  const htmlBlob = new Blob([clone.outerHTML], { type: 'text/html' });
+  const textBlob = new Blob([clone.innerText], { type: 'text/plain' });
+  
+  try {
+    const item = new ClipboardItem({ 'text/html': htmlBlob, 'text/plain': textBlob });
+    await navigator.clipboard.write([item]);
+    const oldText = btn.innerHTML;
+    btn.innerHTML = '✅ Copiat per a Drive!';
+    btn.style.background = '#15803d';
+    setTimeout(() => {
+      btn.innerHTML = oldText;
+      btn.style.background = '#0284c7';
+    }, 2500);
+  } catch (err) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = clone.outerHTML;
+    tempDiv.style.position = 'fixed';
+    tempDiv.style.left = '-9999px';
+    document.body.appendChild(tempDiv);
+    const range = document.createRange();
+    range.selectNodeContents(tempDiv);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    document.body.removeChild(tempDiv);
+    btn.innerHTML = '✅ Copiat!';
+    setTimeout(() => { btn.innerHTML = '📋 Copiar per a Google Docs'; }, 2000);
+  }
+}
+</script>
+</body>
+</html>
