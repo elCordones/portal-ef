@@ -13,13 +13,17 @@
   - `public/recursos/` i arrel `public/`: Actius estàtics servits pel portal (17 documents HTML interactius/imprimibles amb favicon SVG, `apple-touch-icon.png` i peu de llicència, script Google Apps Script, 8 fitxers `.xlsx`/`.csv` per a iDoceo, i suite d'icones PWA/iOS a `public/`: `apple-touch-icon.png` 180x180, `icon-192.png`, `icon-512.png`, `favicon-32x32.png`, `favicon.svg` i `manifest.webmanifest`).
   - `.github/workflows/deploy.yml`, `.gitignore` i `desplegar-github.ps1`: Infraestructura completa de desplegament continu a GitHub Pages.
 
-## 2. Estat Actual i Punt de Control (Darrera sessió: 2026-10-23)
+## 2. Estat Actual i Punt de Control (Darrera sessió: 2026-11-04)
 - **Estat general**: 100% Funcional i Desplegat en Producció a GitHub Pages (`https://elcordones.github.io/portal-ef/`).
 - **Enllaços oficials del projecte**:
   - **Portal públic (GitHub Pages)**: `https://elcordones.github.io/portal-ef/`
   - **Repositori GitHub**: `https://github.com/elCordones/portal-ef`
-  - **Directori local de treball**: `C:\Users\dcordone\Desktop\AGY\Portal EF`
+  - **Directori local de treball**: `C:\Users\dcordone\Desktop\ANTIGRAVITY\Portal EF`
 - **Funcionalitats completades**:
+  - [x] **Unificació de Carpeta Local (`Portal EF`) i Optimització de Compilació VitePress (2026-11-04)**:
+    - Eliminat el clon duplicat en minúscules (`portal-ef`) generat durant la primera sincronització automàtica d'AGY Sync, conservant íntegra la carpeta original **`Portal EF`** (que inclou `node_modules`, la branca local `backup-v1-original` i els 29 fitxers font de treball de `SdA Atletisme/` i `SdA Korfbal/`).
+    - Registrat el mapeig `"https://github.com/elCordones/portal-ef.git": "Portal EF"` a `agy-workspace-config/config/projects-map.json` per evitar que es torni a clonar amb guions i minúscules.
+    - Afegides les carpetes font `SdA Atletisme/**` i `SdA Korfbal/**` a `srcExclude` dins `.vitepress/config.mjs` per evitar que VitePress compili esborranys interns a `.vitepress/dist` o contamini l'índex del cercador local, i afegida la regla `!public/recursos/**` a `.gitignore`.
   - [x] **Suport Natiu d'Icona per a iPhone / iPad (`apple-touch-icon.png`) i PWA Manifest**:
     - Solucionada la limitació de Safari a iOS (que ignora els favicons en format SVG inline i mostrava una icona genèrica amb la lletra «P» en afegir a la pantalla d'inici).
     - Generats els actius PNG d'alta definició amb l'emblema tàctic «EF» sobre fons blau marí/or (`public/apple-touch-icon.png` i `apple-touch-icon-precomposed.png` a 180×180 px, `icon-192.png`, `icon-512.png`, `favicon-32x32.png`, `favicon.svg` i `manifest.webmanifest`).
@@ -40,8 +44,8 @@
     5. **Targetes de Recursos Interactives en CSS Grid (Zero Superposició)**: El badge de format (`WEB APP`, `IMPRIMIBLE A4`, `GOOGLE DOCS`, `SIMULADOR + A4`, `IDOCEO XLSX/CSV`, `APPS SCRIPT`) ocupa la fila 1 dedicada del Grid (`grid-column: 1 / -1`) evitant qualsevol col·lisió amb el títol o la icona.
   - [x] **Desplegament Continu (CI/CD) i Còpia de Seguretat (`backup-v1-original`)**: Workflow `.github/workflows/deploy.yml` operatiu, GitHub Pages fixat en mode `build_type: "workflow"` i còpia de seguretat de la v1.0 desada a la branca `backup-v1-original` i al tag `v1.0-original`.
 - **Punt exacte on ens hem quedat**:
-  - Ajustada l'activitat 2.1 de la S1 de Korfbal a situació 3x2 (amb 2 defensors) i desplegada amb èxit al repositori de GitHub (`origin/main`).
-  - La documentació global del projecte queda actualitzada a data 2026-10-23.
+  - Netejada la carpeta duplicada `portal-ef`, consolidada `Portal EF` com a directori únic a `projects-map.json`, exclosa la compilació d'esborranys interns a `.vitepress/config.mjs` i verificada la compilació de producció.
+  - La documentació global del projecte queda actualitzada a data 2026-11-04.
 - **Decisions tècniques i incidències conegudes**:
   - **Resolució d'incidència a GitHub Pages (2026-10-21)**: El repositori tenia configurat `"build_type": "legacy"` (Deploy from a branch `main` amb Jekyll), fet que provocava que el workflow automàtic `pages build and deployment` s'executés en paral·lel al nostre `.github/workflows/deploy.yml` i acabés 3 segons més tard, sobreescrivint el portal VitePress amb el `index.md` cru renderitzat per Jekyll. S'ha actualitzat la configuració del repositori via API a `"build_type": "workflow"` i s'ha rellançat el desplegament de VitePress.
   - **Protocol d'integració per a futures Situacions d'Aprenentatge (3a a 10a+ SdA)**:

@@ -11,7 +11,7 @@ export default defineConfig({
   lang: 'ca',
   base,
   cleanUrls: false,
-  srcExclude: ['README.md', 'DOCUMENTACIO_PROJECTE.md', 'Bucle Gauntlet.md'],
+  srcExclude: ['README.md', 'DOCUMENTACIO_PROJECTE.md', 'Bucle Gauntlet.md', 'SdA Atletisme/**', 'SdA Korfbal/**'],
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${base}favicon-32x32.png` }],
